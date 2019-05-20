@@ -1,0 +1,22 @@
+<!-- $Id: example_var_modifier.tmpl 216 2004-05-20 16:01:41Z schst $ -->
+<patTemplate:tmpl name="page">
+Apply a modifier to sometext:
+<patTemplate:var name="sometext" modifier="htmlentities" modifierType="php"/>
+<hr />
+
+Apply a modifier to multiline:
+<patTemplate:var name="multiline" modifier="nl2br" modifierType="php"/>
+<hr />
+
+Apply a modifier to a long text:<br />
+<patTemplate:var name="wrap" modifier="wordwrapper" modifierType="custom" width="10" cut="no" nl2br="yes"/>
+<hr />
+
+Again:<br />
+<patTemplate:var name="wrap2" modifier="wordwrapper" modifierType="custom" width="20" cut="yes" nl2br="yes"/>
+<hr />
+
+Dateformat modfifier:<br />
+<patTemplate:var name="birthday" modifier="dateformat" format="%d.%m.%Y"/>
+
+</patTemplate:tmpl>

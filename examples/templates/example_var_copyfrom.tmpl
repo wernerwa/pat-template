@@ -1,0 +1,40 @@
+<!-- $Id: example_var_copyfrom.tmpl 262 2004-08-10 20:30:45Z schst $ -->
+<patTemplate:tmpl name="page">
+<table border="1">
+	<tr>
+		<th>template</th>
+		<th>var</th>
+		<th>value</th>
+	</tr>
+	<tr>
+		<td>page</td>
+		<td>SOMETEXT</td>
+		<td>{SOMETEXT}</td>
+	</tr>
+	<tr>
+		<td>page</td>
+		<td>SOMETEXT_PRETTY</td>
+		<td><patTemplate:var name="sometext_pretty" modifier="nl2br" copyfrom="sometext"/></td>
+	</tr>
+<patTemplate:tmpl name="nested">
+	<tr>
+		<td>nested</td>
+		<td>SOMETEXT</td>
+		<td><patTemplate:var name="sometext" copyfrom="page.sometext" modifier="strrev"/></td>
+	</tr>
+</patTemplate:tmpl>
+</table>
+
+<hr />
+Copying a variable that's not scalar:<br />
+
+<patTemplate:tmpl name="repeating">
+	{PAT_ROW_VAR} : {VALUE}<br />
+</patTemplate:tmpl>
+
+<patTemplate:tmpl name="non-repeating">
+	{SCALAR} {PAT_ROW_VAR} : <patTemplate:var name="newVar" copyFrom="repeating.value"/><br />
+</patTemplate:tmpl>
+
+
+</patTemplate:tmpl>

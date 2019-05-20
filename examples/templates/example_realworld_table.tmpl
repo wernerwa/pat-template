@@ -1,0 +1,43 @@
+<!-- $Id: example_realworld_table.tmpl 159 2004-04-20 21:02:46Z schst $ -->
+<patTemplate:tmpl name="table">
+<table border="1" cellpadding="5" cellspacing="0">
+<patTemplate:tmpl name="row" type="condition" conditionvar="doesnotmatter">
+
+	<patTemplate:sub condition="__first">
+	<!-- This is the template for the first row -->
+	<tr>
+	<patTemplate:tmpl name="cellhead">
+		<th><patTemplate:var name="value" modifier="htmlentities"/></th>
+	</patTemplate:tmpl>
+	</tr>
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="__default">
+	<!-- This is the template for all other rows -->
+	<tr>
+	<patTemplate:tmpl name="cell">
+		<td><patTemplate:var name="value" modifier="htmlentities"/></td>
+	</patTemplate:tmpl>
+	</tr>
+	</patTemplate:sub>
+</patTemplate:tmpl>
+</table>
+<br />
+<strong>How the example works:</strong><br />
+<p>
+	If you pass a multi-dimensional variable to
+	a template that has one child element, patTemplate
+	will automatically start repeating this template
+	and add the values to its child on each interation.
+</p>
+<p>
+	If a template has more than one child, you may
+	use the <strong>child</strong> attribute of the
+	<strong>tmpl</strong> tag to define to which template
+	should be repeated.
+</p>
+<p>
+	To replace &lt;, &gt; and other HTML special chars,
+	a modifier is applied to the variable.
+</p>
+</patTemplate:tmpl>

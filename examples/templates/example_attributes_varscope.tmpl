@@ -1,0 +1,14 @@
+<!-- $Id: example_attributes_varscope.tmpl 302 2004-10-27 10:01:57Z schst $ -->
+<patTemplate:tmpl name="var_storage">
+</patTemplate:tmpl>
+<patTemplate:tmpl name="page" type="condition" conditionvar="title" varscope="var_storage">
+
+	<patTemplate:sub condition="__default">
+		The title '{TITLE}' has been set.<br />
+	</patTemplate:sub>
+	
+	<patTemplate:sub condition="__empty">
+		No title has been set.<br />
+	</patTemplate:sub>
+	
+</patTemplate:tmpl>

@@ -1,0 +1,15 @@
+<!-- $Id: example_type_modulo_empty.tmpl 293 2004-09-21 20:34:42Z schst $ -->
+<patTemplate:tmpl name="row" type="modulo" modulo="3" addSystemVars="on">
+	<patTemplate:sub condition="__empty">
+<div>No variables have been passed.</div>
+	</patTemplate:sub>
+	<patTemplate:sub condition="0">
+<div style="background-color:#ffcccc">{VALUE} (PAT_MODULO: {PAT_MODULO} // PAT_MODULO_REP: {PAT_MODULO_REP})</div>
+	</patTemplate:sub>
+	<patTemplate:sub condition="1">
+<div style="background-color:#ccccff">{VALUE} (PAT_MODULO: {PAT_MODULO} // PAT_MODULO_REP: {PAT_MODULO_REP})</div>
+	</patTemplate:sub>
+	<patTemplate:sub condition="2">
+<div style="background-color:#ccffcc">{VALUE} (PAT_MODULO: {PAT_MODULO} // PAT_MODULO_REP: {PAT_MODULO_REP})</div>
+	</patTemplate:sub>
+</patTemplate:tmpl>

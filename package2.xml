@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<package packagerversion="1.4.0a4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+http://pear.php.net/dtd/tasks-1.0.xsd
+http://pear.php.net/dtd/package-2.0
+http://pear.php.net/dtd/package-2.0.xsd">
+ <name>patTemplate</name>
+ <channel>pear.php-tools.net</channel>
+ <summary>Powerful templating engine.</summary>
+ <description>patTemplate is a powerful, non-compiling templating engine, that uses XML tags to divide a document into different parts.
+It provides different template types to emulate if/else and switch/case constructs, variable modifiers,
+input- and output filters and several more useful features.
+ 
+ </description>
+ <lead>
+  <name>Stephan Schmidt</name>
+  <user>schst</user>
+  <email>schst@php-tools.net</email>
+  <active>yes</active>
+ </lead>
+ <contributor>
+  <name>Sebastian Mordziol</name>
+  <user>argh</user>
+  <email>argh@php-tools.net</email>
+  <active>yes</active>
+ </contributor>
+ <date>2005-03-07</date>
+ <time>21:19:49</time>
+ <version>
+  <release>3.0.1</release>
+  <api>3.0.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.gnu.org/copyleft/lesser.html">LGPL</license>
+ <notes>Changes since 3.0.0:
+- readTemplatesFromInput() now checks, whether any input has been passed (reported by denne)
+- fixed notice in addVars()
+- improved Dump() for simplecondition templates
+- fixed notice in GZip output filter
+  
+ </notes>
+ <contents>
+  <dir name="/">
+   <dir name="docs">
+    <file baseinstalldir="pat" name="bc-break.txt" role="doc" />
+    <file baseinstalldir="pat" name="extending-pattemplate.txt" role="doc" />
+    <file baseinstalldir="pat" name="news.txt" role="doc" />
+    <file baseinstalldir="pat" name="notes.txt" role="doc" />
+    <file baseinstalldir="pat" name="reserved-variables.txt" role="doc" />
+    <file baseinstalldir="pat" name="what-is-what.txt" role="doc" />
+   </dir> <!-- /docs -->
+   <dir name="examples">
+    <dir name="BBCode">
+     <dir name="Filters">
+      <dir name="Date">
+       <file baseinstalldir="pat" name="_folder.txt" role="doc" />
+      </dir> <!-- /examples/BBCode/Filters/Date -->
+      <dir name="Emoticon">
+       <dir name="Text">
+        <file baseinstalldir="pat" name="Beard.bbt" role="doc" />
+        <file baseinstalldir="pat" name="Crying.bbt" role="doc" />
+        <file baseinstalldir="pat" name="Diving.bbt" role="doc" />
+        <file baseinstalldir="pat" name="Happy.bbt" role="doc" />
+        <file baseinstalldir="pat" name="Ouch.bbt" role="doc" />
+        <file baseinstalldir="pat" name="Think.bbt" role="doc" />
+        <file baseinstalldir="pat" name="Tongue.bbt" role="doc" />
+        <file baseinstalldir="pat" name="Vampire.bbt" role="doc" />
+       </dir> <!-- /examples/BBCode/Filters/Emoticon/Text -->
+      </dir> <!-- /examples/BBCode/Filters/Emoticon -->
+      <dir name="Link">
+       <file baseinstalldir="pat" name="Inline.bbt" role="doc" />
+       <file baseinstalldir="pat" name="Standalone.bbt" role="doc" />
+      </dir> <!-- /examples/BBCode/Filters/Link -->
+      <dir name="Php">
+       <file baseinstalldir="pat" name="_folder.txt" role="doc" />
+      </dir> <!-- /examples/BBCode/Filters/Php -->
+     </dir> <!-- /examples/BBCode/Filters -->
+     <dir name="Tagtemplates">
+      <file baseinstalldir="pat" name="b.bbt" role="doc" />
+      <file baseinstalldir="pat" name="br.bbt" role="doc" />
+      <file baseinstalldir="pat" name="em.bbt" role="doc" />
+      <file baseinstalldir="pat" name="head.bbt" role="doc" />
+      <file baseinstalldir="pat" name="p.bbt" role="doc" />
+      <file baseinstalldir="pat" name="quote.bbt" role="doc" />
+     </dir> <!-- /examples/BBCode/Tagtemplates -->
+    </dir> <!-- /examples/BBCode -->
+    <dir name="data">
+     <file baseinstalldir="pat" name="example_function_translate.tmpl-de.ini" role="doc" />
+     <file baseinstalldir="pat" name="example_function_translate.tmpl-default.ini" role="doc" />
+     <file baseinstalldir="pat" name="example_function_translate2.tmpl-de.ini" role="doc" />
+     <file baseinstalldir="pat" name="example_function_translate2.tmpl-default.ini" role="doc" />
+    </dir> <!-- /examples/data -->
+    <dir name="img">
+     <file baseinstalldir="pat" name="pb_pattemplate.gif" role="doc" />
+    </dir> <!-- /examples/img -->
+    <dir name="templates">
+     <file baseinstalldir="pat" name="example_api_addglobalvar.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_addobject.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_addvar.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_cleartemplate.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_displayparsedtemplate.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_displayparsedtemplate2.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_freetemplate.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_loadtemplate.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_loadtemplate_main.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_parseintovar.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_readtemplatesfrominput.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_api_setattribute.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_addsystemvars.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_limit.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_loop.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_src.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_src_footer.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_src_header.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_src_main.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_unusedvars.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_useglobals.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_varscope.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_attributes_whitespace.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_cache_template_file.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_compiler_display.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_dump_dhtml.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_filter_input_stripcomments.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_filter_output_bbcode.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_filter_output_multiple.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_filter_output_tidy.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_function_aliases.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_function_attribute.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_function_call.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_function_call_templates.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_function_phphighlight.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_function_strip.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_function_time.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_function_translate.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_function_translate2.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_misc_autonaming.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_misc_dotsyntax.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_misc_maintainbc.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_misc_namespace.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_reader_it.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_changesource.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_changesource_home.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_expression.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_hiddenvar.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_img.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_list.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_nestedvars.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_paginate.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_table.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_table_from_list.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_realworld_varscopeparent.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_tags_comment.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_tags_link.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_tags_sub.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_tags_tmpl.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_tags_var.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_type_condition.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_type_modulo.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_type_modulo_empty.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_type_oddeven.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_type_simplecondition.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_type_standard.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_var_copyfrom.tmpl" role="doc" />
+     <file baseinstalldir="pat" name="example_var_modifier.tmpl" role="doc" />
+    </dir> <!-- /examples/templates -->
+    <dir name="tmplCache">
+     <file baseinstalldir="pat" name="readme.txt" role="doc" />
+    </dir> <!-- /examples/tmplCache -->
+    <file baseinstalldir="pat" name="example_api_addglobalvar.php" role="doc" />
+    <file baseinstalldir="pat" name="example_api_addobject.php" role="doc" />
+    <file baseinstalldir="pat" name="example_api_addvar.php" role="doc" />
+    <file baseinstalldir="pat" name="example_api_cleartemplate.php" role="doc" />
+    <file baseinstalldir="pat" name="example_api_displayparsedtemplate.php" role="doc" />
+    <file baseinstalldir="pat" name="example_api_freetemplate.php" role="doc" />
+    <file baseinstalldir="pat" name="example_api_loadtemplate.php" role="doc" />
+    <file baseinstalldir="pat" name="example_api_parseintovar.php" role="doc" />
+    <file baseinstalldir="pat" name="example_api_readtemplatesfrominput.php" role="doc" />
+    <file baseinstalldir="pat" name="example_api_setattribute.php" role="doc" />
+    <file baseinstalldir="pat" name="example_attributes_addsystemvars.php" role="doc" />
+    <file baseinstalldir="pat" name="example_attributes_limit.php" role="doc" />
+    <file baseinstalldir="pat" name="example_attributes_loop.php" role="doc" />
+    <file baseinstalldir="pat" name="example_attributes_src.php" role="doc" />
+    <file baseinstalldir="pat" name="example_attributes_unusedvars.php" role="doc" />
+    <file baseinstalldir="pat" name="example_attributes_useglobals.php" role="doc" />
+    <file baseinstalldir="pat" name="example_attributes_varscope.php" role="doc" />
+    <file baseinstalldir="pat" name="example_attributes_whitespace.php" role="doc" />
+    <file baseinstalldir="pat" name="example_cache_template_file.php" role="doc" />
+    <file baseinstalldir="pat" name="example_compiler_display.php" role="doc" />
+    <file baseinstalldir="pat" name="example_condition_basic.php" role="doc" />
+    <file baseinstalldir="pat" name="example_dump_dhtml.php" role="doc" />
+    <file baseinstalldir="pat" name="example_filter_input_stripcomments.php" role="doc" />
+    <file baseinstalldir="pat" name="example_filter_output_bbcode.php" role="doc" />
+    <file baseinstalldir="pat" name="example_filter_output_multiple.php" role="doc" />
+    <file baseinstalldir="pat" name="example_filter_output_tidy.php" role="doc" />
+    <file baseinstalldir="pat" name="example_function_aliases.php" role="doc" />
+    <file baseinstalldir="pat" name="example_function_attribute.php" role="doc" />
+    <file baseinstalldir="pat" name="example_function_call.php" role="doc" />
+    <file baseinstalldir="pat" name="example_function_phphighlight.php" role="doc" />
+    <file baseinstalldir="pat" name="example_function_strip.php" role="doc" />
+    <file baseinstalldir="pat" name="example_function_time.php" role="doc" />
+    <file baseinstalldir="pat" name="example_function_translate.php" role="doc" />
+    <file baseinstalldir="pat" name="example_misc_autonaming.php" role="doc" />
+    <file baseinstalldir="pat" name="example_misc_dotsyntax.php" role="doc" />
+    <file baseinstalldir="pat" name="example_misc_maintainbc.php" role="doc" />
+    <file baseinstalldir="pat" name="example_misc_namespace.php" role="doc" />
+    <file baseinstalldir="pat" name="example_reader_it.php" role="doc" />
+    <file baseinstalldir="pat" name="example_reader_string.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_changesource.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_expression.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_hiddenvar.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_img.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_list.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_nestedvars.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_paginate.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_table.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_table_from_list.php" role="doc" />
+    <file baseinstalldir="pat" name="example_realworld_varscopeparent.php" role="doc" />
+    <file baseinstalldir="pat" name="example_tags_comment.php" role="doc" />
+    <file baseinstalldir="pat" name="example_tags_link.php" role="doc" />
+    <file baseinstalldir="pat" name="example_tags_sub.php" role="doc" />
+    <file baseinstalldir="pat" name="example_tags_tmpl.php" role="doc" />
+    <file baseinstalldir="pat" name="example_tags_var.php" role="doc" />
+    <file baseinstalldir="pat" name="example_type_condition.php" role="doc" />
+    <file baseinstalldir="pat" name="example_type_modulo.php" role="doc" />
+    <file baseinstalldir="pat" name="example_type_modulo_empty.php" role="doc" />
+    <file baseinstalldir="pat" name="example_type_oddeven.php" role="doc" />
+    <file baseinstalldir="pat" name="example_type_simplecondition.php" role="doc" />
+    <file baseinstalldir="pat" name="example_type_standard.php" role="doc" />
+    <file baseinstalldir="pat" name="example_var_copyfrom.php" role="doc" />
+    <file baseinstalldir="pat" name="example_var_modifier.php" role="doc" />
+    <file baseinstalldir="pat" name="index.php" role="doc" />
+    <file baseinstalldir="pat" name="index_main.php" role="doc" />
+    <file baseinstalldir="pat" name="index_nav.php" role="doc" />
+    <file baseinstalldir="pat" name="index_sections.php" role="doc" />
+    <file baseinstalldir="pat" name="_dumpTemplate.php" role="doc" />
+    <file baseinstalldir="pat" name="_styles.css" role="doc" />
+    <file baseinstalldir="pat" name="_viewExample.php" role="doc" />
+   </dir> <!-- /examples -->
+   <dir name="patTemplate">
+    <dir name="Dump">
+     <file baseinstalldir="pat" name="Html.php" role="php" />
+    </dir> <!-- /patTemplate/Dump -->
+    <dir name="Function">
+     <file baseinstalldir="pat" name="Alias.php" role="php" />
+     <file baseinstalldir="pat" name="Attribute.php" role="php" />
+     <file baseinstalldir="pat" name="Call.php" role="php" />
+     <file baseinstalldir="pat" name="Globalvar.php" role="php" />
+     <file baseinstalldir="pat" name="Phphighlight.php" role="php" />
+     <file baseinstalldir="pat" name="Strip.php" role="php" />
+     <file baseinstalldir="pat" name="Time.php" role="php" />
+     <file baseinstalldir="pat" name="Translate.php" role="php" />
+    </dir> <!-- /patTemplate/Function -->
+    <dir name="InputFilter">
+     <file baseinstalldir="pat" name="StripComments.php" role="php" />
+    </dir> <!-- /patTemplate/InputFilter -->
+    <dir name="Modifier">
+     <dir name="HTML">
+      <file baseinstalldir="pat" name="Img.php" role="php" />
+     </dir> <!-- /patTemplate/Modifier/HTML -->
+     <file baseinstalldir="pat" name="Dateformat.php" role="php" />
+     <file baseinstalldir="pat" name="Expression.php" role="php" />
+     <file baseinstalldir="pat" name="Wordwrapper.php" role="php" />
+    </dir> <!-- /patTemplate/Modifier -->
+    <dir name="OutputFilter">
+     <file baseinstalldir="pat" name="BBCode.php" role="php" />
+     <file baseinstalldir="pat" name="Gzip.php" role="php" />
+     <file baseinstalldir="pat" name="StripWhitespace.php" role="php" />
+     <file baseinstalldir="pat" name="Tidy.php" role="php" />
+    </dir> <!-- /patTemplate/OutputFilter -->
+    <dir name="Reader">
+     <file baseinstalldir="pat" name="File.php" role="php" />
+     <file baseinstalldir="pat" name="IT.php" role="php" />
+     <file baseinstalldir="pat" name="String.php" role="php" />
+    </dir> <!-- /patTemplate/Reader -->
+    <dir name="Stat">
+     <file baseinstalldir="pat" name="File.php" role="php" />
+    </dir> <!-- /patTemplate/Stat -->
+    <dir name="TemplateCache">
+     <file baseinstalldir="pat" name="File.php" role="php" />
+    </dir> <!-- /patTemplate/TemplateCache -->
+    <file baseinstalldir="pat" name="Compiler.php" role="php" />
+    <file baseinstalldir="pat" name="Dump.php" role="php" />
+    <file baseinstalldir="pat" name="Function.php" role="php" />
+    <file baseinstalldir="pat" name="InputFilter.php" role="php" />
+    <file baseinstalldir="pat" name="Modifier.php" role="php" />
+    <file baseinstalldir="pat" name="Module.php" role="php" />
+    <file baseinstalldir="pat" name="OutputCache.php" role="php" />
+    <file baseinstalldir="pat" name="OutputFilter.php" role="php" />
+    <file baseinstalldir="pat" name="Reader.php" role="php" />
+    <file baseinstalldir="pat" name="Stat.php" role="php" />
+    <file baseinstalldir="pat" name="TemplateCache.php" role="php" />
+   </dir> <!-- /patTemplate -->
+   <dir name="tests">
+    <file baseinstalldir="pat" name="benchmark_sprintf.php" role="test" />
+    <file baseinstalldir="pat" name="readme.txt" role="test" />
+   </dir> <!-- /tests -->
+   <file baseinstalldir="pat" name="patTemplate.php" role="php" />
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.2.0</min>
+    <max>6.0.0</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0a1</min>
+   </pearinstaller>
+   <package>
+    <name>patError</name>
+    <channel>pear.php-tools.net</channel>
+   </package>
+  </required>
+  <optional>
+   <package>
+    <name>patBBCode</name>
+    <channel>pear.php-tools.net</channel>
+   </package>
+  </optional>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>3.0.0beta1</release>
+    <api>3.0.0beta1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2004-05-04</date>
+   <license uri="http://www.gnu.org/copyleft/lesser.html">LGPL</license>
+   <notes>Completely recoded version of patTemplate.
+Provides an nearly endless amount of new features, see news.txt for
+a complete list of changes.
+    
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.0beta2</release>
+    <api>3.0.0beta2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2004-08-22</date>
+   <license uri="http://www.gnu.org/copyleft/lesser.html">LGPL</license>
+   <notes>Changes since 3.0.0beta1:
+- improved caching performance by introducing Stat modules
+- allowed passing of an array of objects to addObject()
+- added addModuleDir() which allows you to store your modules anywhere
+- fixed several small bugs
+- added Tidy outputfilter
+- added BBCode output filter
+- variable modifiers now work for globals
+- added __toString()
+- added loadTemplate()
+- added new parameter to clearTemplate() to recursively clear templates
+- added limit attribute
+- added Expression modifier
+- added Translate function (works like IntSmarty)
+- added Globalvar function (behaves like &lt;patTemplate:var/&gt;
+- added PHPHighlight function
+- added Attribute function
+- added Call function
+- added FTP and HTTP support to File Reader
+- added varscope=&quot;__parent&quot;
+- added recursive parameter to clearTemplate() and freeTemplate()
+- added &apos;append&apos; parameter to parseIntoVar()
+- fixed bug with dot-syntax in simpleCondition templates
+    
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.0</release>
+    <api>3.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2004-11-30</date>
+   <license uri="http://www.gnu.org/copyleft/lesser.html">LGPL</license>
+   <notes>Changes since 3.0.0beta2:
+- fixed a notice (bug #65)
+- added new system var: PAT_MODULO (request #63)
+- fixed behaviour of global variables (bug #66)
+- added more possibilities for the addSystemVars attribute (request #64)
+- fixed bug with simpleCondition templates and useglobals attribute
+- added function aliases
+- fixed some warnings and notices (bug #82)
+- added support for copyFrom in global variables (gERD)
+- fixed bug with default values that got deleted when calling clearTemplate()
+- added __empty condition for modulo templates
+    
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.1</release>
+    <api>3.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2005-03-07</date>
+   <license uri="http://www.gnu.org/copyleft/lesser.html">LGPL</license>
+   <notes>Changes since 3.0.0:
+- readTemplatesFromInput() now checks, whether any input has been passed (reported by denne)
+- fixed notice in addVars()
+- improved Dump() for simplecondition templates
+- fixed notice in GZip output filter
+    
+   </notes>
+  </release>
+ </changelog>
+</package>

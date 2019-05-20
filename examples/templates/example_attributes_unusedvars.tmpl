@@ -1,0 +1,29 @@
+<!-- $Id: example_attributes_unusedvars.tmpl 140 2004-04-20 17:57:36Z schst $ -->
+<patTemplate:tmpl name="page">
+View the sourcecode of this page, to see what happens to the
+variables that have no values.<br /><br />
+
+	<patTemplate:tmpl name="ignore" unusedvars="ignore"">
+	IGNORE: {FOO} {FOO}<br />
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="strip" unusedvars="strip">
+	STRIP: {FOO}test{FOO}<br />
+	</patTemplate:tmpl>
+	
+	<patTemplate:tmpl name="nbsp" unusedvars="nbsp">
+	COMMENT: {FOO} {FOO}<br />
+		<patTemplate:tmpl name="inherit">
+		INHERIT: {FOO} {FOO}<br />
+		</patTemplate:tmpl>
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="comment" unusedvars="comment">
+	NBSP: {FOO} {FOO}<br />
+	</patTemplate:tmpl>
+	
+	<patTemplate:tmpl name="any" unusedvars="any">
+	ANY: {FOO}test{FOO}<br />
+	</patTemplate:tmpl>
+	
+</patTemplate:tmpl>

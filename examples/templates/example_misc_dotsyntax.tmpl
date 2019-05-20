@@ -1,0 +1,17 @@
+<!-- $Id: example_misc_dotsyntax.tmpl 160 2004-04-20 21:09:28Z schst $ -->
+<patTemplate:tmpl name="source">
+This template is a dummy template...<br>
+<patTemplate:tmpl name="cond" type="condition" conditionvar="source.foo">
+	<patTemplate:sub condition="bar">
+		Bar has been supplied!<br />
+	</patTemplate:sub>
+	<patTemplate:sub condition="argh">
+		The argh was here!<br />
+	</patTemplate:sub>
+	<patTemplate:sub condition="__default">
+		unknown<br />
+	</patTemplate:sub>
+
+</patTemplate:tmpl>
+
+</patTemplate:tmpl>

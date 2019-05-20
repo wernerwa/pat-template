@@ -1,0 +1,12 @@
+<!-- $Id: example_realworld_table_from_list.tmpl 226 2004-06-01 21:10:36Z schst $ -->
+<patTemplate:tmpl name="table">
+<table border="1" cellpadding="5" cellspacing="0">
+<patTemplate:tmpl name="row">
+	<tr>
+	<patTemplate:tmpl name="cell" maxloop="5" addSystemVars="on">
+		<td>{VALUE} - {VALUE2}</td>
+	</patTemplate:tmpl>
+	</tr>
+</patTemplate:tmpl>
+</table>
+</patTemplate:tmpl>

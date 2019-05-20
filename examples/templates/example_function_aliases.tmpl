@@ -1,0 +1,11 @@
+<!-- $Id: example_function_aliases.tmpl 283 2004-09-07 19:09:56Z schst $ -->
+<patTemplate:tmpl name="page">
+	<patTemplate:uhrzeit format="H:i:s d.m.Y"/><br />
+
+	Tomorrow is <patTemplate:uhrzeit format="m/d/Y" time="tomorrow"/><br />
+
+	<patTemplate:Alias alias="heure" function="Time"/>
+	
+	<patTemplate:heure format="H:i:s d.m.Y"/><br />
+	
+</patTemplate:tmpl>

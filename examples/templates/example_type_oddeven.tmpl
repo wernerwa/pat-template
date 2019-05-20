@@ -1,0 +1,9 @@
+<!-- $Id: example_type_oddeven.tmpl 147 2004-04-20 19:01:53Z schst $ -->
+<patTemplate:tmpl name="row" type="oddeven">
+	<patTemplate:sub condition="__odd">
+<div style="background-color:#cccccc">{VALUE}</div>
+	</patTemplate:sub>
+	<patTemplate:sub condition="__even">
+<div style="background-color:#ffffff">{VALUE}</div>
+	</patTemplate:sub>
+</patTemplate:tmpl>

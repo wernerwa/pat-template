@@ -1,0 +1,11 @@
+<!-- $Id: example_realworld_expression.tmpl 242 2004-06-29 21:12:57Z schst $ -->
+<patTemplate:tmpl name="page">
+<div>
+The variable: {VAR}<br />
+Is it bigger than 13?
+<!--
+	We are using &gt; instead of >, as this tag is a valid XML tag.
+-->
+<patTemplate:var name="foo" copyFrom="var" modifier="Expression" expression="$self&gt;13" true="Yes!" false="Nay!"/>
+</div>
+</patTemplate:tmpl>

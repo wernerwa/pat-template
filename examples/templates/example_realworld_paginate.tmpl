@@ -1,0 +1,22 @@
+<!-- $Id: example_realworld_paginate.tmpl 247 2004-07-06 19:32:34Z schst $ -->
+<patTemplate:tmpl name="table">
+<table border="1" cellpadding="5" cellspacing="0">
+	<patTemplate:tmpl name="row" limit="2,5">
+	<!-- This is the template for the first row -->
+	<tr>
+		<td>{NAME}</td>
+		<td>{REALNAME}</td>
+	</tr>
+	</patTemplate:tmpl>
+</table>
+<br />
+<table border="0" cellpadding="5" cellspacing="0">
+	<tr>
+	<patTemplate:tmpl name="pages" type="modulo" modulo="2">
+		<patTemplate:sub condition="1">
+			<td><a href="{SCRIPT}?start={PAT_ROW_VAR}">page {PAT_MODULO_REP}</td>
+		</patTemplate:sub>
+	</patTemplate:tmpl>	
+	</tr>
+</table>
+</patTemplate:tmpl>

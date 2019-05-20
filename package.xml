@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0" packagerversion="1.4.0a4">
+ <name>patTemplate</name>
+ <summary>Powerful templating engine.</summary>
+ <description>patTemplate is a powerful, non-compiling templating engine, that uses XML tags to divide a document into different parts.
+It provides different template types to emulate if/else and switch/case constructs, variable modifiers,
+input- and output filters and several more useful features.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>schst</user>
+   <name>Stephan Schmidt</name>
+   <email>schst@php-tools.net</email>
+   <role>lead</role>
+  </maintainer>
+  <maintainer>
+   <user>argh</user>
+   <name>Sebastian Mordziol</name>
+   <email>argh@php-tools.net</email>
+   <role>contributor</role>
+  </maintainer>
+  </maintainers>
+ <release>
+  <version>3.0.1</version>
+  <date>2005-03-07</date>
+  <license>LGPL</license>
+  <state>stable</state>
+  <notes>Changes since 3.0.0:
+- readTemplatesFromInput() now checks, whether any input has been passed (reported by denne)
+- fixed notice in addVars()
+- improved Dump() for simplecondition templates
+- fixed notice in GZip output filter
+  </notes>
+  <deps>
+   <dep type="pkg" rel="has" optional="no">patError</dep>
+   <dep type="php" rel="ge" version="4.2.0" optional="no"/>
+   <dep type="pkg" rel="has" optional="yes">patBBCode</dep>
+  </deps>
+  <filelist>
+   <dir name="/" baseinstalldir="pat">
+    <dir name="docs">
+     <file role="doc" name="bc-break.txt"/>
+     <file role="doc" name="extending-pattemplate.txt"/>
+     <file role="doc" name="news.txt"/>
+     <file role="doc" name="notes.txt"/>
+     <file role="doc" name="reserved-variables.txt"/>
+     <file role="doc" name="what-is-what.txt"/>
+    </dir> <!-- /docs -->
+    <dir name="examples">
+     <dir name="BBCode">
+      <dir name="Filters">
+       <dir name="Date">
+        <file role="doc" name="_folder.txt"/>
+       </dir> <!-- /examples/BBCode/Filters/Date -->
+       <dir name="Emoticon">
+        <dir name="Text">
+         <file role="doc" name="Beard.bbt"/>
+         <file role="doc" name="Crying.bbt"/>
+         <file role="doc" name="Diving.bbt"/>
+         <file role="doc" name="Happy.bbt"/>
+         <file role="doc" name="Ouch.bbt"/>
+         <file role="doc" name="Think.bbt"/>
+         <file role="doc" name="Tongue.bbt"/>
+         <file role="doc" name="Vampire.bbt"/>
+        </dir> <!-- /examples/BBCode/Filters/Emoticon/Text -->
+       </dir> <!-- /examples/BBCode/Filters/Emoticon -->
+       <dir name="Link">
+        <file role="doc" name="Inline.bbt"/>
+        <file role="doc" name="Standalone.bbt"/>
+       </dir> <!-- /examples/BBCode/Filters/Link -->
+       <dir name="Php">
+        <file role="doc" name="_folder.txt"/>
+       </dir> <!-- /examples/BBCode/Filters/Php -->
+      </dir> <!-- /examples/BBCode/Filters -->
+      <dir name="Tagtemplates">
+       <file role="doc" name="b.bbt"/>
+       <file role="doc" name="br.bbt"/>
+       <file role="doc" name="em.bbt"/>
+       <file role="doc" name="head.bbt"/>
+       <file role="doc" name="p.bbt"/>
+       <file role="doc" name="quote.bbt"/>
+      </dir> <!-- /examples/BBCode/Tagtemplates -->
+     </dir> <!-- /examples/BBCode -->
+     <dir name="data">
+      <file role="doc" name="example_function_translate.tmpl-de.ini"/>
+      <file role="doc" name="example_function_translate.tmpl-default.ini"/>
+      <file role="doc" name="example_function_translate2.tmpl-de.ini"/>
+      <file role="doc" name="example_function_translate2.tmpl-default.ini"/>
+     </dir> <!-- /examples/data -->
+     <dir name="img">
+      <file role="doc" name="pb_pattemplate.gif"/>
+     </dir> <!-- /examples/img -->
+     <dir name="templates">
+      <file role="doc" name="example_api_addglobalvar.tmpl"/>
+      <file role="doc" name="example_api_addobject.tmpl"/>
+      <file role="doc" name="example_api_addvar.tmpl"/>
+      <file role="doc" name="example_api_cleartemplate.tmpl"/>
+      <file role="doc" name="example_api_displayparsedtemplate.tmpl"/>
+      <file role="doc" name="example_api_displayparsedtemplate2.tmpl"/>
+      <file role="doc" name="example_api_freetemplate.tmpl"/>
+      <file role="doc" name="example_api_loadtemplate.tmpl"/>
+      <file role="doc" name="example_api_loadtemplate_main.tmpl"/>
+      <file role="doc" name="example_api_parseintovar.tmpl"/>
+      <file role="doc" name="example_api_readtemplatesfrominput.tmpl"/>
+      <file role="doc" name="example_api_setattribute.tmpl"/>
+      <file role="doc" name="example_attributes_addsystemvars.tmpl"/>
+      <file role="doc" name="example_attributes_limit.tmpl"/>
+      <file role="doc" name="example_attributes_loop.tmpl"/>
+      <file role="doc" name="example_attributes_src.tmpl"/>
+      <file role="doc" name="example_attributes_src_footer.tmpl"/>
+      <file role="doc" name="example_attributes_src_header.tmpl"/>
+      <file role="doc" name="example_attributes_src_main.tmpl"/>
+      <file role="doc" name="example_attributes_unusedvars.tmpl"/>
+      <file role="doc" name="example_attributes_useglobals.tmpl"/>
+      <file role="doc" name="example_attributes_varscope.tmpl"/>
+      <file role="doc" name="example_attributes_whitespace.tmpl"/>
+      <file role="doc" name="example_cache_template_file.tmpl"/>
+      <file role="doc" name="example_compiler_display.tmpl"/>
+      <file role="doc" name="example_dump_dhtml.tmpl"/>
+      <file role="doc" name="example_filter_input_stripcomments.tmpl"/>
+      <file role="doc" name="example_filter_output_bbcode.tmpl"/>
+      <file role="doc" name="example_filter_output_multiple.tmpl"/>
+      <file role="doc" name="example_filter_output_tidy.tmpl"/>
+      <file role="doc" name="example_function_aliases.tmpl"/>
+      <file role="doc" name="example_function_attribute.tmpl"/>
+      <file role="doc" name="example_function_call.tmpl"/>
+      <file role="doc" name="example_function_call_templates.tmpl"/>
+      <file role="doc" name="example_function_phphighlight.tmpl"/>
+      <file role="doc" name="example_function_strip.tmpl"/>
+      <file role="doc" name="example_function_time.tmpl"/>
+      <file role="doc" name="example_function_translate.tmpl"/>
+      <file role="doc" name="example_function_translate2.tmpl"/>
+      <file role="doc" name="example_misc_autonaming.tmpl"/>
+      <file role="doc" name="example_misc_dotsyntax.tmpl"/>
+      <file role="doc" name="example_misc_maintainbc.tmpl"/>
+      <file role="doc" name="example_misc_namespace.tmpl"/>
+      <file role="doc" name="example_reader_it.tmpl"/>
+      <file role="doc" name="example_realworld_changesource.tmpl"/>
+      <file role="doc" name="example_realworld_changesource_home.tmpl"/>
+      <file role="doc" name="example_realworld_expression.tmpl"/>
+      <file role="doc" name="example_realworld_hiddenvar.tmpl"/>
+      <file role="doc" name="example_realworld_img.tmpl"/>
+      <file role="doc" name="example_realworld_list.tmpl"/>
+      <file role="doc" name="example_realworld_nestedvars.tmpl"/>
+      <file role="doc" name="example_realworld_paginate.tmpl"/>
+      <file role="doc" name="example_realworld_table.tmpl"/>
+      <file role="doc" name="example_realworld_table_from_list.tmpl"/>
+      <file role="doc" name="example_realworld_varscopeparent.tmpl"/>
+      <file role="doc" name="example_tags_comment.tmpl"/>
+      <file role="doc" name="example_tags_link.tmpl"/>
+      <file role="doc" name="example_tags_sub.tmpl"/>
+      <file role="doc" name="example_tags_tmpl.tmpl"/>
+      <file role="doc" name="example_tags_var.tmpl"/>
+      <file role="doc" name="example_type_condition.tmpl"/>
+      <file role="doc" name="example_type_modulo.tmpl"/>
+      <file role="doc" name="example_type_modulo_empty.tmpl"/>
+      <file role="doc" name="example_type_oddeven.tmpl"/>
+      <file role="doc" name="example_type_simplecondition.tmpl"/>
+      <file role="doc" name="example_type_standard.tmpl"/>
+      <file role="doc" name="example_var_copyfrom.tmpl"/>
+      <file role="doc" name="example_var_modifier.tmpl"/>
+     </dir> <!-- /examples/templates -->
+     <dir name="tmplCache">
+      <file role="doc" name="readme.txt"/>
+     </dir> <!-- /examples/tmplCache -->
+     <file role="doc" name="example_api_addglobalvar.php"/>
+     <file role="doc" name="example_api_addobject.php"/>
+     <file role="doc" name="example_api_addvar.php"/>
+     <file role="doc" name="example_api_cleartemplate.php"/>
+     <file role="doc" name="example_api_displayparsedtemplate.php"/>
+     <file role="doc" name="example_api_freetemplate.php"/>
+     <file role="doc" name="example_api_loadtemplate.php"/>
+     <file role="doc" name="example_api_parseintovar.php"/>
+     <file role="doc" name="example_api_readtemplatesfrominput.php"/>
+     <file role="doc" name="example_api_setattribute.php"/>
+     <file role="doc" name="example_attributes_addsystemvars.php"/>
+     <file role="doc" name="example_attributes_limit.php"/>
+     <file role="doc" name="example_attributes_loop.php"/>
+     <file role="doc" name="example_attributes_src.php"/>
+     <file role="doc" name="example_attributes_unusedvars.php"/>
+     <file role="doc" name="example_attributes_useglobals.php"/>
+     <file role="doc" name="example_attributes_varscope.php"/>
+     <file role="doc" name="example_attributes_whitespace.php"/>
+     <file role="doc" name="example_cache_template_file.php"/>
+     <file role="doc" name="example_compiler_display.php"/>
+     <file role="doc" name="example_condition_basic.php"/>
+     <file role="doc" name="example_dump_dhtml.php"/>
+     <file role="doc" name="example_filter_input_stripcomments.php"/>
+     <file role="doc" name="example_filter_output_bbcode.php"/>
+     <file role="doc" name="example_filter_output_multiple.php"/>
+     <file role="doc" name="example_filter_output_tidy.php"/>
+     <file role="doc" name="example_function_aliases.php"/>
+     <file role="doc" name="example_function_attribute.php"/>
+     <file role="doc" name="example_function_call.php"/>
+     <file role="doc" name="example_function_phphighlight.php"/>
+     <file role="doc" name="example_function_strip.php"/>
+     <file role="doc" name="example_function_time.php"/>
+     <file role="doc" name="example_function_translate.php"/>
+     <file role="doc" name="example_misc_autonaming.php"/>
+     <file role="doc" name="example_misc_dotsyntax.php"/>
+     <file role="doc" name="example_misc_maintainbc.php"/>
+     <file role="doc" name="example_misc_namespace.php"/>
+     <file role="doc" name="example_reader_it.php"/>
+     <file role="doc" name="example_reader_string.php"/>
+     <file role="doc" name="example_realworld_changesource.php"/>
+     <file role="doc" name="example_realworld_expression.php"/>
+     <file role="doc" name="example_realworld_hiddenvar.php"/>
+     <file role="doc" name="example_realworld_img.php"/>
+     <file role="doc" name="example_realworld_list.php"/>
+     <file role="doc" name="example_realworld_nestedvars.php"/>
+     <file role="doc" name="example_realworld_paginate.php"/>
+     <file role="doc" name="example_realworld_table.php"/>
+     <file role="doc" name="example_realworld_table_from_list.php"/>
+     <file role="doc" name="example_realworld_varscopeparent.php"/>
+     <file role="doc" name="example_tags_comment.php"/>
+     <file role="doc" name="example_tags_link.php"/>
+     <file role="doc" name="example_tags_sub.php"/>
+     <file role="doc" name="example_tags_tmpl.php"/>
+     <file role="doc" name="example_tags_var.php"/>
+     <file role="doc" name="example_type_condition.php"/>
+     <file role="doc" name="example_type_modulo.php"/>
+     <file role="doc" name="example_type_modulo_empty.php"/>
+     <file role="doc" name="example_type_oddeven.php"/>
+     <file role="doc" name="example_type_simplecondition.php"/>
+     <file role="doc" name="example_type_standard.php"/>
+     <file role="doc" name="example_var_copyfrom.php"/>
+     <file role="doc" name="example_var_modifier.php"/>
+     <file role="doc" name="index.php"/>
+     <file role="doc" name="index_main.php"/>
+     <file role="doc" name="index_nav.php"/>
+     <file role="doc" name="index_sections.php"/>
+     <file role="doc" name="_dumpTemplate.php"/>
+     <file role="doc" name="_styles.css"/>
+     <file role="doc" name="_viewExample.php"/>
+    </dir> <!-- /examples -->
+    <dir name="patTemplate">
+     <dir name="Dump">
+      <file role="php" name="Html.php"/>
+     </dir> <!-- /patTemplate/Dump -->
+     <dir name="Function">
+      <file role="php" name="Alias.php"/>
+      <file role="php" name="Attribute.php"/>
+      <file role="php" name="Call.php"/>
+      <file role="php" name="Globalvar.php"/>
+      <file role="php" name="Phphighlight.php"/>
+      <file role="php" name="Strip.php"/>
+      <file role="php" name="Time.php"/>
+      <file role="php" name="Translate.php"/>
+     </dir> <!-- /patTemplate/Function -->
+     <dir name="InputFilter">
+      <file role="php" name="StripComments.php"/>
+     </dir> <!-- /patTemplate/InputFilter -->
+     <dir name="Modifier">
+      <dir name="HTML">
+       <file role="php" name="Img.php"/>
+      </dir> <!-- /patTemplate/Modifier/HTML -->
+      <file role="php" name="Dateformat.php"/>
+      <file role="php" name="Expression.php"/>
+      <file role="php" name="Wordwrapper.php"/>
+     </dir> <!-- /patTemplate/Modifier -->
+     <dir name="OutputFilter">
+      <file role="php" name="BBCode.php"/>
+      <file role="php" name="Gzip.php"/>
+      <file role="php" name="StripWhitespace.php"/>
+      <file role="php" name="Tidy.php"/>
+     </dir> <!-- /patTemplate/OutputFilter -->
+     <dir name="Reader">
+      <file role="php" name="File.php"/>
+      <file role="php" name="IT.php"/>
+      <file role="php" name="String.php"/>
+     </dir> <!-- /patTemplate/Reader -->
+     <dir name="Stat">
+      <file role="php" name="File.php"/>
+     </dir> <!-- /patTemplate/Stat -->
+     <dir name="TemplateCache">
+      <file role="php" name="File.php"/>
+     </dir> <!-- /patTemplate/TemplateCache -->
+     <file role="php" name="Compiler.php"/>
+     <file role="php" name="Dump.php"/>
+     <file role="php" name="Function.php"/>
+     <file role="php" name="InputFilter.php"/>
+     <file role="php" name="Modifier.php"/>
+     <file role="php" name="Module.php"/>
+     <file role="php" name="OutputCache.php"/>
+     <file role="php" name="OutputFilter.php"/>
+     <file role="php" name="Reader.php"/>
+     <file role="php" name="Stat.php"/>
+     <file role="php" name="TemplateCache.php"/>
+    </dir> <!-- /patTemplate -->
+    <dir name="tests">
+     <file role="test" name="benchmark_sprintf.php"/>
+     <file role="test" name="readme.txt"/>
+    </dir> <!-- /tests -->
+    <file role="php" name="patTemplate.php"/>
+   </dir> <!-- / -->
+  </filelist>
+ </release>
+ <changelog>
+   <release>
+    <version>3.0.0beta1</version>
+    <date>2004-05-04</date>
+    <license>LGPL</license>
+    <state>beta</state>
+    <notes>Completely recoded version of patTemplate.
+Provides an nearly endless amount of new features, see news.txt for
+a complete list of changes.
+    </notes>
+   </release>
+   <release>
+    <version>3.0.0beta2</version>
+    <date>2004-08-22</date>
+    <license>LGPL</license>
+    <state>beta</state>
+    <notes>Changes since 3.0.0beta1:
+- improved caching performance by introducing Stat modules
+- allowed passing of an array of objects to addObject()
+- added addModuleDir() which allows you to store your modules anywhere
+- fixed several small bugs
+- added Tidy outputfilter
+- added BBCode output filter
+- variable modifiers now work for globals
+- added __toString()
+- added loadTemplate()
+- added new parameter to clearTemplate() to recursively clear templates
+- added limit attribute
+- added Expression modifier
+- added Translate function (works like IntSmarty)
+- added Globalvar function (behaves like &lt;patTemplate:var/&gt;
+- added PHPHighlight function
+- added Attribute function
+- added Call function
+- added FTP and HTTP support to File Reader
+- added varscope=&quot;__parent&quot;
+- added recursive parameter to clearTemplate() and freeTemplate()
+- added 'append' parameter to parseIntoVar()
+- fixed bug with dot-syntax in simpleCondition templates
+    </notes>
+   </release>
+   <release>
+    <version>3.0.0</version>
+    <date>2004-11-30</date>
+    <license>LGPL</license>
+    <state>beta</state>
+    <notes>Changes since 3.0.0beta2:
+- fixed a notice (bug #65)
+- added new system var: PAT_MODULO (request #63)
+- fixed behaviour of global variables (bug #66)
+- added more possibilities for the addSystemVars attribute (request #64)
+- fixed bug with simpleCondition templates and useglobals attribute
+- added function aliases
+- fixed some warnings and notices (bug #82)
+- added support for copyFrom in global variables (gERD)
+- fixed bug with default values that got deleted when calling clearTemplate()
+- added __empty condition for modulo templates
+    </notes>
+   </release>
+   <release>
+    <version>3.0.1</version>
+    <date>2005-03-07</date>
+    <license>LGPL</license>
+    <state>stable</state>
+    <notes>Changes since 3.0.0:
+- readTemplatesFromInput() now checks, whether any input has been passed (reported by denne)
+- fixed notice in addVars()
+- improved Dump() for simplecondition templates
+- fixed notice in GZip output filter
+    </notes>
+   </release>
+ </changelog>
+</package>

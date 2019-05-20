@@ -1,0 +1,29 @@
+<!-- $Id: example_type_condition.tmpl 268 2004-08-19 08:22:51Z schst $ -->
+<patTemplate:tmpl name="cond" type="condition" conditionvar="foo">
+
+	<patTemplate:sub condition="0">
+		Zero has been supplied!<br />
+	</patTemplate:sub>
+	<patTemplate:sub condition="bar">
+		Bar has been supplied!<br />
+	</patTemplate:sub>
+	<patTemplate:sub condition="argh">
+		The argh was here!<br />
+	</patTemplate:sub>
+	<patTemplate:sub condition="__default">
+		unknown<br />
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="__empty">
+		empty<br />
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="__first">
+		First entry<br />
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="__last">
+		Last entry<br />
+	</patTemplate:sub>
+
+</patTemplate:tmpl>

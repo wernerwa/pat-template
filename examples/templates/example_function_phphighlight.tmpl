@@ -1,0 +1,14 @@
+<!-- $Id: example_function_phphighlight.tmpl 214 2004-05-18 20:10:45Z schst $ -->
+<patTemplate:tmpl name="root">
+This is a template that is used to display PHP Code.
+<patTemplate:phpHighlight>
+<?PHP
+$i = 0;
+while( $i < 10 )
+{
+  echo "This is line $i.<br />";
+  $i++;
+}
+?>
+</patTemplate:phpHighlight>
+</patTemplate:tmpl>

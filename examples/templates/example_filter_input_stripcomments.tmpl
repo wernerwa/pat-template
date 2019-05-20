@@ -1,0 +1,24 @@
+<!-- $Id: example_filter_input_stripcomments.tmpl 128 2004-04-19 20:40:26Z schst $ -->
+<patTemplate:tmpl name="root" type="condition" conditionvar="foo">
+	<!--
+		This is a comment
+		It is not allowed to place text here, but the
+		input filter will strip it before it is 
+		parsed by the reader
+	-->
+	<patTemplate:sub condition="bar">
+	You said: BAR!<br>
+	</patTemplate:sub>
+	
+	<!--
+		This is a comment
+		It is not allowed to place text here, but the
+		input filter will strip it before it is 
+		parsed by the reader
+	-->
+	<patTemplate:sub condition="__default">
+	You said: anything except BAR!<br>
+	<!-- Just another comment -->
+	</patTemplate:sub>
+
+</patTemplate:tmpl>

@@ -1,0 +1,23 @@
+<!-- $Id: example_function_strip.tmpl 205 2004-05-13 21:27:27Z schst $ -->
+<patTemplate:tmpl name="root">
+
+     Keep    Whitespace    here...
+
+<patTemplate:Strip>
+
+And strip it here...<br>
+
+	This template uses a function aka Horst:<br />
+	<patTemplate:time format="H:i:s d.m.Y"/><br />
+
+	Tomorrow is <patTemplate:time format="m/d/Y" time="tomorrow"/><br />
+
+	
+</patTemplate:Strip>
+
+And again,
+ keep 
+  it 
+   here 
+
+</patTemplate:tmpl>

@@ -1,0 +1,12 @@
+<!-- $Id: example_attributes_useglobals.tmpl 170 2004-04-21 18:09:52Z schst $ -->
+<patTemplate:tmpl name="page" type="condition" conditionvar="title" useglobals="yes">
+
+	<patTemplate:sub condition="__default">
+		The title '{TITLE}' has been set.<br />
+	</patTemplate:sub>
+	
+	<patTemplate:sub condition="__empty">
+		No title has been set.<br />
+	</patTemplate:sub>
+	
+</patTemplate:tmpl>

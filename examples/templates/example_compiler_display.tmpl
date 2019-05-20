@@ -1,0 +1,44 @@
+<!-- $Id: example_compiler_display.tmpl 206 2004-05-14 16:49:34Z schst $ -->
+<patTemplate:tmpl name="template1">
+This template contains several vars:<br />
+Foo: {FOO}<br />
+Bar: {BAR}<br />
+Argh: {ARGH}<br />
+Global: {GLOBAL}<br />
+
+<patTemplate:tmpl name="template2">
+	This is another template...<br />
+    SCHST: {SCHST}<br />
+</patTemplate:tmpl>
+
+<hr />
+</patTemplate:tmpl>
+
+<patTemplate:tmpl name="template3" type="modulo" modulo="4">
+
+	<patTemplate:sub condition="0">This is zero.</patTemplate:sub>
+	<patTemplate:sub condition="1">This is one.</patTemplate:sub>
+	<patTemplate:sub condition="2">This is two.</patTemplate:sub>
+	<patTemplate:sub condition="3">This is three.</patTemplate:sub>
+
+	<patTemplate:sub condition="__first">This is the first.</patTemplate:sub>
+
+	<patTemplate:sub condition="__last">This is the last.</patTemplate:sub>
+
+
+</patTemplate:tmpl>
+
+<patTemplate:tmpl name="template4" type="simpleCondition" requiredvars="foo">
+	This is a simpleCondition template.
+</patTemplate:tmpl>
+
+<patTemplate:tmpl name="template5" type="condition" conditionvar="Condvar">
+
+	<patTemplate:sub condition="__default">This is Default.</patTemplate:sub>
+	<patTemplate:sub condition="foo">This is Foo.</patTemplate:sub>
+	<patTemplate:sub condition="bar">This is Bar.</patTemplate:sub>
+
+</patTemplate:tmpl>
+
+
+

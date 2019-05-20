@@ -1,0 +1,20 @@
+<!-- $Id: example_api_cleartemplate.tmpl 240 2004-06-25 18:12:04Z schst $ -->
+<patTemplate:tmpl name="root">
+This is root: {FOO}<br />
+
+<patTemplate:tmpl name="nested">
+This is nested: {FOO}<br />
+</patTemplate:tmpl>
+
+<patTemplate:tmpl name="cond" type="oddEven">
+	<patTemplate:sub condition="__odd">
+This is odd: {FOO}<br />
+	</patTemplate:sub>
+	<patTemplate:sub condition="__even">
+This is even: {FOO}<br />
+	</patTemplate:sub>
+</patTemplate:tmpl>
+
+
+</patTemplate:tmpl>
+

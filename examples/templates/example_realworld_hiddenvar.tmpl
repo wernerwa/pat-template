@@ -1,0 +1,43 @@
+<patTemplate:tmpl name="page">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>patTemplate example</title>
+</head>
+
+<body>
+This string is: {STRING}<br />
+
+<pattemplate:var name="stringlength" copyfrom="string" hidden="yes" modifier="strlen"/>
+
+<patTemplate:tmpl name="output" type="condition" conditionvar="page.stringlength">
+
+	<patTemplate:sub condition="0">
+		Empty string has been passed.<br />
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="1">
+		The string is one char long.
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="2">
+		The string is two chars long.
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="3">
+		The string is three chars long.
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="4">
+		The string is four chars long.
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="5">
+		The string is five chars long.
+	</patTemplate:sub>
+
+</patTemplate:tmpl>
+</body>
+</html>
+</patTemplate:tmpl>

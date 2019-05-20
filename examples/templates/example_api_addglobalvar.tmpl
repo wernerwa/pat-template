@@ -1,0 +1,20 @@
+<!-- $Id: example_api_addglobalvar.tmpl 225 2004-06-01 18:33:24Z argh $ -->
+<patTemplate:tmpl name="page">
+This is the global var in template foo: {BAR}<br />
+	
+	<!-- 
+		note the difference between empty tags and 'default=""' 
+	-->
+	<patTemplate:var name="global_foo" /><br />
+	
+	<patTemplate:var name="local_bar" >
+		This local value cannot be overwritten by global values
+	</patTemplate:var><br />
+	<patTemplate:var name="local_foo" default="" /><br />
+	<br />
+	
+	<patTemplate:tmpl name="bar">
+	This is the global var in template bar: {BAR}<br />
+	Here are some more: {USER_NAME}, {USER_REALNAME}<br />
+	</patTemplate:tmpl>
+</patTemplate:tmpl>

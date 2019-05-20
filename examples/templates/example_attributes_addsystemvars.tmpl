@@ -1,0 +1,45 @@
+<!-- $Id: example_attributes_addsystemvars.tmpl 278 2004-09-04 14:25:45Z schst $ -->
+<patTemplate:tmpl name="page">
+
+    <h3>SystemVars = boolean</h3>
+
+    <patTemplate:tmpl name="tmpl-1" addSystemVars="boolean">
+    <strong>System-variables:</strong><br />
+    
+    PAT_LOOPS    : {PAT_LOOPS}<br />
+    PAT_IS_FIRST : {PAT_IS_FIRST}<br />
+    PAT_IS_LAST  : {PAT_IS_LAST}<br />
+    PAT_IS_ODD   : {PAT_IS_ODD}<br />
+    PAT_IS_EVEN  : {PAT_IS_EVEN}<br />
+    PATTEMPLATE_VERSION : {PATTEMPLATE_VERSION}<br />
+    <hr />
+    </patTemplate:tmpl>
+
+    <h3>SystemVars = integer</h3>
+    
+    <patTemplate:tmpl name="tmpl-2" addSystemVars="integer">
+    <strong>System-variables:</strong><br />
+    
+    PAT_LOOPS    : {PAT_LOOPS}<br />
+    PAT_IS_FIRST : {PAT_IS_FIRST}<br />
+    PAT_IS_LAST  : {PAT_IS_LAST}<br />
+    PAT_IS_ODD   : {PAT_IS_ODD}<br />
+    PAT_IS_EVEN  : {PAT_IS_EVEN}<br />
+    PATTEMPLATE_VERSION : {PATTEMPLATE_VERSION}<br />
+    <hr />
+    </patTemplate:tmpl>
+
+    <h3>SystemVars = anyValue</h3>
+    
+    <patTemplate:tmpl name="tmpl-3" addSystemVars="yo baby yo baby yo!">
+    <strong>System-variables:</strong><br />
+    
+    PAT_LOOPS    : {PAT_LOOPS}<br />
+    PAT_IS_FIRST : {PAT_IS_FIRST}<br />
+    PAT_IS_LAST  : {PAT_IS_LAST}<br />
+    PAT_IS_ODD   : {PAT_IS_ODD}<br />
+    PAT_IS_EVEN  : {PAT_IS_EVEN}<br />
+    PATTEMPLATE_VERSION : {PATTEMPLATE_VERSION}<br />
+    <hr />
+    </patTemplate:tmpl>
+ </patTemplate:tmpl>
