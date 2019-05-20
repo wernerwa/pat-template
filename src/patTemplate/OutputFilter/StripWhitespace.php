@@ -44,7 +44,7 @@ class patTemplate_OutputFilter_StripWhitespace extends patTemplate_OutputFilter
     {
         $data = str_replace("\n", ' ', $data);
         $data = preg_replace('/\s\s+/', ' ', $data);
-    
+
         return $data;
     }
 }

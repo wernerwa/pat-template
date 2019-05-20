@@ -14,20 +14,20 @@
  * @link        http://www.php-tools.net
  * @see         patTemplate::applyInputFilter()
  */
- 
+
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
 
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
@@ -37,7 +37,7 @@
      * the filter chain
      */
     $tmpl->applyInputFilter('StripComments');
-    
+
     $tmpl->readTemplatesFromInput('example_filter_input_stripcomments.tmpl');
 
     $tmpl->dump();

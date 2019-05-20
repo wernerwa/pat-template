@@ -55,7 +55,7 @@ class patTemplate_OutputFilter_BBCode extends patTemplate_OutputFilter
         }
 
         $data = $this->BBCode->parseString($data);
-            
+
         return $data;
     }
 
@@ -76,13 +76,13 @@ class patTemplate_OutputFilter_BBCode extends patTemplate_OutputFilter
         }
 
         $this->BBCode = &new patBBCode();
-        
+
         if (isset($this->_params['skinDir'])) {
             $this->BBCode->setSkinDir($this->_params['skinDir']);
         }
-        
+
         $reader =& $this->BBCode->createConfigReader($this->_params['reader']);
-        
+
         // give patBBCode the reader we just created
         $this->BBCode->setConfigReader($reader);
 

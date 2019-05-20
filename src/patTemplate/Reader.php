@@ -30,7 +30,7 @@ define('PATTEMPLATE_READER_ERROR_INVALID_TAG', 6002);
  * Closing tag is missing
  */
 define('PATTEMPLATE_READER_ERROR_NO_CLOSING_TAG', 6003);
- 
+
 /**
  * Invalid closing tag
  */
@@ -111,28 +111,28 @@ class patTemplate_Reader extends patTemplate_Module
      * @var      array
      */
     public $_templates =   array();
-    
+
     /**
      * path to the template
      * @access   protected
      * @var      array
      */
     public $_path  =   array();
-    
+
     /**
      * start tag for variables
      * @access   private
      * @var      string
      */
     public $_startTag;
-    
+
     /**
      * end tag for variables
      * @access   private
      * @var      string
      */
     public $_endTag;
-    
+
     /**
      * default attributes
      *
@@ -199,7 +199,7 @@ class patTemplate_Reader extends patTemplate_Module
      * @var      array
      */
     public $_funcAliases = array();
-    
+
     /**
      * set a reference to the patTemplate object that instantiated the reader
      *
@@ -255,7 +255,7 @@ class patTemplate_Reader extends patTemplate_Module
         $this->_endTag      =   $options['endTag'];
 
         $this->_options     =   $options;
-        
+
         if (isset($options['functionAliases'])) {
             $this->_funcAliases = $options['functionAliases'];
         }
@@ -273,7 +273,7 @@ class patTemplate_Reader extends patTemplate_Module
     {
         $this->_funcAliases[strtolower($alias)] = $function;
     }
-    
+
     /**
      * set the root attributes
      *
@@ -298,7 +298,7 @@ class patTemplate_Reader extends patTemplate_Module
          * apply input filter before parsing
          */
         $string = $this->_tmpl->applyInputFilters($string);
-        
+
         $this->_inheritAtts =   array();
         $this->_elStack     =   array();
         $this->_data        =   array( '' );
@@ -307,9 +307,9 @@ class patTemplate_Reader extends patTemplate_Module
         $this->_templates   =   array();
         $this->_path        =   array();
         $this->_processedData   =   '';
-        
+
         $this->_defaultAtts =   $this->_tmpl->getDefaultAttributes();
-        
+
         if (!isset($this->_defaultAtts['autoload'])) {
             $this->_defaultAtts['autoload'] =   'on';
         }
@@ -319,7 +319,7 @@ class patTemplate_Reader extends patTemplate_Module
          */
         $attributes     = $this->_rootAtts;
         $attributes['name'] = '__ptroot';
-        
+
         $rootTemplate   = $this->_initTemplate($attributes);
         unset($rootTemplate['isRoot']);
         $this->_root        =   null;
@@ -406,7 +406,7 @@ class patTemplate_Reader extends patTemplate_Module
         $rootTemplate = array_pop($this->_tmplStack);
 
         $this->_closeTemplate($rootTemplate, $this->_data[0]);
-        
+
         /**
          * check for tags that are still open
          */
@@ -417,10 +417,10 @@ class patTemplate_Reader extends patTemplate_Module
                 $this->_createErrorMessage("No closing tag for {$el['ns']}:{$el['name']} found")
             );
         }
-        
+
         return  $this->_templates;
     }
-    
+
     /**
      * parse an attribute string and build an array
      *
@@ -530,7 +530,7 @@ class patTemplate_Reader extends patTemplate_Module
         if (patErrorManager::isError($result)) {
             return  $result;
         }
-        
+
         array_push($this->_tmplStack, $result);
     }
 
@@ -552,7 +552,7 @@ class patTemplate_Reader extends patTemplate_Module
                 $this->_createErrorMessage("Invalid closing tag {$ns}:{$name}, {$el['ns']}:{$el['name']} expected")
             );
         }
-        
+
         $tmpl   =   array_pop($this->_tmplStack);
 
         /**
@@ -613,17 +613,17 @@ class patTemplate_Reader extends patTemplate_Module
                     $this->_functions[$name] = $this->_tmpl->loadModule('Function', $name);
                     $this->_functions[$name]->setReader($this);
                 }
-                
+
                 $result = $this->_functions[$name]->call($tmpl['attributes'], $data);
 
                 if (patErrorManager::isError($result)) {
                     return $result;
                 }
-                
+
                 if (is_string($result)) {
                     $this->_characterData($result, false);
                 }
-                
+
                 break;
         }
     }
@@ -644,7 +644,7 @@ class patTemplate_Reader extends patTemplate_Module
 
         return  true;
     }
-    
+
     /**
      * handle a Link
      *
@@ -663,7 +663,7 @@ class patTemplate_Reader extends patTemplate_Module
                 $this->_createErrorMessage("Attribute 'src' missing for link")
             );
         }
-        
+
         /**
          * create a new template
          */
@@ -697,7 +697,7 @@ class patTemplate_Reader extends patTemplate_Module
 
         return true;
     }
-    
+
     /**
      * create a new template
      *
@@ -716,7 +716,7 @@ class patTemplate_Reader extends patTemplate_Module
             $name   =   strtolower($attributes['name']);
             unset($attributes['name']);
         }
-        
+
         /**
          * name must be unique
          */
@@ -746,7 +746,7 @@ class patTemplate_Reader extends patTemplate_Module
                                                 'unusedvars' => $attributes['unusedvars'],
                                                 'autoclear'  => $attributes['autoclear']
                                             ));
-        
+
         /**
          * create a new template
          */
@@ -798,7 +798,7 @@ class patTemplate_Reader extends patTemplate_Module
         if (isset($attributes['__prepared']) && $attributes['__prepared'] === true) {
             return $attributes;
         }
-            
+
         $attributes =   $this->_inheritAttributes($attributes);
 
         /**
@@ -808,7 +808,7 @@ class patTemplate_Reader extends patTemplate_Module
 
         $attributes['type'] =   strtolower($attributes['type']);
 
-        
+
         if (!isset($attributes['addsystemvars'])) {
             $attributes['addsystemvars'] = false;
         } else {
@@ -826,7 +826,7 @@ class patTemplate_Reader extends patTemplate_Module
                     break;
             }
         }
-        
+
         /**
          * external template
          */
@@ -849,7 +849,7 @@ class patTemplate_Reader extends patTemplate_Module
             if ($attributes['varscope'] === '__parent') {
                 $attributes['varscope'] = $this->_getFromParentTemplate('name');
             }
-         
+
             $attributes['varscope'] =   strtolower($attributes['varscope']);
         }
 
@@ -903,10 +903,10 @@ class patTemplate_Reader extends patTemplate_Module
                                                                     ));
                     }
                 }
-                
+
                 $attributes['autoclear']    = 'yes';
                 break;
-                
+
             /**
              * oddeven => switch to new modulo syntax
              */
@@ -915,7 +915,7 @@ class patTemplate_Reader extends patTemplate_Module
                 $attributes['modulo']    = 2;
                 $attributes['autoclear'] = 'yes';
                 break;
-                
+
             /**
              * modulo => requires a module attribute
              */
@@ -947,10 +947,10 @@ class patTemplate_Reader extends patTemplate_Module
         }
 
         $attributes['__prepared'] = true;
-        
+
         return $attributes;
     }
-    
+
     /**
      * build a template name
      *
@@ -971,11 +971,11 @@ class patTemplate_Reader extends patTemplate_Module
     public function _closeTemplate($tmpl, $data)
     {
         $name       =   array_pop($this->_path);
-        
+
         $data       =   $this->_adjustWhitespace($data, $tmpl['attributes']['whitespace']);
 
         array_pop($this->_inheritAtts);
-        
+
         /**
          * check for special templates
          */
@@ -995,12 +995,12 @@ class patTemplate_Reader extends patTemplate_Module
                 $data   =   null;
                 break;
         }
-        
+
         /**
          * store the content
          */
         $tmpl['content']                    =   $data;
-        
+
         /**
          * No external template
          */
@@ -1020,7 +1020,7 @@ class patTemplate_Reader extends patTemplate_Module
                 if ($tmpl['attributes']['placeholder'] === 'none') {
                     $tmpl['attributes']['placeholder'] = '__none';
                 }
-                
+
                 if ($tmpl['attributes']['placeholder'] !== '__none') {
                     $this->_characterData($this->_startTag.(strtoupper($tmpl['attributes']['placeholder'])).$this->_endTag);
                 }
@@ -1031,9 +1031,9 @@ class patTemplate_Reader extends patTemplate_Module
 
         unset($tmpl['name']);
         unset($tmpl['tag']);
-        
+
         $this->_templates[$name]    =   $tmpl;
-         
+
         return true;
     }
 
@@ -1079,7 +1079,7 @@ class patTemplate_Reader extends patTemplate_Module
         if ($attributes['condition'] == '__even') {
             $attributes['condition'] = 0;
         }
-        
+
         $parent =   array_pop($this->_tmplStack);
         array_push($this->_tmplStack, $parent);
         if ($parent['attributes']['type'] == 'modulo') {
@@ -1092,12 +1092,12 @@ class patTemplate_Reader extends patTemplate_Module
                 }
             }
         }
-        
+
         $attributes     =   $this->_inheritAttributes($attributes);
-        
+
         $condition      =   $attributes['condition'];
         unset($attributes['condition']);
-        
+
         $subTmpl    =   array(
                                     'type'          =>  'sub',
                                     'condition'     =>  $condition,
@@ -1106,7 +1106,7 @@ class patTemplate_Reader extends patTemplate_Module
                                     'comments'      =>  array(),
                                     'dependencies'  =>  array()
                                 );
-        
+
         return  $subTmpl;
     }
 
@@ -1120,7 +1120,7 @@ class patTemplate_Reader extends patTemplate_Module
     public function _closeSubTemplate($subTmpl, $data)
     {
         $data               =   $this->_adjustWhitespace($data, $subTmpl['attributes']['whitespace']);
-        
+
         $subTmpl['data']    =   $data;
         $condition          =   $subTmpl['condition'];
         unset($subTmpl['condition']);
@@ -1132,7 +1132,7 @@ class patTemplate_Reader extends patTemplate_Module
         );
         return true;
     }
-    
+
     /**
      * handle a variable
      *
@@ -1151,7 +1151,7 @@ class patTemplate_Reader extends patTemplate_Module
         }
 
         $specs = array();
-        
+
         /**
          * get name
          */
@@ -1169,14 +1169,14 @@ class patTemplate_Reader extends patTemplate_Module
         } elseif (!empty($data)) {
             $specs['default']   =   $data;
         }
-        
+
         /**
          * add it to template, if it's not hidden
          */
         if (!isset($attributes['hidden']) || $attributes['hidden'] == 'no') {
             $this->_characterData($this->_startTag . strtoupper($name) . $this->_endTag);
         }
-        
+
         if (isset($attributes['hidden'])) {
             unset($attributes['hidden']);
         }
@@ -1186,15 +1186,15 @@ class patTemplate_Reader extends patTemplate_Module
          */
         if (isset($attributes['copyfrom'])) {
             $specs['copyfrom'] = strtoupper($attributes['copyfrom']);
-            
+
             if (strstr($specs['copyfrom'], '.')) {
                 $specs['copyfrom']    = explode('.', $specs['copyfrom']);
                 $specs['copyfrom'][0] = strtolower($specs['copyfrom'][0]);
             }
-            
+
             unset($attributes['copyfrom']);
         }
-        
+
         if (isset($attributes['modifier'])) {
             $modifier = $attributes['modifier'];
             unset($attributes['modifier']);
@@ -1207,7 +1207,7 @@ class patTemplate_Reader extends patTemplate_Module
 
             $specs['modifier'] = array( 'mod' => $modifier, 'type' => $type, 'params' => $attributes );
         }
-        
+
         if (!empty($specs)) {
             $this->_addToParentTemplate(
                 'varspecs',
@@ -1259,7 +1259,7 @@ class patTemplate_Reader extends patTemplate_Module
     public function _addToParentTemplate($property, $value, $key = null)
     {
         $cnt    =   count($this->_tmplStack);
-        
+
         if ($cnt === 0) {
             return false;
         }
@@ -1270,7 +1270,7 @@ class patTemplate_Reader extends patTemplate_Module
                 $pos--;
                 continue;
             }
-            
+
             if ($key === null) {
                 if (!in_array($value, $this->_tmplStack[$pos][$property])) {
                     array_push($this->_tmplStack[$pos][$property], $value);
@@ -1281,7 +1281,7 @@ class patTemplate_Reader extends patTemplate_Module
 
             return true;
         }
-        
+
         return  false;
     }
 
@@ -1295,7 +1295,7 @@ class patTemplate_Reader extends patTemplate_Module
     public function _getFromParentTemplate($property)
     {
         $cnt    =   count($this->_tmplStack);
-        
+
         if ($cnt === 0) {
             return false;
         }
@@ -1328,13 +1328,13 @@ class patTemplate_Reader extends patTemplate_Module
     public function _addToParentTag($property, $value, $key = null)
     {
         $cnt    =   count($this->_tmplStack);
-        
+
         if ($cnt === 0) {
             return false;
         }
 
         $pos = $cnt - 1;
-            
+
         if ($key === null) {
             if (!in_array($value, $this->_tmplStack[$pos][$property])) {
                 array_push($this->_tmplStack[$pos][$property], $value);
@@ -1391,7 +1391,7 @@ class patTemplate_Reader extends patTemplate_Module
         }
 
         $attributes = array_merge($parent, $attributes);
-        
+
         return  $attributes;
     }
 
@@ -1412,11 +1412,11 @@ class patTemplate_Reader extends patTemplate_Module
             return false;
         }
         array_push($this->_tmplStack, $parent);
-        
+
         if ($parent['type'] == $type) {
             return true;
         }
-            
+
         return false;
     }
 
@@ -1458,7 +1458,7 @@ class patTemplate_Reader extends patTemplate_Module
     {
         return $this->_currentInput;
     }
-    
+
     /**
      * tests whether the reader should maintain backwards compatibility
      *

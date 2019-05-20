@@ -43,7 +43,7 @@ class patTemplate_InputFilter_StripComments extends patTemplate_InputFilter
     public function apply($data)
     {
         $data = preg_replace('°<!--.*-->°msU', '', $data);
-    
+
         return $data;
     }
 }

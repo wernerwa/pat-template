@@ -77,7 +77,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
      * @var      array
      */
     public $_sentences =   array();
-    
+
     /**
      * translations of the language files
      *
@@ -125,9 +125,9 @@ class patTemplate_Function_Translate extends patTemplate_Function
         if (empty($this->_globalconfig)) {
             $this->_retrieveGlobalConfig();
         }
-        
+
         $input = $this->_reader->getCurrentInput();
-        
+
         /**
          * get config
          */
@@ -144,7 +144,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
         } else {
             $key    =   md5($content);
         }
-        
+
         /**
          * does this already exists?
          */
@@ -152,7 +152,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
             $this->_sentences[$input][$key] =   $content;
             $this->_addToTranslationFile($input, $key, $content);
         }
-        
+
         /**
          * has it been translated?
          */
@@ -188,12 +188,12 @@ class patTemplate_Function_Translate extends patTemplate_Function
                 $this->_globalconfig['lang'] = array( $this->_globalconfig['lang'] );
             }
         }
-        
+
         $this->_globalconfig['translationFolder'] = $this->_tmpl->getOption('translationFolder');
-        
+
         return true;
     }
-    
+
     /**
      * retrieve configuration
      *
@@ -211,7 +211,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
 
         $this->_config[$input] = array();
         $this->_sentences[$input] = array();
-        
+
         $this->_config[$input]['sentenceFile']      =   $this->_tmpl->getOption('translationFolder') . '/'.$input.'-default.ini';
         $this->_config[$input]['langFile']          =   $this->_tmpl->getOption('translationFolder') . '/'.$input.'-%s.ini';
 
@@ -224,8 +224,8 @@ class patTemplate_Function_Translate extends patTemplate_Function
         } else {
             $this->_sentences[$input] = array_map(array( $this, '_unescape' ), $this->_sentences[$input]);
         }
-        
-        
+
+
         return true;
     }
 
@@ -264,7 +264,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
     {
         return str_replace('&quot;', '"', $text);
     }
-    
+
     /**
      * add a new sentence to the translation file
      *

@@ -25,7 +25,7 @@ if (!isset($_GET['example'])) {
 }
 
 $exampleId = $_GET['example'];
-    
+
 $section = getExampleSection($exampleId);
 $example = getExample($exampleId);
 $exampleFile = $exampleId.'.php';
@@ -54,20 +54,20 @@ if (isset($example['tabs'])) {
         @import url( _styles.css );
     </style>
     <script type="text/javascript" language="JavaScript1.2">
-    
+
     var tabs = new Array( <?php echo "'".implode("', '", array_keys($nav))."'"; ?> );
     var actTab = false;
-    
+
     function hiTab( tabID )
     {
         document.getElementById( tabID + 'Tab' ).className = 'tabA';
     }
-    
+
     function loTab( tabID )
     {
         if( tabID == actTab )
             return true;
-            
+
         document.getElementById( tabID + 'Tab' ).className = 'tabN';
     }
 
@@ -82,14 +82,14 @@ if (isset($example['tabs'])) {
         }
 
         var oldAct = actTab;
-                
+
         actTab = tabID;
         hiTab( actTab );
-        
+
         if( oldAct !== false )
             loTab( oldAct );
     }
-    
+
     </script>
     <style>
         BODY{margin:0px;}
@@ -138,7 +138,7 @@ if (isset($example['tabs'])) {
                 highlight_file($tabData['file']);
                 echo '</div>';
                 break;
-        
+
             default:
                 echo '<div class="exampleContent" id="'.$tabId.'">unknown content type <strong>'.$tabData['type'].'</strong>.</div>';
                 break;
@@ -157,7 +157,7 @@ if (isset($example['tabs'])) {
 /**
  * various helper functions follow
  */
- 
+
    /**
     * builds the tab navigation and displays it
     *
@@ -166,20 +166,20 @@ if (isset($example['tabs'])) {
 function buildNavigation()
 {
     global $nav;
-    
+
     $html   =   '<table border="0" cellpadding="0" cellspacing="0" class="tabs" width="100%">'
             .   '	<tr>'
             .   '		<td style="padding-left:15px;">&nbsp;</td>';
-                
+
     foreach ($nav as $navId => $navTitle) {
         $html   .=  '<td class="tabN" id="'.$navId.'Tab" onclick="displayTab( \''.$navId.'\' );" onmouseover="hiTab( \''.$navId.'\' );" onmouseout="loTab( \''.$navId.'\' );">'.$navTitle.'</td>'
                 .   '<td>&nbsp;</td>';
     }
-        
+
     $html   .=  '		<td width="100%">&nbsp;</td>'
             .   '	</tr>'
             .   '</table>';
-                
+
     echo $html;
 }
 
@@ -215,18 +215,18 @@ function getExample($id)
         if (strncmp($spec['basename'], $id, strlen($spec['basename'])) !== 0) {
             continue;
         }
-                
+
         foreach ($spec['pages'] as $name => $data) {
             if ($id != $spec['basename'].$name) {
                 continue;
             }
-                    
+
             if (!isset($data['templates'])) {
                 $data['templates'] = array(
                                             $id.'.tmpl'
                                         );
             }
-            
+
             return $data;
         }
     }
@@ -248,7 +248,7 @@ function displayTemplate($file, $namespace = 'patTemplate', $customTags = array(
                         'comment'   =>  'commentTag',
                     );
     $tags   =   array_merge($customTags, $tags);
-                        
+
     $tmpl   =   implode('', file('templates/'.$file));
 
     $tmpl   =   str_replace("\t", '    ', $tmpl);
@@ -264,8 +264,8 @@ function displayTemplate($file, $namespace = 'patTemplate', $customTags = array(
 
     $tmpl   =   preg_replace('/(&lt;\/?'.$namespace.':.*&gt;)/Ui', '<span class="unknownTag">\1</span>', $tmpl);
     $tmpl   =   str_replace('##namespace##', $namespace, $tmpl);
-        
-        
+
+
     $tmpl = preg_replace('/(&lt;!--.*--&gt;)/msU', '<span class="comment">\1</span>', $tmpl);
 
     echo '<fieldset class="tmpl">';

@@ -16,7 +16,7 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
@@ -27,14 +27,14 @@
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
     $tmpl->setOption('translationFolder', 'data');
 
     $tmpl->setOption('lang', 'de');
-    
+
     /**
      * you may pass several langauges
      */
@@ -45,7 +45,7 @@
      * HTTP_ACCEPT_LANGUAGE
      */
 //  $tmpl->setOption( 'lang', 'auto' );
-    
+
     $tmpl->readTemplatesFromInput('example_function_translate.tmpl');
 
     $tmpl->displayParsedTemplate('root');

@@ -17,7 +17,7 @@
  * template does not exist
  */
 define('PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE', 'patTemplate::Function::Call::NT');
- 
+
 /**
  * patTemplate function that enables you to insert any
  * template, that has been loaded previously into the
@@ -74,18 +74,18 @@ class patTemplate_Function_Call extends patTemplate_Function
         if (!$this->_tmpl->exists($tmpl)) {
             return patErrorManager::raiseError(PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE, 'Template '.$tmpl.' does not exist');
         }
-        
+
         /**
          * clear template and all of its dependencies
          */
         $this->_tmpl->clearTemplate($tmpl, true);
-        
+
         /**
          * add variables
          */
         $this->_tmpl->addVars($tmpl, $params);
         $this->_tmpl->addVar($tmpl, 'CONTENT', $content);
-        
+
         /**
          * get content
          */

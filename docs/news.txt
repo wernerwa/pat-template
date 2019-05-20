@@ -62,7 +62,7 @@ features:
 1.6.2 Multi-dimensional arrays
 You may now pass a multi-dimensional array to patTemplate and the engine
 will add the variables in the array to the child-templates.
-   
+
 1.7 Support for user-defined tags
 You may define any tag and register a PHP class that will create the
 HTML code that will be inserted.

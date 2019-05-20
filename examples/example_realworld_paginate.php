@@ -15,22 +15,22 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput('example_realworld_paginate.tmpl');
-    
+
     /**
      * this simulates the database resultset
      */
@@ -48,7 +48,7 @@
      * set the number of entries on a page
      */
     $entriesPerPage = 3;
-    
+
     /**
      * get the starting entries from the GET variables or set it
      * to zero by default
@@ -71,7 +71,7 @@
      * limit the rows
      */
     $tmpl->setAttribute('row', 'limit', $start.','.$entriesPerPage);
-    
+
     /**
      * and here's the strange stuff:
      *
@@ -85,5 +85,5 @@
      */
     $tmpl->addRows('pages', $rows);
     $tmpl->setAttribute('pages', 'modulo', $entriesPerPage);
-    
+
     $tmpl->displayParsedTemplate();

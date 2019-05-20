@@ -15,18 +15,18 @@
  * @link        http://www.php-tools.net
  */
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
@@ -40,7 +40,7 @@
  breaks...');
 
     $tmpl->addVar('page', 'wrap', 'This contains some very long text that should be be wrapped. Furthermore it contains a very long woooooooooooooooooooord.');
-    
+
     $tmpl->addVar('page', 'wrap2', 'This contains some very long text that should be be wrapped. Furthermore it contains a very long woooooooooooooooooooord.');
 
     $tmpl->addVar('page', 'birthday', '1974-05-12');

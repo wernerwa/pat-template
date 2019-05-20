@@ -14,7 +14,7 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
@@ -25,7 +25,7 @@
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 

@@ -8,7 +8,7 @@
  * @subpackage  Readers
  * @author      Stephan Schmidt <schst@php.net>
  */
- 
+
 /**
  * patTemplate Reader that reads from a file
  *
@@ -34,7 +34,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @var      boolean
      */
     public $_isRemote = false;
-    
+
     /**
      * all files, that have been opened
      *
@@ -42,7 +42,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @var      array
      */
     public $_files = array();
-    
+
     /**
      * read templates from any input
      *
@@ -64,7 +64,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
         }
 
         $templates  =   $this->parseString($content);
-        
+
         return  $templates;
     }
 
@@ -126,18 +126,18 @@ class patTemplate_Reader_File extends patTemplate_Reader
                 "Could not load templates from $file."
             );
         }
-        
+
         if (function_exists('file_get_contents')) {
             $content    =   @file_get_contents($file);
         } else {
             $content    =   implode('', file($file));
         }
-            
+
         /**
          * store the file name
          */
         array_push($this->_files, $file);
-        
+
         return  $content;
     }
 }

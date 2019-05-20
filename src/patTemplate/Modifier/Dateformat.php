@@ -39,7 +39,7 @@ class patTemplate_Modifier_Dateformat extends patTemplate_Modifier
         if (!isset($params['format'])) {
             return $value;
         }
-        
+
         return strftime($params['format'], strtotime($value));
     }
 }

@@ -36,7 +36,7 @@ class patTemplate_Compiler extends patTemplate
      * @var      array()
      */
     public $_compiledTemplates = array();
-    
+
     /**
      * file pointer to the compiled template
      *
@@ -44,7 +44,7 @@ class patTemplate_Compiler extends patTemplate
      * @var      resource
      */
     public $_fp;
-    
+
     /**
      * constructor
      *
@@ -72,7 +72,7 @@ class patTemplate_Compiler extends patTemplate
 
         $compileFolder  =   $this->getOption('compileFolder');
         $compileFile    =   sprintf('%s/%s', $compileFolder, $compileName);
-        
+
         $this->_fp  =   fopen($compileFile, 'w');
         $this->_addToCode('<?PHP');
         $this->_addToCode('/**');
@@ -89,7 +89,7 @@ class patTemplate_Compiler extends patTemplate
         $this->_addToCode('}');
         $this->_addToCode('?>');
         fclose($this->_fp);
-        
+
         include_once $compileFile;
         return true;
     }
@@ -103,14 +103,14 @@ class patTemplate_Compiler extends patTemplate
     public function compileTemplate($template)
     {
         $name   =   strtolower($template);
-        
+
         if (!isset($this->_templates[$template])) {
             return  patErrorManager::raiseWarning(
                 PATTEMPLATE_WARNING_NO_TEMPLATE,
                 "Template '$name' does not exist."
             );
         }
-        
+
 
         /**
          * check, if the template has been loaded
@@ -152,7 +152,7 @@ class patTemplate_Compiler extends patTemplate
          * copyVars
          */
         $this->_addToCode('$this->_templates["'.$template.'"]["copyVars"] = unserialize( \''.serialize($this->_templates[$template]['copyVars']).'\' );', 1, 'Read the copyVars');
-        
+
         /**
          * check visibility
          */
@@ -166,9 +166,9 @@ class patTemplate_Compiler extends patTemplate
         $this->_addToCode('$loop = count( $this->_vars["'.$template.'"]["rows"] );', 2, 'Get the amount of loops');
         $this->_addToCode('$loop = max( $loop, 1 );', 2);
         $this->_addToCode('$this->_templates["'.$template.'"]["loop"] = $loop;', 2);
-            
+
         $this->_addToCode('for( $i = 0; $i < $loop; $i++ ) {', 2, 'Traverse all variables.');
-    
+
         /**
          * fetch the variables
          */
@@ -185,21 +185,21 @@ class patTemplate_Compiler extends patTemplate
             case 'modulo':
                 $this->_compileModuloTemplate($template);
                 break;
-                        
+
             /**
              * simple condition template
              */
             case 'simplecondition':
                 $this->_compileSimpleConditionTemplate($template);
                 break;
-                        
+
             /**
              * condition template
              */
             case 'condition':
                 $this->_compileConditionTemplate($template);
                 break;
-                        
+
             /**
              * standard template
              */
@@ -208,7 +208,7 @@ class patTemplate_Compiler extends patTemplate
                 break;
         }
         $this->_addToCode('$this->_templates["'.$template.'"]["iteration"]++;', 3);
-                
+
         $this->_addToCode('}', 2);
 
         $this->_addToCode('}', 1);
@@ -380,7 +380,7 @@ class patTemplate_Compiler extends patTemplate
         $content = '?>'.$content.'<?PHP';
         return $content;
     }
-    
+
 
     /**
      * display the compiled template
@@ -395,13 +395,13 @@ class patTemplate_Compiler extends patTemplate
         if (is_null($name)) {
             $name = $this->_root;
         }
-        
+
         $name   =   strtolower($name);
 
         if (!is_callable('compiledTemplate', $name)) {
             die('Unknown template');
         }
-        
+
         compiledTemplate::$name();
     }
 
@@ -444,7 +444,7 @@ class patTemplate_Compiler extends patTemplate
         if (isset($this->_templates[$template]['vars'][$varname])) {
             return $this->_templates[$template]['vars'][$varname];
         }
-    
+
         if (isset($this->_globals[$this->_startTag.$varname.$this->_endTag])) {
             return $this->_globals[$this->_startTag.$varname.$this->_endTag];
         }

@@ -42,14 +42,14 @@ class patTemplate_Function_Time extends patTemplate_Function
         if (!empty($content)) {
             $params['time'] = $content;
         }
-        
+
         if (isset($params['time'])) {
             $params['time'] = strtotime($params['time']);
         } else {
             $params['time'] = time();
         }
-        
-        
+
+
         return date($params['format'], $params['time']);
     }
 }

@@ -15,18 +15,18 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once("pat/patErrorManager.php");
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate('html');
     $tmpl->setRoot('templates');
 
@@ -35,7 +35,7 @@
                     "1" => array("Martin", "Jansen"),
                     "2" => array("Alexander", "Merz")
                 );
-    
+
     $tmpl->readTemplatesFromInput('example_reader_it.tmpl', 'IT');
     $tmpl->addVar('row', 'value', $data);
     $tmpl->displayParsedTemplate();

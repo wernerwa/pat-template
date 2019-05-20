@@ -9,7 +9,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <description>patTemplate is a powerful, non-compiling templating engine, that uses XML tags to divide a document into different parts.
 It provides different template types to emulate if/else and switch/case constructs, variable modifiers,
 input- and output filters and several more useful features.
- 
+
  </description>
  <lead>
   <name>Stephan Schmidt</name>
@@ -39,7 +39,7 @@ input- and output filters and several more useful features.
 - fixed notice in addVars()
 - improved Dump() for simplecondition templates
 - fixed notice in GZip output filter
-  
+
  </notes>
  <contents>
   <dir name="/">
@@ -336,7 +336,7 @@ input- and output filters and several more useful features.
    <notes>Completely recoded version of patTemplate.
 Provides an nearly endless amount of new features, see news.txt for
 a complete list of changes.
-    
+
    </notes>
   </release>
   <release>
@@ -373,7 +373,7 @@ a complete list of changes.
 - added recursive parameter to clearTemplate() and freeTemplate()
 - added &apos;append&apos; parameter to parseIntoVar()
 - fixed bug with dot-syntax in simpleCondition templates
-    
+
    </notes>
   </release>
   <release>
@@ -398,7 +398,7 @@ a complete list of changes.
 - added support for copyFrom in global variables (gERD)
 - fixed bug with default values that got deleted when calling clearTemplate()
 - added __empty condition for modulo templates
-    
+
    </notes>
   </release>
   <release>
@@ -417,7 +417,7 @@ a complete list of changes.
 - fixed notice in addVars()
 - improved Dump() for simplecondition templates
 - fixed notice in GZip output filter
-    
+
    </notes>
   </release>
  </changelog>

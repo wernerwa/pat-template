@@ -28,7 +28,7 @@ class patTemplate_Function extends patTemplate_Module
      * @var    object
      */
     public $_reader;
-    
+
     /**
      * set the reference to the reader object
      *

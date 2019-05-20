@@ -35,7 +35,7 @@ Reserved attributes:
    - modifier
    - name
    - hidden
-   
+
 2. TMPL-Tag
    - addsystemvars
    - autoclear
@@ -58,7 +58,7 @@ Reserved attributes:
    - varscope
    - visibility
    - whitespace
-   
+
 3. SUB-Tag
    - condition
 

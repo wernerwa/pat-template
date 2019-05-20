@@ -14,7 +14,7 @@
                 .   'This overview lists all examples with a small description, and to '
                 .   'navigate the examples, use the navigation on the left.';
     $sections   =   array(
-    
+
         /**
          * examples of all tags
          */
@@ -191,7 +191,7 @@
                 ),
             )
         ),
-        
+
         /**
          * the new var tag
          */
@@ -237,7 +237,7 @@
                 ),
             )
         ),
-        
+
         /**
          * Template Caches
          */
@@ -251,7 +251,7 @@
                 ),
             )
         ),
-        
+
         /**
          * Functions
          */

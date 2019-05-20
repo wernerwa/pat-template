@@ -18,12 +18,12 @@
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
@@ -34,13 +34,13 @@
     $tmpl->addVar('cond', 'FOO', array( 'BAR', 'BAR' ));
 
     echo    "clear only the root template:<br>";
-    
+
     $tmpl->clearTemplate('root');
     $tmpl->displayParsedTemplate();
 
     echo    "<hr />";
 
     echo    "clear the root template and its children:<br>";
-    
+
     $tmpl->clearTemplate('root', true);
     $tmpl->displayParsedTemplate();

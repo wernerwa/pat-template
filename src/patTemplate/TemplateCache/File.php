@@ -68,10 +68,10 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
             }
             return unserialize(file_get_contents($filename));
         }
-        
+
         return false;
     }
-    
+
     /**
      * write template to cache
      *
@@ -91,7 +91,7 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
         flock($fp, LOCK_UN);
         return true;
     }
-    
+
     /**
      * get the cache filename
      *
