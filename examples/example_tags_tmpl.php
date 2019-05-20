@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of the tmpl tag
  *
@@ -7,31 +7,30 @@
  *
  * $Id: example_tags_tmpl.php 155 2004-04-20 20:16:43Z schst $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
  
- 	error_reporting( E_ALL );
+    error_reporting(E_ALL);
 
    /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
+    * requires patErrorManager
+    * make sure that it is in your include path
+    */
+    require_once('pat/patErrorManager.php');
+    
    /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
+    * main class
+    */
+    require_once '../patTemplate.php';
+    
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->readTemplatesFromInput( 'example_tags_tmpl.tmpl' );
+    $tmpl->readTemplatesFromInput('example_tags_tmpl.tmpl');
 
-	$tmpl->displayParsedTemplate( 'template1' );
+    $tmpl->displayParsedTemplate('template1');
 
-	$tmpl->displayParsedTemplate( 'template2' );
-?>
+    $tmpl->displayParsedTemplate('template2');

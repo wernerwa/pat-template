@@ -12,7 +12,7 @@
 
 /**
  * uses PackageFileManager
- */ 
+ */
 require_once 'PEAR/PackageFileManager.php';
 
 /**
@@ -59,7 +59,7 @@ $result = $package->setOptions(array(
     'baseinstalldir'    => 'pat',
     'packagedirectory'  => './',
     'dir_roles'         => array(
-								 'docs' => 'doc',
+                                 'docs' => 'doc',
                                  'examples' => 'doc',
                                  'tests' => 'test',
                                  )
@@ -87,4 +87,3 @@ if (PEAR::isError($result)) {
     echo $result->getMessage();
     die();
 }
-?>

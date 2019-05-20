@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * patTemplate StripComments input filter
  *
@@ -6,9 +6,9 @@
  *
  * Will remove all HTML comments.
  *
- * @package		patTemplate
- * @subpackage	Filters
- * @author		Stephan Schmidt <schst@php.net>
+ * @package     patTemplate
+ * @subpackage  Filters
+ * @author      Stephan Schmidt <schst@php.net>
  */
 
 /**
@@ -18,33 +18,32 @@
  *
  * Will remove all HTML comments.
  *
- * @package		patTemplate
- * @subpackage	Filters
- * @author		Stephan Schmidt <schst@php.net>
+ * @package     patTemplate
+ * @subpackage  Filters
+ * @author      Stephan Schmidt <schst@php.net>
  */
 class patTemplate_InputFilter_StripComments extends patTemplate_InputFilter
 {
-   /**
-    * filter name
-	*
-	* @access	protected
-	* @abstract
-	* @var	string
-	*/
-	var	$_name	=	'StripComments';
+    /**
+     * filter name
+     *
+     * @access   protected
+     * @abstract
+     * @var  string
+     */
+    public $_name  =   'StripComments';
 
-   /**
-	* compress the data
-	*
-	* @access	public
-	* @param	string		data
-	* @return	string		data without whitespace
-	*/
-	function apply( $data )
-	{
-        $data = preg_replace( '°<!--.*-->°msU', '', $data );
-	
-		return $data;
-	}
+    /**
+     * compress the data
+     *
+     * @access   public
+     * @param    string      data
+     * @return   string      data without whitespace
+     */
+    public function apply($data)
+    {
+        $data = preg_replace('°<!--.*-->°msU', '', $data);
+    
+        return $data;
+    }
 }
-?>

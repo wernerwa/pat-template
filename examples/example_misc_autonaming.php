@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows autonaming works.
  *
@@ -10,28 +10,27 @@
  *
  * $Id: example_misc_autonaming.php 155 2004-04-20 20:16:43Z schst $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
 
- 	error_reporting( E_ALL );
+    error_reporting(E_ALL);
  
    /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
+    * requires patErrorManager
+    * make sure that it is in your include path
+    */
+    require_once('pat/patErrorManager.php');
+    
    /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
+    * main class
+    */
+    require_once '../patTemplate.php';
+    
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->readTemplatesFromInput( 'example_misc_autonaming.tmpl' );
-	$tmpl->dump();
-?>
+    $tmpl->readTemplatesFromInput('example_misc_autonaming.tmpl');
+    $tmpl->dump();

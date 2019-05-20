@@ -1,12 +1,12 @@
-<?PHP
+<?php
 /**
  * patTemplate modfifier Dateformat
  *
  * $Id: Dateformat.php 216 2004-05-20 16:01:41Z schst $
  *
- * @package		patTemplate
- * @subpackage	Modifiers
- * @author		Stephan Schmidt <schst@php.net>
+ * @package     patTemplate
+ * @subpackage  Modifiers
+ * @author      Stephan Schmidt <schst@php.net>
  */
 
 /**
@@ -20,26 +20,26 @@
  * See the PHP documentation for strftime() for
  * more information.
  *
- * @package		patTemplate
- * @subpackage	Modifiers
- * @author		Stephan Schmidt <schst@php.net>
- * @link		http://www.php.net/manual/en/function.strftime.php
+ * @package     patTemplate
+ * @subpackage  Modifiers
+ * @author      Stephan Schmidt <schst@php.net>
+ * @link        http://www.php.net/manual/en/function.strftime.php
  */
 class patTemplate_Modifier_Dateformat extends patTemplate_Modifier
 {
-   /**
-	* modify the value
-	*
-	* @access	public
-	* @param	string		value
-	* @return	string		modified value
-	*/
-	function modify( $value, $params = array() )
-	{
-        if( !isset( $params['format'] ) )
+    /**
+     * modify the value
+     *
+     * @access   public
+     * @param    string      value
+     * @return   string      modified value
+     */
+    public function modify($value, $params = array())
+    {
+        if (!isset($params['format'])) {
             return $value;
-		
-		return strftime( $params['format'], strtotime( $value ) );
-	}
+        }
+        
+        return strftime($params['format'], strtotime($value));
+    }
 }
-?>
