@@ -1,0 +1,10 @@
+<!-- $Id: example_function_conditionalsimple.tmpl 464 2007-06-20 14:05:14Z gerd $ -->
+<patTemplate:tmpl name="root">
+    <h1>Here comes our hero</h1>
+    <patTemplate:tmpl name="cond" type="simplecondition" requiredvars="hero">
+        <div style="border:dashed 1px #000000;padding:7px;margin:17px;">
+            <patTemplate:heroinfo name="{HERO}"/>
+        </div>
+    </patTemplate:tmpl>
+
+</patTemplate:tmpl>

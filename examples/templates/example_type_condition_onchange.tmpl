@@ -1,0 +1,13 @@
+<!-- $Id: example_type_condition_variable.tmpl 390 2005-04-11 15:07:03Z schst $ -->
+<patTemplate:tmpl name="list" type="condition" conditionvar="project">
+
+	<patTemplate:sub condition="__default">
+	{DEVELOPER}<br/>
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="__onchange">
+	<h1>{PROJECT}</h1>
+	{DEVELOPER}<br/>
+	</patTemplate:sub>
+
+</patTemplate:tmpl>

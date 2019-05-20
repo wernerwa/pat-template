@@ -2,7 +2,7 @@
 /**
  * Base class for patTemplate functions
  *
- * $Id: Function.php 311 2004-10-27 13:52:20Z schst $
+ * $Id: Function.php 454 2007-05-30 15:34:37Z gerd $
  *
  * @package		patTemplate
  * @subpackage	Functions
@@ -22,7 +22,7 @@ define('PATTEMPLATE_FUNCTION_RUNTIME', 2);
 /**
  * Base class for patTemplate functions
  *
- * $Id: Function.php 311 2004-10-27 13:52:20Z schst $
+ * $Id: Function.php 454 2007-05-30 15:34:37Z gerd $
  *
  * @abstract
  * @package		patTemplate
@@ -45,7 +45,7 @@ class patTemplate_Function extends patTemplate_Module
 	* @access public
 	* @var	  integer
 	*/
-	var $type = PATTEMPLATE_FUNCTION_COMPILE;
+	var $_type = PATTEMPLATE_FUNCTION_COMPILE;
 	
    /**
 	* set the reference to the reader object
@@ -58,6 +58,17 @@ class patTemplate_Function extends patTemplate_Module
 		$this->_reader = &$reader;
 	}
 
+	/**
+	 * Returns the function type
+	 * 
+	 * @access public
+	 * @return integer
+	 */
+	function getType( )
+	{
+	    return $this->_type;
+	}
+	
    /**
 	* call the function
 	*

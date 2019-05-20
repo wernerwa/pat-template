@@ -14,7 +14,13 @@
  * @subpackage	Examples
  * @link		http://www.php-tools.net
  */
- 	error_reporting( E_ALL );
+
+    /**
+     * Main examples prepend file, needed *only* for the examples framework!
+     */
+    include_once 'patExampleGen/prepend.php';
+
+    // EXAMPLE START ------------------------------------------------------
 
 /**
  * A method of this class will be
@@ -27,23 +33,39 @@
      }
  }
 
-   /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
+    /**
+     * patErrorManager class
+     */
+    require_once $neededFiles['patErrorManager'];
 
-   /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
+    /**
+     * patTemplate
+     */
+    require_once $neededFiles['patTemplate'];
+
+
+
+
 
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );
 
+    // $tmpl->setDefaultAttribute( 'attributeplaceholder', 'replace' );
+
 	$tmpl->setOption('allowFunctionsAsDefault', true);
 
 	$tmpl->readTemplatesFromInput( 'example_var_default_function.tmpl' );
+
+    $tmpl->addGlobalVar( 'normal', 'normal content' );
+    $tmpl->addGlobalVar( 'recursive', 'recursive removal' );
+    $tmpl->addGlobalVar( 'var', 'Remove {RECURSIVE} var: {VAR}' );
+
+    $tmpl->addGlobalVar( 'much_more', 'This is global, but NOT the default value!' );
+    $tmpl->addVar( 'page', 'much_more', 'NOT the default value!' );
+
+//    $tmpl->addGlobalVar( 'var', 'global variables' );
+    //$tmpl->addVar( 'page', 'var', 'local variables' );
+
 
 	$tmpl->displayParsedTemplate();
 ?>

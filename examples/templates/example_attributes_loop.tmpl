@@ -1,8 +1,16 @@
-<!-- $Id: example_attributes_loop.tmpl 229 2004-06-03 19:59:49Z schst $ -->
+<!-- $Id: example_attributes_loop.tmpl 467 2008-01-16 16:27:18Z gerd $ -->
 <patTemplate:tmpl name="page">
 
 	<patTemplate:tmpl name="row" loop="10">
 	{PAT_ROW_VAR} {HERO}<br />
 	</patTemplate:tmpl>
+    <hr />
+    <patTemplate:tmpl name="list" loop="{ROWS}">
+    {PAT_ROW_VAR} {HERO}<br />
+    </patTemplate:tmpl>
+    <hr />
+    <patTemplate:tmpl name="list2" loop="{GLOBAL_ROWS}">
+    {PAT_ROW_VAR} {HERO}<br />
+    </patTemplate:tmpl>
 
 </patTemplate:tmpl>

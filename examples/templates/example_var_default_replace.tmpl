@@ -1,0 +1,24 @@
+<!-- $Id: example_var_default_replace.tmpl 464 2007-06-20 14:05:14Z gerd $ -->
+<patTemplate:tmpl name="page" unusedvars="ignore" attributeplaceholder="ignore">
+Normal var: <strong>{NORMAL}</strong><br />
+Recursive: <strong>{RECURSIVE}</strong><br />
+Var: <strong>{VAR}</strong><br />
+
+<p>
+    Some variable:
+    <patTemplate:var name="somevar" default="normale stuff: {NORMAL}!"/>
+</p>
+<p>
+    Another variable:
+    <patTemplate:var name="anothervar" default="somevar {SOMEVAR}"/>
+</p>
+
+<p>
+    Some people use variables in templates to :
+    <patTemplate:var name="static_stuff">This is some static text</patTemplate:var>
+    <pre>"<patTemplate:var name="static_strip"><patTemplate:strip>Strip     additional      whitespaces     please</patTemplate:strip></patTemplate:var>"</pre>
+    <patTemplate:var name="more_stuff" default="Her come static stuff: {STATIC_STUFF}!" />
+    <pre>"<patTemplate:var name="more_strip" default="Here comes static stuff: {STATIC_STRIP}!" />"</pre>
+    <patTemplate:var name="much_more" default="This is just the default value {STATIC_STUFF}!" />
+</p>
+</patTemplate:tmpl>

@@ -4,25 +4,31 @@
  * to display debug information about
  * the loaded templates and their variables
  *
- * $Id: example_dump_xul.php 361 2005-02-18 19:06:41Z schst $
+ * $Id: example_dump_xul.php 453 2007-05-30 12:58:43Z gerd $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
  * @subpackage	Examples
  * @link		http://www.php-tools.de
  */
- 	//error_reporting( E_ALL );
- 
-   /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
-   /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
+
+    /**
+     * Main examples prepend file, needed *only* for the examples framework!
+     */
+    include_once 'patExampleGen/prepend.php';
+
+    // EXAMPLE START ------------------------------------------------------
+
+    /**
+     * patErrorManager class
+     */
+    require_once $neededFiles['patErrorManager'];
+
+    /**
+     * patTemplate
+     */
+    require_once $neededFiles['patTemplate'];
+
 	
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );

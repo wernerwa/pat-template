@@ -1,0 +1,38 @@
+<!-- $Id: example_modifier_sizeformat.tmpl 474 2009-01-13 14:07:14Z gerd $ -->
+<patTemplate:tmpl name="example">
+<h2>Auto</h2>
+kcore: <patTemplate:var name="kcore_auto" copyfrom="kcore" modifier="sizeformat" />Byte<br />
+config.gz: <patTemplate:var name="config_gz_auto" copyfrom="config_gz" modifier="sizeformat" />Byte<br />
+initrd: <patTemplate:var name="initrd_auto" copyfrom="initrd" modifier="sizeformat" />Byte<br />
+vmlinuz: <patTemplate:var name="vmlinuz_auto" copyfrom="vmlinuz" modifier="sizeformat" />Byte<br />
+
+<h2>Kilo</h2>
+kcore: <patTemplate:var name="kcore_kilo" multi="k" copyfrom="kcore" modifier="sizeformat" />Byte<br />
+config.gz: <patTemplate:var name="config_gz_kilo" multi="k" copyfrom="config_gz" modifier="sizeformat" />Byte<br />
+initrd: <patTemplate:var name="initrd_kilo" multi="k" copyfrom="initrd" modifier="sizeformat" />Byte<br />
+vmlinuz: <patTemplate:var name="vmlinuz_kilo" multi="k" copyfrom="vmlinuz" modifier="sizeformat" />Byte<br />
+
+<h2>Mega</h2>
+kcore: <patTemplate:var name="kcore_mega" multi="m" copyfrom="kcore" modifier="sizeformat" />Byte<br />
+config.gz: <patTemplate:var name="config_gz_mega" multi="m" copyfrom="config_gz" modifier="sizeformat" />Byte<br />
+initrd: <patTemplate:var name="initrd_mega" multi="m" copyfrom="initrd" modifier="sizeformat" />Byte<br />
+vmlinuz: <patTemplate:var name="vmlinuz_mega" multi="m" copyfrom="vmlinuz" modifier="sizeformat" />Byte<br />
+
+<h2>Giga</h2>
+kcore: <patTemplate:var name="kcore_giga" multi="g" copyfrom="kcore" modifier="sizeformat" />Byte<br />
+config.gz: <patTemplate:var name="config_gz_giga" multi="g" copyfrom="config_gz" modifier="sizeformat" />Byte<br />
+initrd: <patTemplate:var name="initrd_giga" multi="g" copyfrom="initrd" modifier="sizeformat" />Byte<br />
+vmlinuz: <patTemplate:var name="vmlinuz_giga" multi="g" copyfrom="vmlinuz" modifier="sizeformat" />Byte<br />
+
+<h2>Tera</h2>
+kcore: <patTemplate:var name="kcore_tera" multi="t" copyfrom="kcore" modifier="sizeformat" />Byte<br />
+config.gz: <patTemplate:var name="config_gz_tera" multi="t" copyfrom="config_gz" modifier="sizeformat" />Byte<br />
+initrd: <patTemplate:var name="initrd_tera" multi="t" copyfrom="initrd" modifier="sizeformat" />Byte<br />
+vmlinuz: <patTemplate:var name="vmlinuz_tera" multi="t" copyfrom="vmlinuz" modifier="sizeformat" />Byte<br />
+
+<h2>Auto with decimals</h2>
+kcore: <patTemplate:var name="kcore_auto" decimals="1" copyfrom="kcore" modifier="sizeformat" />Byte<br />
+config.gz: <patTemplate:var name="config_gz_auto" decimals="2" copyfrom="config_gz" modifier="sizeformat" />Byte<br />
+initrd: <patTemplate:var name="initrd_auto" decimals="2" copyfrom="initrd" modifier="sizeformat" />Byte<br />
+vmlinuz: <patTemplate:var name="vmlinuz_auto" decimals="3" copyfrom="vmlinuz" modifier="sizeformat" />Byte<br />
+</patTemplate:tmpl>

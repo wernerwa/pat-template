@@ -1,14 +1,15 @@
-<?PHP
+<?php
 /**
  * patTemplate
  *
- * $Id: patTemplate.php 452 2007-05-11 09:18:06Z argh $
+ * $Id: patTemplate.php 467 2008-01-16 16:27:18Z gerd $
  *
  * powerful templating engine
  *
- * @version		3.1.0
+ * @version		3.2.0
  * @package		patTemplate
  * @author		Stephan Schmidt <schst@php.net>
+ * @author      gERD Schaufelberger <gerd@php-tools.net>
  * @license		LGPL
  * @link		http://www.php-tools.net
  */
@@ -58,9 +59,10 @@ define( 'PATTEMPLATE_ERROR_RECURSION', 6010 );
  *
  * powerful templating engine
  *
- * @version		3.1.0
+ * @version		3.2.0
  * @package		patTemplate
  * @author		Stephan Schmidt <schst@php.net>
+ * @author      gERD Schaufelberger <gerd@php-tools.net>
  * @license		LGPL
  * @link		http://www.php-tools.net
  */
@@ -72,9 +74,10 @@ class patTemplate
 	*/
 	var	$_systemVars			=	array(
 										'appName'		=>	'patTemplate',
-										'appVersion'	=>	'3.1.0',
+										'appVersion'	=>	'3.2.0',
 										'author'		=>	array(
-																	'Stephan Schmidt <schst@php.net>'
+																	'Stephan Schmidt <schst@php.net>',
+                                                                    'gERD Schaufelberger <gerd@php-tools.net>'
 																 )
 									);
 
@@ -84,13 +87,14 @@ class patTemplate
 	* @var		array
 	*/
 	var	$_defaultAttributes	=	array(
-										'type'			=>	'standard',
-										'visibility'	=>	'visible',
-										'loop'			=>	1,
-										'unusedvars'	=>	'strip',
-										'whitespace'	=>	'keep',
-										'autoclear'		=>	'off',
-										'autoload'		=>	'on'
+                                    'type'                  =>  'standard',
+                                    'visibility'            =>  'visible',
+                                    'loop'                  =>  1,
+                                    'unusedvars'            =>  'strip',
+                                    'whitespace'            =>  'keep',
+                                    'autoclear'             =>  'off',
+                                    'autoload'              =>  'on',
+                                    'attributeplaceholder'  =>  'ignore',
 									);
 
    /**
@@ -1217,7 +1221,7 @@ class patTemplate
 					continue;
 				}
 
-				$this->addVar( $name, $varname, $varspec['default'] );
+				// $this->addVar( $name, $varname, $varspec['default'] );
 			}
 
 			unset($this->_templates[$name]['varspecs']);
@@ -1584,6 +1588,20 @@ class patTemplate
 			 */
 			$this->_fetchVariables($template);
 
+            /**
+             * Allow placeholder ins loop attribute
+             */
+            if ($start == $i) {
+                if (strstr($this->_templates[$template]['attributes']['loop'], $this->_startTag) && preg_match('/'.$this->_startTag.'([A-Z\_]+)'.$this->_endTag.'/', $this->_templates[$template]['attributes']['loop'], $match)) {
+                    if (isset($this->_vars[$template]['scalar'][$match[1]])) {
+                        $this->_templates[$template]['loop']    =   intval(str_replace( '{' . $match[1] . '}', $this->_vars[$template]['scalar'][$match[1]] , $this->_templates[$template]['attributes']['loop']));
+                    }
+                    else if (isset($this->_globals[$match[1]])) {
+                        $this->_templates[$template]['loop']    =   intval(str_replace( '{' . $match[1] . '}', $this->_globals[$match[1]] , $this->_templates[$template]['attributes']['loop']));
+                    }
+                }
+            }
+
 			/**
 			 * fetch the template
 			 */
@@ -1598,7 +1616,8 @@ class patTemplate
 			 * parse
 			 */
 			$this->_parseVariables( $template );
-			$result = $this->_parseDependencies($template, $disableAutoClear);
+			$this->_parseFunctions( $template );
+			$result   = $this->_parseDependencies($template, $disableAutoClear);
 			if (patErrorManager::isError($result)) {
 				return $result;
 			}
@@ -1639,7 +1658,7 @@ class patTemplate
 
 		$this->_parseGlobals($template);
 
-		$this->_handleUnusedVars($template);
+		$this->_templates[$template]['result'] = $this->_handleUnusedVars($template, $this->_templates[$template]['result'] );
 
 		$this->_templates[$template]['parsed'] = true;
 
@@ -1725,6 +1744,63 @@ class patTemplate
 
 		}
 		return true;
+	}
+
+   /**
+	* parse all runtime functions in a template
+	*
+	* @access	private
+	* @param	string
+	*/
+	function _parseFunctions( $template )
+	{
+	    foreach( $this->_templates[$template]['currentFunctions'] as $function ) {
+
+	        $hash            =    $function['id'];
+            $functionName    =    $function['name'];
+ 	        $params          =    $function['attributes'];
+ 	        $content         =    $function['content'];
+
+ 	        $func = $this->loadModule( 'Function', $functionName );
+ 	        if( $func->getType() == PATTEMPLATE_FUNCTION_RUNTIME ) {
+
+			    $var    = $this->_startTag.'FUNC:'. $hash . $this->_endTag;
+
+                $search  = array();
+                $replace = array();
+
+                foreach($this->_templates[$template]['vars'] as $k => $v) {
+                    $search[]  = $this->_startTag . strtoupper( $k ) . $this->_endTag;
+                    $replace[] = $v;
+                }
+                foreach($this->_globals as $k => $v) {
+                    if(isset($this->_templates[$template]['vars'][$k])) {
+                        continue;
+                    }
+                    $search[]  = $this->_startTag . strtoupper( $k ) . $this->_endTag;
+                    $replace[] = $v;
+                }
+
+				// parse self's template into the placeholders
+	        	$content = str_replace( $search, $replace, $content ); // content
+	        	$content = $this->_handleUnusedVars( $template, $content );
+
+	            foreach( $params as $key => $val ) {
+	                $params[$key] = $this->_handleUnusedVars( $template, str_replace( $search, $replace, $val ) );
+				}
+
+			    // function is ment to be called on runtime
+				$result = $func->call( $params, $content );
+
+				if( patErrorManager::isError( $result ) ) {
+				    continue;
+				}
+
+				$this->_templates[$template]['work'] = str_replace( $var, $result, $this->_templates[$template]['work'] );
+			}
+
+	    }
+	    return $template;
 	}
 
    /**
@@ -1931,9 +2007,11 @@ class patTemplate
 				if ($value === false) {
 					$this->_templates[$template]['work']				= '';
 					$this->_templates[$template]['currentDependencies']	= array();
+					$this->_templates[$template]['currentFunctions']	= array();
 				} else {
 					$this->_templates[$template]['work']				= $this->_templates[$template]['subtemplates'][$value]['data'];
 					$this->_templates[$template]['currentDependencies']	= $this->_templates[$template]['subtemplates'][$value]['dependencies'];
+					$this->_templates[$template]['currentFunctions']	= $this->_templates[$template]['subtemplates'][$value]['functions'];
 				}
 				break;
 
@@ -1942,6 +2020,7 @@ class patTemplate
 			 */
 			case 'simplecondition':
 				foreach ($this->_templates[$template]['attributes']['requiredvars'] as $var) {
+
 				    // different template scope
 					if( $var[0] !== $template ) {
 						$this->_fetchVariables($var[0]);
@@ -1969,10 +2048,12 @@ class patTemplate
 
 					$this->_templates[$template]['work']				= '';
 					$this->_templates[$template]['currentDependencies']	= array();
+                    $this->_templates[$template]['currentFunctions']    = array();
 					break 2;
 				}
 				$this->_templates[$template]['work'] 				= $this->_templates[$template]['content'];
 				$this->_templates[$template]['currentDependencies']	= $this->_templates[$template]['dependencies'];
+				$this->_templates[$template]['currentFunctions']	= $this->_templates[$template]['functions'];
 				break;
 
 			/**
@@ -1991,9 +2072,11 @@ class patTemplate
 				if ($value === false) {
 					$this->_templates[$template]['work']				= '';
 					$this->_templates[$template]['currentDependencies']	= array();
+					$this->_templates[$template]['currentFunctions']	= array();
 				} else {
 					$this->_templates[$template]['work']				= $this->_templates[$template]['subtemplates'][$value]['data'];
 					$this->_templates[$template]['currentDependencies']	= $this->_templates[$template]['subtemplates'][$value]['dependencies'];
+					$this->_templates[$template]['currentFunctions']	= $this->_templates[$template]['subtemplates'][$value]['functions'];
 				}
 				break;
 
@@ -2003,6 +2086,7 @@ class patTemplate
 			default:
 				$this->_templates[$template]['work'] 				=	$this->_templates[$template]['content'];
 				$this->_templates[$template]['currentDependencies']	=	$this->_templates[$template]['dependencies'];
+				$this->_templates[$template]['currentFunctions']	=	$this->_templates[$template]['functions'];
 				break;
 		}
 		return true;
@@ -2099,6 +2183,19 @@ class patTemplate
             }
 		}
 
+		// is __onchange?
+		if (isset($this->_templates[$template]['subtemplates']['__onchange'])) {
+		    if (!isset($this->_templates[$template]['__lastValue'])) {
+		        $lastValue = '';
+		    } else {
+		        $lastValue = $this->_templates[$template]['__lastValue'];
+		    }
+		    $this->_templates[$template]['__lastValue'] = $value;
+		    if ($lastValue != $value) {
+		    	return '__onchange';
+		    }
+		}
+
         // search for exact match
 		foreach (array_keys($this->_templates[$template]['subtemplates']) as $key) {
 		    if (isset($this->_templates[$template]['subtemplates'][$key]['attributes']['var'])) {
@@ -2148,7 +2245,6 @@ class patTemplate
 		    return true;
 		}
 
-
 		$iteration = $this->_templates[$template]['iteration'];
 
 		$vars = array();
@@ -2182,6 +2278,20 @@ class patTemplate
 		if (isset($this->_vars[$template]['rows'][$iteration])) {
 			$vars = array_merge( $vars, $this->_vars[$template]['rows'][$iteration] );
 		}
+
+        /**
+         * add global vars
+         */
+        if( !empty( $this->_globals ) ) {
+            $vars = array_merge( $this->_globals, $vars );
+        }
+
+        /**
+         * add default variables
+         */
+        if( !empty( $this->_templates[$template]['defaultVars'] ) ) {
+            $vars = array_merge( $this->_templates[$template]['defaultVars'], $vars );
+        }
 
 		/**
 		 * add some system variables
@@ -2220,9 +2330,35 @@ class patTemplate
 			$vars['PAT_ROW_TYPE']	= ( $currentRow % 2 == 1 ) ? 'odd' : 'even';
 		}
 
-		$this->_templates[$template]['vars'] = $vars;
-		return true;
-	}
+        if( empty( $this->_templates[$template]['defaultVars'] ) || $this->_templates[$template]['attributes']['attributeplaceholder'] != 'replace' ) {
+            $this->_templates[$template]['vars'] = $vars;
+            return true;
+        }
+
+        // replace placeholders in "defaultVars"
+        $search     =   array();
+        $replace    =   array();
+        foreach( $vars as $k => $v ) {
+            $search[]   =   $this->_startTag . strtoupper( $k ) . $this->_endTag;
+            $replace[]  =   $v;
+        }
+
+        foreach( $this->_templates[$template]['defaultVars'] as $k => $v ) {
+            // check if replace is required and variable is still default
+            if( !strstr( $v, $this->_endTag ) ) {
+                continue;
+            }
+
+            if( $v != $vars[$k] ) {
+                continue;
+            }
+
+            $vars[$k]   =   str_replace( $search, $replace, $v );
+        }
+        
+        $this->_templates[$template]['vars'] = $vars;
+        return true;
+    }
 
    /**
 	* handle all unused variables in a template
@@ -2231,35 +2367,36 @@ class patTemplate
 	* template
 	*
 	* @access	private
-	* @param	string
+	* @param	string $template name
+	* @param    string $content  the content that has to be inspected
+	* @return   string the passed content but without unneeded placeholders
 	*/
-	function _handleUnusedVars( $template )
+	function _handleUnusedVars( $template, $content )
 	{
 		$regexp = '/([^\\\])('.$this->_startTag.'[^a-z]+[^\\\]'.$this->_endTag.')/U';
 
 		switch( $this->_templates[$template]['attributes']['unusedvars'] )
 		{
 			case 'comment':
-				$this->_templates[$template]['result'] = preg_replace( $regexp, '<!-- \\1\\2 -->', $this->_templates[$template]['result'] );
+			    $content = preg_replace( $regexp, '<!-- \\1\\2 -->', $content );
 				break;
 			case 'strip':
-				$this->_templates[$template]['result'] = preg_replace( $regexp, '\\1', $this->_templates[$template]['result'] );
+			    $content = preg_replace( $regexp, '\\1', $content );
 				break;
 			case 'nbsp':
-				$this->_templates[$template]['result'] = preg_replace( $regexp, '\\1&nbsp;', $this->_templates[$template]['result'] );
+			    $content = preg_replace( $regexp, '\\1&nbsp;', $content );
 				break;
 			case 'ignore':
 				break;
 			default:
-				$this->_templates[$template]['result'] = preg_replace( $regexp, '\\1'.$this->_templates[$template]['attributes']['unusedvars'], $this->_templates[$template]['result'] );
+			    $content = preg_replace( $regexp, '\\1'.$this->_templates[$template]['attributes']['unusedvars'], $content );
 				break;
 		}
 
 		// replace quoted variables
 		$regexp = '/[\\\]'.$this->_startTag.'([^a-z]+)[\\\]'.$this->_endTag.'/U';
-		$this->_templates[$template]['result'] = preg_replace( $regexp, $this->_startTag.'\\1'.$this->_endTag, $this->_templates[$template]['result'] );
-
-		return true;
+		$content = preg_replace( $regexp, $this->_startTag.'\\1'.$this->_endTag, $content );
+		return $content;
 	}
 
    /**

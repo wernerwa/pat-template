@@ -2,7 +2,7 @@
 /**
  * patTemplate example that shows how to create a list
  *
- * $Id: example_realworld_list.php 163 2004-04-20 21:31:05Z schst $
+ * $Id: example_realworld_list.php 453 2007-05-30 12:58:43Z gerd $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -10,7 +10,25 @@
  * @link		http://www.php-tools.net
  */
 
- 	error_reporting( E_ALL );
+    /**
+     * Main examples prepend file, needed *only* for the examples framework!
+     */
+    include_once 'patExampleGen/prepend.php';
+
+    // EXAMPLE START ------------------------------------------------------
+
+    /**
+     * patErrorManager class
+     */
+    require_once $neededFiles['patErrorManager'];
+
+    /**
+     * patTemplate
+     */
+    require_once $neededFiles['patTemplate'];
+
+
+
 
 	$list	=	array(
 						array( 'superhero' => 'Superman', 'realname' => 'Clark Kent' ),
@@ -18,16 +36,6 @@
 						array( 'superhero' => 'Aquaman', 'realname' => 'Arthur Curry' ),
 					);
  
-   /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
-   /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
 	
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );

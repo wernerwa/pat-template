@@ -5,7 +5,7 @@
  * To quote a varible, you'll have to use this syntax: \{FOO\}. patTemplate
  * will then insert {FOO} into the result.
  *
- * $Id: example_misc_quote.php 313 2004-10-28 08:54:44Z schst $
+ * $Id: example_misc_quote.php 453 2007-05-30 12:58:43Z gerd $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -14,18 +14,25 @@
  * @see			patTemplate::setOption()
  */
 
- 	error_reporting( E_ALL );
- 
-   /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
-   /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
+    /**
+     * Main examples prepend file, needed *only* for the examples framework!
+     */
+    include_once 'patExampleGen/prepend.php';
+
+    // EXAMPLE START ------------------------------------------------------
+
+    /**
+     * patErrorManager class
+     */
+    require_once $neededFiles['patErrorManager'];
+
+    /**
+     * patTemplate
+     */
+    require_once $neededFiles['patTemplate'];
+
+
+
 	
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );

@@ -7,7 +7,7 @@
  * advantages over using the {BRACES} syntax, like the ability
  * to set a default value or a modifier.
  *
- * $Id: example_tags_var.php 155 2004-04-20 20:16:43Z schst $
+ * $Id: example_tags_var.php 453 2007-05-30 12:58:43Z gerd $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -15,18 +15,25 @@
  * @link		http://www.php-tools.de
  */
 
- 	error_reporting( E_ALL );
- 
-   /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
-   /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
+    /**
+     * Main examples prepend file, needed *only* for the examples framework!
+     */
+    include_once 'patExampleGen/prepend.php';
+
+    // EXAMPLE START ------------------------------------------------------
+
+    /**
+     * patErrorManager class
+     */
+    require_once $neededFiles['patErrorManager'];
+
+    /**
+     * patTemplate
+     */
+    require_once $neededFiles['patTemplate'];
+
+
+
 	
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );

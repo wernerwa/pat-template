@@ -1,0 +1,14 @@
+<!-- $Id: example_function_conditional.tmpl 454 2007-05-30 15:34:37Z gerd $ -->
+<patTemplate:tmpl name="root">
+    <patTemplate:tmpl name="cond" type="condition" conditionvar="hero">
+        <patTemplate:sub condition="spiderman">
+            <patTemplate:heroinfo name="spiderman"/><br />
+        </patTemplate:sub>
+        <patTemplate:sub condition="batman">
+            <patTemplate:heroinfo name="batman"/><br />
+        </patTemplate:sub>
+        <patTemplate:sub condition="__default">
+            <patTemplate:heroinfo name="__default"/><br />
+        </patTemplate:sub>    
+    </patTemplate:tmpl>
+</patTemplate:tmpl>

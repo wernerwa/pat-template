@@ -1,0 +1,98 @@
+<patTemplate:tmpl name="page">
+
+Yes, patTemplate do some arithmetic :-) 
+<p>
+    a = {A} <br />
+    b = {B} <br />
+    c = {C} <br />
+</p>
+<p>
+    Summe it up:<br />
+    <patTemplate:var hidden="yes" name="ap" copyfrom="a" memory="p" modifier="calc" operator="+" />
+    <patTemplate:var hidden="yes" name="bp" copyfrom="b" memory="p" modifier="calc" operator="+" />
+    <patTemplate:var hidden="yes" name="cp" copyfrom="c" memory="p" modifier="calc" operator="+" />
+        
+    a + b + c = <patTemplate:var name="sum" default="0" modifier="calc" memory="p" operator="=" /><br />
+</p>
+<p>
+    Multiply some values:<br />
+    <patTemplate:var hidden="yes" name="am" copyfrom="a" modifier="calc" memory="m" operator="+" />
+    <patTemplate:var hidden="yes" name="bm" copyfrom="b" modifier="calc" memory="m" operator="*" />
+    <patTemplate:var hidden="yes" name="cm" copyfrom="c" modifier="calc" memory="m" operator="*" />
+    
+    a * b * c = <patTemplate:var name="multi" default="0" modifier="calc" memory="m"  operator="=" /><br />
+</p>
+<p>
+    Devide values:<br />
+    <patTemplate:var hidden="yes" name="ad" copyfrom="a" modifier="calc" memory="d" operator="+" />
+    <patTemplate:var hidden="yes" name="bd" copyfrom="b" modifier="calc" memory="d" operator="/" />
+    <patTemplate:var hidden="yes" name="cd" copyfrom="c" modifier="calc" memory="d" operator="/" />
+    
+    a / b / c = <patTemplate:var name="div" default="0" modifier="calc" memory="d"  operator="=" /><br />
+</p>
+    
+<p>
+    Minus values:<br />
+    <patTemplate:var hidden="yes" name="aminus" copyfrom="a" modifier="calc" memory="minus" operator="+" />
+    <patTemplate:var hidden="yes" name="bminus" copyfrom="b" modifier="calc" memory="minus" operator="-" />
+    <patTemplate:var hidden="yes" name="cminus" copyfrom="c" modifier="calc" memory="minus" operator="-" />
+    
+    a - b - c = <patTemplate:var name="minus" default="0" modifier="calc" memory="minus"  operator="=" /><br />
+</p>
+
+<p>
+    Do some Excel stuff:
+    <table border="1">
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+        </tr>
+        <patTemplate:tmpl name="list" type="condition" conditionvar="a">
+            <patTemplate:sub condition="__default">
+                <tr>
+                    <td align="right">
+                        <patTemplate:var name="a" modifier="calc" memory="excel_a" operator="+" /><br />
+                    </td>
+                    <td align="right">
+                        <patTemplate:var name="b" modifier="calc" memory="excel_b" operator="+" /><br />
+                    </td>
+                    <td align="right">
+                        <patTemplate:var name="c" modifier="calc" memory="excel_c" operator="+" /><br />
+                    </td>
+                </tr>
+            </patTemplate:sub>
+            <patTemplate:sub condition="__last">
+                <tr>
+                    <td align="right">
+                        <patTemplate:var name="a" modifier="calc" memory="excel_a" operator="+" /><br />
+                    </td>
+                    <td align="right">
+                        <patTemplate:var name="b" modifier="calc" memory="excel_b" operator="+" /><br />
+                    </td>
+                    <td align="right">
+                        <patTemplate:var name="c" modifier="calc" memory="excel_c" operator="+" /><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>======</td>
+                    <td>======</td>
+                    <td>======</td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <patTemplate:var name="plus_a" default="0" modifier="calc" memory="excel_a" operator="=" />
+                    </td>
+                    <td align="right">
+                        <patTemplate:var name="plus_b" default="0" modifier="calc" memory="excel_b" operator="=" />
+                    </td>
+                    <td align="right">
+                        <patTemplate:var name="plus_c" default="0" modifier="calc" memory="excel_c" operator="=" />
+                    </td>
+                </tr>
+            </patTemplate:sub>
+        </patTemplate:tmpl>
+    </table>
+</p>
+
+</patTemplate:tmpl>

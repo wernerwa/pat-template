@@ -6,7 +6,7 @@
  * by PHP while the file is being read. See extending-pattemplate.txt
  * for more information on patTemplate functions.
  *
- * $Id: example_function_strip.php 205 2004-05-13 21:27:27Z schst $
+ * $Id: example_function_strip.php 453 2007-05-30 12:58:43Z gerd $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -14,20 +14,24 @@
  * @link		http://www.php-tools.net
  * @see			patTemplate_Function
  */
-
- 	error_reporting( E_ALL );
  
-   /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
+    /**
+     * Main examples prepend file, needed *only* for the examples framework!
+     */
+    include_once 'patExampleGen/prepend.php';
+    
+    // EXAMPLE START ------------------------------------------------------
 
-   /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
-	
+    /**
+     * patErrorManager class
+     */
+    require_once $neededFiles['patErrorManager'];
+    
+    /**
+     * patTemplate
+     */
+    require_once $neededFiles['patTemplate'];
+    
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );
 

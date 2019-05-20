@@ -3,7 +3,7 @@
  * patTemplate example that displays the
  * usage of parseIntoVar()
  *
- * $Id: example_api_addobject.php 347 2004-12-31 13:51:45Z schst $
+ * $Id: example_api_addobject.php 453 2007-05-30 12:58:43Z gerd $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -11,18 +11,23 @@
  * @link		http://www.php-tools.de
  */
 
- 	error_reporting( E_ALL );
+    /**
+     * Main examples prepend file, needed *only* for the examples framework!
+     */
+    include_once 'patExampleGen/prepend.php';
+    
+    // EXAMPLE START ------------------------------------------------------
+
+    /**
+     * patErrorManager class
+     */
+    require_once $neededFiles['patErrorManager'];
+    
+    /**
+     * patTemplate
+     */
+    require_once $neededFiles['patTemplate'];
  
-   /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
-   /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
 	
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );
