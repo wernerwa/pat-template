@@ -17,12 +17,12 @@
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
@@ -32,7 +32,7 @@
      */
     $tmpl->applyOutputFilter('StripWhitespace');
     $tmpl->applyOutputFilter('Gzip');
-    
+
     $tmpl->readTemplatesFromInput('example_filter_output_multiple.tmpl');
 
     $tmpl->displayParsedTemplate();

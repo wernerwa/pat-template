@@ -10,7 +10,7 @@
  */
 
 require_once 'XML/XUL.php';
- 
+
 /**
  * Dumps templates as XUL, using PEAR::XML_XUL
  *
@@ -23,14 +23,14 @@ require_once 'XML/XUL.php';
 class patTemplate_Dump_XUL extends patTemplate_Dump
 {
     public $_doc = null;
-    
+
     public $_root = null;
-    
+
     public $_templates = null;
-    
+
     public $_addedTemplates = array();
     public $_vars = array();
-    
+
     /**
      * display the header
      *
@@ -39,14 +39,14 @@ class patTemplate_Dump_XUL extends patTemplate_Dump
     public function displayHeader()
     {
         $this->_addedTemplates = array();
-        
+
         $this->_doc = &XML_XUL::createDocument();
 
         $this->_doc->addStylesheet('chrome://global/skin/');
- 
+
         $win = &$this->_doc->createElement('Window', array('title'=> 'patTemplate Dump'));
         $this->_doc->addRoot($win);
-        
+
         $this->_root = &$this->_doc->createElement('Tabbox', array('flex' => 1));
         $win->appendChild($this->_root);
     }
@@ -61,7 +61,7 @@ class patTemplate_Dump_XUL extends patTemplate_Dump
     {
         $gbox = &$this->_doc->createElement('Groupbox', array('orient'=>'vertical', 'flex' => 1));
         $gbox->setCaption('Global variables');
-        
+
         $grid = &$this->_doc->createElement('Grid');
         $grid->setColumns(2, array( 'flex' => 1 ), array( 'flex' => 1 ));
 
@@ -88,14 +88,14 @@ class patTemplate_Dump_XUL extends patTemplate_Dump
     public function dumpTemplates($templates, $vars)
     {
         $container = &$this->_doc->createElement('VBox', array('flex' => 1));
-        
+
         $gbox = &$this->_doc->createElement('Groupbox', array('orient'=>'vertical', 'flex' => '2'));
         $gbox->setCaption('Templates');
         $container->appendChild($gbox);
-        
+
         $this->_templates = $templates;
         $this->_vars = $vars;
-        
+
         $templates = array_reverse($templates);
 
         $tree = &$this->_doc->createElement('Tree', array( 'flex' => 1, 'enableColumnDrag' => 'true', 'height' => '500' ));
@@ -128,7 +128,7 @@ class patTemplate_Dump_XUL extends patTemplate_Dump
                                 'flex'  => 1,
                               )
         );
-        
+
         foreach ($templates as $name => $tmpl) {
             if (in_array($name, $this->_addedTemplates)) {
                 continue;
@@ -140,19 +140,19 @@ class patTemplate_Dump_XUL extends patTemplate_Dump
 
         $splitter = &$this->_doc->createElement('Splitter');
         $splitter->useGrippy();
-        
+
         $container->appendChild($splitter);
-        
+
         $gbox2 = &$this->_doc->createElement('Groupbox', array('orient'=>'vertical', 'flex' => '2'));
         $gbox2->setCaption('Details');
-        
+
         $container->appendChild($gbox2);
-        
+
         $deck = &$this->_doc->createElement('Deck');
-        
+
         $gbox2->appendChild($deck);
 
-        
+
         $this->_root->addTab('Templates', $container);
         return true;
     }
@@ -180,7 +180,7 @@ class patTemplate_Dump_XUL extends patTemplate_Dump
             $this->_vars[$name] = array();
         }
         $vars = $this->_flattenVars($this->_vars[$name]);
-        
+
         if (empty($vars)) {
             return true;
         }
@@ -189,14 +189,14 @@ class patTemplate_Dump_XUL extends patTemplate_Dump
             $varItem->addItem(array($key, $value));
         }
     }
-    
+
     public function _getTemplate($name)
     {
         if (isset($this->_templates[$name])) {
             return $this->_templates[$name];
         }
     }
-    
+
     /**
      * display the footer
      *

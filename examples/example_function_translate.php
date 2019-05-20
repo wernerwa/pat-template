@@ -16,7 +16,7 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
@@ -27,7 +27,7 @@
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
@@ -35,7 +35,7 @@
     * You have to set the folder in which the translation files will be stored.
     */
     $tmpl->setOption('translationFolder', 'data');
-    
+
    /**
     * You have to set the language in which to translate the template contents.
     */
@@ -71,7 +71,7 @@
     * only be created once the main sentence file is present.
     */
     $tmpl->setOption('translationAutoCreate', true);
-    
+
    /**
     * When you update the original template and the new strings are added to the
     * translation files, it can be handy to have a 'locator' string that is
@@ -92,11 +92,11 @@
     * be very handy to avoid duplicate strings that can occurr otherwise.
     */
 //  $tmpl->setOption( 'translationFile', 'lang' );
-    
+
 
     $tmpl->readTemplatesFromInput('example_function_translate.tmpl');
     $tmpl->displayParsedTemplate('root');
 
-    
+
     $tmpl->readTemplatesFromInput('example_function_translate2.tmpl');
     $tmpl->displayParsedTemplate('motu');

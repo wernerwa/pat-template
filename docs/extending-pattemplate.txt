@@ -15,12 +15,12 @@ htmlentities().
 2.b) You may create custom modifiers. To do this, create a new file in
 
   PATTEMPLATE_ROOT/patTemplate/Modifier
-  
+
 or any of its sub-folders. In this file, you have to create a new class
 that's called
 
   patTemplate_Modifier_FILENAME
-  
+
 where FILENAME is the name of your file (and thus also of your modifier).
 If your modifier is located in a subfolder, you have to include the folder
 name in the class name, e.g. patTemplate_Modifier_Html_Image.
@@ -29,7 +29,7 @@ Your class should inherit from patTemplate_Modifier and provide the following
 method:
 
   string modify( string value, array params )
-  
+
 In the method you may modify the value and return it to the templating enginge.
 
 2. Template Readers
@@ -40,12 +40,12 @@ To read from a datasource that's not yet supported, you'll have to
 implement a new template reader. To do this, create a new PHP file in:
 
   PATTEMPLATE_ROOT/patTemplate/Reader
-  
+
 Let's say you want to create a reader that reads data from shared memory.
 Then you'd create a new file in the mentioned folder called
 
   SHM.php
-  
+
 In this file you place a create a new class that extends patTemplate_Reader
 and that is called patTemplate_Reader_SHM. There you'll have to implement only
 one method that reads templates from the source:
@@ -60,7 +60,7 @@ class patTemplate_Reader_SHM extends patTemplate_Reader
 		 */
 		$content	= shm_get( $shm, $input );
 		$templates	= $this->parseString( $content );
-		
+
 		return	$templates;
 	}
 }
@@ -99,11 +99,11 @@ To create your own template function, create a new class that inherits from
 patTemplate_Function and place it into
 
   PATTEMPLATE_ROOT/patTemplate/Function
-  
+
 In this class you have to implement on function:
 
   string call( array params, string content )
-  
+
 This method will be called on the closing tag with the same name as
 your file (and class). patTemplate_Reader will pass the attributes
 and the content of the tag to your method. You will then have to
@@ -134,12 +134,12 @@ could to, and that's why I implemented it as a plugin to patTemplate.
 To build your own output filter you simply have to create a new file in
 
   PATTEMPLATE_ROOT/patTemplate/OutputFilter
-  
+
 Let's say you want to create a filter that obfuscates email addresses in the
 output. Then you'd create a new file in the mentioned folder called
 
   EmailObfuscator.php
-  
+
 In this file you place a create a new class that extends patTemplate_OutputFilter
 and that is called patTemplate_OutputFilter_EmailObfuscator. There you'll have to
 implement only one method that filters the output and this method has to be called
@@ -157,7 +157,7 @@ class patTemplate_OutputFilter_EmailObfuscator extends patTemplate_OutputFilter
 		return $data;
 	}
 }
-?> 
+?>
 
 Now if you want to use this output filter, all you have to do is:
 

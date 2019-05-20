@@ -17,12 +17,12 @@
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
@@ -34,7 +34,7 @@
                         'clean'        => true
                     );
     $tmpl->applyOutputFilter('Tidy', $options);
-    
+
     $tmpl->readTemplatesFromInput('example_filter_output_tidy.tmpl');
 
     $tmpl->displayParsedTemplate();

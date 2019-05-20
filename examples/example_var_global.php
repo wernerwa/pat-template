@@ -12,23 +12,23 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
     $tmpl->readTemplatesFromInput('example_var_global.tmpl');
-    
+
     $tmpl->addGlobalVar('sometext', 'This will be overwritten');
     $tmpl->addGlobalVar('globaltext', 'This will NOT be overwritten
 Just because no one does it...
@@ -42,5 +42,5 @@ breaks.');
 
     $tmpl->addVar('repeating', 'value', array( 'une', 'deux', 'trois' ));
     $tmpl->addVar('non-repeating', 'scalar', 'Copy');
-    
+
     $tmpl->displayParsedTemplate();

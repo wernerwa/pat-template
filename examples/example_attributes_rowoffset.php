@@ -10,18 +10,18 @@
  * @link        http://www.php-tools.net
  */
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
@@ -32,5 +32,5 @@
     $tmpl->addVar('row', 'hero', $heroes);
 
     $tmpl->addVar('row2', 'hero', $heroes);
-    
+
     $tmpl->displayParsedTemplate();

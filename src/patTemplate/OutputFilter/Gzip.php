@@ -50,7 +50,7 @@ class patTemplate_OutputFilter_Gzip extends patTemplate_OutputFilter
         if (!$this->_clientSupportsGzip()) {
             return $data;
         }
-    
+
         $size = strlen($data);
         $crc  = crc32($data);
 
@@ -59,7 +59,7 @@ class patTemplate_OutputFilter_Gzip extends patTemplate_OutputFilter
 
         $data .= $this->_gfc($crc);
         $data .= $this->_gfc($size);
-    
+
         header('Content-Encoding: gzip');
         $data = "\x1f\x8b\x08\x00\x00\x00\x00\x00" . $data;
         return $data;
@@ -76,7 +76,7 @@ class patTemplate_OutputFilter_Gzip extends patTemplate_OutputFilter
         if (!isset($_SERVER['HTTP_ACCEPT_ENCODING'])) {
             return false;
         }
-        
+
         if (false !== strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
             return  true;
         }

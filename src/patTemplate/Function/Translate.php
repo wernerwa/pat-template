@@ -32,7 +32,7 @@
  * Warning: could not create language file
  */
  define('PATTTEMPLATE_FUNCTION_TRANSLATE_WARNING_LANGFILE_NOT_CREATABLE', 'patTemplate:Function:Translate:02');
- 
+
 /**
  * patTemplate function that emulates gettext's behaviour
  *
@@ -118,7 +118,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
         'useFolders' => false,
         'file' => null,
     );
-    
+
     public $_configLoaded = false;
 
     /**
@@ -128,7 +128,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
      * @var      array
      */
     public $_sentences =   array();
-    
+
     /**
      * translations of the language files
      *
@@ -144,7 +144,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
      * @var  object
      */
     public $_tmpl;
-    
+
     /**
      * set a reference to the patTemplate object that instantiated the reader
      *
@@ -176,9 +176,9 @@ class patTemplate_Function_Translate extends patTemplate_Function
         if (!$this->_configLoaded) {
             $this->_retrieveGlobalConfig();
         }
-        
+
         $input = $this->_reader->getCurrentInput();
-        
+
         /**
          * get config
          */
@@ -195,7 +195,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
         } else {
             $key    =   md5($content);
         }
-        
+
         /**
          * does this already exists?
          */
@@ -203,14 +203,14 @@ class patTemplate_Function_Translate extends patTemplate_Function
             $this->_sentences[$input][$key] =   $content;
             $this->_updateTranslationFiles($input, $key, $content);
         }
-        
+
         /**
          * has it been translated?
          */
         if (isset($this->_translation[$input][$key])) {
             return $this->_translation[$input][$key];
         }
-        
+
         /**
          * use original sentence
          */
@@ -239,34 +239,34 @@ class patTemplate_Function_Translate extends patTemplate_Function
                 $this->_globalconfig['lang'] = array( $this->_globalconfig['lang'] );
             }
         }
-        
+
         $this->_globalconfig['translationFolder'] = $this->_tmpl->getOption('translationFolder');
 
         // set a custom locator string
         if (!is_null($this->_tmpl->getOption('translationLocatorString'))) {
             $this->_globalconfig['locatorString'] = $this->_tmpl->getOption('translationLocatorString');
         }
-        
+
         // disable locator string altogether
         if ($this->_tmpl->getOption('translationUseLocator') === false) {
             $this->_globalconfig['useLocator'] = false;
         }
-        
+
         // use folders for translation files?
         if ($this->_tmpl->getOption('translationUseFolders') === true) {
             $this->_globalconfig['useFolders'] = true;
         }
-        
+
         // use a specific file for all translation strings?
         if (!is_null($this->_tmpl->getOption('translationFile'))) {
             $this->_globalconfig['file'] = $this->_tmpl->getOption('translationFile');
         }
-        
+
         $this->_configLoaded = true;
-        
+
         return true;
     }
-    
+
     /**
      * retrieve configuration
      *
@@ -285,11 +285,11 @@ class patTemplate_Function_Translate extends patTemplate_Function
         $this->_config[$input] = array();
         $this->_sentences[$input] = array();
         $folder = $this->_tmpl->getOption('translationFolder');
-        
+
         // default setup for language files
         $this->_config[$input]['sentenceFile'] = $folder.'/'.$input.'-default.ini';
         $this->_config[$input]['langFile']     = $folder.'/'.$input.'-%s.ini';
-        
+
         // handle the translationUseFolders option - if set, we will
         // use subfolders for each language, so we need to check
         // that the corresponding folders exist and create them if
@@ -328,7 +328,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
                 $this->_config[$input]['langFile'] = $folder.'/'.$this->_globalconfig['file'].'-%s.ini';
             }
         }
-        
+
         /**
          * get the 'gettext' source file
          */
@@ -338,7 +338,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
         } else {
             $this->_sentences[$input] = array_map(array( $this, '_unescape' ), $this->_sentences[$input]);
         }
-        
+
         return true;
     }
 
@@ -365,7 +365,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
                 }
                 continue;
             }
-                
+
             $tmp = @parse_ini_file($translationFile);
             if (is_array($tmp)) {
                 $tmp = array_map(array( $this, '_unescape' ), $tmp);
@@ -387,7 +387,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
     {
         return str_replace('&quot;', '"', $text);
     }
-    
+
     /**
      * Updates all available translation files with the new
      * string to translate.
@@ -404,16 +404,16 @@ class patTemplate_Function_Translate extends patTemplate_Function
         if (!$this->_updateTranslationFile($this->_config[$input]['sentenceFile'], $key, $content)) {
             $success = false;
         }
-        
+
         foreach ($this->_globalconfig['lang'] as $lang) {
             if (!$this->_updateTranslationFile(sprintf($this->_config[$input]['langFile'], $lang), $key, $content)) {
                 $success = false;
             }
         }
-        
+
         return $success;
     }
-    
+
     /**
      * Updates a single translation file with the specified new string
      *
@@ -434,11 +434,11 @@ class patTemplate_Function_Translate extends patTemplate_Function
         if ($this->_globalconfig['useLocator']) {
             $locator = ' ;'.$this->_globalconfig['locatorString'];
         }
-        
+
         // remove newlines to ensure integrity of the inifile's syntax
         // patch by Niccolo Campovono
         $content = preg_replace("'([\r\n])[\s]+'", '', $content);
-        
+
         flock($fp, LOCK_EX);
         fputs($fp, sprintf('%s = "%s"'.$locator."\n", $key, str_replace('"', '&quot;', $content)));
         flock($fp, LOCK_UN);
@@ -457,7 +457,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
         if (!preg_match_all('/([a-z\-]*)?[,;]/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $matches)) {
             return array();
         }
-        
+
         $langs = array();
         foreach ($matches[1] as $lang) {
             if (empty($lang)) {
@@ -465,7 +465,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
             }
             array_push($langs, $lang);
         }
-        
+
         return $langs;
     }
 }

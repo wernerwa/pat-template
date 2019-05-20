@@ -12,22 +12,22 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput('example_realworld_table.tmpl');
-    
+
     $rows = array(
                     array( '<Col 1>', '<Col 2>', '<Col 3>' ),
                     array( '1-1', '1-2', '1-3' ),

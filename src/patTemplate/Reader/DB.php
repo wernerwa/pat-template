@@ -104,7 +104,7 @@ class patTemplate_Reader_DB extends patTemplate_Reader
         }
         return $content;
     }
-    
+
     /**
      * Parse the template location syntax to a query
      *
@@ -123,7 +123,7 @@ class patTemplate_Reader_DB extends patTemplate_Reader
         if (!preg_match('/^([a-z]+)\[([^]]+)\]\/@([a-z]+)$/i', $input, $matches)) {
             return patErrorManager::raiseError(PATTEMPLATE_READER_DB_ERROR_UNKNOWN_INPUT, 'Could not parse input string.');
         }
-        
+
         $table         = $matches[1];
         $templateField = $matches[3];
         $where         = array();
@@ -136,11 +136,11 @@ class patTemplate_Reader_DB extends patTemplate_Reader
             $field = substr($field, 1);
             array_push($where, $field . '=' . $db->quoteSmart($value));
         }
-        
+
         $query = sprintf('SELECT %s FROM %s WHERE %s', $templateField, $table, implode(' AND ', $where));
         return $query;
     }
-    
+
     /**
      * load template from any input
      *

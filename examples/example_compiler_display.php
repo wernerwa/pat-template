@@ -21,13 +21,13 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
@@ -38,7 +38,7 @@
     */
     require_once '../patTemplate/Compiler.php';
 
-    
+
     $tmpl   =   &new patTemplate_Compiler();
     $tmpl->setRoot('templates');
 
@@ -47,13 +47,13 @@
     $tmpl->readTemplatesFromInput('example_compiler_display.tmpl');
 
     $tmpl->compile('example1.php');
-    
+
     $tmpl->addGlobalVar('GLOBAL', 'I\'m global.');
 
     $tmpl->addVar('template2', 'schst', array( 'one', 'two', 'repeat it.' ));
-    
+
     $tmpl->addVar('template1', 'argh', array( 'one', 'two', 'repeat it.' ));
-    
+
     $tmpl->addVars('template1', array(
                                         'foo' => 'This is a string',
                                         'bar' => 453

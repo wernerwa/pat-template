@@ -19,17 +19,17 @@
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
     $tmpl->readTemplatesFromInput('example_api_setattribute.tmpl');
 
     $tmpl->setAttribute('child', 'visibility', 'hidden');
-    
+
     $tmpl->displayParsedTemplate();

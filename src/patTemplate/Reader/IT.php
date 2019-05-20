@@ -45,7 +45,7 @@ class patTemplate_Reader_IT extends patTemplate_Reader
          * apply input filter before parsing
          */
         $string = $this->_tmpl->applyInputFilters($string);
-        
+
         $this->_inheritAtts =   array();
         $this->_elStack     =   array();
         $this->_data        =   array( '' );
@@ -54,9 +54,9 @@ class patTemplate_Reader_IT extends patTemplate_Reader
         $this->_templates   =   array();
         $this->_path        =   array();
         $this->_processedData   =   '';
-        
+
         $this->_defaultAtts =   $this->_tmpl->getDefaultAttributes();
-        
+
         if (!isset($this->_defaultAtts['autoload'])) {
             $this->_defaultAtts['autoload'] =   'on';
         }
@@ -66,7 +66,7 @@ class patTemplate_Reader_IT extends patTemplate_Reader
          */
         $attributes     = $this->_rootAtts;
         $attributes['name'] = '__global';
-        
+
         $rootTemplate   = $this->_initTemplate($attributes);
 
         array_push($this->_tmplStack, $rootTemplate);
@@ -123,7 +123,7 @@ class patTemplate_Reader_IT extends patTemplate_Reader
         $rootTemplate = array_pop($this->_tmplStack);
 
         $this->_closeTemplate($rootTemplate, $this->_data[0]);
-        
+
         /**
          * check for tags that are still open
          */
@@ -134,10 +134,10 @@ class patTemplate_Reader_IT extends patTemplate_Reader
                 $this->_createErrorMessage("No closing tag for {$el['ns']}:{$el['name']} found")
             );
         }
-        
+
         return  $this->_templates;
     }
-    
+
     /**
      * read templates from any input
      *
@@ -159,7 +159,7 @@ class patTemplate_Reader_IT extends patTemplate_Reader
         }
 
         $templates  =   $this->parseString($content);
-        
+
         return  $templates;
     }
 
@@ -212,18 +212,18 @@ class patTemplate_Reader_IT extends patTemplate_Reader
                 "Could not load templates from $file."
             );
         }
-        
+
         if (function_exists('file_get_contents')) {
             $content    =   @file_get_contents($file);
         } else {
             $content    =   implode('', file($file));
         }
-            
+
         /**
          * store the file name
          */
         array_push($this->_files, $file);
-        
+
         return  $content;
     }
 }

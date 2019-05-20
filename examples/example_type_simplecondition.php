@@ -11,19 +11,19 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
-    
+
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
@@ -34,12 +34,12 @@
                     array( 'foo' => 'foo' ),
                     array( 'foo' => 'foo', 'bar' => 0 )
                 );
-    
+
     $tmpl->addRows('cond', $rows);
     $tmpl->addVar('container', 'foo', 'This is foo!');
 
     $tmpl->addVar('cond3', 'foo', 'bar');
     $tmpl->addVar('cond4', 'foo', 'bar');
     $tmpl->addVar('cond4', 'argh', 'foobar');
-    
+
     $tmpl->displayParsedTemplate('root');

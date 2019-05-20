@@ -11,15 +11,15 @@
  */
 
  error_reporting(E_ALL);
- 
+
 /**
 * requires patErrorManager
 * make sure that it is in your include path
 */
 require_once 'pat/patErrorManager.php';
-    
+
 require_once '../patTemplate.php';
-    
+
 $tmpl = &new patTemplate();
 
 // set the location for database templates

@@ -17,7 +17,7 @@
  * template does not exist
  */
 define('PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE', 'patTemplate::Function::Call::NT');
- 
+
 /**
  * patTemplate function that enables you to insert any
  * template, that has been loaded previously into the
@@ -79,33 +79,33 @@ class patTemplate_Function_Call extends patTemplate_Function
         } else {
             return patErrorManager::raiseError(PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE, 'No template for Call function specified.');
         }
-        
+
         if (!$this->_tmpl->exists($tmpl)) {
             $tmpl = strtolower($tmpl);
-            
+
             // try some autoloading magic
             $componentLocation  = $this->_tmpl->getOption('componentFolder');
             $componentExtension = $this->_tmpl->getOption('componentExtension');
             $filename = $componentLocation . '/' . $tmpl . '.' . $componentExtension;
             $this->_tmpl->readTemplatesFromInput($filename);
-            
+
             // still does not exist
             if (!$this->_tmpl->exists($tmpl)) {
                 return patErrorManager::raiseError(PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE, 'Template '.$tmpl.' does not exist');
             }
         }
-        
+
         /**
          * clear template and all of its dependencies
          */
         $this->_tmpl->clearTemplate($tmpl, true);
-        
+
         /**
          * add variables
          */
         $this->_tmpl->addVars($tmpl, $params);
         $this->_tmpl->addVar($tmpl, 'CONTENT', $content);
-        
+
         /**
          * get content
          */

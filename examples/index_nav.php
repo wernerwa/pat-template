@@ -32,7 +32,7 @@ function toggleSection( section )
 {
     var el      =   document.getElementById( section );
     var sign    =   document.getElementById( section + '-sign' );
-    
+
     if( el.style.display == 'block' )
     {
         el.style.display    =   'none';

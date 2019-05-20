@@ -12,22 +12,22 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput('example_api_parseintovar.tmpl');
-    
+
     $tmpl->addVar('src', 'foo', 'tomato');
     $tmpl->parseIntoVar('src', 'dest', 'BAR');
 
@@ -35,5 +35,5 @@
     $tmpl->addVar('src', 'foo', 'coconut');
     $tmpl->parseIntoVar('src', 'dest', 'BAR', true);
 
-    
+
     $tmpl->displayParsedTemplate();

@@ -21,7 +21,7 @@ foreach ($types as $type) {
     $template->addVar('list_row', 'myVar', $type);
     shuffle($data);
     $template->addVar('list_entry', 'SOMETHING', $data);
-    
+
     $template->parseTemplate('list_row', 'a');
 }
 

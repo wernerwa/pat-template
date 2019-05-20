@@ -31,7 +31,7 @@ class patTemplate_Modifier_QuoteLatex extends patTemplate_Modifier
                         '_' => '\_',
                         '$' => '\$'
                     );
-    
+
     /**
      * modify the value
      *

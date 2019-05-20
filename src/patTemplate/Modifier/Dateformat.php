@@ -39,11 +39,11 @@ class patTemplate_Modifier_Dateformat extends patTemplate_Modifier
         if (!preg_match('/^[0-9]+$/', $value)) {
             $value = strtotime($value);
         }
-         
+
         if (isset($params['unix']) && $params['unix'] == 'yes') {
             return $value;
         }
-   
+
         if (!isset($params['format'])) {
             return $value;
         }

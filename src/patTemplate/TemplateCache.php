@@ -51,7 +51,7 @@ class patTemplate_TemplateCache extends patTemplate_Module
     {
         return false;
     }
-    
+
     /**
      * write template to cache
      *

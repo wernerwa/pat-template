@@ -15,18 +15,18 @@
  * @link        http://www.php-tools.net
  */
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
@@ -40,9 +40,9 @@
  breaks...');
 
     $tmpl->addVar('page', 'wrap', 'This contains some very long text that should be be wrapped. Furthermore it contains a very long woooooooooooooooooooord.');
-    
+
     $tmpl->addVar('page', 'wrap2', 'This contains some very long text that should be be wrapped. Furthermore it contains a very long woooooooooooooooooooord.');
-    
+
     $tmpl->addVar('page', 'surround', "Some texts contain linebreaks \nand Newlines \nand even more");
     $tmpl->addVar('page', 'surround2', "Some texts contain linebreaks \nand Newlines \nand even more");
     $tmpl->addVar('page', 'surround3', "First paragraph with some text.\nSeond paragraph with some more text.\nThird paragraph contains even more text.\n");

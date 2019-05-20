@@ -8,7 +8,7 @@
  * @subpackage  Readers
  * @author      Stephan Schmidt <schst@php.net>
  */
- 
+
 /**
  * patTemplate Reader that reads from a file
  *
@@ -34,7 +34,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @var      boolean
      */
     public $_isRemote = false;
-    
+
     /**
      * all files, that have been opened
      *
@@ -42,7 +42,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @var      array
      */
     public $_files = array();
-    
+
     /**
      * read templates from any input
      *
@@ -63,7 +63,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
         } else {
             $this->_currentInput = dirname($relative) . DIRECTORY_SEPARATOR . $input;
         }
-        
+
         $fullPath = $this->_resolveFullPath($input, $relative);
         if (patErrorManager::isError($fullPath)) {
             return $fullPath;
@@ -74,7 +74,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
         }
 
         $templates = $this->parseString($content);
-        
+
         return  $templates;
     }
 

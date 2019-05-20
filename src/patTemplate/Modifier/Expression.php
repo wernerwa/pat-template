@@ -52,7 +52,7 @@ class patTemplate_Modifier_Expression extends patTemplate_Modifier
         $params['expression'] = str_replace('$self', "'$value'", $params['expression']);
 
         @eval('$result = '.$params['expression'].';');
-        
+
         if ($result === true) {
             return str_replace('$self', $value, $params['true']);
         }

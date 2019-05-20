@@ -71,10 +71,10 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
             }
             return unserialize(file_get_contents($filename));
         }
-        
+
         return false;
     }
-    
+
     /**
      * write template to cache
      *

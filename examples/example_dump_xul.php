@@ -12,18 +12,18 @@
  * @link        http://www.php-tools.de
  */
     //error_reporting( E_ALL );
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput('example_dump_dhtml.tmpl');
@@ -35,18 +35,18 @@
                         array( 'superhero' => 'Batman', 'realname' => 'Bruce Wayne' ),
                         array( 'superhero' => 'Aquaman', 'realname' => 'Arthur Curry' ),
                     );
-                    
+
     $bigList = array();
-    
+
     $cnt = 50;
     for ($i=0; $i < $cnt; $i++) {
         foreach ($list as $row => $data) {
             array_push($bigList, $data);
         }
     }
-    
+
     $tmpl->addRows('list_entry', $bigList);
-    
+
     $conditionList = array(
         array(
             'argh' => 'something',
@@ -55,7 +55,7 @@
             'argh'  =>  'argh',
         ),
     );
-    
+
     $tmpl->addRows('with_conditions', $conditionList);
-    
+
     $tmpl->dump(null, 'XUL');

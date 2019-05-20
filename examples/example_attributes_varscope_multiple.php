@@ -12,24 +12,24 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
-    
+
     $tmpl->readTemplatesFromInput('example_attributes_varscope_multiple.tmpl');
-    
+
     $tmpl->addVar('storage1', 'foo', 'Varscope now accepts a list of templates.');
     $tmpl->addVar('storage2', 'bar', 'The first one has the highest priority');
-    
+
     $tmpl->displayParsedTemplate('page');

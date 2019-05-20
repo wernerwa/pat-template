@@ -43,16 +43,16 @@ class patTemplate_Modifier_Surround extends patTemplate_Modifier
         $delimiter  =   "\n";
         $start      =   '';
         $end        =   '';
-    
+
         // where to split
         if (isset($params['delimiter'])) {
             $delimiter  =   $params['delimiter'];
         }
-        
+
         if (isset($params['start'])) {
             $start  =   $params['start'];
         }
-        
+
         if (isset($params['end'])) {
             $end    =   $params['end'];
         }
@@ -64,17 +64,17 @@ class patTemplate_Modifier_Surround extends patTemplate_Modifier
 
         $split  =   explode($delimiter, $value);
         $value  =   implode($end . $start, $split);
-        
+
         // add first?
         if (!isset($params['withfirst']) || $params['withfirst'] !== 'no') {
             $value  =   $start . $value;
         }
-        
+
         // add last?
         if (!isset($params['withlast']) || $params['withlast'] !== 'no') {
             $value  .=  $end;
         }
-        
+
         return $value;
     }
 }

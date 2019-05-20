@@ -29,7 +29,7 @@
 
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
-    
+
     $tmpl->applyInputFilter('ShortModifiers');
 
     $tmpl->readTemplatesFromInput('example_var_modifier_varscope.tmpl');

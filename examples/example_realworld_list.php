@@ -17,18 +17,18 @@
                         array( 'superhero' => 'Batman', 'realname' => 'Bruce Wayne' ),
                         array( 'superhero' => 'Aquaman', 'realname' => 'Arthur Curry' ),
                     );
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 

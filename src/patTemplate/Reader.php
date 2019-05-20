@@ -1240,7 +1240,7 @@ class patTemplate_Reader extends patTemplate_Module
 
             if (strstr($specs['copyfrom'], '.')) {
                 $specs['copyfrom']    = explode('.', $specs['copyfrom']);
-                
+
                 if ($specs['copyfrom'][0] == '__PARENT') {
                     $specs['copyfrom'][0] = $this->_getFromParentTemplate('name', 2);
                 } else {

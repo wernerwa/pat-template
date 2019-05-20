@@ -69,15 +69,15 @@ class patTemplate_Function_Globalvar extends patTemplate_Function
         if (isset($params['default'])) {
             $this->_tmpl->addGlobalVar($params['name'], $params['default']);
         }
-        
+
         if (!isset($params['hidden'])) {
             $params['hidden'] = 'no';
         }
-        
+
         if ($params['hidden'] != 'yes') {
             return $this->_tmpl->getOption('startTag').strtoupper($params['name']).$this->_tmpl->getOption('endTag');
         }
-            
+
         return '';
     }
 }

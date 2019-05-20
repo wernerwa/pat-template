@@ -54,31 +54,31 @@ class patTemplate_Modifier_Truncate extends patTemplate_Modifier
             $strlen =   'mb_strlen';
             $substr =   'mb_substr';
         }
-        
+
         // start
         if (isset($params['start'])) {
             settype($params['start'], 'integer');
         } else {
             $params['start'] = 0;
         }
-        
+
         // prefix
         if (isset($params['prefix'])) {
             $prefix = ($params['start'] == 0 ? '' : $params['prefix']);
         } else {
             $prefix = '';
         }
-        
+
         // suffix
         if (isset($params['suffix'])) {
             $suffix = $params['suffix'];
         } else {
             $suffix = '';
         }
-        
+
         $initial_len = $strlen($value);
         $value = $substr($value, $params['start'], $params['length']);
-        
+
         if ($initial_len <= $strlen($value)) {
             $suffix = '';
         }

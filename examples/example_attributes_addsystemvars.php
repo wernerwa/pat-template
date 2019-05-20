@@ -32,18 +32,18 @@
  */
 
     error_reporting(E_ALL);
- 
+
    /**
     * requires patErrorManager
     * make sure that it is in your include path
     */
     require_once('pat/patErrorManager.php');
-    
+
    /**
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
@@ -52,5 +52,5 @@
     $tmpl->addVar('tmpl-1', 'dummy', array( 'one', 'two', 'three', 'four', 'five' ));
     $tmpl->addVar('tmpl-2', 'dummy', array( 'one', 'two', 'three', 'four', 'five' ));
     $tmpl->addVar('tmpl-3', 'dummy', array( 'one', 'two', 'three', 'four', 'five' ));
-    
+
     $tmpl->displayParsedTemplate('page');

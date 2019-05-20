@@ -10,7 +10,7 @@
  * @subpackage  Examples
  * @link        http://www.php-tools.net
  */
- 
+
     error_reporting(E_ALL);
 
    /**
@@ -23,7 +23,7 @@
     * main class
     */
     require_once '../patTemplate.php';
-    
+
     $tmpl   =   &new patTemplate();
     $tmpl->setRoot('templates');
 
