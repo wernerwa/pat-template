@@ -1,34 +1,33 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of the unusedvars attribute
  *
  * $Id: example_attributes_limit.php 439 2006-08-08 20:56:01Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
- 	error_reporting( E_ALL );
+    error_reporting(E_ALL);
  
    /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
+    * requires patErrorManager
+    * make sure that it is in your include path
+    */
+    require_once('pat/patErrorManager.php');
+    
    /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
+    * main class
+    */
+    require_once '../patTemplate.php';
+    
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->readTemplatesFromInput( 'example_attributes_limit.tmpl' );
+    $tmpl->readTemplatesFromInput('example_attributes_limit.tmpl');
 
-	$heroes = array( 'Superman', 'Batman', 'Green Lantern', 'Robin', 'Wonder Woman', 'Powergirl' );
-	$tmpl->addVar( 'row', 'hero', $heroes );
-	
-	$tmpl->displayParsedTemplate();
-?>
+    $heroes = array( 'Superman', 'Batman', 'Green Lantern', 'Robin', 'Wonder Woman', 'Powergirl' );
+    $tmpl->addVar('row', 'hero', $heroes);
+    
+    $tmpl->displayParsedTemplate();

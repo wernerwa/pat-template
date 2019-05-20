@@ -39,10 +39,10 @@ class patTemplate_Modifier_Truncate extends patTemplate_Modifier
     * @param  string    value
     * @return  string    modified value
     */
-    function modify($value, $params = array())
+    public function modify($value, $params = array())
     {
         // length
-        if (!isset( $params['length'])) {
+        if (!isset($params['length'])) {
             return $value;
         }
         settype($params['length'], 'integer');
@@ -50,14 +50,14 @@ class patTemplate_Modifier_Truncate extends patTemplate_Modifier
         // use multibyte strings
         $strlen =   'strlen';
         $substr =   'substr';
-        if( isset( $params['usemb'] ) && $params['usemb'] == 'yes' ) {
+        if (isset($params['usemb']) && $params['usemb'] == 'yes') {
             $strlen =   'mb_strlen';
             $substr =   'mb_substr';
         }
         
         // start
         if (isset($params['start'])) {
-            settype( $params['start'], 'integer' );
+            settype($params['start'], 'integer');
         } else {
             $params['start'] = 0;
         }
@@ -76,7 +76,7 @@ class patTemplate_Modifier_Truncate extends patTemplate_Modifier
             $suffix = '';
         }
         
-        $initial_len = $strlen($value);    
+        $initial_len = $strlen($value);
         $value = $substr($value, $params['start'], $params['length']);
         
         if ($initial_len <= $strlen($value)) {
@@ -86,4 +86,3 @@ class patTemplate_Modifier_Truncate extends patTemplate_Modifier
         return $prefix.$value.$suffix;
     }
 }
-?>

@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that uses the IT reader instead
  * of the default file reader.
@@ -8,28 +8,27 @@
  *
  * $Id: example_reader_file_multiple.php 384 2005-04-03 16:36:28Z schst $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.de
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.de
  */
 
- 	error_reporting( E_ALL );
+    error_reporting(E_ALL);
  
    /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once 'pat/patErrorManager.php';
-	
+    * requires patErrorManager
+    * make sure that it is in your include path
+    */
+    require_once 'pat/patErrorManager.php';
+    
    /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( array('templates', 'templates-2'));
+    * main class
+    */
+    require_once '../patTemplate.php';
+    
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot(array('templates', 'templates-2'));
 
-	$tmpl->readTemplatesFromInput('example_reader_file_multiple.tmpl');
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->readTemplatesFromInput('example_reader_file_multiple.tmpl');
+    $tmpl->displayParsedTemplate();

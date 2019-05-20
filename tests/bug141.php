@@ -13,4 +13,3 @@ $template->readTemplatesFromFile('pages/bug141.tmpl');
 
 // parse and display the template
 $template->DisplayParsedTemplate();
-?>

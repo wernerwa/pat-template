@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of variable modifiers
  *
@@ -9,41 +9,42 @@
  *
  * $Id: example_var_modifier.php 297 2004-10-03 11:35:57Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
- 	error_reporting( E_ALL );
+    error_reporting(E_ALL);
 
 /**
  * A method of this class will be
  * called to calculate the default
  * value of a variable
  */
- class Foo {
-     function bar() {
-         return "tomato";
-     }
- }
+class Foo
+{
+    public function bar()
+    {
+        return "tomato";
+    }
+}
 
    /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
+    * requires patErrorManager
+    * make sure that it is in your include path
+    */
+    require_once('pat/patErrorManager.php');
 
    /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
+    * main class
+    */
+    require_once '../patTemplate.php';
 
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->setOption('allowFunctionsAsDefault', true);
+    $tmpl->setOption('allowFunctionsAsDefault', true);
 
-	$tmpl->readTemplatesFromInput( 'example_var_default_function.tmpl' );
+    $tmpl->readTemplatesFromInput('example_var_default_function.tmpl');
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->displayParsedTemplate();

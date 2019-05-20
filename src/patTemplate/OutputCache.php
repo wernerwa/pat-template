@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Base class for patTemplate output cache
  *
@@ -12,9 +12,9 @@
  *
  * This is not related to a template cache!
  *
- * @package		patTemplate
- * @subpackage	Caches
- * @author		Stephan Schmidt <schst@php.net>
+ * @package     patTemplate
+ * @subpackage  Caches
+ * @author      Stephan Schmidt <schst@php.net>
  */
 
 /**
@@ -31,11 +31,10 @@
  * This is not related to a template cache!
  *
  * @abstract
- * @package		patTemplate
- * @subpackage	Caches
- * @author		Stephan Schmidt <schst@php.net>
+ * @package     patTemplate
+ * @subpackage  Caches
+ * @author      Stephan Schmidt <schst@php.net>
  */
 class patTemplate_OutputCache extends patTemplate_Module
 {
 }
-?>

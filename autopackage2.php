@@ -8,9 +8,9 @@
  *
  * $Id: autopackage2.php 452 2007-05-11 09:18:06Z argh $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Tools
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Tools
  */
 
 
@@ -28,8 +28,8 @@ $baseVersion = '3.1.0';
 /**
  * current version
  */
-$version	= $baseVersion . 'dev' . $argv[1];
-$dir		= dirname( __FILE__ );
+$version    = $baseVersion . 'dev' . $argv[1];
+$dir        = dirname(__FILE__);
 
 /**
  * Current API version
@@ -136,7 +136,7 @@ $result = $package->setOptions(array(
     'baseinstalldir'    => 'pat',
     'packagedirectory'  => './',
     'dir_roles'         => array(
-								 'docs' => 'doc',
+                                 'docs' => 'doc',
                                  'examples' => 'doc',
                                  'tests' => 'test',
                                  )
@@ -180,4 +180,3 @@ if (PEAR::isError($result)) {
     echo $result->getMessage();
     die();
 }
-?>

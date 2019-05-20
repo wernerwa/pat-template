@@ -25,4 +25,3 @@ echo '<pre>';
 echo 'Display template with setting more than one value';
 echo htmlentities($tmpl->getParsedTemplate('table'));
 echo '<pre>';
-?>

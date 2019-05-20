@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of variable modifiers
  *
@@ -9,35 +9,34 @@
  *
  * $Id: example_var_modifier_default.php 377 2005-03-24 12:30:47Z schst $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
- 	error_reporting( E_ALL );
+    error_reporting(E_ALL);
  
    /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
+    * requires patErrorManager
+    * make sure that it is in your include path
+    */
+    require_once('pat/patErrorManager.php');
+    
    /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
+    * main class
+    */
+    require_once '../patTemplate.php';
+    
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->readTemplatesFromInput( 'example_var_modifier_default.tmpl' );
+    $tmpl->readTemplatesFromInput('example_var_modifier_default.tmpl');
 
-	$tmpl->addVar( 'page', 'sometext', 'This contains some special chars: < > & äÖÜ' );
+    $tmpl->addVar('page', 'sometext', 'This contains some special chars: < > & äÖÜ');
 
-	$tmpl->addVar( 'page', 'multiline', 'This contains
+    $tmpl->addVar('page', 'multiline', 'This contains
  some
  line
- breaks...' );
+ breaks...');
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->displayParsedTemplate();

@@ -21,4 +21,3 @@ header('Content-Type: text/html; charset=utf-8');
 
 // parse and display the template
 $template->DisplayParsedTemplate();
-?>

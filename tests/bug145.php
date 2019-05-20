@@ -17,4 +17,3 @@ $template->addVar('page', 'foo', 'Variable set');
 
 // parse and display the template
 $template->DisplayParsedTemplate();
-?>

@@ -1,12 +1,12 @@
-<?PHP
+<?php
 /**
  * patTemplate modfifier Dateformat
  *
  * $Id: Dateformat.php 450 2007-01-11 08:32:32Z gerd $
  *
- * @package		patTemplate
- * @subpackage	Modifiers
- * @author		Stephan Schmidt <schst@php.net>
+ * @package     patTemplate
+ * @subpackage  Modifiers
+ * @author      Stephan Schmidt <schst@php.net>
  */
 
 /**
@@ -20,24 +20,24 @@
  * See the PHP documentation for strftime() for
  * more information.
  *
- * @package		patTemplate
- * @subpackage	Modifiers
- * @author		Stephan Schmidt <schst@php.net>
- * @link		http://www.php.net/manual/en/function.strftime.php
+ * @package     patTemplate
+ * @subpackage  Modifiers
+ * @author      Stephan Schmidt <schst@php.net>
+ * @link        http://www.php.net/manual/en/function.strftime.php
  */
 class patTemplate_Modifier_Dateformat extends patTemplate_Modifier
 {
-   /**
-	* modify the value
-	*
-	* @access	public
-	* @param	string		value
-	* @return	string		modified value
-	*/
-	function modify( $value, $params = array() )
-	{
+    /**
+     * modify the value
+     *
+     * @access   public
+     * @param    string      value
+     * @return   string      modified value
+     */
+    public function modify($value, $params = array())
+    {
         if (!preg_match('/^[0-9]+$/', $value)) {
-        	$value = strtotime($value);
+            $value = strtotime($value);
         }
          
         if (isset($params['unix']) && $params['unix'] == 'yes') {
@@ -48,7 +48,6 @@ class patTemplate_Modifier_Dateformat extends patTemplate_Modifier
             return $value;
         }
 
-		return strftime($params['format'], $value);
-	}
+        return strftime($params['format'], $value);
+    }
 }
-?>

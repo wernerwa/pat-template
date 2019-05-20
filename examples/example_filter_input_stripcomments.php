@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of input filters
  *
@@ -8,37 +8,36 @@
  *
  * $Id: example_filter_input_stripcomments.php 155 2004-04-20 20:16:43Z schst $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
- * @see			patTemplate::applyInputFilter()
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
+ * @see         patTemplate::applyInputFilter()
  */
  
- 	error_reporting( E_ALL );
+    error_reporting(E_ALL);
  
    /**
-	* requires patErrorManager
-	* make sure that it is in your include path
-	*/
-	require_once( 'pat/patErrorManager.php' );
-	
+    * requires patErrorManager
+    * make sure that it is in your include path
+    */
+    require_once('pat/patErrorManager.php');
+    
    /**
-	* main class
-	*/
-	require_once '../patTemplate.php';
-	
+    * main class
+    */
+    require_once '../patTemplate.php';
+    
 
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	/**
-	 * you may apply as many filters as you like in
-	 * the filter chain
-	 */
-	$tmpl->applyInputFilter( 'StripComments' );
-	
-	$tmpl->readTemplatesFromInput( 'example_filter_input_stripcomments.tmpl' );
+    /**
+     * you may apply as many filters as you like in
+     * the filter chain
+     */
+    $tmpl->applyInputFilter('StripComments');
+    
+    $tmpl->readTemplatesFromInput('example_filter_input_stripcomments.tmpl');
 
-	$tmpl->dump();
-?>
+    $tmpl->dump();
