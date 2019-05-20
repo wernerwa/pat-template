@@ -1,16 +1,23 @@
-<!-- $Id: example_type_simplecondition.tmpl 269 2004-08-19 08:25:25Z schst $ -->
+<!-- $Id: example_type_simplecondition.tmpl 341 2004-12-30 16:29:05Z schst $ -->
 <patTemplate:tmpl name="root">
 	<patTemplate:tmpl name="cond" type="simplecondition" requiredvars="foo, bar">
-	foo ({FOO}) and bar ({BAR}) are set...<br>
+	foo ({FOO}) and bar ({BAR}) are set...<br />
 	</patTemplate:tmpl>
 
 	<patTemplate:tmpl name="cond2" type="simplecondition" requiredvars="container.foo">
-	This is a template that depends on container<br>
+	This is a template that depends on container<br />
 	</patTemplate:tmpl>
 	
 	<patTemplate:tmpl name="container">
-	In container: {FOO}<br>
+	In container: {FOO}<br />
 	</patTemplate:tmpl>
 
-</patTemplate:tmpl>
+	<patTemplate:tmpl name="cond3" type="simplecondition" requiredvars="foo=bar">
+	This is a template that uses a simplecondition with a predefined value.<br />
+	</patTemplate:tmpl>
 
+	<patTemplate:tmpl name="cond4" type="simplecondition" requiredvars="argh, foo=bar">
+	This is a template that uses a simplecondition with a predefined value as well as a variable that only is required.<br />
+	</patTemplate:tmpl>
+	
+</patTemplate:tmpl>

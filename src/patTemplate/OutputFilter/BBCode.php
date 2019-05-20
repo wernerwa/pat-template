@@ -2,7 +2,7 @@
 /**
  * patTemplate BBCode output filter
  *
- * $Id: BBCode.php 255 2004-07-23 21:01:43Z schst $
+ * $Id: BBCode.php 408 2005-07-21 11:19:36Z argh $
  *
  * Uses patBBCode.
  *
@@ -14,13 +14,29 @@
 /**
  * patTemplate BBCode output filter
  *
- * $Id: BBCode.php 255 2004-07-23 21:01:43Z schst $
+ * $Id: BBCode.php 408 2005-07-21 11:19:36Z argh $
  *
- * Uses patBBCode.
+ * Uses patBBCode. Note that patBBCode's syntax is not
+ * entirely the same than the 'official' BBCode. See the
+ * patBBCode projet page for details.
+ *
+ * The following parameters are available:
+ *
+ * - skinDir (required)
+ *   The folder where BBCode templates are stored
+ *   
+ * - reader (required)
+ *   The type of reader to use
+ *
+ * - BBCode (optional)
+ *   A fully configured BBCode objet to use. The other
+ *   two options are not required if you set this.
  *
  * @package		patTemplate
  * @subpackage	Filters
  * @author		Stephan Schmidt <schst@php.net>
+ * @author 		Sebastian Mordziol <argh@php-tools.net>
+ * @link 		http://www.php-tools.net/site.php?file=patBBCode/Overview.xml
  */
 class patTemplate_OutputFilter_BBCode extends patTemplate_OutputFilter
 {
@@ -65,8 +81,18 @@ class patTemplate_OutputFilter_BBCode extends patTemplate_OutputFilter
 	*/
 	function _prepare()
 	{
-		if( is_object( $this->BBCode ) )
+		// there already is a BBCode object
+		if( is_object( $this->BBCode ) ) {
 			return true;
+		}
+		
+		// maybe a fully configured BBCode object was provided?
+		if( isset( $this->_params['BBCode'] ) ) {
+			$this->BBCode =& $this->_params['BBCode'];
+			return true;
+		}
+		
+		// include the patBBCode class
 		if( !class_exists( 'patBBCode' ) )
 		{
 			if( !@include_once 'pat/patBBCode.php' )

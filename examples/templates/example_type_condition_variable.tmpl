@@ -1,0 +1,16 @@
+<!-- $Id: example_type_condition_variable.tmpl 390 2005-04-11 15:07:03Z schst $ -->
+<patTemplate:tmpl name="cond" type="condition" conditionvar="foo">
+
+	<patTemplate:sub condition="__default">
+	<div>{FOO}</div>
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="{BAR}">
+    <div style="font-weight:bold; background-color: #cc0000;">{FOO}</div>
+	</patTemplate:sub>
+
+	<patTemplate:sub condition="test">
+    <div style="font-weight:bold; background-color: #cc00cc;">{FOO}</div>
+	</patTemplate:sub>
+	
+</patTemplate:tmpl>

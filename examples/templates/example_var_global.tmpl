@@ -1,0 +1,43 @@
+<!-- $Id: example_var_global.tmpl 295 2004-10-02 14:01:15Z gerd $ -->
+<patTemplate:tmpl name="page">
+<table border="1">
+	<tr>
+		<th>template</th>
+		<th>var</th>
+		<th>value</th>
+	</tr>
+	<tr>
+		<td>page</td>
+		<td>SOMETEXT</td>
+		<td>{SOMETEXT}</td>
+	</tr>
+	<tr>
+		<td>page</td>
+		<td>GLOBALTEXT</td>
+		<td>{GLOBALTEXT}</td>
+	</tr>
+	<tr>
+		<td>page</td>
+		<td>SOMETEXT</td>
+		<td><patTemplate:var name="sometext_pretty" modifier="nl2br" copyfrom="sometext"/></td>
+	</tr>
+	<tr>
+		<td>page</td>
+		<td>GLOBALTEXT</td>
+		<td><patTemplate:var name="globaltext_pretty" modifier="nl2br" copyfrom="globaltext"/></td>
+	</tr>
+<patTemplate:tmpl name="nested">
+	<tr>
+		<td>nested</td>
+		<td>SOMETEXT</td>
+		<td><patTemplate:var name="sometext_strrev" modifier="strrev" copyfrom="page.sometext"/></td>
+	</tr>
+	<tr>
+		<td>nested</td>
+		<td>GLOBALTEXT</td>
+		<td><patTemplate:var name="globaltext_strrev" modifier="strrev" copyfrom="page.globaltext"/></td>
+	</tr>
+</patTemplate:tmpl>
+
+</table>
+</patTemplate:tmpl>

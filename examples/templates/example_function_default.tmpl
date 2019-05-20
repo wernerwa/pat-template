@@ -1,0 +1,21 @@
+<!-- $Id: example_function_default.tmpl 307 2004-10-27 10:54:48Z schst $ -->
+<patTemplate:tmpl name="page">
+
+<patTemplate:News date="2004-07-08" author="Stephan Schmidt" headline="patTemplate goes Randy">
+	By using the new &lt;patTemplate:Call/&gt; function, it is possible to define
+	often used design elements in one template file and then re-use these components
+	to display any information you need.<br />
+	The Function allows you to pass any number of attributes as variables of your
+	component templates.<br />
+	<patTemplate:Hint title="Calls may be nested.">
+		You may nest the Call tags as deep as you like, this brings
+		most of patXMLRenderers functionality to patTemplate.
+	</patTemplate:Hint>
+</patTemplate:News>
+
+<patTemplate:News date="2004-07-07" author="Stephan Schmidt" headline="Been to the Spidey-Night.">
+	This shows you ho to reuse the templates. If you need the change the layout of this news block, you
+	only need to change it once and all news entries will have the design you created.
+</patTemplate:News>
+
+</patTemplate:tmpl>

@@ -1,0 +1,22 @@
+<!-- $Id: example_var_modifier_short.tmpl 434 2006-08-08 19:44:13Z schst $ -->
+<patTemplate:tmpl name="page">
+<p>
+    No modifier: {SOMETEXT}
+</p>
+<p>
+    modifier: <font color="#FF0000">{MULTILINE|nl2br}</font>
+</p>
+<p>
+    more modifiers: <font color="#FF0000">{MULTILINE|md5,ucfirst,strrev}</font>
+</p>
+<p>
+    modifier with arguments: {NOW|Dateformat|format:%d.%m.%Y}
+</p>
+<p>
+    Use the original: {NOW}
+</p>
+<p>
+    escaped: <font color="#FF0000">\{MULTILINE|nl2br\}</font>
+</p>
+
+</patTemplate:tmpl>

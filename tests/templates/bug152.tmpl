@@ -1,0 +1,10 @@
+<patTemplate:tmpl name="cond-with-single" type="condition" conditionvar="myvar">
+  <patTemplate:sub condition="__single">__single {MYVAR}<br/></patTemplate:sub>
+  <patTemplate:sub condition="__first">__first {MYVAR}<br/></patTemplate:sub>
+  <patTemplate:sub condition="__default">__default {MYVAR}<br/></patTemplate:sub>
+</patTemplate:tmpl>
+
+<patTemplate:tmpl name="cond-without-single" type="condition" conditionvar="myvar">
+  <patTemplate:sub condition="__first">__first {MYVAR}<br/></patTemplate:sub>
+  <patTemplate:sub condition="__default">__default {MYVAR}<br/></patTemplate:sub>
+</patTemplate:tmpl>

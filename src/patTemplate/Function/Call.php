@@ -6,7 +6,7 @@
  *
  * You may pass any variables to the template.
  *
- * $Id: Call.php 249 2004-07-08 18:37:57Z schst $
+ * $Id: Call.php 321 2004-10-28 15:41:57Z schst $
  *
  * @package		patTemplate
  * @subpackage	Functions
@@ -25,7 +25,7 @@ define( 'PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE', 'patTemplate::Function::C
  *
  * You may pass any variables to the template.
  *
- * $Id: Call.php 249 2004-07-08 18:37:57Z schst $
+ * $Id: Call.php 321 2004-10-28 15:41:57Z schst $
  *
  * @package		patTemplate
  * @subpackage	Functions
@@ -56,7 +56,7 @@ class patTemplate_Function_Call extends patTemplate_Function
 	*/
 	function setTemplateReference( &$tmpl )
 	{
-		$this->_tmpl		=	&$tmpl;
+		$this->_tmpl = &$tmpl;
 	}
 
    /**
@@ -69,11 +69,31 @@ class patTemplate_Function_Call extends patTemplate_Function
 	*/ 
 	function call( $params, $content )
 	{
-		$tmpl = $params['template'];
-		unset( $params['template'] );
-		if( !$this->_tmpl->exists( $tmpl ) )
-		{
-			return patErrorManager::raiseError( PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE, 'Template '.$tmpl.' does not exist' );
+		// get the name of the template to use
+		if (isset($params['template'])) {
+			$tmpl = $params['template'];
+			unset( $params['template'] );
+		} elseif (isset($params['_originalTag'])) {
+			$tmpl = $params['_originalTag'];
+			unset( $params['_originalTag'] );
+		} else {
+			return patErrorManager::raiseError( PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE, 'No template for Call function specified.' );
+		} 
+		
+		if (!$this->_tmpl->exists( $tmpl )) {
+
+			$tmpl = strtolower($tmpl);
+			
+			// try some autoloading magic
+			$componentLocation  = $this->_tmpl->getOption('componentFolder');
+			$componentExtension = $this->_tmpl->getOption('componentExtension');
+			$filename = $componentLocation . '/' . $tmpl . '.' . $componentExtension;
+			$this->_tmpl->readTemplatesFromInput($filename);
+			
+			// still does not exist
+			if( !$this->_tmpl->exists( $tmpl ) ) {
+				return patErrorManager::raiseError( PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE, 'Template '.$tmpl.' does not exist' );
+			}
 		}
 		
 		/**

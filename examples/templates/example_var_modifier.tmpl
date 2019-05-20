@@ -1,4 +1,4 @@
-<!-- $Id: example_var_modifier.tmpl 216 2004-05-20 16:01:41Z schst $ -->
+<!-- $Id: example_var_modifier.tmpl 439 2006-08-08 20:56:01Z gerd $ -->
 <patTemplate:tmpl name="page">
 Apply a modifier to sometext:
 <patTemplate:var name="sometext" modifier="htmlentities" modifierType="php"/>
@@ -14,6 +14,31 @@ Apply a modifier to a long text:<br />
 
 Again:<br />
 <patTemplate:var name="wrap2" modifier="wordwrapper" modifierType="custom" width="20" cut="yes" nl2br="yes"/>
+<hr />
+
+Apply Surround modifier:<br />
+<patTemplate:var name="surround" modifier="surround" modifierType="custom" />
+<hr />
+Again the Surround modifier:<br />
+<patTemplate:var name="surround2" modifier="surround" modifierType="custom" end="&lt;br /&gt;" keepdelimiter="yes" />
+<hr />
+
+This modifier treats the text paragraphs<br />
+<patTemplate:var name="surround3" modifier="surround" modifierType="custom" start="&lt;div style=&quot;padding-bottom:10px;&quot;&gt;" end="&lt;/div&gt;" keepdelimiter="yes" />
+<hr />
+
+This modifier treats the text as list items<br />
+<ol>
+<patTemplate:var name="surround4" modifier="surround" modifierType="custom" delimiter=":" start="&lt;li&gt;" end="&lt;/li&gt;" keepdelimiter="no" />
+</ol>
+<hr />
+
+Why not try to &quot;emulates&quot; list items<br />
+<patTemplate:var name="surround5" modifier="surround" modifierType="custom" delimiter=":" start="- " end="&lt;br /&gt;" withfirst="no" withlast="no" />
+<hr />
+
+This time the list is comma separated<br />
+<patTemplate:var name="surround6" modifier="surround" modifierType="custom" delimiter=":" start="" end=", " withlast="no" />
 <hr />
 
 Dateformat modfifier:<br />

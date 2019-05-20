@@ -2,7 +2,7 @@
 /**
  * patTemplate reader that reads HTML_Template_IT files
  *
- * $Id: IT.php 232 2004-06-04 19:40:02Z schst $
+ * $Id: IT.php 413 2005-08-05 13:51:01Z schst $
  *
  * @package		patTemplate
  * @subpackage	Readers
@@ -192,8 +192,8 @@ class patTemplate_Reader_IT extends patTemplate_Reader
 	*/	
 	function _resolveFullPath( $filename )
 	{
-		$baseDir	=	$this->_options['root'];
-		$fullPath	=	$baseDir . '/' . $filename;
+		$baseDir  = $this->getTemplateRoot();
+		$fullPath = $baseDir . '/' . $filename;
 		return	$fullPath;
 	}
 
@@ -206,7 +206,6 @@ class patTemplate_Reader_IT extends patTemplate_Reader
 	*/	
 	function _getFileContents( $file )
 	{
-
 		if( !file_exists( $file ) || !is_readable( $file ) )
 		{
 			return patErrorManager::raiseError(

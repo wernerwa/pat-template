@@ -1,6 +1,6 @@
 Notes
 -----
-$Id: notes.txt 213 2004-05-17 19:01:27Z schst $
+$Id: notes.txt 322 2004-10-28 15:51:30Z schst $
 
 Known issues:
 -------------
@@ -10,13 +10,13 @@ Known issues:
 
 Todo:
 -----
-* Implement 'realtime' functions.
-  Realtime functions are object that will store template content and parse the
+* Implement 'runtime' functions.
+  Runtime functions are object that will store template content and parse the
   content instead of the patTemplate processor.
   
   class patTemplate_Function_Foo extends patTemplate_Function
   {
-    var $type = PATTEMPLATE_FUNCTION_REALTIME;
+    var $type = PATTEMPLATE_FUNCTION_RUNTIME;
 	
 	/**
 	 * called, when the tag is found
@@ -34,5 +34,6 @@ Todo:
   
 * Implement output cache
 * Implement instance
-* Find a way to "quote" { and }
 * implement parseInto="foo.bar"
+* Implement __autoload(), which is called, when a template is accessed that's
+  not yet loaded

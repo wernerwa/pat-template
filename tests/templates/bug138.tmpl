@@ -1,0 +1,37 @@
+<patTemplate:tmpl name="table">
+<table>
+<patTemplate:tmpl name="row" type="condition" conditionvar="VALUE">
+    <patTemplate:sub condition="__single">
+	<tr>
+		<td bgcolor="#FFFF99">single ({VALUE})</td>
+	</tr>
+    </patTemplate:sub>
+    <patTemplate:sub condition="__first">
+	<tr>
+		<td bgcolor="#FFFF99">first ({VALUE})</font></td>
+	</tr>
+	<tr>
+		<td height="5" bgcolor="#FFFF99"></td>
+	</tr>
+    </patTemplate:sub>
+    <patTemplate:sub condition="__default">
+	<tr>
+		<td bgcolor="#FFFF99">default ({VALUE})</font></td>
+	</tr>
+	<tr>
+		<td height="5" bgcolor="#FFFF99"></td>
+	</tr>
+    </patTemplate:sub>
+    <patTemplate:sub condition="__last">
+	<tr>
+		<td bgcolor="#FFFF99">last ({VALUE})</td>
+	</tr>
+    </patTemplate:sub>
+    <patTemplate:sub condition="__empty">
+	<tr>
+		<td bgcolor="#FFFF99">empty ({VALUE})</td>
+	</tr>
+    </patTemplate:sub>
+</patTemplate:tmpl>
+</table>
+</patTemplate:tmpl>

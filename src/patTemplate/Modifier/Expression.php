@@ -2,7 +2,7 @@
 /**
  * patTemplate modfifier Expression
  *
- * $Id: Expression.php 242 2004-06-29 21:12:57Z schst $
+ * $Id: Expression.php 330 2004-11-30 20:46:36Z schst $
  *
  * @package		patTemplate
  * @subpackage	Modifiers
@@ -50,9 +50,11 @@ class patTemplate_Modifier_Expression extends patTemplate_Modifier
         $params['expression'] = str_replace( '$self', "'$value'", $params['expression'] );
 
         @eval( '$result = '.$params['expression'].';' );
-        if( $result === true )
-            return $params['true'];
-        return $params['false'];
+        
+        if ($result === true) {
+            return str_replace( '$self', $value, $params['true'] );
+        }
+        return str_replace( '$self', $value, $params['false'] );
 	}
 }
 ?>

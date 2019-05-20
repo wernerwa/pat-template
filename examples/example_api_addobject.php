@@ -3,7 +3,7 @@
  * patTemplate example that displays the
  * usage of parseIntoVar()
  *
- * $Id: example_api_addobject.php 227 2004-06-03 18:14:13Z schst $
+ * $Id: example_api_addobject.php 347 2004-12-31 13:51:45Z schst $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -43,10 +43,24 @@
 	$obj3 = new stdClass;
 	$obj3->name    = 'Oliver';
 	$obj3->surname = 'Queen';
-	$obj->age     = '35';
+	$obj3->age     = '35';
 
 	$tmpl->addObject( 'row', array( $obj, $obj2, $obj3 ), 'obj2_' );
 	
 	$tmpl->displayParsedTemplate();
 
+	$tmpl->freeAllTemplates();
+
+	$tmpl->readTemplatesFromInput( 'example_api_addobject.tmpl' );
+
+	$obj4 = new stdClass;
+	$obj4->name    = 'Oliver';
+	$obj4->surname = 'Queen';
+	$obj4->age      = '35';
+	$obj4->_private = new stdClass();
+	$obj4->_private->bar = 'foo';
+	
+	// the fourth parameter tells patTemplate to ignore properties that start with an underscore
+	$tmpl->addObject( 'page', $obj4, 'obj_', true );
+	$tmpl->displayParsedTemplate();
 ?>

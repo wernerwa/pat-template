@@ -2,7 +2,7 @@
 /**
  * Dumps templates as HTML
  *
- * $Id: Html.php 351 2004-12-31 14:02:12Z schst $
+ * $Id: Html.php 356 2005-01-04 19:30:59Z schst $
  *
  * @package		patTemplate
  * @subpackage	Dump
@@ -490,6 +490,9 @@ class patTemplate_Dump_Html extends patTemplate_Dump
 				    } else {
 				    	$var = $tmp[1];
 				    }
+				    if ($tmp[2] !== null) {
+				    	$var = $var . '='.$tmp[2];
+				    }
 				    array_push($requiredvars, $var);
 				}
 				
@@ -516,8 +519,13 @@ class patTemplate_Dump_Html extends patTemplate_Dump
 		/**
 		 * varscope
 		 */
-		if( isset( $tmpl['attributes']['varscope'] ) )
-			$this->_displayLine( 'Varscope', $tmpl['attributes']['varscope'] );
+		if (isset($tmpl['attributes']['varscope'])) {
+            if (is_array($tmpl['attributes']['varscope'])) {
+                $this->_displayLine( 'Varscope', implode(', ', $tmpl['attributes']['varscope'] ) );	
+            } else {
+                $this->_displayLine( 'Varscope', $tmpl['attributes']['varscope'] );	
+            }
+		}
 
 		echo '          </table>';
 	}

@@ -1,0 +1,41 @@
+<!-- $Id: example_filter_output_per_template.tmpl 378 2005-03-26 08:38:51Z schst $ -->
+<patTemplate:tmpl name="page">
+<p>
+Whitespace
+will
+be 
+left untouched in this 
+part.
+</p>
+<patTemplate:tmpl name="foo" outputFilter="StripWhitespace">
+<p>
+In this
+part        whitespace will be removed...
+
+Using a standard input filter...
+</p>
+</patTemplate:tmpl>
+<p>
+And again, 
+whitespace
+will be kept.
+</p>
+<patTemplate:tmpl name="bbcode">
+<p>
+This template contains [b]BBCode[/b] markup:
+[date/]
+</p>
+</patTemplate:tmpl>
+<p>
+And here [b]BBCode[/b] markup will be ignored...
+</p>
+
+<patTemplate:tmpl outputFilter="HighlightPhp">
+<?php
+for ($i = 0; $i < count($_GET['foo']); $i++) {
+    echo doSomething($i);
+}
+?>
+</patTemplate:tmpl>
+
+</patTemplate:tmpl>

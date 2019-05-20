@@ -3,7 +3,7 @@
  * helper script that displays the examples including 
  * the template and PHP source.
  *
- * $Id: _viewExample.php 251 2004-07-08 20:56:35Z schst $
+ * $Id: _viewExample.php 437 2006-08-08 20:44:48Z gerd $
  *
  * You may pass the following GET parameters to the
  * script:
@@ -15,6 +15,7 @@
  * @subpackage	Examples
  */
 
+ 
 /**
  * needs the section configuration
  */

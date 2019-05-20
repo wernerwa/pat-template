@@ -1,0 +1,152 @@
+<!-- $Id: example_function_highlight.tmpl 391 2005-04-12 18:09:45Z schst $ -->
+<patTemplate:tmpl name="root">
+<style type="text/css">
+.hl-default {
+    color: Black;
+}
+.hl-code {
+    color: Gray;
+}
+.hl-brackets {
+    color: Olive;
+}
+.hl-comment {
+    color: Orange;
+}
+.hl-quotes {
+    color: Darkred;
+}
+.hl-string {
+    color: Red;
+}
+.hl-identifier {
+    color: Blue;
+}
+.hl-builtin {
+    color: Teal;
+}
+.hl-reserved {
+    color: Green;
+}
+.hl-inlinedoc {
+    color: Blue;
+}
+.hl-var {
+    color: Darkblue;
+}
+.hl-url {
+    color: Blue;
+}
+.hl-special {
+    color: Navy;
+}
+.hl-number {
+    color: Maroon;
+}
+.hl-inlinetags {
+    color: Blue;
+}
+.hl-main { 
+    background-color: White;
+}
+.hl-gutter {
+    background-color: #999999;
+    color: White
+}
+.hl-table {
+    font-family: courier;
+    font-size: 12px;
+    border: solid 1px Lightgrey;
+}
+
+.codeExample {
+    border: 1px dashed #999999;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+P {
+    margin-bottom: 20px;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+}
+</style>
+
+<p>
+    This is an example using <a href="http://pear.php.net/package/Text_Highlighter" target="_blank">PEAR::Text_Highlighter</a>. If the code below is not highlighted, please
+    install Text_Highlighter. You can find more information on Text_Highlighter at
+    <a href="http://www.sitepoint.com/article/highlight-source-code-php" target="_blank">http://www.sitepoint.com/article/highlight-source-code-php</a>.
+</p>
+
+<div class="codeExample">
+<patTemplate:Highlight type="php">
+<?PHP
+$i = 0;
+while( $i < 10 )
+{
+  echo "This is line $i.<br />";
+  $i++;
+}
+?>
+</patTemplate:Highlight>
+</div>
+
+<p>Text_Highlighter supports several languages, like CSS, XML, PHP, C,...</p>
+
+<div class="codeExample">
+<patTemplate:Highlight type="css" numbers="HL_NUMBERS_TABLE">
+.hl-main { 
+    background-color: White;
+}
+.hl-gutter {
+    background-color: #999999;
+    color: White
+}
+.hl-table {
+    font-family: courier;
+    font-size: 12px;
+    border: solid 1px Lightgrey;
+}
+</patTemplate:Highlight>
+</div>
+
+<div class="codeExample">
+<patTemplate:Highlight type="xml" numbers="HL_NUMBERS_TABLE">
+<foo>
+    <bar>
+        <tomato foo="bar"/>
+    </bar>
+</foo>
+</patTemplate:Highlight>
+</div>
+
+<p>
+    It can be even used for unified diffs.
+</p>
+<div class="codeExample">
+<patTemplate:Highlight type="diff" numbers="HL_NUMBERS_TABLE">
+--- Frontend-original.php	2005-04-06 16:07:55.800695658 +0200
++++ Frontend.php	2005-04-06 16:22:14.001163688 +0200
+@@ -390,7 +390,8 @@
+         } else {
+             echo '<ul>';
+             foreach ($this->getPackageLatestReleases($pkg['package']) as $state => $release) {
+-                echo '<li><a href="http://' .$this->_channel. '/get/' .$pkg['package']. '-'. $release['version'] .'.tgz">' .$release['version']. '</a> (' .$state. ') was release on ' .$release['date']. '</li>';
++                echo '<li><a href="http://' .$this->_channel. '/get/' .$pkg['package']. '-'.
++				$release['version'] .'.tgz">' .$release['version']. '</a> (' .$state. ') was released on ' .$release['date']. '</li>';
+             }
+             echo '</ul>';
+         }
+@@ -852,7 +847,8 @@
+                 </td>
+                 <td>
+                     <?php
+-                    if (is_string($maintainer->uri)) {
++					$uri = $maintainer->uri;
++                    if (!empty($uri)) {
+                             ?>
+                             <a href="<?php echo $maintainer->uri;?>">Website</a>
+</patTemplate:Highlight>
+</div>
+
+</patTemplate:tmpl>

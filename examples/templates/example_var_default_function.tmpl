@@ -1,0 +1,19 @@
+<!-- $Id: example_var_modifier.tmpl 297 2004-10-03 11:35:57Z gerd $ -->
+<patTemplate:tmpl name="page">
+
+<p>
+    Current timestamp:
+    <patTemplate:var name="current_time" default="time()"/>
+</p>
+
+<p>
+    Current date:
+    <patTemplate:var name="current_date" default="time()" modifier="Dateformat" format="%d.%m.%Y"/>
+</p>
+
+<p>
+    Calling a method:
+    <patTemplate:var name="foo" default="Foo::bar()"/>
+</p>
+
+</patTemplate:tmpl>

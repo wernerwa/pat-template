@@ -7,7 +7,7 @@
  * get quite annoying, patTemplate allows you to
  * change its namespace to whatever you like.
  *
- * $Id: example_misc_namespace.php 155 2004-04-20 20:16:43Z schst $
+ * $Id: example_misc_namespace.php 304 2004-10-27 10:17:27Z schst $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -31,7 +31,9 @@
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );
 
-	$tmpl->setNamespace( 'foo' );
+	// you may set one or more namespaces
+	$tmpl->setNamespace( array('foo', 'bar') );
+	
 	
 	$tmpl->readTemplatesFromInput( 'example_misc_namespace.tmpl' );
 	$tmpl->displayParsedTemplate();

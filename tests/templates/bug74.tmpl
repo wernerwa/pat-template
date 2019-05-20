@@ -1,0 +1,18 @@
+<patTemplate:tmpl name="page">
+<table border="1">
+<patTemplate:tmpl name="list_row" type="condition" conditionvar="myvar">
+  <patTemplate:sub condition="yes">
+  <tr bgcolor="#990000">
+    <patTemplate:link src="list_entry" />
+  </tr>
+  </patTemplate:sub>
+  <patTemplate:sub condition="__default">
+  <tr>
+    <patTemplate:tmpl name="list_entry" maxloop="3">
+      <td>{PAT_ROW_VAR} {SOMETHING}</td>
+    </patTemplate:tmpl>
+  </tr>
+  </patTemplate:sub>
+</patTemplate:tmpl>
+</table>
+</patTemplate:tmpl>

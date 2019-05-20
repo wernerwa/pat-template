@@ -15,13 +15,24 @@
  * $tmpl->setOption( 'lang', 'de' );
  * </code>
  *
- * $Id: Translate.php 309 2004-10-27 11:23:49Z schst $
+ * $ID$
  *
  * @package		patTemplate
  * @subpackage	Functions
  * @author		Stephan Schmidt <schst@php.net>
+ * @author 		Sebastian Mordziol <argh@php-tools.net>
  */
 
+/**
+ * Warning: could not create language folder
+ */
+ define( 'PATTEMPLATE_FUNCTION_TRANSLATE_WARNING_LANGFOLDER_NOT_CREATABLE', 'patTemplate:Function:Translate:01' );
+
+/**
+ * Warning: could not create language file
+ */
+ define( 'PATTTEMPLATE_FUNCTION_TRANSLATE_WARNING_LANGFILE_NOT_CREATABLE', 'patTemplate:Function:Translate:02' );
+ 
 /**
  * patTemplate function that emulates gettext's behaviour
  * 
@@ -33,17 +44,49 @@
  * You should copy this file and translate all sentences.
  * When the template is used the next time, the sentences
  * will be replaced with their respective translations,
- * according to the langanuge you set with:
+ * according to the language you set with:
  * <code>
  * $tmpl->setOption( 'lang', 'de' );
  * </code>
  *
- * $Id: Translate.php 309 2004-10-27 11:23:49Z schst $
+ * You can change this behavior with some specific options:
+ * <ul>
+ *     <li>
+ *         <b>translationFile</b>: If set, all strings for a 
+ *         language will be collected in one file with the 
+ *         specified name (without extension, that's added
+ *         automatically)
+ *     </li>
+ *     <li>
+ *         <b>translationUseFolders</b>: if set, all files
+ *         for a language will be stored in subfolders named
+ *         after the language. This option is cumulative
+ *         with the translationFile option.
+ *     </li>
+ *     <li>
+ *         <b>translationAutoCreate</b>: if set, the translation
+ *         files will automatically be created if they don't exist
+ *         so you do not have to create them manually.
+ *     </li>
+ *     <li>
+ *         <b>translationUseLocator</b>: per default, a locator
+ *         string is added to all new sentences that need to be
+ *         translated to help find them amongst the lot. You can
+ *         turn this behavior off by setting this to false.
+ *     </li>
+ *     <li>
+ *         <b>translationLocatorString</b>: per default, the
+ *         locator string is 'Translate', but you can change this
+ *         to any string you like with this option.
+ *     </li>
+ * </ul>
+ *
+ * $ID$
  *
  * @package		patTemplate
  * @subpackage	Functions
  * @author		Stephan Schmidt <schst@php.net>
- * @todo		add error management
+ * @author 		Sebastian Mordziol <argh@php-tools.net>
  */
 class patTemplate_Function_Translate extends patTemplate_Function
 {
@@ -63,12 +106,20 @@ class patTemplate_Function_Translate extends patTemplate_Function
 	var $_config	=	array();
 
    /**
-	* global config
+	* Stores the global configuration for the translation - this
+	* is only loaded once, and also defines general default settings.
 	*
 	* @access	private
 	* @var		array
 	*/
-	var $_globalconfig	=	array();
+	var $_globalconfig	=	array(
+		'locatorString' => 'Translate',
+		'useLocator' => true,
+		'useFolders' => false,
+		'file' => null,
+	);
+	
+	var $_configLoaded = false;
 
    /**
 	* list of all sentences
@@ -93,7 +144,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
 	* @var	object
 	*/
 	var	$_tmpl;
-
+	
    /**
     * set a reference to the patTemplate object that instantiated the reader
 	*
@@ -123,8 +174,9 @@ class patTemplate_Function_Translate extends patTemplate_Function
 			return;
 		}
 
-		if( empty( $this->_globalconfig ) )
+		if( !$this->_configLoaded ) {
 			$this->_retrieveGlobalConfig();
+		}
 		
 		$input = $this->_reader->getCurrentInput();
 		
@@ -151,7 +203,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
 		if( !isset( $this->_sentences[$input][$key] ) )
 		{
 			$this->_sentences[$input][$key]	=	$content;
-			$this->_addToTranslationFile( $input, $key, $content );
+			$this->_updateTranslationFiles( $input, $key, $content );
 		}
 		
 		/**
@@ -161,7 +213,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
 		{
 			return $this->_translation[$input][$key];
 		}
-
+		
 		/**
 		 * use original sentence
 		 */
@@ -192,6 +244,28 @@ class patTemplate_Function_Translate extends patTemplate_Function
 		}
 		
 		$this->_globalconfig['translationFolder'] = $this->_tmpl->getOption( 'translationFolder' );
+
+		// set a custom locator string
+		if( !is_null( $this->_tmpl->getOption( 'translationLocatorString' ) ) ) {
+			$this->_globalconfig['locatorString'] = $this->_tmpl->getOption( 'translationLocatorString' );
+		}
+		
+		// disable locator string altogether
+		if( $this->_tmpl->getOption( 'translationUseLocator' ) === false ) {
+			$this->_globalconfig['useLocator'] = false;
+		}
+		
+		// use folders for translation files?
+		if( $this->_tmpl->getOption( 'translationUseFolders' ) === true ) {
+			$this->_globalconfig['useFolders'] = true;
+		}
+		
+		// use a specific file for all translation strings?
+		if( !is_null( $this->_tmpl->getOption( 'translationFile' ) ) ) {
+			$this->_globalconfig['file'] = $this->_tmpl->getOption( 'translationFile' );
+		}
+		
+		$this->_configLoaded = true;
 		
 		return true;
 	}
@@ -207,24 +281,66 @@ class patTemplate_Function_Translate extends patTemplate_Function
 	*/
 	function _retrieveConfig( $input )
 	{
-		if( !is_array( $this->_config ) )
+		if( !is_array( $this->_config ) ) {
 			$this->_config	=	array();
+		}
 
 		$this->_config[$input] = array();
 		$this->_sentences[$input] = array();
+		$folder = $this->_tmpl->getOption( 'translationFolder' );
 		
-		$this->_config[$input]['sentenceFile']		=	$this->_tmpl->getOption( 'translationFolder' ) . '/'.$input.'-default.ini';
-		$this->_config[$input]['langFile']			=	$this->_tmpl->getOption( 'translationFolder' ) . '/'.$input.'-%s.ini';
+		// default setup for language files
+		$this->_config[$input]['sentenceFile'] = $folder.'/'.$input.'-default.ini';
+		$this->_config[$input]['langFile']     = $folder.'/'.$input.'-%s.ini';
+		
+		// handle the translationUseFolders option - if set, we will 
+		// use subfolders for each language, so we need to check 
+		// that the corresponding folders exist and create them if
+		// needed.
+		if( $this->_globalconfig['useFolders'] ) {
+			// check if we want to automatically create the language folders
+			if( $this->_tmpl->getOption( 'translationAutoCreate' ) === true ) {
+				foreach( $this->_globalconfig['lang'] as $lang ) {
+					$langFolder = $folder.'/'.$lang;
+					if( !is_dir( $langFolder ) ) {
+						$success = @mkdir( $langFolder );
+						if( !$success ) {
+							patErrorManager::raiseWarning(
+								PATTEMPLATE_FUNCTION_TRANSLATE_WARNING_LANGFOLDER_NOT_CREATABLE,
+								'Could not create folder for language-dependent data',
+								'Tried to create the folder ['.$langFolder.'], please check that I have write access to the parent folder or create the folder manually.'
+							);
+						}
+					}
+				}
+			}
+			$this->_config[$input]['langFile'] = $folder.'/%s/'.$input.'.ini';
+		}
 
+		// handle the translationFile option - if set, all sentences will be kept in 
+		// one single file per language.
+		// patch by Lukas Petrovicky (http://www.petrovicky.net/) to support folders even in
+		// single file mode.
+		if( !is_null( $this->_globalconfig['file'] ) ) {
+			$this->_config[$input]['sentenceFile'] = $folder.'/'.$this->_globalconfig['file'].'-default.ini';
+			// handle useFolders dependency on translationFile
+			// if useFolders is set and translationFile too, translations will go to language directory
+			if( $this->_globalconfig['useFolders'] ) {
+				$this->_config[$input]['langFile'] = $folder.'/%s/'.$this->_globalconfig['file'].'.ini';
+			} else {
+				$this->_config[$input]['langFile'] = $folder.'/'.$this->_globalconfig['file'].'-%s.ini';
+			}			
+		} 
+		
 		/**
 		 * get the 'gettext' source file
 		 */
-		$this->_sentences[$input]	=	@parse_ini_file( $this->_config[$input]['sentenceFile'] );
-		if( !is_array( $this->_sentences[$input] ) )
+		$this->_sentences[$input] = @parse_ini_file( $this->_config[$input]['sentenceFile'] );
+		if( !is_array( $this->_sentences[$input] ) ) {
 			$this->_sentences[$input] = array();
-		else
+		} else {
 			$this->_sentences[$input] = array_map( array( $this, '_unescape' ), $this->_sentences[$input] );
-		
+		}
 		
 		return true;
 	}
@@ -240,10 +356,21 @@ class patTemplate_Function_Translate extends patTemplate_Function
 	{
 		foreach( $this->_globalconfig['lang'] as $lang )
 		{
-			$translationFile	=	sprintf( $this->_config[$input]['langFile'], $lang );
-			if( !file_exists( $translationFile ) )
+			$translationFile = sprintf( $this->_config[$input]['langFile'], $lang );
+			if( !file_exists( $translationFile ) ) {
+				if( $this->_tmpl->getOption( 'translationAutoCreate' ) && file_exists( $this->_config[$input]['sentenceFile'] ) ) {
+					if( !@copy( $this->_config[$input]['sentenceFile'], $translationFile ) ) {
+						patErrorManager::raiseWarning(
+							PATTTEMPLATE_FUNCTION_TRANSLATE_WARNING_LANGFILE_NOT_CREATABLE,
+							'A language file could not be created',
+							'Tried to create the language file ['.$translationFile.']. Please check that I have write access to the parent folder, or turn off the translateAutoCreate option and create it manually.'
+						);
+					}
+				}
 				continue;
-			$tmp	=	@parse_ini_file( $translationFile );
+			}
+				
+			$tmp = @parse_ini_file( $translationFile );
 			if( is_array( $tmp ) )
 			{
 				$tmp = array_map( array( $this, '_unescape' ), $tmp );
@@ -267,44 +394,83 @@ class patTemplate_Function_Translate extends patTemplate_Function
 	}
 	
    /**
-  	* add a new sentence to the translation file
+  	* Updates all available translation files with the new
+  	* string to translate.
 	*
 	* @access	private
-	* @param	string	unique key
-	* @param	string	sentence to translate
+	* @param 	string	The input file
+	* @param	string	The string's unique key
+	* @param	string	The string to translate
 	* @return	boolean
 	*/
-	function _addToTranslationFile( $input, $key, $content )
+	function _updateTranslationFiles( $input, $key, $content )
 	{
-		$fp	=	@fopen( $this->_config[$input]['sentenceFile'], 'a' );
-		if( !$fp )
+		$success = true;
+		if( !$this->_updateTranslationFile( $this->_config[$input]['sentenceFile'], $key, $content ) ) {
+			$success = false;
+		}
+		
+		foreach( $this->_globalconfig['lang'] as $lang ) {
+			if( !$this->_updateTranslationFile( sprintf( $this->_config[$input]['langFile'], $lang ), $key, $content ) ) {
+				$success = false;
+			}
+		}
+		
+		return $success;
+	}
+	
+   /**
+	* Updates a single translation file with the specified new string
+	* 
+	* @param 	string	The input file
+	* @param	string	The string's unique key
+	* @param	string	The string to translate
+	* @return	boolean
+	*/
+	function _updateTranslationFile( $input, $key, $content )
+	{
+		$fp = @fopen( $input, 'a' );
+		if( !$fp ) {
 			return false;
+		}
+
+		// whether to use the locator string for new strings to translate
+		$locator = '';
+		if( $this->_globalconfig['useLocator'] ) {
+			$locator = ' ;'.$this->_globalconfig['locatorString'];
+		}
+		
+		// remove newlines to ensure integrity of the inifile's syntax
+		// patch by Niccolo Campovono
+		$content = preg_replace( "'([\r\n])[\s]+'", '', $content );
+		
 		flock( $fp, LOCK_EX );
-		fputs( $fp, sprintf( '%s = "%s"'."\n", $key, str_replace( '"', '&quot;', $content ) ) );
+		fputs( $fp, sprintf( '%s = "%s"'.$locator."\n", $key, str_replace( '"', '&quot;', $content ) ) );
 		flock( $fp, LOCK_UN );
 		fclose( $fp );
 		return true;
 	}
 
    /**
-	* guess the language
+	* Tries to guess the user's language according to the browser's language setting
 	*
 	* @access	private
-	* @return	array		array containing all accepted languages
+	* @return	array		Array containing all accepted languages
 	*/
 	function _guessLanguage()
 	{
-		if( !preg_match_all( '/([a-z\-]*)?[,;]/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $matches) )
-		{
+		if( !preg_match_all( '/([a-z\-]*)?[,;]/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $matches) ) {
 			return array();
 		}
+		
 		$langs = array();
-		foreach( $matches[1] as $lang )
-		{
-			if( empty( $lang ) )
+		foreach( $matches[1] as $lang ) {
+			if( empty( $lang ) ) {
 				continue;
+			}
 			array_push( $langs, $lang );
 		}
+		
 		return $langs;
 	}
 }

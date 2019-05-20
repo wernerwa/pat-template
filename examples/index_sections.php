@@ -2,7 +2,7 @@
 /**
  * Definitions of all included examples
  *
- * $Id: index_sections.php 302 2004-10-27 10:01:57Z schst $
+ * $Id: index_sections.php 446 2006-10-24 14:28:25Z gerd $
  *
  * @package		patTemplate
  * @subpackage	Examples
@@ -14,7 +14,7 @@
 				.	'This overview lists all examples with a small description, and to '
 				.	'navigate the examples, use the navigation on the left.';
 	$sections	=	array(
-	
+
 		/**
 		 * examples of all tags
 		 */
@@ -57,6 +57,11 @@
 					'descr'	=>	'The src attribute allows you to split your HTML code into different files, so it is more reusable. Common practice is to move a header and footer into separate files and include them in your main templates.',
 					'templates' => array( 'example_attributes_src.tmpl', 'example_attributes_src_header.tmpl', 'example_attributes_src_main.tmpl',  'example_attributes_src_footer.tmpl' )
 				),
+				'relative' => array(
+					'title'	=>	'src and relative (tmpl)',
+					'descr'	=>	'The relative attribute tells the reader you treat the path defined in the src attribute as a relative path from the current file',
+					'templates' => array( 'relative/example_attributes_relative.tmpl', 'relative/example_attributes_relative_header.tmpl', 'relative/example_attributes_relative_main.tmpl',  'relative/example_attributes_relative_footer.tmpl' )
+				),
 				'unusedvars' => array(
 					'title'	=>	'unusedvars (tmpl)',
 					'descr'	=>	'The unused attribute is used to tell patTemplate, what it should do with variables that have no value assigned. You can leave them, remove them or replace them with whatever you like.'
@@ -77,6 +82,10 @@
 					'title'	=>	'varscope (tmpl)',
 					'descr'	=>	'This attribute allows you to fetch variables from any other template into the current template.'
 				),
+				'varscope_multiple' => array(
+					'title'	=>	'varscope (tmpl), with multiple templates',
+					'descr'	=>	'You may also pass a comma-separated list of templates, which are used to populaute the current template.'
+				),
 				'loop' => array(
 					'title'	=>	'loop (tmpl)',
 					'descr'	=>	'This attribute forces a template to be repeated, even if there are not enough rows to fill the data.'
@@ -84,6 +93,10 @@
 				'limit' => array(
 					'title'	=>	'limit (tmpl)',
 					'descr'	=>	'This attribute prohibts the unlimited repetition of a template.'
+				),
+				'rowoffset' => array(
+					'title'	=>	'rowoffset (tmpl)',
+					'descr'	=>	'This attribute determines at which number the PAT_ROW_VAR value will start.'
 				),
 			)
 		),
@@ -137,6 +150,10 @@
 					'title'	=>	'freeTemplate()',
 					'descr'	=>	'This example shows how to free a template to reuse the name and free up the memory used by it.',
 				),
+				'placeholderexists' => array(
+					'title'	=>	'placeholderExists()',
+					'descr'	=>	'This example shows how to check, whether a designer included a placeholder in a template.',
+				),
 			)
 		),
 
@@ -147,6 +164,10 @@
 			'descr'		=>	'',
 			'basename'	=>	'example_reader_',
 			'pages'		=>	array(
+				'file_multiple' => array(
+					'title'	=>	'File Reader',
+					'descr'	=>	'The File reader reads patTemplate files. You may pass more then one template directory and patTemplate will look in all folders, when loading a new file.',
+				),
 				'string' => array(
 					'title'	=>	'String Reader',
 					'descr'	=>	'The String Reader allows you to read templates from any variable by passing it a string. You can always use this to read from a custom source.',
@@ -154,6 +175,14 @@
 				'it' => array(
 					'title'	=>	'IT Reader',
 					'descr'	=>	'The HTML_Template_IT reader allows you to read templates that have been created for HTML_Template_IT and use them like they would be patTemplate templates.',
+				),
+				'db' => array(
+					'title'	=>	'DB Reader',
+					'descr'	=>	'The DB-Reader allows you to read your templates from any database that is supported by PEAR::DB',
+				),
+				'combined' => array(
+					'title'	=>	'Combining readers',
+					'descr'	=>	'This example shows how to use more than one reader in the same script.',
 				),
 			)
 		),
@@ -181,9 +210,17 @@
 					'title'	=>	'Modulo (empty)',
 					'descr'	=>	'A modulo template with no variables in it.',
 				),
+				'modulo_single' => array(
+					'title'	=>	'Modulo (one line)',
+					'descr'	=>	'A modulo template with only one line and the special __single condition.',
+				),
 				'condition' => array(
 					'title'	=>	'Condition',
 					'descr'	=>	'A condition template can be compared to if/then/else or switch/case statements in PHP. The output of the template depends on the value of a variable that has been passed.',
+				),
+				'condition_variable' => array(
+					'title'	=>	'Condition using a variable',
+					'descr'	=>	'A condition template can also be used in conjunction with variables in the condition attribute. This allows you to build comparisons between two variables like $foo == bar.'
 				),
 				'simplecondition' => array(
 					'title'	=>	'SimpleCondition',
@@ -191,7 +228,7 @@
 				),
 			)
 		),
-		
+
 		/**
 		 * the new var tag
 		 */
@@ -203,9 +240,37 @@
 					'title'	=>	'Applying modifiers',
 					'descr'	=>	'Variable modifiers give the HTML designers more flexibility when the application adds variables to the template. You may either use any PHP function or custom objects as modifiers.',
 				),
+				'modifier_default' => array(
+					'title'	=>	'Default modifiers',
+					'descr'	=>	'It is possible to set a default modifier on a per-template basis, which will be used for all variables inside the template that have no own modifier set.',
+				),
+				'modifier_multiple' => array(
+					'title'	=>	'Multiple modifiers',
+					'descr'	=>	'It is possible to apply more than one modifier to a variable.',
+				),
+				'modifier_short' => array(
+					'title'	=>	'Short modifier syntax',
+					'descr'	=>	'patTemplate provides an input filter that lets you use the short modifier syntax that you may know from using smarty: {VAR|htmlentities}. All you need to do is apply an InputFilter prior to loading the templates.',
+				),
+                'modifier_placeholder' => array(
+                    'title' =>  'Use placeholders as modifier parameter',
+                    'descr' =>  'Make parameter of variable modifier dynamic!',
+                ),
 				'copyfrom' => array(
 					'title'	=>	'The copyFrom attribute',
 					'descr'	=>	'The copyFrom attribute allows the designer to add variables to a template and copy the value from any other variable.',
+				),
+				'global' => array(
+					'title'	=>	'Using global variables',
+					'descr'	=>	'Global variables can be used, as well',
+				),
+                'modifier_varscope' => array(
+                    'title' =>  'Change the scope',
+                    'descr' =>  'Apply variable modifier on variables in a different scope.',
+                ),
+				'default_function' => array(
+					'title'	=>	'Using a function as default',
+					'descr'	=>	'You may use any PHP function as a default value.',
 				),
 			)
 		),
@@ -235,9 +300,13 @@
 					'title'	=>	'Using the BBCode output filter',
 					'descr'	=>	'The BBCode output applies patBBCode to the result.',
 				),
+				'output_per_template' => array(
+					'title'	=>	'Filters per template',
+					'descr'	=>	'This example shows how to use an output filter for only one template.',
+				),
 			)
 		),
-		
+
 		/**
 		 * Template Caches
 		 */
@@ -251,7 +320,7 @@
 				),
 			)
 		),
-		
+
 		/**
 		 * Functions
 		 */
@@ -275,9 +344,17 @@
 					'title'	=>	'&lt;patTemplate:phpHighlight/&gt;',
 					'descr'	=>	'This example shows the usage of the php highlighter.',
 				),
+				'highlight' => array(
+					'title'	=>	'&lt;patTemplate:Highlight/&gt;',
+					'descr'	=>	'This example shows the generic highlighter that uses PEAR::Text_Highlight.',
+				),
 				'call' => array(
 					'title'	=>	'&lt;patTemplate:Call/&gt;',
 					'descr'	=>	'This shows you how to re-use templates to build a site independent of your design, templates in a templating engine, so to speak.',
+				),
+				'call_autoload' => array(
+					'title'	=>	'&lt;patTemplate:Call/&gt; autoload',
+					'descr'	=>	'This shows how components can be loaded at runtime, by following some naming conventions.',
 				),
 				'attribute' => array(
 					'title'	=>	'&lt;patTemplate:Attribute/&gt;',
@@ -286,6 +363,10 @@
 				'aliases' => array(
 					'title'	=>	'Using function aliases',
 					'descr'	=>	'It is possible to define aliases for functions.',
+				),
+				'default' => array(
+					'title'	=>	'Setting a default function',
+					'descr'	=>	'It is possible to set a default, that is used for unknown functions.',
 				),
 			)
 		),
@@ -326,6 +407,10 @@
 				'autonaming' => array(
 					'title'	=>	'Auto-naming',
 					'descr'	=>	'Since patTemplate 3.0 you do not need to assign a unique name to all templates. If you ommitt the name attribute, patTemplate will set the name automatically.',
+				),
+				'quote' => array(
+					'title'	=>	'Quoting variables',
+					'descr'	=>	'This is needed to include content in your resulting pages that look like template variables.',
 				),
 			)
 		),

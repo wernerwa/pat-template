@@ -1,0 +1,14 @@
+<!-- $Id: example_api_placeholderexists.tmpl 367 2005-03-07 19:36:48Z schst $ -->
+<patTemplate:tmpl name="standard">
+This is the first template.<br />
+{BAR}
+</patTemplate:tmpl>
+
+<patTemplate:tmpl name="condition" type="condition" conditionvar="foo">
+    <patTemplate:sub condition="foo">
+	This is just any template with {FOO} in it.<br />
+	</patTemplate:sub>
+    <patTemplate:sub condition="bar">
+	This is just any template with {BAR} in it.<br />
+	</patTemplate:sub>
+</patTemplate:tmpl>

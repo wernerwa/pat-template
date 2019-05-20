@@ -2,7 +2,7 @@
 /**
  * patTemplate example that shows how to use simple conditions
  *
- * $Id: example_type_simplecondition.php 269 2004-08-19 08:25:25Z schst $
+ * $Id: example_type_simplecondition.php 341 2004-12-30 16:29:05Z schst $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -37,6 +37,10 @@
 	
 	$tmpl->addRows( 'cond', $rows );
 	$tmpl->addVar( 'container', 'foo', 'This is foo!' );
+
+	$tmpl->addVar( 'cond3', 'foo', 'bar' );
+	$tmpl->addVar( 'cond4', 'foo', 'bar' );
+	$tmpl->addVar( 'cond4', 'argh', 'foobar' );
 	
 	$tmpl->displayParsedTemplate( 'root' );
 ?>

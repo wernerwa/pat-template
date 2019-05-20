@@ -2,7 +2,7 @@
 /**
  * patTemplate StripWhitespace output filter
  *
- * $Id: StripWhitespace.php 100 2004-04-08 16:11:28Z schst $
+ * $Id: StripWhitespace.php 417 2005-09-16 12:04:11Z schst $
  *
  * Will remove all whitespace and replace it with a single space.
  *
@@ -14,7 +14,7 @@
 /**
  * patTemplate StripWhitespace output filter
  *
- * $Id: StripWhitespace.php 100 2004-04-08 16:11:28Z schst $
+ * $Id: StripWhitespace.php 417 2005-09-16 12:04:11Z schst $
  *
  * Will remove all whitespace and replace it with a single space.
  *
@@ -28,7 +28,6 @@ class patTemplate_OutputFilter_StripWhitespace extends patTemplate_OutputFilter
     * filter name
 	*
 	* @access	protected
-	* @abstract
 	* @var	string
 	*/
 	var	$_name	=	'StripWhitespace';
@@ -42,9 +41,10 @@ class patTemplate_OutputFilter_StripWhitespace extends patTemplate_OutputFilter
 	*/
 	function apply( $data )
 	{
-		$data = str_replace( "\n", ' ', $data );
-        $data = preg_replace( '/\s\s+/', ' ', $data );
-	
+		$data = str_replace("\n", ' ', $data);
+		$data = str_replace("\r", ' ', $data);
+		$data = str_replace("\t", ' ', $data);
+        $data = preg_replace('/  +/', ' ', $data);
 		return $data;
 	}
 }

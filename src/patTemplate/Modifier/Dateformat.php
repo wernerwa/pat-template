@@ -2,7 +2,7 @@
 /**
  * patTemplate modfifier Dateformat
  *
- * $Id: Dateformat.php 216 2004-05-20 16:01:41Z schst $
+ * $Id: Dateformat.php 450 2007-01-11 08:32:32Z gerd $
  *
  * @package		patTemplate
  * @subpackage	Modifiers
@@ -36,10 +36,19 @@ class patTemplate_Modifier_Dateformat extends patTemplate_Modifier
 	*/
 	function modify( $value, $params = array() )
 	{
-        if( !isset( $params['format'] ) )
+        if (!preg_match('/^[0-9]+$/', $value)) {
+        	$value = strtotime($value);
+        }
+         
+        if (isset($params['unix']) && $params['unix'] == 'yes') {
             return $value;
-		
-		return strftime( $params['format'], strtotime( $value ) );
+        }
+   
+        if (!isset($params['format'])) {
+            return $value;
+        }
+
+		return strftime($params['format'], $value);
 	}
 }
 ?>

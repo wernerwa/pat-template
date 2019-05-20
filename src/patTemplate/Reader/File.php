@@ -2,7 +2,7 @@
 /**
  * patTemplate Reader that reads from a file
  *
- * $Id: File.php 232 2004-06-04 19:40:02Z schst $
+ * $Id: File.php 413 2005-08-05 13:51:01Z schst $
  *
  * @package		patTemplate
  * @subpackage	Readers
@@ -12,7 +12,7 @@
 /**
  * patTemplate Reader that reads from a file
  *
- * $Id: File.php 232 2004-06-04 19:40:02Z schst $
+ * $Id: File.php 413 2005-08-05 13:51:01Z schst $
  *
  * @package		patTemplate
  * @subpackage	Readers
@@ -53,15 +53,27 @@ class patTemplate_Reader_File extends patTemplate_Reader
 	*/
 	function readTemplates( $input )
 	{
-		$this->_currentInput = $input;
-		$fullPath	=	$this->_resolveFullPath( $input );
-		if( patErrorManager::isError( $fullPath ) )
+		if (isset($this->_rootAtts['relative'])) {
+			$relative = $this->_rootAtts['relative'];
+		} else {
+			$relative = false;
+		}
+		if ($relative === false) {
+       		$this->_currentInput = $input;
+		} else {
+			$this->_currentInput = dirname($relative) . DIRECTORY_SEPARATOR . $input;
+		}
+		
+		$fullPath = $this->_resolveFullPath($input, $relative);
+		if (patErrorManager::isError($fullPath)) {
 			return $fullPath;
-		$content	=	$this->_getFileContents( $fullPath );
-		if( patErrorManager::isError( $content ) )
+		}
+		$content = $this->_getFileContents($fullPath);
+		if (patErrorManager::isError($content)) {
 			return $content;
+		}
 
-		$templates	=	$this->parseString( $content );
+		$templates = $this->parseString($content);
 		
 		return	$templates;
 	}
@@ -79,7 +91,12 @@ class patTemplate_Reader_File extends patTemplate_Reader
 	*/
 	function loadTemplate( $input )
 	{
-		$fullPath	=	$this->_resolveFullPath( $input );
+		if (isset($this->_rootAtts['relative'])) {
+			$relative = $this->_rootAtts['relative'];
+		} else {
+			$relative = false;
+		}
+		$fullPath	=	$this->_resolveFullPath( $input, $relative );
 		if( patErrorManager::isError( $fullPath ) )
 			return $fullPath;
 		return $this->_getFileContents( $fullPath );
@@ -89,25 +106,36 @@ class patTemplate_Reader_File extends patTemplate_Reader
 	* resolve path for a template
 	*
 	* @access	private
-	* @param	string		filename
-	* @return	string		full path
+	* @param	string		    filename
+	* @param    boolean|string  filename for relative path calculation
+	* @return	string		    full path
 	*/	
-	function _resolveFullPath( $filename )
+	function _resolveFullPath( $filename, $relativeTo = false )
 	{
-		if( preg_match( '/^[a-z]+:\/\//', $filename ) )
-		{
+		if (preg_match( '/^[a-z]+:\/\//', $filename )) {
 			$this->_isRemote = true;
 			return $filename;
+		} else {
+		    $rootFolders = $this->getTemplateRoot();
+		    if (!is_array($rootFolders)) {
+                $rootFolders = array($rootFolders);
+		    }
+		    foreach ($rootFolders as $root) {
+    		    if ($relativeTo === false) {
+        			$baseDir = $root;
+    		    } else {
+                    $baseDir = $root . DIRECTORY_SEPARATOR . dirname($relativeTo);
+    		    }
+    			$fullPath = $baseDir . DIRECTORY_SEPARATOR . $filename;
+    			if (file_exists($fullPath)) {
+    				return $fullPath;
+    			}
+		    }
 		}
-		/**
-		 * local file
-		 */
-		else
-		{
-			$baseDir	=	$this->_options['root'];
-			$fullPath	=	$baseDir . '/' . $filename;
-		}
-		return	$fullPath;
+		return patErrorManager::raiseError(
+									PATTEMPLATE_READER_ERROR_NO_INPUT,
+									"Could not load templates from $filename."
+									);
 	}
 
    /**
@@ -119,25 +147,25 @@ class patTemplate_Reader_File extends patTemplate_Reader
 	*/	
 	function _getFileContents( $file )
 	{
-		if( !$this->_isRemote && ( !file_exists( $file ) || !is_readable( $file ) ) )
-		{
+		if (!$this->_isRemote && (!file_exists($file) || !is_readable($file))) {
 			return patErrorManager::raiseError(
 										PATTEMPLATE_READER_ERROR_NO_INPUT,
 										"Could not load templates from $file."
 										);
 		}
-		
-		if( function_exists( 'file_get_contents' ) )
-			$content	=	@file_get_contents( $file );
-		else
-			$content	=	implode( '', file( $file ) );
-			
+
+		if (function_exists('file_get_contents')) {
+			$content = @file_get_contents( $file );
+		} else {
+			$content = implode('', file($file));
+		}
+
 		/**
 		 * store the file name
 		 */
-		array_push( $this->_files, $file );
-		
-		return	$content;
+		array_push($this->_files, $file);
+
+		return $content;
 	}
 }
 ?>

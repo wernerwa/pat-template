@@ -6,7 +6,7 @@
  * by PHP while the file is being read. See extending-pattemplate.txt
  * for more information on patTemplate functions.
  *
- * $Id: example_function_call.php 250 2004-07-08 20:49:09Z schst $
+ * $Id: example_function_call.php 320 2004-10-28 15:07:07Z schst $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -31,12 +31,8 @@
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );
 	
-	$tmpl->applyInputFilter( 'StripComments' );
-	$tmpl->applyOutputFilter( 'Tidy' );
-	$tmpl->applyOutputFilter( 'StripWhitespace' );
-	$tmpl->applyOutputFilter( 'Gzip' );
-
-	$tmpl->readTemplatesFromInput( 'example_function_call_templates.tmpl' );
+	$tmpl->readTemplatesFromInput( 'components/hint.tmpl' );
+	$tmpl->readTemplatesFromInput( 'components/news.tmpl' );
 
 	$tmpl->readTemplatesFromInput( 'example_function_call.tmpl' );
 

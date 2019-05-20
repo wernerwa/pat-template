@@ -1,14 +1,14 @@
 <?PHP
 /**
- * patTemplate example that shows how clear variables in a template
+ * patTemplate example that shows how free the resources used by a template
  *
- * $Id: example_api_freetemplate.php 253 2004-07-15 19:53:45Z schst $
+ * $Id: example_api_freetemplate.php 366 2005-03-07 18:09:42Z schst $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
  * @subpackage	Examples
  * @link		http://www.php-tools.net
- * @see         patTemplate::setAttribute()
+ * @see         patTemplate::freeTemplate()
  */
 
  	error_reporting( E_ALL );
@@ -23,6 +23,8 @@
 	* main class
 	*/
 	require_once '../patTemplate.php';
+	
+	patErrorManager::setErrorHandling(E_ALL, 'verbose');
 	
 	$tmpl	=	&new patTemplate();
 	$tmpl->setRoot( 'templates' );

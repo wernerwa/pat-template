@@ -2,7 +2,7 @@
 /**
  * patTemplate StripComments input filter
  *
- * $Id: StripComments.php 79 2004-04-01 19:56:50Z schst $
+ * $Id: StripComments.php 374 2005-03-21 18:53:50Z schst $
  *
  * Will remove all HTML comments.
  *
@@ -14,7 +14,7 @@
 /**
  * patTemplate StripComments output filter
  *
- * $Id: StripComments.php 79 2004-04-01 19:56:50Z schst $
+ * $Id: StripComments.php 374 2005-03-21 18:53:50Z schst $
  *
  * Will remove all HTML comments.
  *
@@ -43,7 +43,8 @@ class patTemplate_InputFilter_StripComments extends patTemplate_InputFilter
 	function apply( $data )
 	{
         $data = preg_replace( '°<!--.*-->°msU', '', $data );
-	
+        $data = preg_replace( '°/\*.*\*/°msU', '', $data );
+
 		return $data;
 	}
 }

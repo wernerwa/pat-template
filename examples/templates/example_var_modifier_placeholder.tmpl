@@ -1,0 +1,13 @@
+<!-- $Id: example_var_modifier_placeholder.tmpl 446 2006-10-24 14:28:25Z gerd $ -->
+<patTemplate:tmpl name="page">
+<p>
+    Modifier that uses placeholder as attributes.
+</p>
+<p>
+    The following text will be truncated to a lenght of {LENGTH}
+</p>
+<p>
+    <patTemplate:var name="text" modifier="truncate" start="3" length="{LENGTH}" prefix="{PREFIX} --&gt;" suffix="&lt;-- {SUFFIX}" />
+</p>
+
+</patTemplate:tmpl>

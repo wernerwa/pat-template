@@ -6,7 +6,7 @@
  * Take a look at the tmplCache folder. This example will
  * save a cache file there.
  *
- * $Id: example_cache_template_file.php 155 2004-04-20 20:16:43Z schst $
+ * $Id: example_cache_template_file.php 396 2005-05-15 11:44:52Z schst $
  *
  * @author		Stephan Schmidt <schst@php-tools.net>
  * @package		patTemplate
@@ -34,8 +34,10 @@
 	 */
 	$tmpl->useTemplateCache( 'File', array(
 											'cacheFolder' => './tmplCache',
-											'lifetime' => 10 )
-										);
+											'lifetime'    => 10,
+											'filemode'    => 0644
+										)
+						);
    /**
 	* cache is valid until original 
 	* is modified.

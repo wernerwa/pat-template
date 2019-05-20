@@ -1,6 +1,14 @@
 New features:
 -------------
-$Id: news.txt 185 2004-04-27 18:52:51Z schst $
+$Id: news.txt 322 2004-10-28 15:51:30Z schst $
+
+New features in v3.1.0:
+- allowed more than one namespace
+- added defaultFunction option, to define a function that is called for unknown functions
+- added new built-in condition __single
+- allow quoting variables using \{FOO\}
+- implemented autoload in Call function
+
 
 New features in v3.0.0:
 

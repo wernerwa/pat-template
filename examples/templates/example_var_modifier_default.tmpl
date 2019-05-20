@@ -1,0 +1,10 @@
+<!-- $Id: example_var_modifier_default.tmpl 377 2005-03-24 12:30:47Z schst $ -->
+<patTemplate:tmpl name="page" defaultModifier="htmlentities">
+<p>
+    Default modifier will be used: {SOMETEXT}
+</p>
+<p>
+    Apply custom modifier: <patTemplate:var name="multiline" modifier="nl2br"/>
+</p>
+
+</patTemplate:tmpl>

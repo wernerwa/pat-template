@@ -1,0 +1,44 @@
+<!-- $Id$ -->
+<patTemplate:tmpl name="page">
+
+Print some variables in the named template <i>page</i><br />
+First: <strong><patTemplate:var name="first_mod" copyfrom="first" modifier="ucfirst,strrev" /></strong><br />
+Second: <strong>{SECOND|strtoupper}</strong><br />
+Third: <strong>{THIRD}</strong><br />
+
+<hr />
+Let's go to a nested   
+<patTemplate:tmpl name="nested_1" varscope="page">
+and fetch the variables from the named template <i>page</i><br />
+page.First: <strong><patTemplate:var name="first" modifier="ucfirst,strrev" /></strong><br />
+page.Second: <strong>{SECOND|strtoupper}</strong><br />
+page.Third: <strong>{THIRD}</strong><br />
+</patTemplate:tmpl>
+
+<hr />
+Let's go to another nested template 
+<patTemplate:tmpl name="nested_2" varscope="__parent">
+and fetch the variables from the <i>parent</i> template<br />
+First: <strong><patTemplate:var name="first" modifier="ucfirst,strrev" /></strong><br />
+Second: <strong>{SECOND|strtoupper}</strong><br />
+Third: <strong>{THIRD}</strong><br />
+</patTemplate:tmpl>
+
+<hr />
+
+Let's go to another nested template 
+<patTemplate:tmpl name="nested_3" >
+and let the variable mdifiers decide where to get the variables from<br />
+First: <strong><patTemplate:var name="first" copyfrom="__parent.first" modifier="ucfirst,strrev" /></strong><br />
+Second: <strong><patTemplate:var name="second" copyfrom="page.second" modifier="strtoupper" /></strong><br />
+Third: <strong><patTemplate:var name="third" copyfrom="__parent.third" modifier="md5" /></strong><br />
+</patTemplate:tmpl>
+
+<hr />
+
+Last but not least the original value of the variables in template <i>page</i><br />
+First: <strong>{FIRST}</strong><br />
+Second: <strong>{SECOND}</strong><br />
+Third: <strong>{THIRD}</strong><br />
+
+</patTemplate:tmpl>

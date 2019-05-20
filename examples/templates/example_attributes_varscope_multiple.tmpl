@@ -1,0 +1,14 @@
+<!-- $Id: example_attributes_varscope_multiple.tmpl 338 2004-12-08 16:46:35Z schst $ -->
+<patTemplate:tmpl name="page">
+
+	<patTemplate:tmpl name="storage1">
+	This is in storage1: {FOO}<br />
+	</patTemplate:tmpl>
+	<patTemplate:tmpl name="storage2">
+	This is in storage2: {BAR}<br />
+	</patTemplate:tmpl>
+	<patTemplate:tmpl name="main" varscope="storage1, storage2">
+	This is in main: FOO: {FOO}, BAR: {BAR}<br />
+	</patTemplate:tmpl>
+	
+</patTemplate:tmpl>
