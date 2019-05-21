@@ -1,0 +1,39 @@
+{
+	"name": "wernerwa/pat-template",
+	"description": "patTemplate is a powerful, non-compiling templating engine, that uses XML tags to divide a document into different parts.",
+	"type": "library",
+	"license": "LGPL",
+	"authors": [
+		{
+			"name": "Stephan Schmidt",
+			"email": "schst@php-tools.net"
+		}, {
+			"name": "Gerd Schaufelberger",
+			"email": "gerd@php-tools.net"
+		}, {
+			"name": "Sebastian Mordziol",
+			"email": "argh@php-tools.net"
+		}, {
+			"name": "Andrew Eddie",
+			"email": "mamboblue@gmail.com"
+		}, {
+			"name": "Werner Wank",
+			"email": "14849239+wernerwa@users.noreply.github.com"
+		}
+	],
+	"autoload": {
+		"psr-0": {
+			"patTemplate": "src/"
+		}
+	},
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/wernerwa/pat-error.git"
+		}
+	],
+	"require": {
+		"pear/pear-core-minimal": "^1.0",
+		"wernerwa/pat-error":  "^1.1"
+	}
+}
