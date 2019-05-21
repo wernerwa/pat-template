@@ -2,8 +2,6 @@
 /**
  * patTemplate function that highlights PHP code in your templates
  *
- * $Id: Phphighlight.php 214 2004-05-18 20:10:45Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -11,8 +9,6 @@
 
 /**
  * patTemplate function that highlights PHP code in your templates
- *
- * $Id: Phphighlight.php 214 2004-05-18 20:10:45Z schst $
  *
  * @package     patTemplate
  * @subpackage  Functions

@@ -5,8 +5,6 @@
  * This example shows you how map tags to templates by setting
  * the call function as default.
  *
- * $Id: example_function_default.php 453 2007-05-30 12:58:43Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

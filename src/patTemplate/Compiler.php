@@ -2,8 +2,6 @@
 /**
  * Compiler for patTemplate
  *
- * $Id: Compiler.php 206 2004-05-14 16:49:34Z schst $
- *
  * WARNING: This is still experimental!
  *
  * @package     patTemplate
@@ -13,8 +11,6 @@
 
 /**
  * Compiler for patTemplate
- *
- * $Id: Compiler.php 206 2004-05-14 16:49:34Z schst $
  *
  * WARNING: This is still experimental!
  *

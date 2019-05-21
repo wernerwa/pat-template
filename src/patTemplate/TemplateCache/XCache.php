@@ -2,8 +2,6 @@
 /**
  * patTemplate Template cache that stores data in the Xcache shm
  *
- * $Id: XCache.php 466 2007-09-26 13:24:02Z gerd $
- *
  * @package     patTemplate
  * @subpackage  Caches
  * @author      Veysel Özer <kezban11@gmx.de>

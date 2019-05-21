@@ -6,8 +6,6 @@
  * The String Reader allows you to read templates from any variable by passing
  * it a string. You can always use this to read from a custom source.
  *
- * $Id: example_reader_string.php 453 2007-05-30 12:58:43Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

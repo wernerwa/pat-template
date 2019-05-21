@@ -2,8 +2,6 @@
 /**
  * patTemplate StripWhitespace output filter
  *
- * $Id: StripWhitespace.php 417 2005-09-16 12:04:11Z schst $
- *
  * Will remove all whitespace and replace it with a single space.
  *
  * @package     patTemplate
@@ -13,8 +11,6 @@
 
 /**
  * patTemplate StripWhitespace output filter
- *
- * $Id: StripWhitespace.php 417 2005-09-16 12:04:11Z schst $
  *
  * Will remove all whitespace and replace it with a single space.
  *

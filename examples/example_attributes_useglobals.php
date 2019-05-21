@@ -4,8 +4,6 @@
  * use the 'useglobals' attribute for
  * condition templates.
  *
- * $Id: example_attributes_useglobals.php 453 2007-05-30 12:58:43Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

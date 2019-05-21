@@ -3,8 +3,6 @@
  * patTemplate function that enables adding global variables
  * from within a template.
  *
- * $Id: Globalvar.php 221 2004-05-28 15:45:08Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Sebastian Mordziol <argh@php-tools.net>
@@ -20,8 +18,6 @@
  * name     >  name of the variable
  * default  >  default value of the variable
  * hidden   >  whether to output the content of the variable: yes|no
- *
- * $Id: Globalvar.php 221 2004-05-28 15:45:08Z schst $
  *
  * @package     patTemplate
  * @subpackage  Functions

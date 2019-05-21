@@ -6,8 +6,6 @@
  * by PHP while the file is being read. See extending-pattemplate.txt
  * for more information on patTemplate functions.
  *
- * $Id: example_function_conditionalsimple.php 464 2007-06-20 14:05:14Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @author      Timo Holzherr <timo@holzherr.de>
  * @author      gERD Schaufelberger <gerd@php-tools.net>

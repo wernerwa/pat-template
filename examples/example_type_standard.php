@@ -4,8 +4,6 @@
  *
  * An odd-even template allows you to define two sub-templates for alternating lists.
  *
- * $Id: example_type_standard.php 453 2007-05-30 12:58:43Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

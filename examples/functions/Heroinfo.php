@@ -2,8 +2,6 @@
 /**
  * patTemplate-function for script-tags
  *
- * $Id: Heroinfo.php 454 2007-05-30 15:34:37Z gerd $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Timo Holzherr <tholzherr@nero.com>

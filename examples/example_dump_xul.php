@@ -4,8 +4,6 @@
  * to display debug information about
  * the loaded templates and their variables
  *
- * $Id: example_dump_xul.php 453 2007-05-30 12:58:43Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

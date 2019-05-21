@@ -2,8 +2,6 @@
 /**
  * Definitions of all included examples
  *
- * $Id: index_sections.php 474 2009-01-13 14:07:14Z gerd $
- *
  * @package     patTemplate
  * @subpackage  Examples
  * @author      Sebastian Mordziol <argh@php-tools.net>

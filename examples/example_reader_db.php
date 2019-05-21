@@ -2,8 +2,6 @@
 /**
  * Example that uses the DB reader
  *
- * $Id$
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

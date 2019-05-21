@@ -2,8 +2,6 @@
 /**
  * patTemplate
  *
- * $Id: patTemplate.php 467 2008-01-16 16:27:18Z gerd $
- *
  * powerful templating engine
  *
  * @version     3.2.0

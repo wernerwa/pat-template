@@ -2,8 +2,6 @@
 /**
  * Dumps templates as XUL
  *
- * $Id: XUL.php 361 2005-02-18 19:06:41Z schst $
- *
  * @package     patTemplate
  * @subpackage  Dump
  * @author      Stephan Schmidt <schst@php.net>

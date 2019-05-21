@@ -4,8 +4,6 @@
  * to set the paths to the needed classes as they
  * should be on your server.
  *
- * $Id: config.php 479 2009-02-25 07:59:41Z gerd $
- *
  * @package     patForms
  * @subpackage  Examples
  * @author      Sebastian Mordziol <argh@php-tools.net>

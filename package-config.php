@@ -4,8 +4,6 @@
  *
  * Config to to build PEAR packages
  *
- * $Id$
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @author      gERD Schaufelberger <gerd@php-tools.net>
  * @package     patSessoin

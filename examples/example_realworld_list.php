@@ -2,8 +2,6 @@
 /**
  * patTemplate example that shows how to create a list
  *
- * $Id: example_realworld_list.php 453 2007-05-30 12:58:43Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples
