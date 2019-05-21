@@ -25,7 +25,7 @@
 
 
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput('condition.tmpl');
 

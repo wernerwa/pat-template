@@ -39,7 +39,7 @@
     require_once '../patTemplate/Compiler.php';
 
 
-    $tmpl   =   &new patTemplate_Compiler();
+    $tmpl = new patTemplate_Compiler();
     $tmpl->setRoot('templates');
 
     $tmpl->setOption('compileFolder', 'compiledTemplates');

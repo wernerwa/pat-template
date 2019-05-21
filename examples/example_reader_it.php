@@ -27,7 +27,7 @@
     */
     require_once '../patTemplate.php';
 
-    $tmpl   =   &new patTemplate('html');
+    $tmpl = new patTemplate('html');
     $tmpl->setRoot('templates');
 
     $data = array(
