@@ -2265,7 +2265,7 @@ class patTemplate
      * This method allows you to just echo the patTemplate
      * object in order to display the template.
      *
-     * Requires PHP5
+     * Requires PHP5.2
      *
      * <code>
      * $tmpl = new patTemplate();
@@ -2273,8 +2273,7 @@ class patTemplate
      * echo $tmpl;
      * </code>
      *
-     * @access   private
-     * @return   string
+     * @return string
      */
     public function __toString()
     {
