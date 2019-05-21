@@ -47,7 +47,7 @@
 
     $tmpl->addVar('page', 'now', time());
 
-    $tmpl->addVar('page', 'sometext', 'This contains some special chars: < > & äÖÜ');
+    $tmpl->addVar('page', 'sometext', 'This contains some special chars: < > & ï¿½ï¿½ï¿½');
 
     $tmpl->addVar('page', 'multiline', 'This contains
  some

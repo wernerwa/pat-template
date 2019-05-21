@@ -106,14 +106,14 @@ class patTemplate_Reader extends patTemplate_Module
     public $_depth;
 
     /**
-        * templates that have been found
+     * templates that have been found
      * @access   protected
      * @var      array
      */
     public $_templates =   array();
 
     /**
-        * path to the template
+     * path to the template
      * @access   protected
      * @var      array
      */
@@ -907,8 +907,8 @@ class patTemplate_Reader extends patTemplate_Module
          */
         if (isset($attributes['varscope'])) {
             /**
-            * varscope is parent
-            */
+             * varscope is parent
+             */
             if ($attributes['varscope'] === '__parent') {
                 $attributes['varscope'] = $this->_getFromParentTemplate('name');
             }
