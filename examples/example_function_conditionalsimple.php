@@ -32,7 +32,7 @@
      */
     require_once $neededFiles['patTemplate'];
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
 
     // tell patTemplate where to find custom functions
     $tmpl->addModuleDir('Function', dirname(__FILE__) . '/functions');
