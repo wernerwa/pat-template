@@ -21,7 +21,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @access   private
      * @var      string
      */
-    public $_name  =   'File';
+    private $_name = 'File';
 
     /**
      * flag to indicate, that current file is remote
@@ -29,7 +29,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @access   private
      * @var      boolean
      */
-    public $_isRemote = false;
+    private $_isRemote = false;
 
     /**
      * all files, that have been opened
@@ -37,7 +37,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @access   private
      * @var      array
      */
-    public $_files = array();
+    private $_files = array();
 
     /**
      * read templates from any input

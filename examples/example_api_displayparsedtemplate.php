@@ -29,7 +29,7 @@
      */
     require_once $neededFiles['patTemplate'];
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput('example_api_displayparsedtemplate.tmpl');
     $tmpl->readTemplatesFromInput('example_api_displayparsedtemplate2.tmpl');

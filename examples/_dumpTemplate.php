@@ -28,7 +28,7 @@
     require_once $neededFiles['patTemplate'];
 
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->addModuleDir('Function', dirname(__FILE__) . '/functions');
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput($_GET['template']);

@@ -21,7 +21,7 @@ class patTemplate_Function_Phphighlight extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    public $_name  =   'Phphighlight';
+    private $_name = 'Phphighlight';
 
     /**
      * call the function

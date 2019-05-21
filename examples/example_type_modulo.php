@@ -31,7 +31,7 @@
 
 
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput('example_type_modulo.tmpl');
 

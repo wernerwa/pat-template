@@ -23,7 +23,7 @@ class patTemplate_Function_Time extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    public $_name  =   'Time';
+    private $_name = 'Time';
 
     /**
      * Overridden because the time should not be calculated at compile time but at runtime

@@ -30,7 +30,7 @@
      */
     require_once $neededFiles['patTemplate'];
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
 
     $tmpl->useTemplateCache('File', array(

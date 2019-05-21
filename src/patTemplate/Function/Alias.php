@@ -25,7 +25,7 @@ class patTemplate_Function_Alias extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    public $_name  =   'Alias';
+    private $_name = 'Alias';
 
     /**
      * call the function

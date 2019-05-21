@@ -77,31 +77,27 @@ class patTemplate_Reader extends patTemplate_Module
 
     /**
      * stack for all open elements
-     * @access   private
      * @var  array
      */
-    public $_elStack;
+    protected $_elStack;
 
     /**
      * stack for all open templates
-     * @access   private
      * @var  array
      */
-    public $_tmplStack;
+    protected $_tmplStack;
 
     /**
      * character data
-     * @access   private
      * @var  array
      */
-    public $_data;
+    protected $_data;
 
     /**
      * tag depth
-     * @access   private
      * @var  integer
      */
-    public $_depth;
+    protected $_depth;
 
     /**
      * templates that have been found
@@ -122,22 +118,21 @@ class patTemplate_Reader extends patTemplate_Module
      * @access   private
      * @var      string
      */
-    public $_startTag;
+    private $_startTag;
 
     /**
      * end tag for variables
      * @access   private
      * @var      string
      */
-    public $_endTag;
+    private $_endTag;
 
     /**
      * default attributes
      *
-     * @access   private
      * @var      array
      */
-    public $_defaultAtts   =   array();
+    protected $_defaultAtts = array();
 
     /**
      * root attributes
@@ -145,18 +140,16 @@ class patTemplate_Reader extends patTemplate_Module
      * This is used when reading the template content
      * from an external file.
      *
-     * @access   private
      * @var      array
      */
-    public $_rootAtts  =   array();
+    protected $_rootAtts = array();
 
     /**
      * inherit attributes
      *
-     * @access   private
      * @var      array
      */
-    public $_inheritAtts   =   array();
+    protected $_inheritAtts = array();
 
     /**
      * name of the first template that has been found
@@ -164,23 +157,21 @@ class patTemplate_Reader extends patTemplate_Module
      * @access   private
      * @var      string
      */
-    public $_root = null;
+    private $_root = null;
 
     /**
      * all data that has been processed
      *
-     * @access   private
      * @var      string
      */
-    public $_processedData = null;
+    protected $_processedData = null;
 
     /**
      * current input
      *
-     * @access   private
      * @var      string
      */
-    public $_currentInput = null;
+    protected $_currentInput = null;
 
     /**
      * all loaded functions
@@ -188,7 +179,7 @@ class patTemplate_Reader extends patTemplate_Module
      * @access   private
      * @var      array
      */
-    public $_functions =   array();
+    private $_functions = array();
 
     /**
      * function aliases
@@ -196,7 +187,7 @@ class patTemplate_Reader extends patTemplate_Module
      * @access   private
      * @var      array
      */
-    public $_funcAliases = array();
+    private $_funcAliases = array();
 
     /**
      * options

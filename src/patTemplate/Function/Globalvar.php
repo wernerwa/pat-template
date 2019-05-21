@@ -31,7 +31,7 @@ class patTemplate_Function_Globalvar extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    public $_name  =   'Globalvar';
+    private $_name = 'Globalvar';
 
     /**
      * reference to the patTemplate object that instantiated the module

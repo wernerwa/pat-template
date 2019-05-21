@@ -31,7 +31,7 @@ class patTemplate_Stat extends patTemplate_Module
      * @access   private
      * @var      array
      */
-    public $_options = array();
+    private $_options = array();
 
     /**
      * get the modification time of a template

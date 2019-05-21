@@ -29,7 +29,7 @@
 
     patErrorManager::setErrorHandling(E_ALL, 'verbose');
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
 
     $tmpl->readTemplatesFromInput('example_api_freetemplate.tmpl');

@@ -32,7 +32,7 @@
 
 
 
-    $tmpl   =   &new patTemplate('html');
+    $tmpl = new patTemplate('html');
 
     $string = '<patTemplate:tmpl name="string">This template has been parsed from a string <patTemplate:tmpl name="too">, as well as this.</patTemplate:tmpl></patTemplate:tmpl>';
 

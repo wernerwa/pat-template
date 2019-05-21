@@ -21,14 +21,14 @@ class patTemplate_Reader_IT extends patTemplate_Reader
      * @access   private
      * @var      string
      */
-    public $_name  =   'IT';
+    private $_name  =   'IT';
 
     /**
      * files that have been used
      * @access   private
      * @var      array
      */
-    public $_files =   array();
+    private $_files =   array();
 
     /**
      * parse templates from string

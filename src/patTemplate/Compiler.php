@@ -31,7 +31,7 @@ class patTemplate_Compiler extends patTemplate
      * @access   private
      * @var      array()
      */
-    public $_compiledTemplates = array();
+    private $_compiledTemplates = array();
 
     /**
      * file pointer to the compiled template
@@ -39,20 +39,19 @@ class patTemplate_Compiler extends patTemplate
      * @access   private
      * @var      resource
      */
-    public $_fp;
+    private $_fp;
 
     /**
      * constructor
      *
      * Creates a new patTemplate Compiler
      *
-     * @access   public
-     * @param    string      type of the templates, either 'html' or 'tex'
+     * @param string type of the templates, either 'html' or 'tex'
      */
-    public function patTemplate_Compiler($type = 'html')
+    public function __construct($type = 'html')
     {
         $GLOBALS['patTemplate_Compiler']    =   &$this;
-        patTemplate::patTemplate($type);
+        patTemplate::__construct($type);
     }
 
     /**

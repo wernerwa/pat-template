@@ -27,7 +27,7 @@
     require_once $neededFiles['patTemplate'];
 
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput('example_realworld_varscopeparent.tmpl');
 
