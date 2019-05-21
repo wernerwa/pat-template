@@ -2,8 +2,6 @@
 /**
  * patTemplate StripComments input filter
  *
- * $Id: StripComments.php 374 2005-03-21 18:53:50Z schst $
- *
  * Will remove all HTML comments.
  *
  * @package     patTemplate
@@ -13,8 +11,6 @@
 
 /**
  * patTemplate StripComments output filter
- *
- * $Id: StripComments.php 374 2005-03-21 18:53:50Z schst $
  *
  * Will remove all HTML comments.
  *

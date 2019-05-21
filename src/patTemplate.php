@@ -2,8 +2,6 @@
 /**
  * patTemplate
  *
- * $Id: patTemplate.php 452 2007-05-11 09:18:06Z argh $
- *
  * powerful templating engine
  *
  * @version     3.1.0
@@ -229,10 +227,9 @@ class patTemplate
      *
      * The type influences the tags you are using in your templates.
      *
-     * @access   public
-     * @param    string  type (either html or tex)
+     * @param string type (either html or tex)
      */
-    public function patTemplate($type = 'html')
+    public function __construct($type = 'html')
     {
         if (!defined('PATTEMPLATE_INCLUDE_PATH')) {
             define('PATTEMPLATE_INCLUDE_PATH', dirname(__FILE__) . '/patTemplate');
@@ -2132,9 +2129,7 @@ class patTemplate
             return true;
         }
 
-
         $iteration = $this->_templates[$template]['iteration'];
-
         $vars = array();
         if (isset($this->_templates[$template]['attributes']['varscope'])) {
             if (!is_array($this->_templates[$template]['attributes']['varscope'])) {
@@ -2626,7 +2621,7 @@ class patTemplate
      * This method allows you to just echo the patTemplate
      * object in order to display the template.
      *
-     * Requires PHP5
+     * Requires PHP5.2
      *
      * <code>
      * $tmpl = new patTemplate();
@@ -2634,8 +2629,7 @@ class patTemplate
      * echo $tmpl;
      * </code>
      *
-     * @access   private
-     * @return   string
+     * @return string
      */
     public function __toString()
     {

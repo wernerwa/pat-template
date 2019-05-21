@@ -2,8 +2,6 @@
 /**
  * creates a new function alias
  *
- * $Id: Alias.php 283 2004-09-07 19:09:56Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -16,8 +14,6 @@
  * - alias => new alias
  * - function => function to call
  *
- * $Id: Alias.php 283 2004-09-07 19:09:56Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -29,7 +25,7 @@ class patTemplate_Function_Alias extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    public $_name  =   'Alias';
+    private $_name = 'Alias';
 
     /**
      * call the function

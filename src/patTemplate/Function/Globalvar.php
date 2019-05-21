@@ -3,8 +3,6 @@
  * patTemplate function that enables adding global variables
  * from within a template.
  *
- * $Id: Globalvar.php 221 2004-05-28 15:45:08Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Sebastian Mordziol <argh@php-tools.net>
@@ -21,8 +19,6 @@
  * default  >  default value of the variable
  * hidden   >  whether to output the content of the variable: yes|no
  *
- * $Id: Globalvar.php 221 2004-05-28 15:45:08Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Sebastian Mordziol <argh@php-tools.net>
@@ -35,7 +31,7 @@ class patTemplate_Function_Globalvar extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    public $_name  =   'Globalvar';
+    private $_name = 'Globalvar';
 
     /**
      * reference to the patTemplate object that instantiated the module

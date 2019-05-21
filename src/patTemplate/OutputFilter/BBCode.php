@@ -2,8 +2,6 @@
 /**
  * patTemplate BBCode output filter
  *
- * $Id: BBCode.php 408 2005-07-21 11:19:36Z argh $
- *
  * Uses patBBCode.
  *
  * @package     patTemplate

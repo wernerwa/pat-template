@@ -2,8 +2,6 @@
 /**
  * Dumps templates as HTML
  *
- * $Id: Html.php 356 2005-01-04 19:30:59Z schst $
- *
  * @package     patTemplate
  * @subpackage  Dump
  * @author      Sebastian Mordziol <argh@php-tools.net>

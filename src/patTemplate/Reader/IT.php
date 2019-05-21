@@ -2,8 +2,6 @@
 /**
  * patTemplate reader that reads HTML_Template_IT files
  *
- * $Id: IT.php 413 2005-08-05 13:51:01Z schst $
- *
  * @package     patTemplate
  * @subpackage  Readers
  * @author      Stephan Schmidt <schst@php.net>
@@ -23,14 +21,14 @@ class patTemplate_Reader_IT extends patTemplate_Reader
      * @access   private
      * @var      string
      */
-    public $_name  =   'IT';
+    private $_name  =   'IT';
 
     /**
      * files that have been used
      * @access   private
      * @var      array
      */
-    public $_files =   array();
+    private $_files =   array();
 
     /**
      * parse templates from string

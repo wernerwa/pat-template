@@ -24,7 +24,7 @@
     */
     require_once '../patTemplate.php';
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->readTemplatesFromInput('example_realworld_table_from_list.tmpl');
 
