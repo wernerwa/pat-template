@@ -20,7 +20,7 @@ require_once 'pat/patErrorManager.php';
 
 require_once '../patTemplate.php';
 
-$tmpl = &new patTemplate();
+$tmpl = new patTemplate();
 
 // set the location for database templates
 $tmpl->setRoot('mysql://root:@localhost/test', 'DB');

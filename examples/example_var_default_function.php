@@ -40,7 +40,7 @@ class Foo
     */
     require_once '../patTemplate.php';
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
 
     $tmpl->setOption('allowFunctionsAsDefault', true);

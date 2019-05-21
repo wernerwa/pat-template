@@ -23,7 +23,7 @@
     */
     require_once '../patTemplate.php';
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
 
     $tmpl->readTemplatesFromInput('example_filter_output_per_template.tmpl');
