@@ -32,7 +32,7 @@
 
     $tmpl->readTemplatesFromInput('example_var_modifier_default.tmpl');
 
-    $tmpl->addVar('page', 'sometext', 'This contains some special chars: < > & äÖÜ');
+    $tmpl->addVar('page', 'sometext', 'This contains some special chars: < > & Ã¤Ã–Ãœ');
 
     $tmpl->addVar('page', 'multiline', 'This contains
  some
