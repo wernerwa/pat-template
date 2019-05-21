@@ -2,8 +2,6 @@
 /**
  * patTemplate modfifier Calculator
  *
- * $Id: Calc.php 473 2008-12-01 10:56:22Z gerd $
- *
  * @package     patTemplate
  * @package     Modifiers
  * @author      Axel Sauerhöfer <axel@willcodejoomlaforfood.de>

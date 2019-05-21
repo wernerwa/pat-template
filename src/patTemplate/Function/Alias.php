@@ -2,8 +2,6 @@
 /**
  * creates a new function alias
  *
- * $Id: Alias.php 283 2004-09-07 19:09:56Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -15,8 +13,6 @@
  * Possible attributes:
  * - alias => new alias
  * - function => function to call
- *
- * $Id: Alias.php 283 2004-09-07 19:09:56Z schst $
  *
  * @package     patTemplate
  * @subpackage  Functions

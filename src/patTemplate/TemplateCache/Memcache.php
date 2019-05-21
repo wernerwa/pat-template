@@ -2,8 +2,6 @@
 /**
  * patTemplate Template cache that stores data in the Memcache
  *
- * $Id: Memcache.php 478 2009-02-25 07:58:38Z gerd $
- *
  * @package patTemplate
  * @subpackage  Caches
  * @author  Torben Egmose <torben.egmose@gmail.com>

@@ -3,8 +3,6 @@
  * patTemplate example that shows how variables
  * may copy their value from any other variable.
  *
- * $Id: example_var_global.php 453 2007-05-30 12:58:43Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

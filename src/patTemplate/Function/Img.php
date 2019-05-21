@@ -3,8 +3,6 @@
  * patTemplate function that returns a complete imagetag and
  * width and height are extracted from the image
  *
- * $Id: Img.php 428 2006-08-05 19:52:24Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Jens Strobel <strobel@pixeldreamz.com>
@@ -13,8 +11,6 @@
 /**
  * patTemplate function that returns a complete imagetag and
  * width and height are extracted from the image
- *
- * $Id: Img.php 428 2006-08-05 19:52:24Z schst $
  *
  * @package     patTemplate
  * @subpackage  Functions

@@ -2,8 +2,6 @@
 /**
  * Base class for patTemplate functions
  *
- * $Id: Function.php 454 2007-05-30 15:34:37Z gerd $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -21,8 +19,6 @@ define('PATTEMPLATE_FUNCTION_RUNTIME', 2);
 
 /**
  * Base class for patTemplate functions
- *
- * $Id: Function.php 454 2007-05-30 15:34:37Z gerd $
  *
  * @abstract
  * @package     patTemplate

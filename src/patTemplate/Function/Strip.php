@@ -3,8 +3,6 @@
  * patTemplate function that strips whitespace from a text
  * block. This is an implementation of Smarty's strip function.
  *
- * $Id: Strip.php 205 2004-05-13 21:27:27Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -13,8 +11,6 @@
 /**
  * patTemplate function that strips whitespace from a text
  * block. This is an implementation of Smarty's strip function.
- *
- * $Id: Strip.php 205 2004-05-13 21:27:27Z schst $
  *
  * @package     patTemplate
  * @subpackage  Functions

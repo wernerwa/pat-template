@@ -2,8 +2,6 @@
 /**
  * Generic highlighting function using PEAR::Text_Highlighter
  *
- * $Id: Highlight.php 391 2005-04-12 18:09:45Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -11,8 +9,6 @@
 
 /**
  * patTemplate function that highlights PHP code in your templates
- *
- * $Id: Highlight.php 391 2005-04-12 18:09:45Z schst $
  *
  * @package     patTemplate
  * @subpackage  Functions

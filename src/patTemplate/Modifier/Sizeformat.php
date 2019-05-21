@@ -2,8 +2,6 @@
 /**
  * patTemplate modfifier Sizeformat
  *
- * $Id: Sizeformat.php 476 2009-02-06 08:14:19Z gerd $
- *
  * @package     patTemplate
  * @subpackage  Modifiers
  * @author      gERD Schaufelberger <gerd@php-tools.net>

@@ -2,8 +2,6 @@
 /**
  * Example that shows the use of variable modifiers
  *
- * $Id: example_modifier_calc.php 465 2007-09-20 20:28:44Z gerd $
- *
  * @author      gERD Schaufelberger <gerd@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

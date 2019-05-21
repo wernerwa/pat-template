@@ -7,8 +7,6 @@
  * get quite annoying, patTemplate allows you to
  * change its namespace to whatever you like.
  *
- * $Id: example_misc_namespace.php 453 2007-05-30 12:58:43Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

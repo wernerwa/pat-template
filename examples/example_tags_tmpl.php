@@ -5,8 +5,6 @@
  * The template tag is the most important tag.
  * It allows you to split your file into smaller parts.
  *
- * $Id: example_tags_tmpl.php 453 2007-05-30 12:58:43Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples
