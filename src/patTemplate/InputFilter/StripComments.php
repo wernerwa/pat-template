@@ -42,8 +42,8 @@ class patTemplate_InputFilter_StripComments extends patTemplate_InputFilter
      */
     public function apply($data)
     {
-        $data = preg_replace('�<!--.*-->컈sU', '', $data);
-        $data = preg_replace('�/\*.*\*/컈sU', '', $data);
+        $data = preg_replace('째<!--.*-->째msU', '', $data);
+        $data = preg_replace('째/\*.*\*/째msU', '', $data);
 
         return $data;
     }
