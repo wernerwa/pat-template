@@ -100,7 +100,7 @@ class patTemplate_OutputFilter_BBCode extends patTemplate_OutputFilter
             }
         }
 
-        $this->BBCode = &new patBBCode();
+        $this->BBCode = new patBBCode();
 
         if (isset($this->_params['skinDir'])) {
             $this->BBCode->setSkinDir($this->_params['skinDir']);
