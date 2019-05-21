@@ -32,7 +32,7 @@
 
 
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
 
     $tmpl->applyInputFilter('ShortModifiers');

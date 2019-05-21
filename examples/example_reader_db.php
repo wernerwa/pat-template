@@ -28,7 +28,7 @@
 
 
 
-$tmpl = &new patTemplate();
+$tmpl = new patTemplate();
 $tmpl->setRoot('mysql://root:@localhost/test');
 
 // It's possible to directly specify a query

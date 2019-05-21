@@ -32,7 +32,7 @@
 
 
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot(array('templates', 'templates-2'));
 
     $tmpl->readTemplatesFromInput('example_reader_file_multiple.tmpl');

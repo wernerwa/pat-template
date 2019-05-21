@@ -32,7 +32,7 @@
 
 
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
     $tmpl->setOption('componentFolder', 'components');
     $tmpl->setOption('componentExtension', 'tmpl');

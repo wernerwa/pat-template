@@ -32,7 +32,7 @@
 
 
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
 
     $tmpl->readTemplatesFromInput('example_misc_quote.tmpl');

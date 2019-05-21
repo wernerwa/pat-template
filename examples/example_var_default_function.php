@@ -47,7 +47,7 @@ class Foo
 
 
 
-    $tmpl   =   &new patTemplate();
+    $tmpl = new patTemplate();
     $tmpl->setRoot('templates');
 
     // $tmpl->setDefaultAttribute( 'attributeplaceholder', 'replace' );
