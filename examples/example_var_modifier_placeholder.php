@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of variable modifiers
  *
@@ -9,10 +9,10 @@
  *
  * $Id: example_var_modifier_placeholder.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
     /**
      * Main examples prepend file, needed *only* for the examples framework!
@@ -33,20 +33,19 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_var_modifier_placeholder.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->addVar( 'page', 'length', 30 );
-    $tmpl->addVar( 'page', 'suffix', '<strong title="local variables override global ones...">local suffix</strong>' );
+    $tmpl->readTemplatesFromInput('example_var_modifier_placeholder.tmpl');
 
-    $tmpl->addGlobalVar( 'prefix', '<b>global prefix</b>' );
-    $tmpl->addGlobalVar( 'suffix', '<b>global suffix</b>' );
+    $tmpl->addVar('page', 'length', 30);
+    $tmpl->addVar('page', 'suffix', '<strong title="local variables override global ones...">local suffix</strong>');
 
-	$tmpl->addVar( 'page', 'text', 'This text is way too long! This text is way too long! This text is way too long! This text is way too long!' );
+    $tmpl->addGlobalVar('prefix', '<b>global prefix</b>');
+    $tmpl->addGlobalVar('suffix', '<b>global suffix</b>');
+
+    $tmpl->addVar('page', 'text', 'This text is way too long! This text is way too long! This text is way too long! This text is way too long!');
 
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->displayParsedTemplate();

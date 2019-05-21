@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * patTemplate modulo example
  *
@@ -10,10 +10,10 @@
  *
  * $Id: example_type_modulo_single.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.de
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.de
  */
 
     /**
@@ -35,12 +35,11 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
-	$tmpl->readTemplatesFromInput( 'example_type_modulo_single.tmpl' );
-	
-	$tmpl->addVar('row', 'foo', 'bar');
-	
-	$tmpl->displayParsedTemplate( 'row' );
-?>
+
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
+    $tmpl->readTemplatesFromInput('example_type_modulo_single.tmpl');
+
+    $tmpl->addVar('row', 'foo', 'bar');
+
+    $tmpl->displayParsedTemplate('row');

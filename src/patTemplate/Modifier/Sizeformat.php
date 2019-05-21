@@ -1,12 +1,12 @@
-<?PHP
+<?php
 /**
  * patTemplate modfifier Sizeformat
  *
  * $Id: Sizeformat.php 476 2009-02-06 08:14:19Z gerd $
  *
- * @package		patTemplate
- * @subpackage	Modifiers
- * @author		gERD Schaufelberger <gerd@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Modifiers
+ * @author      gERD Schaufelberger <gerd@php-tools.net>
  */
 
 /**
@@ -14,13 +14,13 @@
  *
  * Transform file size in bytes to Kilo, Mega Giga or Tera byte.
  *
- * @package		patTemplate
- * @subpackage	Modifiers
+ * @package     patTemplate
+ * @subpackage  Modifiers
  * @author      gERD Schaufelberger <gerd@php-tools.net>
  */
 class patTemplate_Modifier_Sizeformat extends patTemplate_Modifier
 {
-    var $defaults = array(
+    public $defaults = array(
                         'multi'     => 'auto',
                         'decimals'  => 0,
                         'point'     => '.',
@@ -29,11 +29,11 @@ class patTemplate_Modifier_Sizeformat extends patTemplate_Modifier
     /**
     * modify the value
     *
-    * @access	public
-    * @param	string		value
-    * @return	string		modified value
+    * @access   public
+    * @param    string      value
+    * @return   string      modified value
     */
-    function modify( $value, $params = array() )
+    public function modify($value, $params = array())
     {
         $multi  =   1024;
 
@@ -63,16 +63,19 @@ class patTemplate_Modifier_Sizeformat extends patTemplate_Modifier
             case 't':
                 $suffix =   'T';
                 $multi  *=  1024;
+                // no break
             case 'g':
                 if (!$suffix) {
                     $suffix =   'G';
                 }
                 $multi  *=  1024;
+                // no break
             case 'm':
                 if (!$suffix) {
                     $suffix =   'M';
                 }
                 $multi  *=  1024;
+                // no break
             case 'k':
                 if (!$suffix) {
                     $suffix =   'k';
@@ -87,4 +90,3 @@ class patTemplate_Modifier_Sizeformat extends patTemplate_Modifier
         return @number_format($value, $params['decimals'], $params['point'], $params['separator']) . ' ' . $suffix;
     }
 }
-?>

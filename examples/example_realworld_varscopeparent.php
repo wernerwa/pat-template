@@ -1,14 +1,14 @@
-<?PHP
+<?php
 /**
  * patTemplate example that uses the reserved word '__parent'
  * as a varscope
  *
  * $Id: example_realworld_varscopeparent.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
 
     /**
@@ -28,11 +28,10 @@
      */
     require_once $neededFiles['patTemplate'];
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
-	$tmpl->readTemplatesFromInput( 'example_realworld_varscopeparent.tmpl' );
-	
-	$tmpl->addVar( 'table', 'VAR', 'It worked!' );
-	$tmpl->displayParsedTemplate();
-?>
+
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
+    $tmpl->readTemplatesFromInput('example_realworld_varscopeparent.tmpl');
+
+    $tmpl->addVar('table', 'VAR', 'It worked!');
+    $tmpl->displayParsedTemplate();

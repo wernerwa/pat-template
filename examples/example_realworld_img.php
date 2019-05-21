@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of variable modifiers
  *
@@ -8,10 +8,10 @@
  *
  * $Id: example_realworld_img.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
     /**
      * Main examples prepend file, needed *only* for the examples framework!
@@ -32,13 +32,12 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_realworld_img.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->addVar( 'page', 'image_src', 'img/pb_pattemplate.gif' );
+    $tmpl->readTemplatesFromInput('example_realworld_img.tmpl');
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->addVar('page', 'image_src', 'img/pb_pattemplate.gif');
+
+    $tmpl->displayParsedTemplate();

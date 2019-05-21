@@ -1,6 +1,6 @@
 <patTemplate:tmpl name="page">
 
-Yes, patTemplate do some arithmetic :-) 
+Yes, patTemplate do some arithmetic :-)
 <p>
     a = {A} <br />
     b = {B} <br />
@@ -11,7 +11,7 @@ Yes, patTemplate do some arithmetic :-)
     <patTemplate:var hidden="yes" name="ap" copyfrom="a" memory="p" modifier="calc" operator="+" />
     <patTemplate:var hidden="yes" name="bp" copyfrom="b" memory="p" modifier="calc" operator="+" />
     <patTemplate:var hidden="yes" name="cp" copyfrom="c" memory="p" modifier="calc" operator="+" />
-        
+
     a + b + c = <patTemplate:var name="sum" default="0" modifier="calc" memory="p" operator="=" /><br />
 </p>
 <p>
@@ -19,7 +19,7 @@ Yes, patTemplate do some arithmetic :-)
     <patTemplate:var hidden="yes" name="am" copyfrom="a" modifier="calc" memory="m" operator="+" />
     <patTemplate:var hidden="yes" name="bm" copyfrom="b" modifier="calc" memory="m" operator="*" />
     <patTemplate:var hidden="yes" name="cm" copyfrom="c" modifier="calc" memory="m" operator="*" />
-    
+
     a * b * c = <patTemplate:var name="multi" default="0" modifier="calc" memory="m"  operator="=" /><br />
 </p>
 <p>
@@ -27,16 +27,16 @@ Yes, patTemplate do some arithmetic :-)
     <patTemplate:var hidden="yes" name="ad" copyfrom="a" modifier="calc" memory="d" operator="+" />
     <patTemplate:var hidden="yes" name="bd" copyfrom="b" modifier="calc" memory="d" operator="/" />
     <patTemplate:var hidden="yes" name="cd" copyfrom="c" modifier="calc" memory="d" operator="/" />
-    
+
     a / b / c = <patTemplate:var name="div" default="0" modifier="calc" memory="d"  operator="=" /><br />
 </p>
-    
+
 <p>
     Minus values:<br />
     <patTemplate:var hidden="yes" name="aminus" copyfrom="a" modifier="calc" memory="minus" operator="+" />
     <patTemplate:var hidden="yes" name="bminus" copyfrom="b" modifier="calc" memory="minus" operator="-" />
     <patTemplate:var hidden="yes" name="cminus" copyfrom="c" modifier="calc" memory="minus" operator="-" />
-    
+
     a - b - c = <patTemplate:var name="minus" default="0" modifier="calc" memory="minus"  operator="=" /><br />
 </p>
 

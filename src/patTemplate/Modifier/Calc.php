@@ -48,57 +48,57 @@
  */
 class patTemplate_Modifier_Calc extends patTemplate_Modifier
 {
-   /**
-    * modify the value
-    *
-    * @access   public
-    * @param    string      value
-    * @return   string      modified value
-    */
-    function modify( $value, $params = array() )
+    /**
+     * modify the value
+     *
+     * @access   public
+     * @param    string      value
+     * @return   string      modified value
+     */
+    public function modify($value, $params = array())
     {
         $precision  =   0;
-        if( isset( $params['precision'] ) ) {
-            $precision   =   intval( $params['precision'] );
+        if (isset($params['precision'])) {
+            $precision   =   intval($params['precision']);
         }
         static $buffer = array();
 
-        if( !is_numeric( $value ) ) {
+        if (!is_numeric($value)) {
             return $value;
         }
 
-        if( !isset( $params['operator'] ) ) {
+        if (!isset($params['operator'])) {
             return $value;
         }
 
         $memory = '__default';
-        if( isset( $params['memory'] ) ) {
+        if (isset($params['memory'])) {
             $memory =   $params['memory'];
         }
 
-        if( !isset( $buffer[$memory] ) ) {
+        if (!isset($buffer[$memory])) {
             $buffer[$memory] = 0;
         }
 
-        switch( $params['operator'] ) {
-            case '+';
+        switch ($params['operator']) {
+            case '+':
                 $buffer[$memory] += $value;
                 break;
 
-            case '-';
+            case '-':
                 $buffer[$memory] -= $value;
                 break;
 
-            case '*';
+            case '*':
                 $buffer[$memory] *= $value;
                 break;
 
-            case '/';
+            case '/':
                 $buffer[$memory] /= $value;
                 break;
 
             case '=':
-                return number_format( $buffer[$memory], $precision );
+                return number_format($buffer[$memory], $precision);
                 break;
 
             case 'c':
@@ -106,18 +106,17 @@ class patTemplate_Modifier_Calc extends patTemplate_Modifier
                 return null;
                 break;
             case 'sig':
-                if( $buffer[$memory] > 0 ) {
-                     return 1;
+                if ($buffer[$memory] > 0) {
+                    return 1;
                 }
-                if( $buffer[$memory] < 0 ) {
+                if ($buffer[$memory] < 0) {
                     return -1;
                 }
                 return 0;
             case 'abs':
-                return abs( $buffer[$memory] );
+                return abs($buffer[$memory]);
         }
 
-        return number_format( $value, $precision );
+        return number_format($value, $precision);
     }
 }
-?>

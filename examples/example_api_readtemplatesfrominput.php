@@ -1,19 +1,19 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of the comment tag
  *
- * The comment tag allows you to include documentation 
+ * The comment tag allows you to include documentation
  * of your templates or HTML files that will not be displayed
  * to the end user in the browser.
  *
  * $Id: example_api_readtemplatesfrominput.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
- 
+
     /**
      * Main examples prepend file, needed *only* for the examples framework!
      */
@@ -32,11 +32,10 @@
     require_once $neededFiles['patTemplate'];
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_api_readtemplatesfrominput.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->readTemplatesFromInput('example_api_readtemplatesfrominput.tmpl');
+
+    $tmpl->displayParsedTemplate();

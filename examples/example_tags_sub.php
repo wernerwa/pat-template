@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of the sub tag
  *
@@ -9,12 +9,12 @@
  *
  * $Id: example_tags_sub.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
- 
+
     /**
      * Main examples prepend file, needed *only* for the examples framework!
      */
@@ -34,11 +34,10 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_tags_sub.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->readTemplatesFromInput('example_tags_sub.tmpl');
+
+    $tmpl->displayParsedTemplate();

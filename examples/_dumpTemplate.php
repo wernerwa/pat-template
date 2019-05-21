@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * patTemplate example that show how
  * to display debug information about
@@ -6,12 +6,12 @@
  *
  * $Id: _dumpTemplate.php 454 2007-05-30 15:34:37Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.de
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.de
  */
- 
+
     /**
      * Main examples prepend file, needed *only* for the examples framework!
      */
@@ -28,12 +28,11 @@
      * patTemplate
      */
     require_once $neededFiles['patTemplate'];
-    
-    
-	$tmpl	=	&new patTemplate();
-	$tmpl->addModuleDir( 'Function', dirname( __FILE__ ) . '/functions' );
-	$tmpl->setRoot( 'templates' );
-	$tmpl->readTemplatesFromInput( $_GET['template'] );
 
-	$tmpl->dump();
-?>
+
+    $tmpl   =   &new patTemplate();
+    $tmpl->addModuleDir('Function', dirname(__FILE__) . '/functions');
+    $tmpl->setRoot('templates');
+    $tmpl->readTemplatesFromInput($_GET['template']);
+
+    $tmpl->dump();

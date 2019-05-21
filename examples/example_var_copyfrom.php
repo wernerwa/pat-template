@@ -1,14 +1,14 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how variables
  * may copy their value from any other variable.
  *
  * $Id: example_var_copyfrom.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.de
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.de
  */
 
     /**
@@ -30,20 +30,19 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_var_copyfrom.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->addVar( 'page', 'sometext', 'This text
+    $tmpl->readTemplatesFromInput('example_var_copyfrom.tmpl');
+
+    $tmpl->addVar('page', 'sometext', 'This text
 contains
 some
 line
-breaks.' );
+breaks.');
 
-	$tmpl->addVar( 'repeating', 'value', array( 'une', 'deux', 'trois' ) );
-	$tmpl->addVar( 'non-repeating', 'scalar', 'Copy' );
-	
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->addVar('repeating', 'value', array( 'une', 'deux', 'trois' ));
+    $tmpl->addVar('non-repeating', 'scalar', 'Copy');
+
+    $tmpl->displayParsedTemplate();

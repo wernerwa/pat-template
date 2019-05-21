@@ -1,14 +1,14 @@
-<?PHP
+<?php
 /**
  * patTemplate example that displays the
  * usage of parseIntoVar()
  *
  * $Id: example_api_parseintovar.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.de
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.de
  */
 
     /**
@@ -28,17 +28,16 @@
      */
     require_once $neededFiles['patTemplate'];
 
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
-	$tmpl->readTemplatesFromInput( 'example_api_parseintovar.tmpl' );
-	
-	$tmpl->addVar( 'src', 'foo', 'tomato' );
-	$tmpl->parseIntoVar( 'src', 'dest', 'BAR' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
+    $tmpl->readTemplatesFromInput('example_api_parseintovar.tmpl');
 
-	$tmpl->clearTemplate( 'src' );
-	$tmpl->addVar( 'src', 'foo', 'coconut' );
-	$tmpl->parseIntoVar( 'src', 'dest', 'BAR',true );
+    $tmpl->addVar('src', 'foo', 'tomato');
+    $tmpl->parseIntoVar('src', 'dest', 'BAR');
 
-	
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->clearTemplate('src');
+    $tmpl->addVar('src', 'foo', 'coconut');
+    $tmpl->parseIntoVar('src', 'dest', 'BAR', true);
+
+
+    $tmpl->displayParsedTemplate();

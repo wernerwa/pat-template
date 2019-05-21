@@ -3,7 +3,7 @@
 /**
  * patTemplate modifier Reduce
  *
- * Reduce a string variable to a fixed length showing the string큦 beggining and end  
+ * Reduce a string variable to a fixed length showing the string큦 beggining and end
  *
  * Possible attributes are:
  * - length (integer)
@@ -23,31 +23,32 @@ class patTemplate_Modifier_Reduce extends patTemplate_Modifier
     * @param  string    value
     * @return  string    modified value
     */
-    function modify($value, $params = array())
+    public function modify($value, $params = array())
     {
         // length
-        if (!isset( $params['length'])) {
+        if (!isset($params['length'])) {
             return $value;
         }
         settype($params['length'], 'integer');
-        
+
         // check if it큦 needed to reduce the string
-        if(strlen($value) <= $params['length'])
+        if (strlen($value) <= $params['length']) {
             return $value;
-        
+        }
+
         // afix (the string between string큦 beginning and end parts)
         if (isset($params['afix'])) {
             $afix = $params['afix'];
         } else {
             $afix = '...';
         }
-        
+
         // length of the afix
         $reservedBytes = strlen($afix);
-        
+
         // bytes available for beginning and end
         $bytesAvailable = $params['length'] - $reservedBytes;
-        
+
         // beginning and end parts themselves :)
         $begin = substr($value, 0, floor($bytesAvailable / 2));
         $end = substr($value, 0 - (floor($bytesAvailable / 2)));
@@ -56,4 +57,3 @@ class patTemplate_Modifier_Reduce extends patTemplate_Modifier
         return sprintf("%s%s%s", $begin, $afix, $end);
     }
 }
-?>

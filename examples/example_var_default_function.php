@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of variable modifiers
  *
@@ -9,10 +9,10 @@
  *
  * $Id: example_var_modifier.php 297 2004-10-03 11:35:57Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
 
     /**
@@ -27,11 +27,13 @@
  * called to calculate the default
  * value of a variable
  */
- class Foo {
-     function bar() {
-         return "tomato";
-     }
- }
+class Foo
+{
+    public function bar()
+    {
+        return "tomato";
+    }
+}
 
     /**
      * patErrorManager class
@@ -47,25 +49,24 @@
 
 
 
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
     // $tmpl->setDefaultAttribute( 'attributeplaceholder', 'replace' );
 
-	$tmpl->setOption('allowFunctionsAsDefault', true);
+    $tmpl->setOption('allowFunctionsAsDefault', true);
 
-	$tmpl->readTemplatesFromInput( 'example_var_default_function.tmpl' );
+    $tmpl->readTemplatesFromInput('example_var_default_function.tmpl');
 
-    $tmpl->addGlobalVar( 'normal', 'normal content' );
-    $tmpl->addGlobalVar( 'recursive', 'recursive removal' );
-    $tmpl->addGlobalVar( 'var', 'Remove {RECURSIVE} var: {VAR}' );
+    $tmpl->addGlobalVar('normal', 'normal content');
+    $tmpl->addGlobalVar('recursive', 'recursive removal');
+    $tmpl->addGlobalVar('var', 'Remove {RECURSIVE} var: {VAR}');
 
-    $tmpl->addGlobalVar( 'much_more', 'This is global, but NOT the default value!' );
-    $tmpl->addVar( 'page', 'much_more', 'NOT the default value!' );
+    $tmpl->addGlobalVar('much_more', 'This is global, but NOT the default value!');
+    $tmpl->addVar('page', 'much_more', 'NOT the default value!');
 
 //    $tmpl->addGlobalVar( 'var', 'global variables' );
     //$tmpl->addVar( 'page', 'var', 'local variables' );
 
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->displayParsedTemplate();

@@ -1,13 +1,13 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how to use simple conditions
  *
  * $Id: example_type_simplecondition.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
 
     /**
@@ -29,25 +29,24 @@
 
 
 
-	
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_type_simplecondition.tmpl' );
 
-	$rows = array(
-					array( 'foo' => 'foo', 'bar' => 'bar' ),
-					array( 'foo' => 'foo' ),
-					array( 'foo' => 'foo', 'bar' => 0 )
-				);
-	
-	$tmpl->addRows( 'cond', $rows );
-	$tmpl->addVar( 'container', 'foo', 'This is foo!' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->addVar( 'cond3', 'foo', 'bar' );
-	$tmpl->addVar( 'cond4', 'foo', 'bar' );
-	$tmpl->addVar( 'cond4', 'argh', 'foobar' );
-	
-	$tmpl->displayParsedTemplate( 'root' );
-?>
+    $tmpl->readTemplatesFromInput('example_type_simplecondition.tmpl');
+
+    $rows = array(
+                    array( 'foo' => 'foo', 'bar' => 'bar' ),
+                    array( 'foo' => 'foo' ),
+                    array( 'foo' => 'foo', 'bar' => 0 )
+                );
+
+    $tmpl->addRows('cond', $rows);
+    $tmpl->addVar('container', 'foo', 'This is foo!');
+
+    $tmpl->addVar('cond3', 'foo', 'bar');
+    $tmpl->addVar('cond4', 'foo', 'bar');
+    $tmpl->addVar('cond4', 'argh', 'foobar');
+
+    $tmpl->displayParsedTemplate('root');

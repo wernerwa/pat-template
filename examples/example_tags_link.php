@@ -1,19 +1,19 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of the link tag
  *
  * A link tag is used do duplicate a template, including
- * all of its variables. It is similar to a symbolic link 
+ * all of its variables. It is similar to a symbolic link
  * in the file system.
  *
  * $Id: example_tags_link.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
- 
+
     /**
      * Main examples prepend file, needed *only* for the examples framework!
      */
@@ -33,11 +33,10 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_tags_link.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->readTemplatesFromInput('example_tags_link.tmpl');
+
+    $tmpl->displayParsedTemplate();

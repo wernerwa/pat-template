@@ -4,10 +4,10 @@
  *
  * $Id: example_modifier_sizeformat.php 474 2009-01-13 14:07:14Z gerd $
  *
- * @author		gERD Schaufelberger <gerd@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      gERD Schaufelberger <gerd@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
 
     /**
@@ -27,10 +27,10 @@
      */
     require_once $neededFiles['patTemplate'];
 
-    $tmpl	=	&new patTemplate();
-    $tmpl->setRoot( 'templates' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-    $tmpl->readTemplatesFromInput( 'example_modifier_sizeformat.tmpl' );
+    $tmpl->readTemplatesFromInput('example_modifier_sizeformat.tmpl');
     $vars   =   array(
                         'kcore'     =>  '6979325952',
                         'config_gz' =>  '17281',
@@ -40,4 +40,3 @@
     $tmpl->addGlobalVars($vars);
 
     $tmpl->displayParsedTemplate();
-?>

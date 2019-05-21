@@ -25,11 +25,11 @@ versions below 3.0.0
 - adding the same variable twice may cause problems, if it's scalar
   the first time and an array the second time (or the other way round)
   (will be fixed)
-  
+
 - condition="empty" and condition="default" should now be used as
   condition="__empty" and condition"__default"
   (old values will be allowed until 3.1.0)
-  
+
 - placeholder="none"  should now be used as
   placeholder="__none"
   (old value will be allowed until 3.1.0)

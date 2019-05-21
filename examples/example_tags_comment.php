@@ -1,19 +1,19 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of the comment tag
  *
- * The comment tag allows you to include documentation 
+ * The comment tag allows you to include documentation
  * of your templates or HTML files that will not be displayed
  * to the end user in the browser.
  *
  * $Id: example_tags_comment.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
- 
+
     /**
      * Main examples prepend file, needed *only* for the examples framework!
      */
@@ -31,18 +31,17 @@
      */
     require_once $neededFiles['patTemplate'];
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_tags_comment.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$list	=	array(
-						array( 'superhero' => 'Superman', 'realname' => 'Clark Kent' ),
-						array( 'superhero' => 'Batman', 'realname' => 'Bruce Wayne' ),
-						array( 'superhero' => 'Aquaman', 'realname' => 'Arthur Curry' ),
-					);
-	$tmpl->addRows( 'list_entry', $list );
-	
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->readTemplatesFromInput('example_tags_comment.tmpl');
+
+    $list   =   array(
+                        array( 'superhero' => 'Superman', 'realname' => 'Clark Kent' ),
+                        array( 'superhero' => 'Batman', 'realname' => 'Bruce Wayne' ),
+                        array( 'superhero' => 'Aquaman', 'realname' => 'Arthur Curry' ),
+                    );
+    $tmpl->addRows('list_entry', $list);
+
+    $tmpl->displayParsedTemplate();

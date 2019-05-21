@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that uses the IT reader instead
  * of the default file reader.
@@ -8,10 +8,10 @@
  *
  * $Id: example_reader_it.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.de
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.de
  */
 
     /**
@@ -33,18 +33,16 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate( 'html' );
-	$tmpl->setRoot( 'templates' );
 
-	$data = array 
-				( 
-					"0" => array("Stig", "Bakken"), 
-					"1" => array("Martin", "Jansen"), 
-					"2" => array("Alexander", "Merz") 
-				); 
-	
-	$tmpl->readTemplatesFromInput( 'example_reader_it.tmpl', 'IT' );
-	$tmpl->addVar( 'row', 'value', $data );
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl   =   &new patTemplate('html');
+    $tmpl->setRoot('templates');
+
+    $data = array(
+                    "0" => array("Stig", "Bakken"),
+                    "1" => array("Martin", "Jansen"),
+                    "2" => array("Alexander", "Merz")
+                );
+
+    $tmpl->readTemplatesFromInput('example_reader_it.tmpl', 'IT');
+    $tmpl->addVar('row', 'value', $data);
+    $tmpl->displayParsedTemplate();

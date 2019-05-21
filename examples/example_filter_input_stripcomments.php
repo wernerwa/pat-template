@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of input filters
  *
@@ -8,13 +8,13 @@
  *
  * $Id: example_filter_input_stripcomments.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
- * @see			patTemplate::applyInputFilter()
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
+ * @see         patTemplate::applyInputFilter()
  */
- 
+
     /**
      * Main examples prepend file, needed *only* for the examples framework!
      */
@@ -34,16 +34,15 @@
 
 
 
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	/**
-	 * you may apply as many filters as you like in
-	 * the filter chain
-	 */
-	$tmpl->applyInputFilter( 'StripComments' );
-	
-	$tmpl->readTemplatesFromInput( 'example_filter_input_stripcomments.tmpl' );
+    /**
+     * you may apply as many filters as you like in
+     * the filter chain
+     */
+    $tmpl->applyInputFilter('StripComments');
 
-	$tmpl->dump();
-?>
+    $tmpl->readTemplatesFromInput('example_filter_input_stripcomments.tmpl');
+
+    $tmpl->dump();

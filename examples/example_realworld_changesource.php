@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how to copy
  * a var, apply a modifier without showing it
@@ -6,10 +6,10 @@
  *
  * $Id: example_realworld_changesource.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
 
     /**
@@ -31,13 +31,12 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_realworld_changesource.tmpl' );
-	
-	$tmpl->setAttribute( 'main', 'src', 'example_realworld_changesource_home.tmpl' );
-	
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
+
+    $tmpl->readTemplatesFromInput('example_realworld_changesource.tmpl');
+
+    $tmpl->setAttribute('main', 'src', 'example_realworld_changesource_home.tmpl');
+
+    $tmpl->displayParsedTemplate();

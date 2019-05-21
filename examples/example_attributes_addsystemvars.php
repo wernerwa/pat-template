@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how system variables
  * can be used
@@ -25,10 +25,10 @@
  *
  * $Id: example_attributes_addsystemvars.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
 
     /**
@@ -50,16 +50,14 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_attributes_addsystemvars.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->addVar( 'tmpl-1', 'dummy', array( 'one', 'two', 'three', 'four', 'five' ) );
-	$tmpl->addVar( 'tmpl-2', 'dummy', array( 'one', 'two', 'three', 'four', 'five' ) );
-	$tmpl->addVar( 'tmpl-3', 'dummy', array( 'one', 'two', 'three', 'four', 'five' ) );
-	
-	$tmpl->displayParsedTemplate('page');
+    $tmpl->readTemplatesFromInput('example_attributes_addsystemvars.tmpl');
 
-?>
+    $tmpl->addVar('tmpl-1', 'dummy', array( 'one', 'two', 'three', 'four', 'five' ));
+    $tmpl->addVar('tmpl-2', 'dummy', array( 'one', 'two', 'three', 'four', 'five' ));
+    $tmpl->addVar('tmpl-3', 'dummy', array( 'one', 'two', 'three', 'four', 'five' ));
+
+    $tmpl->displayParsedTemplate('page');

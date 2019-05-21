@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that uses displayParsedTemplate()
  * without specifying a name for the template.
@@ -8,10 +8,10 @@
  *
  * $Id: example_api_displayparsedtemplate.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
 
     /**
@@ -30,16 +30,14 @@
      * patTemplate
      */
     require_once $neededFiles['patTemplate'];
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
-	$tmpl->readTemplatesFromInput( 'example_api_displayparsedtemplate.tmpl' );
-	$tmpl->readTemplatesFromInput( 'example_api_displayparsedtemplate2.tmpl' );
 
-	$tmpl->displayParsedTemplate();
-	echo	'<hr />';
-	$tmpl->displayParsedTemplate( 'template1' );
-	echo	'<hr />';
-	$tmpl->displayParsedTemplate( 'template2' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
+    $tmpl->readTemplatesFromInput('example_api_displayparsedtemplate.tmpl');
+    $tmpl->readTemplatesFromInput('example_api_displayparsedtemplate2.tmpl');
 
-?>
+    $tmpl->displayParsedTemplate();
+    echo    '<hr />';
+    $tmpl->displayParsedTemplate('template1');
+    echo    '<hr />';
+    $tmpl->displayParsedTemplate('template2');

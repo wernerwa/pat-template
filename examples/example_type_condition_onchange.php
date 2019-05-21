@@ -1,14 +1,14 @@
-<?PHP
+<?php
 /**
  * Basic patTemplate example that shows how to
  * use condition templates.
  *
  * $Id: example_type_condition_variable.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.de
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.de
  */
 
 /**
@@ -29,7 +29,7 @@ require_once $neededFiles['patErrorManager'];
 require_once $neededFiles['patTemplate'];
 
 $tmpl = new patTemplate();
-$tmpl->setRoot('templates' );
+$tmpl->setRoot('templates');
 $tmpl->readTemplatesFromInput('example_type_condition_onchange.tmpl');
 
 $data = array(
@@ -47,4 +47,3 @@ $data = array(
 
 $tmpl->addRows('list', $data);
 $tmpl->displayParsedTemplate();
-?>

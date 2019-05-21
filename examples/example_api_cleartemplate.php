@@ -1,13 +1,13 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how clear variables in a template
  *
  * $Id: example_api_cleartemplate.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  * @see         patTemplate::setAttribute()
  */
 
@@ -28,25 +28,24 @@
      */
     require_once $neededFiles['patTemplate'];
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_api_cleartemplate.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->addVar( 'root', 'FOO', 'BAR' );
-	$tmpl->addVar( 'nested', 'FOO', 'BAR' );
-	$tmpl->addVar( 'cond', 'FOO', array( 'BAR', 'BAR' ) );
+    $tmpl->readTemplatesFromInput('example_api_cleartemplate.tmpl');
 
-	echo	"clear only the root template:<br>";
-	
-	$tmpl->clearTemplate( 'root' );
-	$tmpl->displayParsedTemplate();
+    $tmpl->addVar('root', 'FOO', 'BAR');
+    $tmpl->addVar('nested', 'FOO', 'BAR');
+    $tmpl->addVar('cond', 'FOO', array( 'BAR', 'BAR' ));
 
-	echo	"<hr />";
+    echo    "clear only the root template:<br>";
 
-	echo	"clear the root template and its children:<br>";
-	
-	$tmpl->clearTemplate( 'root', true );
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->clearTemplate('root');
+    $tmpl->displayParsedTemplate();
+
+    echo    "<hr />";
+
+    echo    "clear the root template and its children:<br>";
+
+    $tmpl->clearTemplate('root', true);
+    $tmpl->displayParsedTemplate();

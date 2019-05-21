@@ -1,18 +1,18 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how to use template functions
- * 
+ *
  * This example uses the autoload feature of the 'Call' function
  * which will allow you to dynamically load the components whenever
  * they are needed.
  *
  * $Id: example_function_call_autoload.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
- * @see			patTemplate_Function
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
+ * @see         patTemplate_Function
  */
 
     /**
@@ -34,12 +34,11 @@
 
 
 
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
-	$tmpl->setOption( 'componentFolder', 'components' );
-	$tmpl->setOption( 'componentExtension', 'tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
+    $tmpl->setOption('componentFolder', 'components');
+    $tmpl->setOption('componentExtension', 'tmpl');
 
-	$tmpl->readTemplatesFromInput( 'example_function_call.tmpl' );
+    $tmpl->readTemplatesFromInput('example_function_call.tmpl');
 
-	$tmpl->displayParsedTemplate( 'page' );
-?>
+    $tmpl->displayParsedTemplate('page');

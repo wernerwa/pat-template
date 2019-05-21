@@ -32,4 +32,3 @@ $template->addObject('page', $obj);
 
 // parse and display the template
 $template->displayParsedTemplate('page');
-?>

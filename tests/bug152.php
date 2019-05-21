@@ -44,5 +44,3 @@ $template->addVar('cond-without-single', 'MYVAR', array('one', 'two', 'three'));
 
 // parse and display the template
 $template->displayParsedTemplate('cond-without-single');
-
-?>

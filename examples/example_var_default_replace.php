@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of variable modifiers
  *
@@ -9,10 +9,10 @@
  *
  * $Id: example_var_default_replace.php 464 2007-06-20 14:05:14Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
 
     /**
@@ -34,19 +34,18 @@
 
 
 
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
     // $tmpl->setDefaultAttribute( 'attributeplaceholder', 'replace' );
 
-	$tmpl->readTemplatesFromInput( 'example_var_default_replace.tmpl' );
+    $tmpl->readTemplatesFromInput('example_var_default_replace.tmpl');
 
-    $tmpl->addGlobalVar( 'normal', 'normal content' );
-    $tmpl->addGlobalVar( 'recursive', 'recursive removal' );
-    $tmpl->addGlobalVar( 'var', 'Remove {RECURSIVE} var: {VAR}' );
+    $tmpl->addGlobalVar('normal', 'normal content');
+    $tmpl->addGlobalVar('recursive', 'recursive removal');
+    $tmpl->addGlobalVar('var', 'Remove {RECURSIVE} var: {VAR}');
 
-    $tmpl->addGlobalVar( 'much_more', 'This is global, but NOT the default value!' );
-    $tmpl->addVar( 'page', 'much_more', 'NOT the default value!' );
+    $tmpl->addGlobalVar('much_more', 'This is global, but NOT the default value!');
+    $tmpl->addVar('page', 'much_more', 'NOT the default value!');
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->displayParsedTemplate();

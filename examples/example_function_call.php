@@ -1,18 +1,18 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how to use template functions
- * 
+ *
  * Template functions allow you to create custom tags, that will be
  * by PHP while the file is being read. See extending-pattemplate.txt
  * for more information on patTemplate functions.
  *
  * $Id: example_function_call.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
- * @see			patTemplate_Function
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
+ * @see         patTemplate_Function
  */
 
     /**
@@ -34,14 +34,13 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
-	
-	$tmpl->readTemplatesFromInput( 'components/hint.tmpl' );
-	$tmpl->readTemplatesFromInput( 'components/news.tmpl' );
 
-	$tmpl->readTemplatesFromInput( 'example_function_call.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->displayParsedTemplate( 'page' );
-?>
+    $tmpl->readTemplatesFromInput('components/hint.tmpl');
+    $tmpl->readTemplatesFromInput('components/news.tmpl');
+
+    $tmpl->readTemplatesFromInput('example_function_call.tmpl');
+
+    $tmpl->displayParsedTemplate('page');

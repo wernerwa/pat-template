@@ -1,17 +1,17 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how to use template functions
- * 
+ *
  * This example shows you how map tags to templates by setting
  * the call function as default.
  *
  * $Id: example_function_default.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
- * @see			patTemplate_Function
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
+ * @see         patTemplate_Function
  */
 
     /**
@@ -33,15 +33,14 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
-	$tmpl->setOption('defaultFunction', 'Call');
 
-	$tmpl->readTemplatesFromInput( 'components/hint.tmpl' );
-	$tmpl->readTemplatesFromInput( 'components/news.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
+    $tmpl->setOption('defaultFunction', 'Call');
 
-	$tmpl->readTemplatesFromInput( 'example_function_default.tmpl' );
+    $tmpl->readTemplatesFromInput('components/hint.tmpl');
+    $tmpl->readTemplatesFromInput('components/news.tmpl');
 
-	$tmpl->displayParsedTemplate('page');
-?>
+    $tmpl->readTemplatesFromInput('example_function_default.tmpl');
+
+    $tmpl->displayParsedTemplate('page');

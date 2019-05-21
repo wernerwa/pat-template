@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Base class for patTemplate readers
  *
@@ -7,54 +7,54 @@
  * This class is able to parse patTemplate tags from any string you hand it over
  * It will emulate some kind of SAX parsing by calling start-, end- and CData-handlers.
  *
- * @package		patTemplate
- * @subpackage	Readers
- * @author		Stephan Schmidt <schst@php.net>
+ * @package     patTemplate
+ * @subpackage  Readers
+ * @author      Stephan Schmidt <schst@php.net>
  */
 /**
  * No input
  */
-define( 'PATTEMPLATE_READER_ERROR_NO_INPUT', 6000 );
+define('PATTEMPLATE_READER_ERROR_NO_INPUT', 6000);
 
 /**
  * Unknown tag
  */
-define( 'PATTEMPLATE_READER_ERROR_UNKNOWN_TAG', 6001 );
+define('PATTEMPLATE_READER_ERROR_UNKNOWN_TAG', 6001);
 
 /**
  * Invalid tag (missing attribute)
  */
-define( 'PATTEMPLATE_READER_ERROR_INVALID_TAG', 6002 );
+define('PATTEMPLATE_READER_ERROR_INVALID_TAG', 6002);
 
 /**
  * Closing tag is missing
  */
-define( 'PATTEMPLATE_READER_ERROR_NO_CLOSING_TAG', 6003 );
+define('PATTEMPLATE_READER_ERROR_NO_CLOSING_TAG', 6003);
 
 /**
  * Invalid closing tag
  */
-define( 'PATTEMPLATE_READER_ERROR_INVALID_CLOSING_TAG', 6004 );
+define('PATTEMPLATE_READER_ERROR_INVALID_CLOSING_TAG', 6004);
 
 /**
  * Invalid condition specified
  */
-define( 'PATTEMPLATE_READER_ERROR_INVALID_CONDITION', 6005 );
+define('PATTEMPLATE_READER_ERROR_INVALID_CONDITION', 6005);
 
 /**
  * No name has been specified
  */
-define( 'PATTEMPLATE_READER_ERROR_NO_NAME_SPECIFIED', 6010 );
+define('PATTEMPLATE_READER_ERROR_NO_NAME_SPECIFIED', 6010);
 
 /**
  * CData in a conditional template
  */
-define( 'PATTEMPLATE_READER_NOTICE_INVALID_CDATA_SECTION', 6050 );
+define('PATTEMPLATE_READER_NOTICE_INVALID_CDATA_SECTION', 6050);
 
 /**
  * template already exists
  */
-define( 'PATTEMPLATE_READER_NOTICE_TEMPLATE_EXISTS', 6051 );
+define('PATTEMPLATE_READER_NOTICE_TEMPLATE_EXISTS', 6051);
 
 /**
  * Base class for patTemplate readers
@@ -63,208 +63,208 @@ define( 'PATTEMPLATE_READER_NOTICE_TEMPLATE_EXISTS', 6051 );
  * It will emulate some kind of SAX parsing by calling start-, end- and CData-handlers.
  *
  * @abstract
- * @package		patTemplate
- * @subpackage	Readers
- * @author		Stephan Schmidt <schst@php.net>
+ * @package     patTemplate
+ * @subpackage  Readers
+ * @author      Stephan Schmidt <schst@php.net>
  */
 class patTemplate_Reader extends patTemplate_Module
 {
-   /**
-    * reference to the patTemplate object that instantiated the module
-    *
-    * @access	protected
-    * @var	object
-    */
-    var	$_tmpl;
+    /**
+     * reference to the patTemplate object that instantiated the module
+     *
+     * @access   protected
+     * @var  object
+     */
+    public $_tmpl;
 
-   /**
-    * stack for all open elements
-    * @access	private
-    * @var	array
-    */
-    var	$_elStack;
+    /**
+     * stack for all open elements
+     * @access   private
+     * @var  array
+     */
+    public $_elStack;
 
-   /**
-    * stack for all open templates
-    * @access	private
-    * @var	array
-    */
-    var	$_tmplStack;
+    /**
+     * stack for all open templates
+     * @access   private
+     * @var  array
+     */
+    public $_tmplStack;
 
-   /**
-    * character data
-    * @access	private
-    * @var	array
-    */
-    var	$_data;
+    /**
+     * character data
+     * @access   private
+     * @var  array
+     */
+    public $_data;
 
-   /**
-    * tag depth
-    * @access	private
-    * @var	integer
-    */
-    var	$_depth;
+    /**
+     * tag depth
+     * @access   private
+     * @var  integer
+     */
+    public $_depth;
 
-   /**
-       * templates that have been found
-    * @access	protected
-    * @var		array
-    */
-    var $_templates	=	array();
+    /**
+        * templates that have been found
+     * @access   protected
+     * @var      array
+     */
+    public $_templates =   array();
 
-   /**
-       * path to the template
-    * @access	protected
-    * @var		array
-    */
-    var $_path	=	array();
+    /**
+        * path to the template
+     * @access   protected
+     * @var      array
+     */
+    public $_path  =   array();
 
-   /**
-    * start tag for variables
-    * @access	private
-    * @var		string
-    */
-    var	$_startTag;
+    /**
+     * start tag for variables
+     * @access   private
+     * @var      string
+     */
+    public $_startTag;
 
-   /**
-    * end tag for variables
-    * @access	private
-    * @var		string
-    */
-    var	$_endTag;
+    /**
+     * end tag for variables
+     * @access   private
+     * @var      string
+     */
+    public $_endTag;
 
-   /**
-    * default attributes
-    *
-    * @access	private
-    * @var		array
-    */
-    var	$_defaultAtts	=	array();
+    /**
+     * default attributes
+     *
+     * @access   private
+     * @var      array
+     */
+    public $_defaultAtts   =   array();
 
-   /**
-    * root attributes
-    *
-    * This is used when reading the template content
-    * from an external file.
-    *
-    * @access	private
-    * @var		array
-    */
-    var	$_rootAtts	=	array();
+    /**
+     * root attributes
+     *
+     * This is used when reading the template content
+     * from an external file.
+     *
+     * @access   private
+     * @var      array
+     */
+    public $_rootAtts  =   array();
 
-   /**
-    * inherit attributes
-    *
-    * @access	private
-    * @var		array
-    */
-    var	$_inheritAtts	=	array();
+    /**
+     * inherit attributes
+     *
+     * @access   private
+     * @var      array
+     */
+    public $_inheritAtts   =   array();
 
-   /**
-    * name of the first template that has been found
-    *
-    * @access	private
-    * @var		string
-    */
-    var	$_root = null;
+    /**
+     * name of the first template that has been found
+     *
+     * @access   private
+     * @var      string
+     */
+    public $_root = null;
 
-   /**
-    * all data that has been processed
-    *
-    * @access	private
-    * @var		string
-    */
-    var	$_processedData = null;
+    /**
+     * all data that has been processed
+     *
+     * @access   private
+     * @var      string
+     */
+    public $_processedData = null;
 
-   /**
-    * current input
-    *
-    * @access	private
-    * @var		string
-    */
-    var	$_currentInput = null;
+    /**
+     * current input
+     *
+     * @access   private
+     * @var      string
+     */
+    public $_currentInput = null;
 
-   /**
-    * all loaded functions
-    *
-    * @access	private
-    * @var		array
-    */
-    var	$_functions	=	array();
+    /**
+     * all loaded functions
+     *
+     * @access   private
+     * @var      array
+     */
+    public $_functions =   array();
 
-   /**
-    * function aliases
-    *
-    * @access   private
-    * @var      array
-    */
-    var $_funcAliases = array();
+    /**
+     * function aliases
+     *
+     * @access   private
+     * @var      array
+     */
+    public $_funcAliases = array();
 
-   /**
-    * options
-    *
-    * @access   private
-    * @var      array
-    */
-    var $_options = array();
+    /**
+     * options
+     *
+     * @access   private
+     * @var      array
+     */
+    public $_options = array();
 
-   /**
-    * reader is in use
-    *
-    * @access   private
-    * @var      boolean
-    */
-    var $_inUse = false;
+    /**
+     * reader is in use
+     *
+     * @access   private
+     * @var      boolean
+     */
+    public $_inUse = false;
 
-   /**
-    * set a reference to the patTemplate object that instantiated the reader
-    *
-    * @access	public
-    * @param	object		patTemplate object
-    */
-    function setTemplateReference( &$tmpl )
+    /**
+     * set a reference to the patTemplate object that instantiated the reader
+     *
+     * @access   public
+     * @param    object      patTemplate object
+     */
+    public function setTemplateReference(&$tmpl)
     {
         $this->_tmpl = &$tmpl;
     }
 
-   /**
-    * read templates from any input
-    *
-    * @abstract	must be implemented in the template readers
-    * @param	mixed	input to read from.
-    *					This can be a string, a filename, a resource or whatever the derived class needs to read from
-    * @param	array	options, not implemented in current versions, but future versions will allow passing of options
-    * @return	array	template structure
-    */
-    function readTemplates( $input, $options = array() )
+    /**
+     * read templates from any input
+     *
+     * @abstract must be implemented in the template readers
+     * @param    mixed   input to read from.
+     *                   This can be a string, a filename, a resource or whatever the derived class needs to read from
+     * @param    array   options, not implemented in current versions, but future versions will allow passing of options
+     * @return   array   template structure
+     */
+    public function readTemplates($input, $options = array())
     {
         return array();
     }
 
-   /**
-    * load template from any input
-    *
-    * If the a template is loaded, the content will not get
-    * analyzed but the whole content is returned as a string.
-    *
-    * @abstract	must be implemented in the template readers
-    * @param	mixed	input to load from.
-    *					This can be a string, a filename, a resource or whatever the derived class needs to read from
-    * @param	array	options, not implemented in current versions, but future versions will allow passing of options
-    * @return	string  template content
-    */
-    function loadTemplate( $input, $options = array() )
+    /**
+     * load template from any input
+     *
+     * If the a template is loaded, the content will not get
+     * analyzed but the whole content is returned as a string.
+     *
+     * @abstract must be implemented in the template readers
+     * @param    mixed   input to load from.
+     *                   This can be a string, a filename, a resource or whatever the derived class needs to read from
+     * @param    array   options, not implemented in current versions, but future versions will allow passing of options
+     * @return   string  template content
+     */
+    public function loadTemplate($input, $options = array())
     {
         return $input;
     }
 
-   /**
-    * set options
-    *
-    * @access	public
-    * @param	array	array containing options
-    */
-    function setOptions( $options )
+    /**
+     * set options
+     *
+     * @access   public
+     * @param    array   array containing options
+     */
+    public function setOptions($options)
     {
         $this->_startTag = $options['startTag'];
         $this->_endTag   = $options['endTag'];
@@ -277,185 +277,185 @@ class patTemplate_Reader extends patTemplate_Module
         array_map('strtolower', $this->_funcAliases);
     }
 
-   /**
-    * add an alias for a function
-    *
-    * @access   public
-    * @param    string  alias
-    * @param    string  function name
-    */
-    function addFunctionAlias($alias, $function)
+    /**
+     * add an alias for a function
+     *
+     * @access   public
+     * @param    string  alias
+     * @param    string  function name
+     */
+    public function addFunctionAlias($alias, $function)
     {
         $this->_funcAliases[strtolower($alias)] = $function;
     }
 
-   /**
-    * set the root attributes
-    *
-    * @access	public
-    * @param	array	array containing options
-    */
-    function setRootAttributes( $attributes )
+    /**
+     * set the root attributes
+     *
+     * @access   public
+     * @param    array   array containing options
+     */
+    public function setRootAttributes($attributes)
     {
         $this->_rootAtts = $attributes;
     }
 
-   /**
-    * parse templates from string
-    *
-    * @access	private
-    * @param	string		string to parse
-    * @return	array		templates
-    */
-    function parseString( $string )
+    /**
+     * parse templates from string
+     *
+     * @access   private
+     * @param    string      string to parse
+     * @return   array       templates
+     */
+    public function parseString($string)
     {
         $this->_inUse = true;
 
         /**
          * apply input filter before parsing
          */
-        $string = $this->_tmpl->applyInputFilters( $string );
+        $string = $this->_tmpl->applyInputFilters($string);
 
-        $this->_inheritAtts	  =	array();
-        $this->_elStack		  =	array();
-        $this->_data		  =	array( '' );
-        $this->_tmplStack	  =	array();
-        $this->_depth		  =	0;
-        $this->_templates	  =	array();
-        $this->_path		  =	array();
-        $this->_processedData =	'';
+        $this->_inheritAtts   = array();
+        $this->_elStack       = array();
+        $this->_data          = array( '' );
+        $this->_tmplStack     = array();
+        $this->_depth         = 0;
+        $this->_templates     = array();
+        $this->_path          = array();
+        $this->_processedData = '';
 
-        $this->_defaultAtts	= $this->_tmpl->getDefaultAttributes();
+        $this->_defaultAtts = $this->_tmpl->getDefaultAttributes();
 
-        if( !isset( $this->_defaultAtts['autoload'] ) ) {
-            $this->_defaultAtts['autoload']	= 'on';
+        if (!isset($this->_defaultAtts['autoload'])) {
+            $this->_defaultAtts['autoload'] = 'on';
         }
 
         /**
          * create a special root template
          */
-        $attributes		    = $this->_rootAtts;
-        $attributes['name']	= '__ptroot';
+        $attributes         = $this->_rootAtts;
+        $attributes['name'] = '__ptroot';
 
-        $rootTemplate = $this->_initTemplate( $attributes );
+        $rootTemplate = $this->_initTemplate($attributes);
         $this->_root  = null;
-        unset( $rootTemplate['isRoot'] );
+        unset($rootTemplate['isRoot']);
 
-        array_push( $this->_tmplStack, $rootTemplate );
+        array_push($this->_tmplStack, $rootTemplate);
 
         $patNamespace = $this->_tmpl->getNamespace();
         if (is_array($patNamespace)) {
             $patNamespace = array_map('strtolower', $patNamespace);
         } else {
-            $patNamespace = array(strtolower( $patNamespace ));
+            $patNamespace = array(strtolower($patNamespace));
         }
 
         /**
          *start parsing
          */
-        $regexp	=	'/(<(\/?)([[:alnum:]]+):([[:alnum:]]+)[[:space:]]*([^>]*)>)/im';
+        $regexp =   '/(<(\/?)([[:alnum:]]+):([[:alnum:]]+)[[:space:]]*([^>]*)>)/im';
 
-        $tokens	=	preg_split( $regexp, $string, -1, PREG_SPLIT_DELIM_CAPTURE );
+        $tokens =   preg_split($regexp, $string, -1, PREG_SPLIT_DELIM_CAPTURE);
 
         /**
          * the first token is always character data
          * Though it could just be empty
          */
-        if( $tokens[0] != '' ) {
-            $this->_characterData( $tokens[0] );
+        if ($tokens[0] != '') {
+            $this->_characterData($tokens[0]);
         }
 
-        $cnt	=	count( $tokens );
-        $i		=	1;
+        $cnt    =   count($tokens);
+        $i      =   1;
         // process all tokens
-        while( $i < $cnt ) {
-            $fullTag	= $tokens[$i++];
-            $closing	= $tokens[$i++];
-            $namespace	= strtolower( $tokens[$i++] );
-            $tagname	= strtolower( $tokens[$i++] );
-            $attString	= $tokens[$i++];
-            $empty		= substr( $attString, -1 );
-            $data		= $tokens[$i++];
+        while ($i < $cnt) {
+            $fullTag    = $tokens[$i++];
+            $closing    = $tokens[$i++];
+            $namespace  = strtolower($tokens[$i++]);
+            $tagname    = strtolower($tokens[$i++]);
+            $attString  = $tokens[$i++];
+            $empty      = substr($attString, -1);
+            $data       = $tokens[$i++];
 
             /**
              * check, whether it's a known namespace
              * currently only the template namespace is possible
              */
-             if( !in_array($namespace, $patNamespace) ) {
-                 $this->_characterData( $fullTag );
-                 $this->_characterData( $data );
+            if (!in_array($namespace, $patNamespace)) {
+                $this->_characterData($fullTag);
+                $this->_characterData($data);
                 continue;
-             }
+            }
 
             /**
              * is it a closing tag?
              */
-            if( $closing === '/' ) {
-                $result	=	$this->_endElement( $namespace, $tagname );
-                if( patErrorManager::isError( $result ) ) {
-                    return	$result;
+            if ($closing === '/') {
+                $result =   $this->_endElement($namespace, $tagname);
+                if (patErrorManager::isError($result)) {
+                    return  $result;
                 }
-                $this->_characterData( $data );
+                $this->_characterData($data);
                 continue;
             }
 
             /**
              * Is empty or opening tag!
              */
-            if( $empty === '/' ) {
-                $attString	=	substr( $attString, 0, -1 );
+            if ($empty === '/') {
+                $attString  =   substr($attString, 0, -1);
             }
 
-            $attributes	=	$this->_parseAttributes( $attString );
+            $attributes =   $this->_parseAttributes($attString);
 
-            $result 	=	$this->_startElement( $namespace, $tagname, $attributes );
-            if( patErrorManager::isError( $result ) ) {
-                return	$result;
+            $result     =   $this->_startElement($namespace, $tagname, $attributes);
+            if (patErrorManager::isError($result)) {
+                return  $result;
             }
 
             /**
              * check, if the tag is empty
              */
-            if( $empty === '/' ) {
-                $result	=	$this->_endElement( $namespace, $tagname );
-                if( patErrorManager::isError( $result ) ) {
-                    return	$result;
+            if ($empty === '/') {
+                $result =   $this->_endElement($namespace, $tagname);
+                if (patErrorManager::isError($result)) {
+                    return  $result;
                 }
             }
 
-            $this->_characterData( $data );
+            $this->_characterData($data);
         }
 
-        $rootTemplate = array_pop( $this->_tmplStack );
+        $rootTemplate = array_pop($this->_tmplStack);
 
-        $this->_closeTemplate( $rootTemplate, $this->_data[0] );
+        $this->_closeTemplate($rootTemplate, $this->_data[0]);
 
         /**
          * check for tags that are still open
          */
-        if( $this->_depth > 0 ) {
-            $el	=	array_pop( $this->_elStack );
+        if ($this->_depth > 0) {
+            $el =   array_pop($this->_elStack);
             return patErrorManager::raiseError(
                 PATTEMPLATE_READER_ERROR_NO_CLOSING_TAG,
-                $this->_createErrorMessage( "No closing tag for {$el['ns']}:{$el['name']} found" )
+                $this->_createErrorMessage("No closing tag for {$el['ns']}:{$el['name']} found")
             );
         }
 
         $this->_inUse = false;
 
-        return	$this->_templates;
+        return  $this->_templates;
     }
 
-   /**
-    * parse an attribute string and build an array
-    *
-    * @access	private
-    * @param	string	attribute string
-    * @param	array	attribute array
-    */
-    function _parseAttributes( $string )
+    /**
+     * parse an attribute string and build an array
+     *
+     * @access   private
+     * @param    string  attribute string
+     * @param    array   attribute array
+     */
+    public function _parseAttributes($string)
     {
-         static $entities = array(
+        static $entities = array(
                                     '&lt;' => '<',
                                     '&gt;' => '>',
                                     '&amp;' => '&',
@@ -463,66 +463,64 @@ class patTemplate_Reader extends patTemplate_Module
                                     '&apos;' => '\''
                                 );
 
-        $attributes	=	array();
+        $attributes =   array();
         $match = array();
         preg_match_all('/([a-zA-Z_0-9]+)="((?:\\\.|[^"\\\])*)"/U', $string, $match);
         for ($i = 0; $i < count($match[1]); $i++) {
-            $attributes[strtolower( $match[1][$i] )] = strtr( (string)$match[2][$i], $entities );
+            $attributes[strtolower($match[1][$i])] = strtr((string)$match[2][$i], $entities);
         }
-        return	$attributes;
+        return  $attributes;
     }
 
-   /**
-    * handle start element
-    *
-    * @access	private
-    * @param	string		element name
-    * @param	array		attributes
-    */
-    function _startElement( $ns, $name, $attributes )
+    /**
+     * handle start element
+     *
+     * @access   private
+     * @param    string      element name
+     * @param    array       attributes
+     */
+    public function _startElement($ns, $name, $attributes)
     {
-        array_push( $this->_elStack, array(
-                                            'ns'			=>  $ns,
-                                            'name'			=>	$name,
-                                            'attributes'	=>	$attributes,
-                                        )
-                 );
+        array_push($this->_elStack, array(
+                                            'ns'            =>  $ns,
+                                            'name'          =>  $name,
+                                            'attributes'    =>  $attributes,
+                                        ));
 
         $this->_depth++;
 
-        $this->_data[$this->_depth]	=	'';
+        $this->_data[$this->_depth] =   '';
 
         /**
          * handle tag
          */
-        switch( $name )
-        {
+        switch ($name) {
             /**
              * template
              */
             case 'tmpl':
-                $result	=	$this->_initTemplate( $attributes );
+                $result =   $this->_initTemplate($attributes);
                 break;
 
             /**
              * sub-template
              */
             case 'sub':
-                $result	=	$this->_initSubTemplate( $attributes );
+                $result =   $this->_initSubTemplate($attributes);
                 break;
 
             /**
              * link
              */
             case 'link':
-                $result	=	$this->_initLink( $attributes );
+                $result =   $this->_initLink($attributes);
                 break;
 
             /**
              * variable
              */
             case 'var':
-                $result	=	false;
+                $result =   false;
                 break;
 
             /**
@@ -530,7 +528,7 @@ class patTemplate_Reader extends patTemplate_Module
              */
             case 'instance':
             case 'comment':
-                $result	=	false;
+                $result =   false;
                 break;
 
             /**
@@ -540,18 +538,17 @@ class patTemplate_Reader extends patTemplate_Module
                 if (isset($this->_funcAliases[strtolower($name)])) {
                     $name = $this->_funcAliases[strtolower($name)];
                 }
-                $name = ucfirst( $name );
+                $name = ucfirst($name);
 
-                if( !$this->_tmpl->moduleExists( 'Function', $name ) ) {
-
+                if (!$this->_tmpl->moduleExists('Function', $name)) {
                     if (isset($this->_options['defaultFunction']) && !empty($this->_options['defaultFunction'])) {
                         $attributes['_originalTag'] = $name;
                         $name = ucfirst($this->_options['defaultFunction']);
                     } else {
                         return patErrorManager::raiseError(
-                                                            PATTEMPLATE_READER_ERROR_UNKNOWN_TAG,
-                                                            $this->_createErrorMessage( "Unknown tag {$ns}:{$name}." )
-                                                        );
+                            PATTEMPLATE_READER_ERROR_UNKNOWN_TAG,
+                            $this->_createErrorMessage("Unknown tag {$ns}:{$name}.")
+                        );
                     }
                 }
                 $result = array(
@@ -562,66 +559,65 @@ class patTemplate_Reader extends patTemplate_Module
                 break;
         }
 
-        if( patErrorManager::isError( $result ) ) {
-            return	$result;
+        if (patErrorManager::isError($result)) {
+            return  $result;
         }
 
-        array_push( $this->_tmplStack, $result );
+        array_push($this->_tmplStack, $result);
         return true;
     }
 
-   /**
-    * handle end element
-    *
-    * @access	private
-    * @param	string		element name
-    */
-    function _endElement( $ns, $name )
+    /**
+     * handle end element
+     *
+     * @access   private
+     * @param    string      element name
+     */
+    public function _endElement($ns, $name)
     {
-        $el			=	array_pop( $this->_elStack );
-        $data		=	$this->_getCData();
+        $el         =   array_pop($this->_elStack);
+        $data       =   $this->_getCData();
         $this->_depth--;
 
-        if( $el['name'] != $name || $el['ns'] != $ns ) {
+        if ($el['name'] != $name || $el['ns'] != $ns) {
             return patErrorManager::raiseError(
                 PATTEMPLATE_READER_ERROR_INVALID_CLOSING_TAG,
-                $this->_createErrorMessage( "Invalid closing tag {$ns}:{$name}, {$el['ns']}:{$el['name']} expected" )
+                $this->_createErrorMessage("Invalid closing tag {$ns}:{$name}, {$el['ns']}:{$el['name']} expected")
             );
         }
 
-        $tmpl	=	array_pop( $this->_tmplStack );
+        $tmpl   =   array_pop($this->_tmplStack);
 
         /**
          * handle tag
          */
-        switch( $name )
-        {
+        switch ($name) {
             /**
              * template
              */
             case 'tmpl':
-                $this->_closeTemplate( $tmpl, $data );
+                $this->_closeTemplate($tmpl, $data);
                 break;
 
             /**
              * sub-template
              */
             case 'sub':
-                $this->_closeSubTemplate( $tmpl, $data );
+                $this->_closeSubTemplate($tmpl, $data);
                 break;
 
             /**
              * link
              */
             case 'link':
-                $this->_closeLink( $tmpl );
+                $this->_closeLink($tmpl);
                 break;
 
             /**
              * variable
              */
             case 'var':
-                $this->_handleVariable( $el['attributes'], $data );
+                $this->_handleVariable($el['attributes'], $data);
                 break;
 
             /**
@@ -634,30 +630,30 @@ class patTemplate_Reader extends patTemplate_Module
              * comment
              */
             case 'comment':
-                $this->_handleComment( $el['attributes'], $data );
+                $this->_handleComment($el['attributes'], $data);
                 break;
 
             /**
              * custom function
              */
             default:
-                $name = ucfirst( $tmpl['function'] );
+                $name = ucfirst($tmpl['function']);
 
-                if( !isset( $this->_functions[$name] ) ) {
-                    $this->_functions[$name] = $this->_tmpl->loadModule( 'Function', $name );
-                    $this->_functions[$name]->setReader( $this );
+                if (!isset($this->_functions[$name])) {
+                    $this->_functions[$name] = $this->_tmpl->loadModule('Function', $name);
+                    $this->_functions[$name]->setReader($this);
                 }
 
-                if( $this->_functions[$name]->getType() == PATTEMPLATE_FUNCTION_COMPILE ) {
+                if ($this->_functions[$name]->getType() == PATTEMPLATE_FUNCTION_COMPILE) {
                     // function is ment to be precompiled
-                    $result = $this->_functions[$name]->call( $tmpl['attributes'], $data );
+                    $result = $this->_functions[$name]->call($tmpl['attributes'], $data);
 
-                    if( patErrorManager::isError( $result ) ) {
+                    if (patErrorManager::isError($result)) {
                         return $result;
                     }
 
-                    if( is_string( $result ) ) {
-                        $this->_characterData( $result, false );
+                    if (is_string($result)) {
+                        $this->_characterData($result, false);
                     }
                     break;
                 }
@@ -665,164 +661,161 @@ class patTemplate_Reader extends patTemplate_Module
                 /**
                  * add it to the functions list
                  */
-                if( !empty( $this->_tmplStack ) )
-                {
+                if (!empty($this->_tmplStack)) {
                     // function is interpreted in runtime
-                    $funcChecksum    =    md5( serialize( array( $tmpl['attributes'], $data ) ) );
+                    $funcChecksum    =    md5(serialize(array( $tmpl['attributes'], $data )));
 
                     $funcDef = array(
-                        'id'			=>    $funcChecksum,
-                        'name'  		=>    $name,
-                        'attributes'	=>    $tmpl['attributes'],
-                        'content'		=>    $data
+                        'id'            =>    $funcChecksum,
+                        'name'          =>    $name,
+                        'attributes'    =>    $tmpl['attributes'],
+                        'content'       =>    $data
 
                     );
 
-                    $this->_addToParentTag( 'functions', $funcDef );
-                    $this->_characterData( sprintf( "%sFUNC:%s%s", $this->_startTag, $funcChecksum, $this->_endTag ) );
+                    $this->_addToParentTag('functions', $funcDef);
+                    $this->_characterData(sprintf("%sFUNC:%s%s", $this->_startTag, $funcChecksum, $this->_endTag));
                 }
                 break;
         }
         return true;
     }
 
-   /**
-    * handle character data
-    *
-    * @access	private
-    * @param	string		data
-    */
-    function _characterData( $data, $readFromTemplate = true )
+    /**
+     * handle character data
+     *
+     * @access   private
+     * @param    string      data
+     */
+    public function _characterData($data, $readFromTemplate = true)
     {
-        $this->_data[$this->_depth]	.=	$data;
+        $this->_data[$this->_depth] .=  $data;
 
         if ($readFromTemplate) {
             $this->_processedData .= $data;
         }
 
-        return	true;
+        return  true;
     }
 
-   /**
-    * handle a Link
-    *
-    * @access	private
-    * @param	array		attributes
-    * @return	boolean		true on success
-    */
-    function _initLink( $attributes )
+    /**
+     * handle a Link
+     *
+     * @access   private
+     * @param    array       attributes
+     * @return   boolean     true on success
+     */
+    public function _initLink($attributes)
     {
         /**
          * needs a src attribute
          */
-        if( !isset( $attributes['src'] ) ) {
+        if (!isset($attributes['src'])) {
             return patErrorManager::raiseError(
-                                                PATTEMPLATE_READER_ERROR_INVALID_TAG,
-                                                $this->_createErrorMessage( "Attribute 'src' missing for link" )
-                                                );
+                PATTEMPLATE_READER_ERROR_INVALID_TAG,
+                $this->_createErrorMessage("Attribute 'src' missing for link")
+            );
         }
 
         /**
          * create a new template
          */
-        $tmpl	=	array(
-                            'type'			=>	'link',
-                            'src'			=>	$attributes['src'],
+        $tmpl   =   array(
+                            'type'          =>  'link',
+                            'src'           =>  $attributes['src'],
                         );
         return $tmpl;
     }
 
-   /**
-    * close a link template
-    *
-    * It will be added to the dependecies of the parent template.
-    *
-    * @access	private
-    * @param	array	template definition for the link
-    */
-    function _closeLink( $tmpl )
+    /**
+     * close a link template
+     *
+     * It will be added to the dependecies of the parent template.
+     *
+     * @access   private
+     * @param    array   template definition for the link
+     */
+    public function _closeLink($tmpl)
     {
         /**
          * add it to the dependencies
          */
-        if( !empty( $this->_tmplStack ) )
-        {
-            $this->_addToParentTag( 'dependencies', strtolower( $tmpl['src'] ) );
-            $this->_characterData( sprintf( "%sTMPL:%s%s", $this->_startTag, strtoupper( $tmpl['src'] ), $this->_endTag ) );
+        if (!empty($this->_tmplStack)) {
+            $this->_addToParentTag('dependencies', strtolower($tmpl['src']));
+            $this->_characterData(sprintf("%sTMPL:%s%s", $this->_startTag, strtoupper($tmpl['src']), $this->_endTag));
         }
 
         return true;
     }
 
-   /**
-    * create a new template
-    *
-    * @access	private
-    * @param	array		attributes
-    * @return	boolean		true on success
-    */
-    function _initTemplate( $attributes )
+    /**
+     * create a new template
+     *
+     * @access   private
+     * @param    array       attributes
+     * @return   boolean     true on success
+     */
+    public function _initTemplate($attributes)
     {
         /**
          * build name for the template
          */
-        if (!isset( $attributes['name'] )) {
-            $name	=	$this->_buildTemplateName();
+        if (!isset($attributes['name'])) {
+            $name   =   $this->_buildTemplateName();
         } else {
-            $name	=	strtolower( $attributes['name'] );
-            unset( $attributes['name'] );
+            $name   =   strtolower($attributes['name']);
+            unset($attributes['name']);
         }
 
         /**
          * name must be unique
          */
-        if( isset( $this->_templates[$name] ) || $this->_tmpl->exists( $name ) ) {
+        if (isset($this->_templates[$name]) || $this->_tmpl->exists($name)) {
             patErrorManager::raiseNotice(
-                                        PATTEMPLATE_READER_NOTICE_TEMPLATE_EXISTS,
-                                        $this->_createErrorMessage( "Template $name already exists" ),
-                                        $name
-                                        );
+                PATTEMPLATE_READER_NOTICE_TEMPLATE_EXISTS,
+                $this->_createErrorMessage("Template $name already exists"),
+                $name
+            );
         }
 
         /**
          * update the path
          */
-        array_push( $this->_path, $name );
+        array_push($this->_path, $name);
 
-        if( isset( $attributes['maxloop'] ) ) {
-            if (!isset( $attributes['parent'] )) {
-                $attributes['parent'] = $this->_getFromParentTemplate( 'name' );
+        if (isset($attributes['maxloop'])) {
+            if (!isset($attributes['parent'])) {
+                $attributes['parent'] = $this->_getFromParentTemplate('name');
             }
         }
 
-        $attributes	= $this->_prepareTmplAttributes( $attributes, $name );
+        $attributes = $this->_prepareTmplAttributes($attributes, $name);
 
-        array_push( $this->_inheritAtts, array(
+        array_push($this->_inheritAtts, array(
                                                 'whitespace'            => $attributes['whitespace'],
                                                 'unusedvars'            => $attributes['unusedvars'],
                                                 'autoclear'             => $attributes['autoclear'],
                                                 'attributeplaceholder'  => $attributes['attributeplaceholder']
-                                            )
-                 );
+                                            ));
 
         /**
          * create a new template
          */
-        $tmpl	=	array(
-                            'type'			=>	'tmpl',
-                            'name'			=>	$name,
-                            'attributes'	=>	$attributes,
-                            'content'		=>	'',
-                            'dependencies'	=>	array(),
-                            'functions'     =>	array(),
-                            'varspecs'		=>	array(),
-                            'comments'		=>	array(),
-                            'loaded'		=>	false,
-                            'parsed'		=>	false,
-                            'input'			=>  $this->_name.'://'.$this->_currentInput
+        $tmpl   =   array(
+                            'type'          =>  'tmpl',
+                            'name'          =>  $name,
+                            'attributes'    =>  $attributes,
+                            'content'       =>  '',
+                            'dependencies'  =>  array(),
+                            'functions'     =>  array(),
+                            'varspecs'      =>  array(),
+                            'comments'      =>  array(),
+                            'loaded'        =>  false,
+                            'parsed'        =>  false,
+                            'input'         =>  $this->_name.'://'.$this->_currentInput
                         );
 
-        if( $this->_root == null ) {
+        if ($this->_root == null) {
             $this->_root = $name;
             $tmpl['isRoot'] = true;
         }
@@ -830,47 +823,47 @@ class patTemplate_Reader extends patTemplate_Module
         /**
          * prepare subtemplates
          */
-        switch( $attributes['type'] ) {
+        switch ($attributes['type']) {
             case 'condition':
             case 'modulo':
-                $tmpl['subtemplates']	=	array();
+                $tmpl['subtemplates']   =   array();
                 break;
         }
 
         return $tmpl;
     }
 
-   /**
-    * prepare attributes
-    *
-    * @access	private
-    * @param	array	attributes
-    * @param	string	template name (only used for error messages)
-    * @return	array	attributes
-    */
-    function _prepareTmplAttributes( $attributes, $templatename )
+    /**
+     * prepare attributes
+     *
+     * @access   private
+     * @param    array   attributes
+     * @param    string  template name (only used for error messages)
+     * @return   array   attributes
+     */
+    public function _prepareTmplAttributes($attributes, $templatename)
     {
         /**
          * do not prepare twice
          */
-        if( isset( $attributes['__prepared'] ) && $attributes['__prepared'] === true ) {
+        if (isset($attributes['__prepared']) && $attributes['__prepared'] === true) {
             return $attributes;
         }
 
-        $attributes	= $this->_inheritAttributes( $attributes );
+        $attributes = $this->_inheritAttributes($attributes);
 
         /**
          * get the attributes
          */
-        $attributes	= array_merge( $this->_tmpl->getDefaultAttributes(), $attributes );
+        $attributes = array_merge($this->_tmpl->getDefaultAttributes(), $attributes);
 
-        $attributes['type']	= strtolower( $attributes['type'] );
+        $attributes['type'] = strtolower($attributes['type']);
 
-        if( !isset( $attributes['rowoffset'] ) ) {
+        if (!isset($attributes['rowoffset'])) {
             $attributes['rowoffset'] = 1;
         }
 
-        if( !isset( $attributes['addsystemvars'] ) ) {
+        if (!isset($attributes['addsystemvars'])) {
             $attributes['addsystemvars'] = false;
         } else {
             switch ($attributes['addsystemvars']) {
@@ -891,98 +884,98 @@ class patTemplate_Reader extends patTemplate_Module
         /**
          * external template
          */
-        if( isset( $attributes['src'] ) ) {
-             if( !isset( $attributes['parse'] ) )
-                $attributes['parse']	=	'on';
-             if( !isset( $attributes['reader'] ) )
-                $attributes['reader']	=	$this->getName();
-             if( !isset( $attributes['autoload'] ) )
-                $attributes['autoload']	=	$this->_defaultAtts['autoload'];
+        if (isset($attributes['src'])) {
+            if (!isset($attributes['parse'])) {
+                $attributes['parse']    =   'on';
+            }
+            if (!isset($attributes['reader'])) {
+                $attributes['reader']   =   $this->getName();
+            }
+            if (!isset($attributes['autoload'])) {
+                $attributes['autoload'] =   $this->_defaultAtts['autoload'];
+            }
 
-             if (isset($attributes['relative']) && strtolower($attributes['relative'] === 'yes')) {
-                $attributes['relative']	= $this->getCurrentInput();
-             } else {
-                $attributes['relative']	= false;
-             }
+            if (isset($attributes['relative']) && strtolower($attributes['relative'] === 'yes')) {
+                $attributes['relative'] = $this->getCurrentInput();
+            } else {
+                $attributes['relative'] = false;
+            }
         }
 
         /**
          * varscope is set
          */
-        if( isset( $attributes['varscope'] ) ) {
-             /**
-             * varscope is parent
-             */
-             if( $attributes['varscope'] === '__parent' ) {
+        if (isset($attributes['varscope'])) {
+            /**
+            * varscope is parent
+            */
+            if ($attributes['varscope'] === '__parent') {
                 $attributes['varscope'] = $this->_getFromParentTemplate('name');
             }
 
-            $attributes['varscope']	= strtolower( $attributes['varscope'] );
+            $attributes['varscope'] = strtolower($attributes['varscope']);
             if (strstr($attributes['varscope'], ',')) {
                 $attributes['varscope'] = array_map('trim', explode(',', $attributes['varscope']));
             }
         }
 
-        switch( $attributes['type'] ) {
+        switch ($attributes['type']) {
             /**
              * validate condition template
              */
-            case	'condition':
-                if( !isset( $attributes['conditionvar'] ) ) {
+            case 'condition':
+                if (!isset($attributes['conditionvar'])) {
                     return patErrorManager::raiseError(
-                                                        PATTEMPLATE_READER_ERROR_INVALID_TAG,
-                                                        $this->_createErrorMessage( "Attribute 'conditionvar' missing for $templatename" )
-                                                        );
+                        PATTEMPLATE_READER_ERROR_INVALID_TAG,
+                        $this->_createErrorMessage("Attribute 'conditionvar' missing for $templatename")
+                    );
                 }
-                $attributes['conditionvar']	=	strtoupper( $attributes['conditionvar'] );
+                $attributes['conditionvar'] =   strtoupper($attributes['conditionvar']);
 
-                if( strstr( $attributes['conditionvar'], '.' ) ) {
-                    list( $attributes['conditiontmpl'], $attributes['conditionvar'] ) = explode( '.', $attributes['conditionvar'] );
-                    $attributes['conditiontmpl'] = strtolower( $attributes['conditiontmpl'] );
+                if (strstr($attributes['conditionvar'], '.')) {
+                    list($attributes['conditiontmpl'], $attributes['conditionvar']) = explode('.', $attributes['conditionvar']);
+                    $attributes['conditiontmpl'] = strtolower($attributes['conditiontmpl']);
                 }
 
-                $attributes['autoclear']	=	'yes';
+                $attributes['autoclear']    =   'yes';
 
-                if (!isset( $attributes['useglobals'] )) {
-                    $attributes['useglobals']	=	'no';
+                if (!isset($attributes['useglobals'])) {
+                    $attributes['useglobals']   =   'no';
                 }
                 break;
 
             /**
              * validate simplecondition template
              */
-            case	'simplecondition':
-                if( !isset( $attributes['requiredvars'] ) ) {
+            case 'simplecondition':
+                if (!isset($attributes['requiredvars'])) {
                     return patErrorManager::raiseError(
-                                                        PATTEMPLATE_READER_ERROR_INVALID_TAG,
-                                                        $this->_createErrorMessage( "Attribute 'requiredvars' missing for $templatename" )
-                                                        );
+                        PATTEMPLATE_READER_ERROR_INVALID_TAG,
+                        $this->_createErrorMessage("Attribute 'requiredvars' missing for $templatename")
+                    );
                 }
-                $tmp = array_map( 'trim', explode( ',', $attributes['requiredvars'] ) );
+                $tmp = array_map('trim', explode(',', $attributes['requiredvars']));
                 $attributes['requiredvars']   = array();
-                foreach( $tmp as $var ) {
-
-                    $pos = strpos( $var, '=' );
+                foreach ($tmp as $var) {
+                    $pos = strpos($var, '=');
                     if ($pos !== false) {
-                        $val = trim(substr( $var, $pos+1 ));
-                        $var = trim(substr( $var, 0, $pos ));
+                        $val = trim(substr($var, $pos+1));
+                        $var = trim(substr($var, 0, $pos));
                     } else {
                         $val = null;
                     }
                     $var = strtoupper($var);
-                    $pos = strpos( $var, '.' );
+                    $pos = strpos($var, '.');
 
                     if ($pos === false) {
-                        array_push( $attributes['requiredvars'], array( $templatename, $var, $val ) );
+                        array_push($attributes['requiredvars'], array( $templatename, $var, $val ));
                     } else {
-                        array_push( $attributes['requiredvars'], array(
-                                                                        strtolower( substr( $var, 0, $pos ) ),
-                                                                        substr( $var, $pos+1 ),
+                        array_push($attributes['requiredvars'], array(
+                                                                        strtolower(substr($var, 0, $pos)),
+                                                                        substr($var, $pos+1),
                                                                         $val
-                                                                    )
-                                );
+                                                                    ));
                     }
-
                 }
                 $attributes['autoclear'] = 'yes';
                 break;
@@ -990,21 +983,21 @@ class patTemplate_Reader extends patTemplate_Module
             /**
              * oddeven => switch to new modulo syntax
              */
-            case	'oddeven':
-                $attributes['type']		 = 'modulo';
-                $attributes['modulo']	 = 2;
+            case 'oddeven':
+                $attributes['type']      = 'modulo';
+                $attributes['modulo']    = 2;
                 $attributes['autoclear'] = 'yes';
                 break;
 
             /**
              * modulo => requires a module attribute
              */
-            case	'modulo':
-                if( !isset( $attributes['modulo'] ) ) {
+            case 'modulo':
+                if (!isset($attributes['modulo'])) {
                     return patErrorManager::raiseError(
-                                                        PATTEMPLATE_READER_ERROR_INVALID_TAG,
-                                                        $this->_createErrorMessage( "Attribute 'modulo' missing for $templatename" )
-                                                        );
+                        PATTEMPLATE_READER_ERROR_INVALID_TAG,
+                        $this->_createErrorMessage("Attribute 'modulo' missing for $templatename")
+                    );
                 }
                 $attributes['autoclear'] = 'yes';
                 break;
@@ -1012,7 +1005,7 @@ class patTemplate_Reader extends patTemplate_Module
             /**
              * standard template => do nothing
              */
-            case	'standard':
+            case 'standard':
                 break;
 
             /**
@@ -1020,9 +1013,9 @@ class patTemplate_Reader extends patTemplate_Module
              */
             default:
                 return patErrorManager::raiseError(
-                                                    PATTEMPLATE_READER_ERROR_INVALID_TAG,
-                                                    $this->_createErrorMessage( "Unknown value for attribute type: {$attributes['type']}" )
-                                                    );
+                    PATTEMPLATE_READER_ERROR_INVALID_TAG,
+                    $this->_createErrorMessage("Unknown value for attribute type: {$attributes['type']}")
+                );
                 break;
         }
 
@@ -1031,49 +1024,48 @@ class patTemplate_Reader extends patTemplate_Module
         return $attributes;
     }
 
-   /**
-    * build a template name
-    *
-    * @access	private
-    * @return	string	new template name
-    */
-    function _buildTemplateName()
+    /**
+     * build a template name
+     *
+     * @access   private
+     * @return   string  new template name
+     */
+    public function _buildTemplateName()
     {
-        return strtolower( uniqid( 'tmpl' ) );
+        return strtolower(uniqid('tmpl'));
     }
 
-   /**
-    * close the current template
-    *
-    * @access	private
-    * @return	boolean	true on success
-    */
-    function _closeTemplate( $tmpl, $data )
+    /**
+     * close the current template
+     *
+     * @access   private
+     * @return   boolean true on success
+     */
+    public function _closeTemplate($tmpl, $data)
     {
-        $name = array_pop( $this->_path );
+        $name = array_pop($this->_path);
 
-        $data = $this->_adjustWhitespace( $data, $tmpl['attributes']['whitespace'] );
+        $data = $this->_adjustWhitespace($data, $tmpl['attributes']['whitespace']);
 
-        array_pop( $this->_inheritAtts );
+        array_pop($this->_inheritAtts);
 
         /**
          * check for special templates
          */
-        switch( $tmpl['attributes']['type'] )
-        {
+        switch ($tmpl['attributes']['type']) {
             /**
              * check for whitespace in conditional templates
              * and raise a notice
              */
-            case	'condition':
-            case	'modulo':
-                if( trim( $data ) != '' ) {
+            case 'condition':
+            case 'modulo':
+                if (trim($data) != '') {
                     patErrorManager::raiseNotice(
-                                                    PATTEMPLATE_READER_NOTICE_INVALID_CDATA_SECTION,
-                                                    $this->_createErrorMessage( sprintf( 'No cdata is allowed inside a template of type %s (cdata was found in %s)', $tmpl['attributes']['type'], $tmpl['name'] ) )
-                                                );
+                        PATTEMPLATE_READER_NOTICE_INVALID_CDATA_SECTION,
+                        $this->_createErrorMessage(sprintf('No cdata is allowed inside a template of type %s (cdata was found in %s)', $tmpl['attributes']['type'], $tmpl['name']))
+                    );
                 }
-                $data	=	null;
+                $data   =   null;
                 break;
         }
 
@@ -1085,65 +1077,65 @@ class patTemplate_Reader extends patTemplate_Module
         /**
          * No external template
          */
-        if( !isset( $tmpl['attributes']['src'] ) ) {
-            $tmpl['loaded']	=	true;
+        if (!isset($tmpl['attributes']['src'])) {
+            $tmpl['loaded'] =   true;
         }
 
         /**
          * add it to the dependencies
          */
-         if( !empty( $this->_tmplStack ) ) {
-            $this->_addToParentTag( 'dependencies', $name );
+        if (!empty($this->_tmplStack)) {
+            $this->_addToParentTag('dependencies', $name);
 
-            if( isset( $tmpl['attributes']['placeholder'] ) ) {
+            if (isset($tmpl['attributes']['placeholder'])) {
                 // maintain BC
-                if( $this->shouldMaintainBc() && $tmpl['attributes']['placeholder'] === 'none' ) {
+                if ($this->shouldMaintainBc() && $tmpl['attributes']['placeholder'] === 'none') {
                     $tmpl['attributes']['placeholder'] = '__none';
                 }
 
-                if( $tmpl['attributes']['placeholder'] !== '__none' ) {
-                    $this->_characterData( $this->_startTag.(strtoupper( $tmpl['attributes']['placeholder'] ) ).$this->_endTag );
+                if ($tmpl['attributes']['placeholder'] !== '__none') {
+                    $this->_characterData($this->_startTag.(strtoupper($tmpl['attributes']['placeholder'])).$this->_endTag);
                 }
             } else {
-                $this->_characterData( sprintf( "%sTMPL:%s%s", $this->_startTag, strtoupper( $name ), $this->_endTag ) );
+                $this->_characterData(sprintf("%sTMPL:%s%s", $this->_startTag, strtoupper($name), $this->_endTag));
             }
-         }
+        }
 
-        unset( $tmpl['name'] );
-        unset( $tmpl['tag'] );
+        unset($tmpl['name']);
+        unset($tmpl['tag']);
 
         $this->_templates[$name] = $tmpl;
 
         return true;
     }
 
-   /**
-    * create a new sub-template
-    *
-    * @access	private
-    * @param	array		attributes
-    * @return	boolean		true on success
-    */
-    function _initSubTemplate( $attributes )
+    /**
+     * create a new sub-template
+     *
+     * @access   private
+     * @param    array       attributes
+     * @return   boolean     true on success
+     */
+    public function _initSubTemplate($attributes)
     {
         /**
          * has to be embedded in a 'tmpl' tag
          */
         if (!$this->_parentTagIs('tmpl')) {
             return patErrorManager::raiseError(
-                                                PATTEMPLATE_READER_ERROR_INVALID_TAG,
-                                                $this->_createErrorMessage( 'A subtemplate is only allowed in a TMPL tag' )
-                                                );
+                PATTEMPLATE_READER_ERROR_INVALID_TAG,
+                $this->_createErrorMessage('A subtemplate is only allowed in a TMPL tag')
+            );
         }
 
         /**
          * needs a condition attribute
          */
-        if (!isset( $attributes['condition'] )) {
+        if (!isset($attributes['condition'])) {
             return patErrorManager::raiseError(
-                                                PATTEMPLATE_READER_ERROR_NO_CONDITION_SPECIFIED,
-                                                $this->_createErrorMessage( 'Missing \'condition\' attribute for subtemplate' )
-                                                );
+                PATTEMPLATE_READER_ERROR_NO_CONDITION_SPECIFIED,
+                $this->_createErrorMessage('Missing \'condition\' attribute for subtemplate')
+            );
         }
         $matches = array();
         $regexp = '/^'.$this->_startTag.'([^a-z]+[^\\\])'.$this->_endTag.'$/U';
@@ -1154,85 +1146,85 @@ class patTemplate_Reader extends patTemplate_Module
         /**
          * maintain BC
          */
-        if( $this->shouldMaintainBc() && in_array( $attributes['condition'], array( 'default', 'empty', 'odd', 'even' ) ) ) {
+        if ($this->shouldMaintainBc() && in_array($attributes['condition'], array( 'default', 'empty', 'odd', 'even' ))) {
             $attributes['condition'] = '__' . $attributes['condition'];
         }
 
-        if( $attributes['condition'] == '__odd' ) {
+        if ($attributes['condition'] == '__odd') {
             $attributes['condition'] = 1;
-        } elseif( $attributes['condition'] == '__even' ) {
+        } elseif ($attributes['condition'] == '__even') {
             $attributes['condition'] = 0;
         }
 
-        $parent	= array_pop( $this->_tmplStack );
-        array_push( $this->_tmplStack, $parent );
+        $parent = array_pop($this->_tmplStack);
+        array_push($this->_tmplStack, $parent);
         if ($parent['attributes']['type'] == 'modulo') {
-
-            if( preg_match( '/^\d$/', $attributes['condition'] ) ) {
-                if( (integer)$attributes['condition'] >= $parent['attributes']['modulo'] ) {
+            if (preg_match('/^\d$/', $attributes['condition'])) {
+                if ((integer)$attributes['condition'] >= $parent['attributes']['modulo']) {
                     return patErrorManager::raiseError(
-                                                        PATTEMPLATE_READER_ERROR_INVALID_CONDITION,
-                                                        $this->_createErrorMessage( 'Condition may only be between 0 and '.($parent['attributes']['modulo']-1) )
-                                                    );
+                        PATTEMPLATE_READER_ERROR_INVALID_CONDITION,
+                        $this->_createErrorMessage('Condition may only be between 0 and '.($parent['attributes']['modulo']-1))
+                    );
                 }
             }
         }
 
-        $attributes = $this->_inheritAttributes( $attributes );
+        $attributes = $this->_inheritAttributes($attributes);
 
         $condition  = $attributes['condition'];
-        unset( $attributes['condition'] );
+        unset($attributes['condition']);
 
         $subTmpl = array(
-                        'type'			=>	'sub',
-                        'condition'		=>	$condition,
-                        'data'			=>	'',
-                        'attributes'	=>	$attributes,
-                        'comments'		=>	array(),
-                        'functions'		=>  array(),
-                        'dependencies'	=>	array()
+                        'type'          =>  'sub',
+                        'condition'     =>  $condition,
+                        'data'          =>  '',
+                        'attributes'    =>  $attributes,
+                        'comments'      =>  array(),
+                        'functions'     =>  array(),
+                        'dependencies'  =>  array()
                         );
 
-        return	$subTmpl;
+        return  $subTmpl;
     }
 
-   /**
-    * close subtemplate
-    *
-    * @access	private
-    * @param	string		data
-    * @return	boolean		true on success
-    */
-    function _closeSubTemplate( $subTmpl, $data )
+    /**
+     * close subtemplate
+     *
+     * @access   private
+     * @param    string      data
+     * @return   boolean     true on success
+     */
+    public function _closeSubTemplate($subTmpl, $data)
     {
-        $data				=	$this->_adjustWhitespace( $data, $subTmpl['attributes']['whitespace'] );
+        $data               =   $this->_adjustWhitespace($data, $subTmpl['attributes']['whitespace']);
 
-        $subTmpl['data']	=	$data;
-        $condition			=	$subTmpl['condition'];
-        unset( $subTmpl['condition'] );
+        $subTmpl['data']    =   $data;
+        $condition          =   $subTmpl['condition'];
+        unset($subTmpl['condition']);
 
-        $this->_addToParentTemplate( 'subtemplates',
-                                      $subTmpl,
-                                      $condition
-                                    );
+        $this->_addToParentTemplate(
+            'subtemplates',
+            $subTmpl,
+            $condition
+        );
         return true;
     }
 
-   /**
-    * handle a variable
-    *
-    * @access	private
-    * @param	array	attributes of the var tag
-    * @param	string	cdata between the tags (will be used as default)
-    * @return	boolean	true on success
-    */
-    function _handleVariable( $attributes, $data )
+    /**
+     * handle a variable
+     *
+     * @access   private
+     * @param    array   attributes of the var tag
+     * @param    string  cdata between the tags (will be used as default)
+     * @return   boolean true on success
+     */
+    public function _handleVariable($attributes, $data)
     {
-        if( !isset( $attributes['name'] ) ) {
+        if (!isset($attributes['name'])) {
             return patErrorManager::raiseError(
-                                                PATTEMPLATE_READER_ERROR_NO_NAME_SPECIFIED,
-                                                $this->_createErrorMessage( 'Variable needs a name attribute' )
-                                                );
+                PATTEMPLATE_READER_ERROR_NO_NAME_SPECIFIED,
+                $this->_createErrorMessage('Variable needs a name attribute')
+            );
         }
 
         $specs = array();
@@ -1240,112 +1232,113 @@ class patTemplate_Reader extends patTemplate_Module
         /**
          * get name
          */
-        $name	=	strtoupper( $attributes['name'] );
-        unset( $attributes['name'] );
-        $specs['name']	=	$name;
+        $name   =   strtoupper($attributes['name']);
+        unset($attributes['name']);
+        $specs['name']  =   $name;
 
         /**
          * use data as default value
          */
-        if( isset( $attributes['default'] ) ) {
-            $data 				=	$attributes['default'];
-            $specs['default']	=	$data;
-            unset( $attributes['default'] );
-        } elseif (!empty( $data )) {
-            $specs['default']	=	$data;
+        if (isset($attributes['default'])) {
+            $data               =   $attributes['default'];
+            $specs['default']   =   $data;
+            unset($attributes['default']);
+        } elseif (!empty($data)) {
+            $specs['default']   =   $data;
         }
 
         /**
          * add it to template, if it's not hidden
          */
-        if (!isset( $attributes['hidden'] ) || $attributes['hidden'] == 'no') {
-            $this->_characterData( $this->_startTag . strtoupper( $name ) . $this->_endTag );
+        if (!isset($attributes['hidden']) || $attributes['hidden'] == 'no') {
+            $this->_characterData($this->_startTag . strtoupper($name) . $this->_endTag);
         }
 
-        if( isset( $attributes['hidden'] ) ) {
-            unset( $attributes['hidden'] );
+        if (isset($attributes['hidden'])) {
+            unset($attributes['hidden']);
         }
 
         /**
          * copy value from any other variable
          */
-        if (isset( $attributes['copyfrom'] )) {
-            $specs['copyfrom'] = strtoupper( $attributes['copyfrom'] );
+        if (isset($attributes['copyfrom'])) {
+            $specs['copyfrom'] = strtoupper($attributes['copyfrom']);
 
-            if (strstr( $specs['copyfrom'], '.' )) {
-                $specs['copyfrom']    = explode( '.', $specs['copyfrom'] );
+            if (strstr($specs['copyfrom'], '.')) {
+                $specs['copyfrom']    = explode('.', $specs['copyfrom']);
 
                 if ($specs['copyfrom'][0] == '__PARENT') {
                     $specs['copyfrom'][0] = $this->_getFromParentTemplate('name', 2);
                 } else {
-                    $specs['copyfrom'][0] = strtolower( $specs['copyfrom'][0] );
+                    $specs['copyfrom'][0] = strtolower($specs['copyfrom'][0]);
                 }
             }
 
-            unset( $attributes['copyfrom'] );
+            unset($attributes['copyfrom']);
         }
 
-        if( isset( $attributes['modifier'] ) ) {
+        if (isset($attributes['modifier'])) {
             $modifier = $attributes['modifier'];
-            unset( $attributes['modifier'] );
+            unset($attributes['modifier']);
 
-            $type = isset( $attributes['modifiertype'] ) ? $attributes['modifiertype'] : 'auto';
+            $type = isset($attributes['modifiertype']) ? $attributes['modifiertype'] : 'auto';
 
-            if( isset( $attributes['modifiertype'] ) )
-                unset( $attributes['modifiertype'] );
+            if (isset($attributes['modifiertype'])) {
+                unset($attributes['modifiertype']);
+            }
 
             $specs['modifier'] = array( 'mod' => $modifier, 'type' => $type, 'params' => $attributes );
         }
 
-        if (!empty( $specs )) {
+        if (!empty($specs)) {
             $this->_addToParentTemplate(
-                                        'varspecs',
-                                        $specs,
-                                        $name
-                                        );
+                'varspecs',
+                $specs,
+                $name
+            );
         }
         return true;
     }
 
 
-   /**
-    * handle a comment
-    *
-    * @access	private
-    * @param	array	attributes of the comment tag
-    * @param	string	cdata between the tags (will be used as default)
-    * @return	boolean	true on success
-    */
-    function _handleComment( $attributes, $data )
+    /**
+     * handle a comment
+     *
+     * @access   private
+     * @param    array   attributes of the comment tag
+     * @param    string  cdata between the tags (will be used as default)
+     * @return   boolean true on success
+     */
+    public function _handleComment($attributes, $data)
     {
-        $this->_addToParentTag( 'comments', $data );
+        $this->_addToParentTag('comments', $data);
     }
 
-   /**
-    * get the character data of the element
-    *
-    * @access	private
-    * @return	string
-    */
-    function _getCData()
+    /**
+     * get the character data of the element
+     *
+     * @access   private
+     * @return   string
+     */
+    public function _getCData()
     {
-        if( $this->_depth == 0 ) {
-            return	'';
+        if ($this->_depth == 0) {
+            return  '';
         }
         return $this->_data[$this->_depth];
     }
 
-   /**
-    * add to a property of the parent template
-    *
-    * @access	private
-    * @param	string	property to add to
-    * @param	mixed	value to add
-    * @param	string	key
-    */
-    function _addToParentTemplate( $property, $value, $key = null )
+    /**
+     * add to a property of the parent template
+     *
+     * @access   private
+     * @param    string  property to add to
+     * @param    mixed   value to add
+     * @param    string  key
+     */
+    public function _addToParentTemplate($property, $value, $key = null)
     {
-        $cnt = count( $this->_tmplStack );
+        $cnt = count($this->_tmplStack);
 
         if ($cnt === 0) {
             return false;
@@ -1359,9 +1352,8 @@ class patTemplate_Reader extends patTemplate_Module
             }
 
             if ($key === null) {
-
-                if (!in_array( $value, $this->_tmplStack[$pos][$property] )) {
-                    array_push( $this->_tmplStack[$pos][$property], $value );
+                if (!in_array($value, $this->_tmplStack[$pos][$property])) {
+                    array_push($this->_tmplStack[$pos][$property], $value);
                 }
             } else {
                 $this->_tmplStack[$pos][$property][$key] = $value;
@@ -1370,20 +1362,20 @@ class patTemplate_Reader extends patTemplate_Module
             return true;
         }
 
-        return	false;
+        return  false;
     }
 
-   /**
-    * get a property of the parent template
-    *
-    * @access	private
-    * @param	string	property to add to
-    * @param    int     how many levels to climb up, 1 is default - which is the parent's template
-    * @return	mixed	value to add
-    */
-    function _getFromParentTemplate( $property, $level = 1 )
+    /**
+     * get a property of the parent template
+     *
+     * @access   private
+     * @param    string  property to add to
+     * @param    int     how many levels to climb up, 1 is default - which is the parent's template
+     * @return   mixed   value to add
+     */
+    public function _getFromParentTemplate($property, $level = 1)
     {
-        $cnt = count( $this->_tmplStack );
+        $cnt = count($this->_tmplStack);
 
         if ($cnt === 0) {
             return false;
@@ -1391,32 +1383,32 @@ class patTemplate_Reader extends patTemplate_Module
 
         $pos = $cnt - $level;
         while ($pos >= 0) {
-            if( $this->_tmplStack[$pos]['type'] != 'tmpl' ) {
+            if ($this->_tmplStack[$pos]['type'] != 'tmpl') {
                 $pos--;
                 continue;
             }
 
-            if (isset( $this->_tmplStack[$pos][$property] )) {
+            if (isset($this->_tmplStack[$pos][$property])) {
                 return $this->_tmplStack[$pos][$property];
             }
 
             return false;
         }
-        return	false;
+        return  false;
     }
 
 
-   /**
-    * add to a property of the parent tag
-    *
-    * @access	private
-    * @param	string	property to add to
-    * @param	mixed	value to add
-    * @param	string	key
-    */
-    function _addToParentTag( $property, $value, $key = null )
+    /**
+     * add to a property of the parent tag
+     *
+     * @access   private
+     * @param    string  property to add to
+     * @param    mixed   value to add
+     * @param    string  key
+     */
+    public function _addToParentTag($property, $value, $key = null)
     {
-        $cnt = count( $this->_tmplStack );
+        $cnt = count($this->_tmplStack);
 
         if ($cnt === 0) {
             return false;
@@ -1425,11 +1417,11 @@ class patTemplate_Reader extends patTemplate_Module
         $pos = $cnt - 1;
 
         if ($key === null) {
-            if (!isset( $this->_tmplStack[$pos][$property] ) || !is_array( $this->_tmplStack[$pos][$property] )) {
+            if (!isset($this->_tmplStack[$pos][$property]) || !is_array($this->_tmplStack[$pos][$property])) {
                 $this->_tmplStack[$pos][$property]  =   array();
             }
-            if (!in_array( $value, $this->_tmplStack[$pos][$property] )) {
-                array_push( $this->_tmplStack[$pos][$property], $value );
+            if (!in_array($value, $this->_tmplStack[$pos][$property])) {
+                array_push($this->_tmplStack[$pos][$property], $value);
             }
         } else {
             $this->_tmplStack[$pos][$property][$key] = $value;
@@ -1438,43 +1430,43 @@ class patTemplate_Reader extends patTemplate_Module
         return true;
     }
 
-   /**
-    * adjust whitespace in a CData block
-    *
-    * @access	private
-    * @param	string		data
-    * @param	string		behaviour
-    * @return	string		data
-    */
-    function _adjustWhitespace( $data, $behaviour )
+    /**
+     * adjust whitespace in a CData block
+     *
+     * @access   private
+     * @param    string      data
+     * @param    string      behaviour
+     * @return   string      data
+     */
+    public function _adjustWhitespace($data, $behaviour)
     {
-        switch( $behaviour ) {
+        switch ($behaviour) {
             case 'trim':
-                $data = str_replace( '\n', ' ', $data );
-                $data = preg_replace( '/\s\s+/', ' ', $data );
+                $data = str_replace('\n', ' ', $data);
+                $data = preg_replace('/\s\s+/', ' ', $data);
                 break;
         }
-        return	$data;
+        return  $data;
     }
 
-   /**
-    * inherit attributes from the parent template
-    *
-    * The following attributes are inherited automatically:
-    * - whitespace
-    * - unusedvars
-    * - autoclear
-    * - attributeplaceholder
-    *
-    * @access	private
-    * @param	array	attributes
-    * @param	array	attributes with inherited attributes
-    * @return	array	new attribute collection
-    */
-    function _inheritAttributes( $attributes )
+    /**
+     * inherit attributes from the parent template
+     *
+     * The following attributes are inherited automatically:
+     * - whitespace
+     * - unusedvars
+     * - autoclear
+     * - attributeplaceholder
+     *
+     * @access   private
+     * @param    array   attributes
+     * @param    array   attributes with inherited attributes
+     * @return   array   new attribute collection
+     */
+    public function _inheritAttributes($attributes)
     {
-        if (!empty( $this->_inheritAtts )) {
-            $parent = end( $this->_inheritAtts );
+        if (!empty($this->_inheritAtts)) {
+            $parent = end($this->_inheritAtts);
         } else {
             $parent = array(
                                 'whitespace'            => $this->_defaultAtts['whitespace'],
@@ -1484,111 +1476,111 @@ class patTemplate_Reader extends patTemplate_Module
                             );
         }
 
-        $attributes = array_merge( $parent, $attributes );
-        return	$attributes;
+        $attributes = array_merge($parent, $attributes);
+        return  $attributes;
     }
 
-   /**
-    * checks, whether the parent tag is of a certain type
-    *
-    * This is needed to ensure, that subtemplates are only
-    * placed inside a template
-    *
-    * @access	private
-    * @param	string	type (tmpl, sub, var, link)
-    * @return	boolean
-    */
-    function _parentTagIs( $type )
+    /**
+     * checks, whether the parent tag is of a certain type
+     *
+     * This is needed to ensure, that subtemplates are only
+     * placed inside a template
+     *
+     * @access   private
+     * @param    string  type (tmpl, sub, var, link)
+     * @return   boolean
+     */
+    public function _parentTagIs($type)
     {
-        $parent	=	array_pop( $this->_tmplStack );
-        if( $parent === null ) {
+        $parent =   array_pop($this->_tmplStack);
+        if ($parent === null) {
             return false;
         }
-        array_push( $this->_tmplStack, $parent );
+        array_push($this->_tmplStack, $parent);
 
-        if( $parent['type'] == $type ) {
+        if ($parent['type'] == $type) {
             return true;
         }
 
         return false;
     }
 
-   /**
-    * get the current line number
-    *
-    * @access	private
-    * @return	integer		line number
-    */
-    function _getCurrentLine()
+    /**
+     * get the current line number
+     *
+     * @access   private
+     * @return   integer     line number
+     */
+    public function _getCurrentLine()
     {
-        $line = count( explode( "\n", $this->_processedData ) );
+        $line = count(explode("\n", $this->_processedData));
         return $line;
     }
 
-   /**
-    * create an error message
-    *
-    * This method takes an error messages and appends the
-    * current line number as well as a pointer to the input
-    * (filename)
-    *
-    * @access	private
-    * @param	string	base error message
-    * @return	strin	error message
-    */
-    function _createErrorMessage( $msg )
+    /**
+     * create an error message
+     *
+     * This method takes an error messages and appends the
+     * current line number as well as a pointer to the input
+     * (filename)
+     *
+     * @access   private
+     * @param    string  base error message
+     * @return   strin   error message
+     */
+    public function _createErrorMessage($msg)
     {
-        return sprintf( '%s in %s on line %d', $msg, $this->getCurrentInput(), $this->_getCurrentLine() );
+        return sprintf('%s in %s on line %d', $msg, $this->getCurrentInput(), $this->_getCurrentLine());
     }
 
-   /**
-    * get the current input
-    *
-    * @access   public
-    * @return   string
-    */
-    function getCurrentInput()
+    /**
+     * get the current input
+     *
+     * @access   public
+     * @return   string
+     */
+    public function getCurrentInput()
     {
         return $this->_currentInput;
     }
 
-   /**
-    * tests whether the reader should maintain backwards compatibility
-    *
-    * If enabled, you can still use 'default', 'empty', 'odd' and 'even'
-    * instead of '__default', '__empty', etc.
-    *
-    * This will be disabled by default in future versions.
-    *
-    * @access	public
-    * @return	boolean
-    */
-    function shouldMaintainBc()
+    /**
+     * tests whether the reader should maintain backwards compatibility
+     *
+     * If enabled, you can still use 'default', 'empty', 'odd' and 'even'
+     * instead of '__default', '__empty', etc.
+     *
+     * This will be disabled by default in future versions.
+     *
+     * @access   public
+     * @return   boolean
+     */
+    public function shouldMaintainBc()
     {
-        if (!isset( $this->_options['maintainBc'] )) {
+        if (!isset($this->_options['maintainBc'])) {
             return false;
         }
         return $this->_options['maintainBc'];
     }
 
-   /**
-    * returns, whether the reader currently is in use
-    *
-    * @access   public
-    * @return   boolean
-    */
-    function isInUse()
+    /**
+     * returns, whether the reader currently is in use
+     *
+     * @access   public
+     * @return   boolean
+     */
+    public function isInUse()
     {
         return $this->_inUse;
     }
 
-   /**
-    * get the template root for this reader
-    *
-    * @access  public
-    * @return  string
-    */
-    function getTemplateRoot()
+    /**
+     * get the template root for this reader
+     *
+     * @access  public
+     * @return  string
+     */
+    public function getTemplateRoot()
     {
         if (!isset($this->_options['root'])) {
             return null;
@@ -1602,4 +1594,3 @@ class patTemplate_Reader extends patTemplate_Module
         return null;
     }
 }
-?>

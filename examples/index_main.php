@@ -2,23 +2,23 @@
 /**
  * Overview for the examples
  *
- * @package		patTemplate
- * @subpackage	Examples
- * @author		Sebastian Mordziol <argh@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @author      Sebastian Mordziol <argh@php-tools.net>
  */
 
 /**
  * require section config
  */
-	require_once 'index_sections.php';
+    require_once 'index_sections.php';
 ?>
 <html>
 <head>
-	<!-- $Id: index_main.php 202 2004-05-10 20:27:09Z schst $ -->
-	<title><?php echo $appName ?>: Examples - Main</title>
-	<style>
-		@import url( _styles.css );
-	</style>
+    <!-- $Id: index_main.php 202 2004-05-10 20:27:09Z schst $ -->
+    <title><?php echo $appName ?>: Examples - Main</title>
+    <style>
+        @import url( _styles.css );
+    </style>
 </head>
 <body marginheight="10" marginwidth="10" leftmargin="10" rightmargin="10" topmargin="10" bottommargin="10">
 
@@ -27,32 +27,32 @@
 
 <ul>
 <?php
-	foreach( $sections as $section => $sectionData )
-		echo '&raquo; <a href="#'.$section.'">'.$appName.'::'.$section.'</a><br>';
+foreach ($sections as $section => $sectionData) {
+    echo '&raquo; <a href="#'.$section.'">'.$appName.'::'.$section.'</a><br>';
+}
 ?>
 </ul><br>
 
 <?php
 
-	foreach( $sections as $section => $sectionData )
-	{
-		echo '<h4><a name="'.$section.'"></a>'.$appName.'::'.$section.' ('.count($sectionData['pages']).')</h4>';
-		echo '<p>'.$sectionData['descr'].'</p>';
-		echo '<ul>';
-		foreach( $sectionData['pages'] as $pageId => $pageData )
-		{
-			if( isset( $pageData['alias'] ) )
-				$example = $pageData['alias'];
-			else
-				$example = $sectionData['basename'].$pageId;
+foreach ($sections as $section => $sectionData) {
+    echo '<h4><a name="'.$section.'"></a>'.$appName.'::'.$section.' ('.count($sectionData['pages']).')</h4>';
+    echo '<p>'.$sectionData['descr'].'</p>';
+    echo '<ul>';
+    foreach ($sectionData['pages'] as $pageId => $pageData) {
+        if (isset($pageData['alias'])) {
+            $example = $pageData['alias'];
+        } else {
+            $example = $sectionData['basename'].$pageId;
+        }
 
-			echo '<li>';
-			echo '	<a href="_viewExample.php?example='.$example.'">'.$pageData['title'].'</a><br />';
-			echo '	'.$pageData['descr'].'<br />';
-			echo '</li>';
-		}
-		echo '</ul><br />';
-	}
+        echo '<li>';
+        echo '	<a href="_viewExample.php?example='.$example.'">'.$pageData['title'].'</a><br />';
+        echo '	'.$pageData['descr'].'<br />';
+        echo '</li>';
+    }
+    echo '</ul><br />';
+}
 ?>
 
 </body>

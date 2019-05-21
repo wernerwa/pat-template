@@ -13,11 +13,11 @@ Todo:
 * Implement 'runtime' functions.
   Runtime functions are object that will store template content and parse the
   content instead of the patTemplate processor.
-  
+
   class patTemplate_Function_Foo extends patTemplate_Function
   {
     var $type = PATTEMPLATE_FUNCTION_RUNTIME;
-	
+
 	/**
 	 * called, when the tag is found
 	 */
@@ -25,13 +25,13 @@ Todo:
 	{
 		return '';
 	}
-	
+
 	function call( array vars, integer iteration )
 	{
 		return '';
 	}
   }
-  
+
 * Implement output cache
 * Implement instance
 * implement parseInto="foo.bar"

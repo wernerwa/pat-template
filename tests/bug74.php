@@ -19,12 +19,11 @@ $types = array('yes', 'no', 'no', 'yes');
 
 foreach ($types as $type) {
     $template->addVar('list_row', 'myVar', $type);
-    shuffle($data);    
+    shuffle($data);
     $template->addVar('list_entry', 'SOMETHING', $data);
-    
+
     $template->parseTemplate('list_row', 'a');
 }
 
 // parse and display the template
 $template->displayParsedTemplate('page');
-?>

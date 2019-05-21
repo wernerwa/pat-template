@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how quote variables, so they will not be replaced.
  *
@@ -7,11 +7,11 @@
  *
  * $Id: example_misc_quote.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
- * @see			patTemplate::setOption()
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
+ * @see         patTemplate::setOption()
  */
 
     /**
@@ -33,11 +33,10 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->readTemplatesFromInput( 'example_misc_quote.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->readTemplatesFromInput('example_misc_quote.tmpl');
+
+    $tmpl->displayParsedTemplate();

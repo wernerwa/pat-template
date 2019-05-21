@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * patTemplate example that shows how global variables
  * can be added.
@@ -12,12 +12,12 @@
  *
  * $Id: example_compiler_display.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
- * @see			patTemplate::addGlobalVar()
- * @see			patTemplate::addGlobalVars()
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
+ * @see         patTemplate::addGlobalVar()
+ * @see         patTemplate::addGlobalVars()
  */
 
     /**
@@ -38,60 +38,58 @@
     require_once $neededFiles['patTemplate'];
 
    /**
-	* compiler
-	*/
-	require_once '../patTemplate/Compiler.php';
+    * compiler
+    */
+    require_once '../patTemplate/Compiler.php';
 
-	
-	$tmpl	=	&new patTemplate_Compiler();
-	$tmpl->setRoot( 'templates' );
 
-	$tmpl->setOption( 'compileFolder', 'compiledTemplates' );
+    $tmpl   =   &new patTemplate_Compiler();
+    $tmpl->setRoot('templates');
 
-	$tmpl->readTemplatesFromInput( 'example_compiler_display.tmpl' );
+    $tmpl->setOption('compileFolder', 'compiledTemplates');
 
-	$tmpl->compile( 'example1.php' );
-	
-	$tmpl->addGlobalVar( 'GLOBAL', 'I\'m global.' );
+    $tmpl->readTemplatesFromInput('example_compiler_display.tmpl');
 
-	$tmpl->addVar( 'template2', 'schst', array( 'one', 'two', 'repeat it.' ) );
-	
-	$tmpl->addVar( 'template1', 'argh', array( 'one', 'two', 'repeat it.' ) );
-	
-	$tmpl->addVars( 'template1', array(
-										'foo' => 'This is a string',
-										'bar' => 453
-									)
-				 );
+    $tmpl->compile('example1.php');
 
-	/**
-	 * standard template and dependencies
-	 */
-	echo '<fieldset><legend>template1</legend>';
-	$tmpl->displayParsedTemplate( 'template1' );
-	echo '</fieldset><br />';
+    $tmpl->addGlobalVar('GLOBAL', 'I\'m global.');
 
-	/**
-	 * modulo
-	 */
-	echo '<fieldset><legend>template3</legend>';
-	$tmpl->addVar( 'template3', 'argh', array( 'one', 'two', 'repeat it.' ) );
-	$tmpl->displayParsedTemplate( 'template3' );
-	echo '</fieldset><br />';
+    $tmpl->addVar('template2', 'schst', array( 'one', 'two', 'repeat it.' ));
 
-	/**
-	 * simplecondition
-	 */
-	echo '<fieldset><legend>template4</legend>';
-	$tmpl->addVar( 'template4', 'FOO', 'set' );
-	$tmpl->displayParsedTemplate( 'template4' );
-	echo '</fieldset><br />';
+    $tmpl->addVar('template1', 'argh', array( 'one', 'two', 'repeat it.' ));
 
-	/**
-	 * condition
-	 */
-	echo '<fieldset><legend>template5</legend>';
-	$tmpl->addVar( 'template5', 'condVar', array( 'foo', 'bar' ) );
-	$tmpl->displayParsedTemplate( 'template5' );
-	echo '</fieldset><br />';
-?>
+    $tmpl->addVars('template1', array(
+                                        'foo' => 'This is a string',
+                                        'bar' => 453
+                                    ));
+
+    /**
+     * standard template and dependencies
+     */
+    echo '<fieldset><legend>template1</legend>';
+    $tmpl->displayParsedTemplate('template1');
+    echo '</fieldset><br />';
+
+    /**
+     * modulo
+     */
+    echo '<fieldset><legend>template3</legend>';
+    $tmpl->addVar('template3', 'argh', array( 'one', 'two', 'repeat it.' ));
+    $tmpl->displayParsedTemplate('template3');
+    echo '</fieldset><br />';
+
+    /**
+     * simplecondition
+     */
+    echo '<fieldset><legend>template4</legend>';
+    $tmpl->addVar('template4', 'FOO', 'set');
+    $tmpl->displayParsedTemplate('template4');
+    echo '</fieldset><br />';
+
+    /**
+     * condition
+     */
+    echo '<fieldset><legend>template5</legend>';
+    $tmpl->addVar('template5', 'condVar', array( 'foo', 'bar' ));
+    $tmpl->displayParsedTemplate('template5');
+    echo '</fieldset><br />';

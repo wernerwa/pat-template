@@ -4,9 +4,9 @@
  *
  * $Id: Memcache.php 478 2009-02-25 07:58:38Z gerd $
  *
- * @package	patTemplate
- * @subpackage	Caches
- * @author	Torben Egmose <torben.egmose@gmail.com>
+ * @package patTemplate
+ * @subpackage  Caches
+ * @author  Torben Egmose <torben.egmose@gmail.com>
  */
 
 /**
@@ -16,7 +16,7 @@
  * - lifetime : seconds for which the cache is valid, if set to auto, it will check
  *   whether the cache is older than the original file (if the reader supports this)
  * - memcache : inject memcache object
- * 
+ *
  * Please refer https://mutlamap.dk for further information
  *
  * @package       patTemplate
@@ -25,18 +25,18 @@
  */
 class patTemplate_TemplateCache_Memcache extends patTemplate_TemplateCache
 {
-   /**
-    * parameter memcache of the cache
-    * @var string
-    */
-   private $memcache;
-   
-   /**
-    * parameter lifetime of the cache
-    * @var string
-    */
-   private $lifetime;
-   
+    /**
+     * parameter memcache of the cache
+     * @var string
+     */
+    private $memcache;
+
+    /**
+     * parameter lifetime of the cache
+     * @var string
+     */
+    private $lifetime;
+
     /**
      * constructor
      */
@@ -54,7 +54,7 @@ class patTemplate_TemplateCache_Memcache extends patTemplate_TemplateCache
         $this->memcache = $this->getParam('memcache');
         $this->lifetime = $this->getParam('lifetime');
 
-        if(!($this->memcache instanceof Memcache)) {
+        if (!($this->memcache instanceof Memcache)) {
             throw new ErrorException("not memcache object");
         }
     }
@@ -66,7 +66,7 @@ class patTemplate_TemplateCache_Memcache extends patTemplate_TemplateCache
      */
     private function memcache()
     {
-        if($this->memcache) {
+        if ($this->memcache) {
             return $this->memcache;
         }
         $this->loadMemcache();
@@ -83,7 +83,7 @@ class patTemplate_TemplateCache_Memcache extends patTemplate_TemplateCache
     public function load($key, $modTime = -1)
     {
         $something = $this->memcache()->get('pat'.$key);
-        if(is_string($something)) {
+        if (is_string($something)) {
             return unserialize($something);
         }
         return false;
@@ -99,8 +99,7 @@ class patTemplate_TemplateCache_Memcache extends patTemplate_TemplateCache
      */
     public function write($key, $templates)
     {
-        $something = $this->memcache()->set('pat'.$key, serialize($templates),0,$this->lifetime);
+        $something = $this->memcache()->set('pat'.$key, serialize($templates), 0, $this->lifetime);
         return true;
     }
-} 
-?>
+}

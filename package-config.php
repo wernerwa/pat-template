@@ -69,7 +69,7 @@ It provides different template types to emulate if/else and switch/case construc
 input- and output filters and several more useful features.
 EOT;
 
-$options    =   array (
+$options    =   array(
     'license'           => 'LGPL',
     'filelistgenerator' => 'svn',
     'ignore'            => array( 'package.php', 'autopackage2.php', 'package-config.php', 'package.xml', '.cvsignore', '.svn', 'examples/cache', 'rfcs' ),
@@ -149,5 +149,3 @@ $require    =   array(
     'php'               =>  '4.2.0',
     'pear_installer'    => '1.4.0'
 );
-
-?>

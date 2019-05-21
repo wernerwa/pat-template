@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Example that shows the use of variable modifiers
  *
@@ -9,10 +9,10 @@
  *
  * $Id: example_var_modifier_short.php 453 2007-05-30 12:58:43Z gerd $
  *
- * @author		Stephan Schmidt <schst@php-tools.net>
- * @package		patTemplate
- * @subpackage	Examples
- * @link		http://www.php-tools.net
+ * @author      Stephan Schmidt <schst@php-tools.net>
+ * @package     patTemplate
+ * @subpackage  Examples
+ * @link        http://www.php-tools.net
  */
     /**
      * Main examples prepend file, needed *only* for the examples framework!
@@ -33,26 +33,25 @@
 
 
 
-	
-	$tmpl	=	&new patTemplate();
-	$tmpl->setRoot('templates');
 
-	$tmpl->applyInputFilter('ShortModifiers');
-	
-	// If you set 'copyVars' to false, you may only apply one modifier to
-	// a variable, but this way it is faster.
-//	$tmpl->applyInputFilter('ShortModifiers', array('copyVars' => false));
-	
-	$tmpl->readTemplatesFromInput( 'example_var_modifier_short.tmpl' );
+    $tmpl   =   &new patTemplate();
+    $tmpl->setRoot('templates');
 
-	$tmpl->addVar('page', 'now', time());
-	
-	$tmpl->addVar( 'page', 'sometext', 'This contains some special chars: < > & äÖÜ' );
+    $tmpl->applyInputFilter('ShortModifiers');
 
-	$tmpl->addVar( 'page', 'multiline', 'This contains
+    // If you set 'copyVars' to false, you may only apply one modifier to
+    // a variable, but this way it is faster.
+//  $tmpl->applyInputFilter('ShortModifiers', array('copyVars' => false));
+
+    $tmpl->readTemplatesFromInput('example_var_modifier_short.tmpl');
+
+    $tmpl->addVar('page', 'now', time());
+
+    $tmpl->addVar('page', 'sometext', 'This contains some special chars: < > & äÖÜ');
+
+    $tmpl->addVar('page', 'multiline', 'This contains
  some
  line
- breaks...' );
+ breaks...');
 
-	$tmpl->displayParsedTemplate();
-?>
+    $tmpl->displayParsedTemplate();
