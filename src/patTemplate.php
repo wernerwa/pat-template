@@ -214,10 +214,9 @@ class patTemplate
      *
      * The type influences the tags you are using in your templates.
      *
-     * @access   public
-     * @param    string  type (either html or tex)
+     * @param string type (either html or tex)
      */
-    public function patTemplate($type = 'html')
+    public function __construct($type = 'html')
     {
         if (!defined('PATTEMPLATE_INCLUDE_PATH')) {
             define('PATTEMPLATE_INCLUDE_PATH', dirname(__FILE__) . '/patTemplate');

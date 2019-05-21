@@ -50,13 +50,12 @@ class patTemplate_Compiler extends patTemplate
      *
      * Creates a new patTemplate Compiler
      *
-     * @access   public
-     * @param    string      type of the templates, either 'html' or 'tex'
+     * @param string type of the templates, either 'html' or 'tex'
      */
-    public function patTemplate_Compiler($type = 'html')
+    public function __construct($type = 'html')
     {
         $GLOBALS['patTemplate_Compiler']    =   &$this;
-        patTemplate::patTemplate($type);
+        patTemplate::__construct($type);
     }
 
     /**
