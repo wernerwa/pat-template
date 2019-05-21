@@ -15,8 +15,6 @@
  * $tmpl->setOption( 'lang', 'de' );
  * </code>
  *
- * $Id: Translate.php 309 2004-10-27 11:23:49Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -52,7 +50,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    public $_name  =   'Translate';
+    private $_name = 'Translate';
 
     /**
      * configuration of all files
@@ -60,7 +58,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
      * @access   private
      * @var      array
      */
-    public $_config    =   array();
+    private $_config = array();
 
     /**
      * global config
@@ -68,7 +66,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
      * @access   private
      * @var      array
      */
-    public $_globalconfig  =   array();
+    private $_globalconfig = array();
 
     /**
      * list of all sentences
@@ -76,7 +74,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
      * @access   private
      * @var      array
      */
-    public $_sentences =   array();
+    private $_sentences = array();
 
     /**
      * translations of the language files
@@ -84,7 +82,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
      * @access   private
      * @var      array
      */
-    public $_translation = array();
+    private $_translation = array();
 
     /**
      * reference to the patTemplate object that instantiated the module

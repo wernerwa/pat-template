@@ -2,8 +2,6 @@
 /**
  * patTemplate modfifier Dateformat
  *
- * $Id: Dateformat.php 216 2004-05-20 16:01:41Z schst $
- *
  * @package     patTemplate
  * @subpackage  Modifiers
  * @author      Stephan Schmidt <schst@php.net>

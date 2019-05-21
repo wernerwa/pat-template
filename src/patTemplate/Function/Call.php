@@ -6,8 +6,6 @@
  *
  * You may pass any variables to the template.
  *
- * $Id: Call.php 249 2004-07-08 18:37:57Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -25,8 +23,6 @@ define('PATTEMPLATE_FUNCTION_CALL_ERROR_NO_TEMPLATE', 'patTemplate::Function::Ca
  *
  * You may pass any variables to the template.
  *
- * $Id: Call.php 249 2004-07-08 18:37:57Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
@@ -38,7 +34,7 @@ class patTemplate_Function_Call extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    public $_name  =   'Call';
+    private $_name = 'Call';
 
     /**
      * reference to the patTemplate object that instantiated the module
@@ -56,7 +52,7 @@ class patTemplate_Function_Call extends patTemplate_Function
      */
     public function setTemplateReference(&$tmpl)
     {
-        $this->_tmpl        =   &$tmpl;
+        $this->_tmpl = &$tmpl;
     }
 
     /**

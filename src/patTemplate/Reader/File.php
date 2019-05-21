@@ -2,8 +2,6 @@
 /**
  * patTemplate Reader that reads from a file
  *
- * $Id: File.php 232 2004-06-04 19:40:02Z schst $
- *
  * @package     patTemplate
  * @subpackage  Readers
  * @author      Stephan Schmidt <schst@php.net>
@@ -11,8 +9,6 @@
 
 /**
  * patTemplate Reader that reads from a file
- *
- * $Id: File.php 232 2004-06-04 19:40:02Z schst $
  *
  * @package     patTemplate
  * @subpackage  Readers
@@ -25,7 +21,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @access   private
      * @var      string
      */
-    public $_name  =   'File';
+    private $_name = 'File';
 
     /**
      * flag to indicate, that current file is remote
@@ -33,7 +29,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @access   private
      * @var      boolean
      */
-    public $_isRemote = false;
+    private $_isRemote = false;
 
     /**
      * all files, that have been opened
@@ -41,7 +37,7 @@ class patTemplate_Reader_File extends patTemplate_Reader
      * @access   private
      * @var      array
      */
-    public $_files = array();
+    private $_files = array();
 
     /**
      * read templates from any input
@@ -128,9 +124,9 @@ class patTemplate_Reader_File extends patTemplate_Reader
         }
 
         if (function_exists('file_get_contents')) {
-            $content    =   @file_get_contents($file);
+            $content = @file_get_contents($file);
         } else {
-            $content    =   implode('', file($file));
+            $content = implode('', file($file));
         }
 
         /**
@@ -138,6 +134,6 @@ class patTemplate_Reader_File extends patTemplate_Reader
          */
         array_push($this->_files, $file);
 
-        return  $content;
+        return $content;
     }
 }

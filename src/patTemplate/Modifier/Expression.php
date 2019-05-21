@@ -2,8 +2,6 @@
 /**
  * patTemplate modfifier Expression
  *
- * $Id: Expression.php 242 2004-06-29 21:12:57Z schst $
- *
  * @package     patTemplate
  * @subpackage  Modifiers
  * @author      Stephan Schmidt <schst@php.net>

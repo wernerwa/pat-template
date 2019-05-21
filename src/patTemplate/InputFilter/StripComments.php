@@ -2,8 +2,6 @@
 /**
  * patTemplate StripComments input filter
  *
- * $Id: StripComments.php 79 2004-04-01 19:56:50Z schst $
- *
  * Will remove all HTML comments.
  *
  * @package     patTemplate
@@ -13,8 +11,6 @@
 
 /**
  * patTemplate StripComments output filter
- *
- * $Id: StripComments.php 79 2004-04-01 19:56:50Z schst $
  *
  * Will remove all HTML comments.
  *
@@ -42,7 +38,7 @@ class patTemplate_InputFilter_StripComments extends patTemplate_InputFilter
      */
     public function apply($data)
     {
-        $data = preg_replace('°<!--.*-->°msU', '', $data);
+        $data = preg_replace('Â°<!--.*-->Â°msU', '', $data);
 
         return $data;
     }

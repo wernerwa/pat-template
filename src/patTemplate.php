@@ -2,8 +2,6 @@
 /**
  * patTemplate
  *
- * $Id: patTemplate.php 381 2005-03-29 18:16:00Z schst $
- *
  * powerful templating engine
  *
  * @version     3.0.2
@@ -300,7 +298,7 @@ class patTemplate
      */
     public function setNamespace($ns)
     {
-        $this->_options['namespace']    =   $ns;
+        $this->_options['namespace'] = $ns;
     }
 
     /**
@@ -311,7 +309,7 @@ class patTemplate
      */
     public function getNamespace()
     {
-        return  $this->_options['namespace'];
+        return $this->_options['namespace'];
     }
 
     /**
@@ -598,21 +596,20 @@ class patTemplate
      */
     public function addVar($template, $varname, $value)
     {
-        $template   =   strtolower($template);
-        $varname    =   strtoupper($varname);
+        $template = strtolower($template);
+        $varname  = strtoupper($varname);
 
         if (!is_array($value)) {
-            $this->_vars[$template]['scalar'][$varname]     =   $value;
+            $this->_vars[$template]['scalar'][$varname] = $value;
             return true;
         }
 
-        $cnt    =   count($value);
+        $cnt = count($value);
         for ($i = 0; $i < $cnt; $i++) {
             if (!isset($this->_vars[$template]['rows'][$i])) {
-                $this->_vars[$template]['rows'][$i] =   array();
+                $this->_vars[$template]['rows'][$i] = array();
             }
-
-            $this->_vars[$template]['rows'][$i][$varname]   =   $value[$i];
+            $this->_vars[$template]['rows'][$i][$varname] = $value[$i];
         }
 
         return true;
@@ -669,17 +666,17 @@ class patTemplate
         $variables  =   array_change_key_case($variables, CASE_UPPER);
 
         foreach ($variables as $varname => $value) {
-            $varname    =   $prefix.$varname;
+            $varname = $prefix.$varname;
 
             if (!is_array($value)) {
                 if (!is_scalar($value)) {
                     continue;
                 }
-                $this->_vars[$template]['scalar'][$varname] =   $value;
+                $this->_vars[$template]['scalar'][$varname] = $value;
                 continue;
             }
 
-            $cnt    =   count($value);
+            $cnt = count($value);
             for ($i = 0; $i < $cnt; $i++) {
                 if (!isset($this->_vars[$template]['rows'][$i])) {
                     $this->_vars[$template]['rows'][$i] =   array();
@@ -925,10 +922,10 @@ class patTemplate
         }
 
         if (!is_null($parseInto)) {
-            $parseInto  =   strtolower($parseInto);
+            $parseInto = strtolower($parseInto);
         }
 
-        $templates  =   false;
+        $templates = false;
         if ($this->_tmplCache !== null) {
             /**
              * get the unique cache key
@@ -967,7 +964,7 @@ class patTemplate
                 }
             }
 
-            $templates  =   $reader->readTemplates($input);
+            $templates = $reader->readTemplates($input);
 
             /**
              * check for error returned from reader
@@ -1001,7 +998,7 @@ class patTemplate
 
                 $spec['loaded']     = true;
                 $spec['attributes'] = $this->_templates[$parseInto]['attributes'];
-                $name   =   $parseInto;
+                $name = $parseInto;
             } else {
                 /**
                  * store the name
@@ -1073,7 +1070,7 @@ class patTemplate
                     } else {
                         $this->loadTemplateFromInput($this->_templates[$name]['attributes']['src'], $this->_templates[$name]['attributes']['reader'], null, $name);
                     }
-                    $this->_templates[$name]['loaded']  =   true;
+                    $this->_templates[$name]['loaded'] = true;
                 }
             }
         }
@@ -1200,7 +1197,7 @@ class patTemplate
     public function &loadModule($moduleType, $moduleName, $params = array())
     {
         if (!isset($this->_modules[$moduleType])) {
-            $this->_modules[$moduleType]    =   array();
+            $this->_modules[$moduleType] = array();
         }
 
         $sig = md5($moduleName . serialize($params));
@@ -1210,7 +1207,7 @@ class patTemplate
         }
 
         if (!class_exists('patTemplate_Module')) {
-            $file   =   sprintf("%s/Module.php", $this->getIncludePath());
+            $file = sprintf('%s/Module.php', $this->getIncludePath());
             if (!@include_once $file) {
                 return  patErrorManager::raiseError(PATTEMPLATE_ERROR_BASECLASS_NOT_FOUND, 'Could not load module base class.');
             }
@@ -1220,11 +1217,11 @@ class patTemplate
         if (!class_exists($baseClass)) {
             $baseFile   =   sprintf("%s/%s.php", $this->getIncludePath(), $moduleType);
             if (!@include_once $baseFile) {
-                return  patErrorManager::raiseError(PATTEMPLATE_ERROR_BASECLASS_NOT_FOUND, "Could not load base class for $moduleType ($baseFile).");
+                return patErrorManager::raiseError(PATTEMPLATE_ERROR_BASECLASS_NOT_FOUND, "Could not load base class for $moduleType ($baseFile).");
             }
         }
 
-        $moduleClass    =   'patTemplate_' . $moduleType . '_' .$moduleName;
+        $moduleClass = 'patTemplate_' . $moduleType . '_' .$moduleName;
         if (!class_exists($moduleClass)) {
             if (isset($this->_moduleDirs[$moduleType])) {
                 $dirs = $this->_moduleDirs[$moduleType];
@@ -1234,7 +1231,7 @@ class patTemplate
             array_push($dirs, $this->getIncludePath() .'/'. $moduleType);
 
             foreach ($dirs as $dir) {
-                $moduleFile =   sprintf("%s/%s.php", $dir, str_replace('_', '/', $moduleName));
+                $moduleFile = sprintf('%s/%s.php', $dir, str_replace('_', '/', $moduleName));
                 if (@include_once $moduleFile) {
                     break;
                 }
@@ -1282,7 +1279,7 @@ class patTemplate
         array_push($dirs, $this->getIncludePath() .'/'. $moduleType);
 
         foreach ($dirs as $dir) {
-            $moduleFile =   sprintf("%s/%s.php", $dir, str_replace('_', '/', $moduleName));
+            $moduleFile = sprintf("%s/%s.php", $dir, str_replace('_', '/', $moduleName));
             if (!file_exists($moduleFile)) {
                 continue;
             }
@@ -1307,7 +1304,7 @@ class patTemplate
      */
     public function parseTemplate($template, $mode = 'w')
     {
-        $template   =   strtolower($template);
+        $template = strtolower($template);
 
         if (!isset($this->_templates[$template])) {
             return  patErrorManager::raiseWarning(
@@ -1365,20 +1362,20 @@ class patTemplate
         if (!isset($this->_vars[$template]['rows'])) {
             $this->_vars[$template]['rows'] =   array();
         }
-        $loop   =   count($this->_vars[$template]['rows']);
+        $loop = count($this->_vars[$template]['rows']);
 
         /**
          * loop at least one times
          */
         if ($loop < 1) {
-            $loop   =   1;
+            $loop = 1;
         }
 
         if (isset($this->_templates[$template]['attributes']['maxloop'])) {
-            $loop   =   ceil($loop / $this->_templates[$template]['attributes']['maxloop']) * $this->_templates[$template]['attributes']['maxloop'];
+            $loop = ceil($loop / $this->_templates[$template]['attributes']['maxloop']) * $this->_templates[$template]['attributes']['maxloop'];
         }
 
-        $this->_templates[$template]['loop']        =   max($this->_templates[$template]['attributes']['loop'], $loop);
+        $this->_templates[$template]['loop'] = max($this->_templates[$template]['attributes']['loop'], $loop);
 
         $start = 0;
         if (isset($this->_templates[$template]['attributes']['limit'])) {
@@ -1398,8 +1395,8 @@ class patTemplate
          * template should be cleared before parsing
          */
         if ($mode == 'w') {
-            $this->_templates[$template]['result']      = '';
-            $this->_templates[$template]['iteration']   = $start;
+            $this->_templates[$template]['result']    = '';
+            $this->_templates[$template]['iteration'] = $start;
         }
 
         $loopCount = 0;
@@ -1432,7 +1429,7 @@ class patTemplate
             /**
              * store result
              */
-            $this->_templates[$template]['result']  .=  $this->_templates[$template]['work'];
+            $this->_templates[$template]['result'] .= $this->_templates[$template]['work'];
 
             $this->_templates[$template]['iteration']++;
 
@@ -1445,19 +1442,19 @@ class patTemplate
                 if ($loopCount == $this->_templates[$template]['attributes']['maxloop'] && $i < ($loop-1)) {
                     $loopCount = 0;
                     $finished  = true;
-                    $this->_templates[$template]['parsed']  =   true;
+                    $this->_templates[$template]['parsed'] = true;
                     $this->parseTemplate($this->_templates[$template]['attributes']['parent'], 'a');
-                    $this->_templates[$template]['parsed']  =   false;
-                    $this->_templates[$template]['result']  =   '';
+                    $this->_templates[$template]['parsed'] = false;
+                    $this->_templates[$template]['result'] = '';
                 }
             }
         }
 
         if (!$finished && isset($this->_templates[$template]['attributes']['maxloop'])) {
-            $this->_templates[$template]['parsed']  =   true;
+            $this->_templates[$template]['parsed'] = true;
             $this->parseTemplate($this->_templates[$template]['attributes']['parent'], 'a', false);
-            $this->_templates[$template]['parsed']  =   false;
-            $this->_templates[$template]['result']  =   '';
+            $this->_templates[$template]['parsed'] = false;
+            $this->_templates[$template]['result'] = '';
             $this->_templates[$this->_templates[$template]['attributes']['parent']]['work'] = '';
         }
 
@@ -1465,7 +1462,7 @@ class patTemplate
 
         $this->_handleUnusedVars($template);
 
-        $this->_templates[$template]['parsed']  =   true;
+        $this->_templates[$template]['parsed'] = true;
 
         if (isset($this->_templates[$template]['attributes']['autoclear']) && $this->_templates[$template]['attributes']['autoclear'] == 'yes') {
             $this->_vars[$template]                 =   array(
@@ -1691,8 +1688,8 @@ class patTemplate
                     $this->_templates[$template]['currentDependencies'] = array();
                     break 2;
                 }
-                $this->_templates[$template]['work']                =   $this->_templates[$template]['content'];
-                $this->_templates[$template]['currentDependencies'] =   $this->_templates[$template]['dependencies'];
+                $this->_templates[$template]['work']                = $this->_templates[$template]['content'];
+                $this->_templates[$template]['currentDependencies'] = $this->_templates[$template]['dependencies'];
                 break;
 
             /**
@@ -1777,13 +1774,13 @@ class patTemplate
                     if (isset($this->_globals[$value]) && strlen($this->_globals[$value]) > 0) {
                         $value = $this->_globals[$value];
                     } else {
-                        $value  =   '__empty';
+                        $value = '__empty';
                     }
                 } else {
-                    $value  =   '__empty';
+                    $value = '__empty';
                 }
             } else {
-                $value  =   $this->_templates[$_template]['vars'][$value];
+                $value = $this->_templates[$_template]['vars'][$value];
             }
         } else {
             $_template = $template;
@@ -1847,8 +1844,8 @@ class patTemplate
             return true;
         }
 
-        $iteration  =   $this->_templates[$template]['iteration'];
 
+        $iteration = $this->_templates[$template]['iteration'];
         if (isset($this->_templates[$template]['attributes']['varscope'])) {
             $scopeTemplate  =   $this->_templates[$template]['attributes']['varscope'];
             if ($this->exists($scopeTemplate)) {
@@ -1859,7 +1856,7 @@ class patTemplate
                 $vars = array();
             }
         } else {
-            $vars   =   array();
+            $vars = array();
         }
 
         /**
@@ -1906,10 +1903,10 @@ class patTemplate
                     break;
             }
 
-            $vars['PAT_IS_ODD']     =   ($currentRow % 2 == 1) ? $trueValue : $falseValue;
-            $vars['PAT_IS_EVEN']    =   ($currentRow % 2 == 0) ? $trueValue : $falseValue;
-            $vars['PAT_IS_FIRST']   =   ($currentRow == 1) ? $trueValue : $falseValue;
-            $vars['PAT_IS_LAST']    =   ($currentRow == $this->_templates[$template]['loop']) ? $trueValue : $falseValue;
+            $vars['PAT_IS_ODD']     = ($currentRow % 2 == 1) ? $trueValue : $falseValue;
+            $vars['PAT_IS_EVEN']    = ($currentRow % 2 == 0) ? $trueValue : $falseValue;
+            $vars['PAT_IS_FIRST']   = ($currentRow == 1) ? $trueValue : $falseValue;
+            $vars['PAT_IS_LAST']    = ($currentRow == $this->_templates[$template]['loop']) ? $trueValue : $falseValue;
         }
 
         $this->_templates[$template]['vars'] = $vars;

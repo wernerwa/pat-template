@@ -2,8 +2,6 @@
 /**
  * patTemplate Template cache that stores data on filesystem
  *
- * $Id: File.php 55 2004-03-29 20:33:09Z schst $
- *
  * @package     patTemplate
  * @subpackage  Caches
  * @author      Stephan Schmidt <schst@php.net>
@@ -11,8 +9,6 @@
 
 /**
  * patTemplate Template cache that stores data on filesystem
- *
- * $Id: File.php 55 2004-03-29 20:33:09Z schst $
  *
  * Possible parameters for the cache are:
  * - cacheFolder : set the folder from which to load the cache
@@ -28,10 +24,9 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
     /**
      * parameters of the cache
      *
-     * @access   private
      * @var      array
      */
-    public $_params = array(
+    private $_params = array(
                          'cacheFolder' => './cache',
                          'lifetime'    => 'auto'
                         );

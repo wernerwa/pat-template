@@ -2,8 +2,6 @@
 /**
  * Base class for patTemplate Stat
  *
- * $Id: Stat.php 208 2004-05-17 18:40:54Z schst $
- *
  * A stat component should be implemented for each reader
  * to support caching. Stats return information about the
  * template source.
@@ -15,8 +13,6 @@
 
 /**
  * Base class for patTemplate Stat
- *
- * $Id: Stat.php 208 2004-05-17 18:40:54Z schst $
  *
  * A stat component should be implemented for each reader
  * to support caching. Stats return information about the
@@ -35,7 +31,7 @@ class patTemplate_Stat extends patTemplate_Module
      * @access   private
      * @var      array
      */
-    public $_options = array();
+    private $_options = array();
 
     /**
      * get the modification time of a template

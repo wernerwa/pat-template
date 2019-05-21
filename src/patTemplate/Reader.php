@@ -2,8 +2,6 @@
 /**
  * Base class for patTemplate readers
  *
- * $Id: Reader.php 283 2004-09-07 19:09:56Z schst $
- *
  * This class is able to parse patTemplate tags from any string you hand it over
  * It will emulate some kind of SAX parsing by calling start-, end- and CData-handlers.
  *
@@ -79,31 +77,27 @@ class patTemplate_Reader extends patTemplate_Module
 
     /**
      * stack for all open elements
-     * @access   private
      * @var  array
      */
-    public $_elStack;
+    protected $_elStack;
 
     /**
      * stack for all open templates
-     * @access   private
      * @var  array
      */
-    public $_tmplStack;
+    protected $_tmplStack;
 
     /**
      * character data
-     * @access   private
      * @var  array
      */
-    public $_data;
+    protected $_data;
 
     /**
      * tag depth
-     * @access   private
      * @var  integer
      */
-    public $_depth;
+    protected $_depth;
 
     /**
      * templates that have been found
@@ -124,22 +118,21 @@ class patTemplate_Reader extends patTemplate_Module
      * @access   private
      * @var      string
      */
-    public $_startTag;
+    private $_startTag;
 
     /**
      * end tag for variables
      * @access   private
      * @var      string
      */
-    public $_endTag;
+    private $_endTag;
 
     /**
      * default attributes
      *
-     * @access   private
      * @var      array
      */
-    public $_defaultAtts   =   array();
+    protected $_defaultAtts = array();
 
     /**
      * root attributes
@@ -147,18 +140,16 @@ class patTemplate_Reader extends patTemplate_Module
      * This is used when reading the template content
      * from an external file.
      *
-     * @access   private
      * @var      array
      */
-    public $_rootAtts  =   array();
+    protected $_rootAtts = array();
 
     /**
      * inherit attributes
      *
-     * @access   private
      * @var      array
      */
-    public $_inheritAtts   =   array();
+    protected $_inheritAtts = array();
 
     /**
      * name of the first template that has been found
@@ -166,23 +157,21 @@ class patTemplate_Reader extends patTemplate_Module
      * @access   private
      * @var      string
      */
-    public $_root = null;
+    private $_root = null;
 
     /**
      * all data that has been processed
      *
-     * @access   private
      * @var      string
      */
-    public $_processedData = null;
+    protected $_processedData = null;
 
     /**
      * current input
      *
-     * @access   private
      * @var      string
      */
-    public $_currentInput = null;
+    protected $_currentInput = null;
 
     /**
      * all loaded functions
@@ -190,7 +179,7 @@ class patTemplate_Reader extends patTemplate_Module
      * @access   private
      * @var      array
      */
-    public $_functions =   array();
+    private $_functions = array();
 
     /**
      * function aliases
@@ -198,7 +187,7 @@ class patTemplate_Reader extends patTemplate_Module
      * @access   private
      * @var      array
      */
-    public $_funcAliases = array();
+    private $_funcAliases = array();
 
     /**
      * set a reference to the patTemplate object that instantiated the reader
@@ -208,7 +197,7 @@ class patTemplate_Reader extends patTemplate_Module
      */
     public function setTemplateReference(&$tmpl)
     {
-        $this->_tmpl        =   &$tmpl;
+        $this->_tmpl = &$tmpl;
     }
 
     /**
@@ -222,7 +211,7 @@ class patTemplate_Reader extends patTemplate_Module
      */
     public function readTemplates($input, $options = array())
     {
-        return  array();
+        return array();
     }
 
     /**
@@ -239,9 +228,8 @@ class patTemplate_Reader extends patTemplate_Module
      */
     public function loadTemplate($input, $options = array())
     {
-        return  $input;
+        return $input;
     }
-
 
     /**
      * set options
@@ -251,10 +239,10 @@ class patTemplate_Reader extends patTemplate_Module
      */
     public function setOptions($options)
     {
-        $this->_startTag    =   $options['startTag'];
-        $this->_endTag      =   $options['endTag'];
+        $this->_startTag = $options['startTag'];
+        $this->_endTag   = $options['endTag'];
 
-        $this->_options     =   $options;
+        $this->_options  = $options;
 
         if (isset($options['functionAliases'])) {
             $this->_funcAliases = $options['functionAliases'];
@@ -739,7 +727,7 @@ class patTemplate_Reader extends patTemplate_Module
             }
         }
 
-        $attributes =   $this->_prepareTmplAttributes($attributes, $name);
+        $attributes = $this->_prepareTmplAttributes($attributes, $name);
 
         array_push($this->_inheritAtts, array(
                                                 'whitespace' => $attributes['whitespace'],
@@ -799,14 +787,14 @@ class patTemplate_Reader extends patTemplate_Module
             return $attributes;
         }
 
-        $attributes =   $this->_inheritAttributes($attributes);
+        $attributes = $this->_inheritAttributes($attributes);
 
         /**
          * get the attributes
          */
-        $attributes =   array_merge($this->_tmpl->getDefaultAttributes(), $attributes);
+        $attributes = array_merge($this->_tmpl->getDefaultAttributes(), $attributes);
 
-        $attributes['type'] =   strtolower($attributes['type']);
+        $attributes['type'] = strtolower($attributes['type']);
 
 
         if (!isset($attributes['addsystemvars'])) {
@@ -850,7 +838,7 @@ class patTemplate_Reader extends patTemplate_Module
                 $attributes['varscope'] = $this->_getFromParentTemplate('name');
             }
 
-            $attributes['varscope'] =   strtolower($attributes['varscope']);
+            $attributes['varscope'] = strtolower($attributes['varscope']);
         }
 
         switch ($attributes['type']) {
@@ -959,7 +947,7 @@ class patTemplate_Reader extends patTemplate_Module
      */
     public function _buildTemplateName()
     {
-        return  strtolower(uniqid('tmpl'));
+        return strtolower(uniqid('tmpl'));
     }
 
     /**
@@ -970,9 +958,9 @@ class patTemplate_Reader extends patTemplate_Module
      */
     public function _closeTemplate($tmpl, $data)
     {
-        $name       =   array_pop($this->_path);
+        $name = array_pop($this->_path);
 
-        $data       =   $this->_adjustWhitespace($data, $tmpl['attributes']['whitespace']);
+        $data = $this->_adjustWhitespace($data, $tmpl['attributes']['whitespace']);
 
         array_pop($this->_inheritAtts);
 
@@ -999,7 +987,7 @@ class patTemplate_Reader extends patTemplate_Module
         /**
          * store the content
          */
-        $tmpl['content']                    =   $data;
+        $tmpl['content'] = $data;
 
         /**
          * No external template
@@ -1032,7 +1020,7 @@ class patTemplate_Reader extends patTemplate_Module
         unset($tmpl['name']);
         unset($tmpl['tag']);
 
-        $this->_templates[$name]    =   $tmpl;
+        $this->_templates[$name] = $tmpl;
 
         return true;
     }
@@ -1258,13 +1246,13 @@ class patTemplate_Reader extends patTemplate_Module
      */
     public function _addToParentTemplate($property, $value, $key = null)
     {
-        $cnt    =   count($this->_tmplStack);
+        $cnt = count($this->_tmplStack);
 
         if ($cnt === 0) {
             return false;
         }
 
-        $pos    =   $cnt - 1;
+        $pos = $cnt - 1;
         while ($pos >= 0) {
             if ($this->_tmplStack[$pos]['type'] != 'tmpl') {
                 $pos--;
@@ -1276,7 +1264,7 @@ class patTemplate_Reader extends patTemplate_Module
                     array_push($this->_tmplStack[$pos][$property], $value);
                 }
             } else {
-                $this->_tmplStack[$pos][$property][$key]    =   $value;
+                $this->_tmplStack[$pos][$property][$key] = $value;
             }
 
             return true;
@@ -1294,7 +1282,7 @@ class patTemplate_Reader extends patTemplate_Module
      */
     public function _getFromParentTemplate($property)
     {
-        $cnt    =   count($this->_tmplStack);
+        $cnt = count($this->_tmplStack);
 
         if ($cnt === 0) {
             return false;
@@ -1327,7 +1315,7 @@ class patTemplate_Reader extends patTemplate_Module
      */
     public function _addToParentTag($property, $value, $key = null)
     {
-        $cnt    =   count($this->_tmplStack);
+        $cnt = count($this->_tmplStack);
 
         if ($cnt === 0) {
             return false;
@@ -1340,7 +1328,7 @@ class patTemplate_Reader extends patTemplate_Module
                 array_push($this->_tmplStack[$pos][$property], $value);
             }
         } else {
-            $this->_tmplStack[$pos][$property][$key]    =   $value;
+            $this->_tmplStack[$pos][$property][$key] = $value;
         }
 
         return true;

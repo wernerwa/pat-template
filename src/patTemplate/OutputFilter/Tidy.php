@@ -2,8 +2,6 @@
 /**
  * patTemplate Tidy output filter
  *
- * $Id: Tidy.php 358 2005-02-04 15:11:19Z schst $
- *
  * Used to tidy up your resulting HTML document,
  * requires ext/tidy.
  *
@@ -19,8 +17,6 @@ define('PATTEMPLATE_OUTPUTFILTER_TIDY_ERROR_NOT_SUPPORTED', 'patTemplate::Output
 
 /**
  * patTemplate Tidy output filter
- *
- * $Id: Tidy.php 358 2005-02-04 15:11:19Z schst $
  *
  * Used to tidy up your resulting HTML document,
  * requires ext/tidy.
