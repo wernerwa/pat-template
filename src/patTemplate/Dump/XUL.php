@@ -7,8 +7,6 @@
  * @author      Stephan Schmidt <schst@php.net>
  */
 
-require_once 'XML/XUL.php';
-
 /**
  * Dumps templates as XUL, using PEAR::XML_XUL
  *
@@ -203,7 +201,6 @@ class patTemplate_Dump_XUL extends patTemplate_Dump
     public function displayFooter()
     {
         if ($_GET['mode'] == 'debug') {
-            require_once 'XML/Beautifier.php';
             $fmt = new XML_Beautifier(array( 'indent' => '  ' ));
             echo '<pre>';
             echo htmlspecialchars($fmt->formatString($this->_doc->serialize()));
