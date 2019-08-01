@@ -28,7 +28,7 @@ class patTemplate_Function_Attribute extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    private $_name = 'Attribute';
+    public $_name = 'Attribute';
 
     /**
      * call the function
