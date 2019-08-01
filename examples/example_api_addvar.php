@@ -3,8 +3,6 @@
  * patTemplate example that displays the
  * usage of parseIntoVar()
  *
- * $Id: example_api_addvar.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

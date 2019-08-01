@@ -2,8 +2,6 @@
 /**
  * patTemplate example that shows how clear variables in a template
  *
- * $Id: example_api_cleartemplate.php 240 2004-06-25 18:12:04Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

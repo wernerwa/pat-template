@@ -23,8 +23,6 @@
  * The variable {PAT_ROW_VAR} is always available,
  * independent from the addSystemVars attribute.
  *
- * $Id: example_attributes_addsystemvars.php 278 2004-09-04 14:25:45Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

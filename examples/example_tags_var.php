@@ -7,8 +7,6 @@
  * advantages over using the {BRACES} syntax, like the ability
  * to set a default value or a modifier.
  *
- * $Id: example_tags_var.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

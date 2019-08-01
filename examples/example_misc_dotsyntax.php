@@ -2,8 +2,6 @@
 /**
  * patTemplate example to showcase the Dot-Syntax.
  *
- * $Id: example_misc_dotsyntax.php 176 2004-04-21 18:43:10Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

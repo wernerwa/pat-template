@@ -4,8 +4,6 @@
  *
  * Aliases can be set from PHP or directly from the template.
  *
- * $Id: example_function_aliases.php 284 2004-09-07 19:11:06Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

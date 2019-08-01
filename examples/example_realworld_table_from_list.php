@@ -3,8 +3,6 @@
  * patTemplate example that creates a table from a
  * two dimensional array
  *
- * $Id: example_realworld_table_from_list.php 226 2004-06-01 21:10:36Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

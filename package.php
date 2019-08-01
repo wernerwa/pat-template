@@ -3,8 +3,6 @@
  * script to automate the generation of the
  * package.xml file.
  *
- * $Id: package.php 382 2005-03-29 18:16:13Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Tools

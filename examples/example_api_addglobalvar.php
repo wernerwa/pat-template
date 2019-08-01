@@ -10,8 +10,6 @@
  * name, but as globals are replaced after locals, you
  * will see the value of the local var.
  *
- * $Id: example_api_addglobalvar.php 225 2004-06-01 18:33:24Z argh $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

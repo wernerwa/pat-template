@@ -36,8 +36,6 @@
  * $tmpl->setOption( 'lang', 'de' );
  * </code>
  *
- * $Id: Translate.php 309 2004-10-27 11:23:49Z schst $
- *
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>

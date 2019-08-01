@@ -6,8 +6,6 @@
  * This is not very fast, but shows what patTemplate is capable
  * of, although it was never designed for this.
  *
- * $Id: example_realworld_paginate.php 247 2004-07-06 19:32:34Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

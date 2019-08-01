@@ -6,8 +6,6 @@
  * Take a look at the tmplCache folder. This example will
  * save a cache file there.
  *
- * $Id: example_cache_template_file.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

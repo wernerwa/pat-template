@@ -3,8 +3,6 @@
  * patTemplate example that shows how to
  * use the 'varscope' attribute
  *
- * $Id: example_attributes_varscope.php 302 2004-10-27 10:01:57Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

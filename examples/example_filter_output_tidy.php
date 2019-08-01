@@ -2,8 +2,6 @@
 /**
  * Example that shows the use of output filters
  *
- * $Id: example_filter_output_tidy.php 236 2004-06-25 17:16:50Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

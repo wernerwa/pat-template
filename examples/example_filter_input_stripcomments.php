@@ -6,8 +6,6 @@
  * they are accessed by the reader. You may use them to strip
  * HMTL comments, so the reader has less data to process.
  *
- * $Id: example_filter_input_stripcomments.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

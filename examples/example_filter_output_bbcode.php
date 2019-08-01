@@ -2,8 +2,6 @@
 /**
  * Example that shows the use of output filters
  *
- * $Id: example_filter_output_bbcode.php 255 2004-07-23 21:01:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples
