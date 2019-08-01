@@ -14,7 +14,6 @@
 ?>
 <html>
 <head>
-    <!-- $Id: index_main.php 202 2004-05-10 20:27:09Z schst $ -->
     <title><?php echo $appName ?>: Examples - Main</title>
     <style>
         @import url( _styles.css );
