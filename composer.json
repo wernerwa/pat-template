@@ -33,6 +33,7 @@
 		}
 	],
 	"require": {
+		"php": ">=5.1",
 		"pear/pear-core-minimal": "^1.0",
 		"wernerwa/pat-error":  "^1.1"
 	}
