@@ -27,7 +27,7 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
      *
      * @var      array
      */
-    private $_params = array(
+    public $_params = array(
                          'cacheFolder' => './cache',
                          'lifetime'    => 'auto',
                          'prefix'      => '',

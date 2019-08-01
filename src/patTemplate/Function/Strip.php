@@ -23,7 +23,7 @@ class patTemplate_Function_Strip extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    private $_name = 'Strip';
+    public $_name = 'Strip';
 
     /**
      * call the function
