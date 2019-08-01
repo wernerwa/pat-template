@@ -50,7 +50,7 @@ class patTemplate_Function_Translate extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    private $_name = 'Translate';
+    public $_name = 'Translate';
 
     /**
      * configuration of all files

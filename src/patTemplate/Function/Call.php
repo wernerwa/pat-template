@@ -34,7 +34,7 @@ class patTemplate_Function_Call extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    private $_name = 'Call';
+    public $_name = 'Call';
 
     /**
      * reference to the patTemplate object that instantiated the module

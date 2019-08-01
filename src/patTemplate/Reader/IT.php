@@ -21,7 +21,7 @@ class patTemplate_Reader_IT extends patTemplate_Reader
      * @access   private
      * @var      string
      */
-    private $_name  =   'IT';
+    public $_name  =   'IT';
 
     /**
      * files that have been used
@@ -142,9 +142,10 @@ class patTemplate_Reader_IT extends patTemplate_Reader
      * @final
      * @access   public
      * @param    string  file to parse
+     * @param    array   options, not implemented in current versions, but future versions will allow passing of options
      * @return   array   templates
      */
-    public function readTemplates($input)
+    public function readTemplates($input, $options = array())
     {
         $this->_currentInput = $input;
         $fullPath   =   $this->_resolveFullPath($input);
@@ -170,9 +171,10 @@ class patTemplate_Reader_IT extends patTemplate_Reader
      * @abstract must be implemented in the template readers
      * @param    mixed   input to load from.
      *                   This can be a string, a filename, a resource or whatever the derived class needs to read from
+     * @param    array   options, not implemented in current versions, but future versions will allow passing of options
      * @return   string  template content
      */
-    public function loadTemplate($input)
+    public function loadTemplate($input, $options = array())
     {
         $fullPath   =   $this->_resolveFullPath($input);
         if (patErrorManager::isError($fullPath)) {

@@ -384,8 +384,9 @@ class patTemplate_Compiler extends patTemplate
      *
      * @access   public
      * @param    string      name of the template to display
+     * @param    boolean     whether to apply output filters
      */
-    public function displayParsedTemplate($name = null)
+    public function displayParsedTemplate($name = null, $applyFilters = true)
     {
         if (is_null($name)) {
             $name = $this->_root;

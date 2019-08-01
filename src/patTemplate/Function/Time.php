@@ -23,7 +23,7 @@ class patTemplate_Function_Time extends patTemplate_Function
      * @access   private
      * @var      string
      */
-    private $_name = 'Time';
+    public $_name = 'Time';
 
     /**
      * call the function
