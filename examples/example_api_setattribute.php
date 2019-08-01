@@ -3,8 +3,6 @@
  * patTemplate example that shows how to hide a template
  * using setAttribute()
  *
- * $Id: example_api_setattribute.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

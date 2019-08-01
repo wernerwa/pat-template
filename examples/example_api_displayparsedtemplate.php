@@ -6,8 +6,6 @@
  * In this case the first template that has been loaded
  * will be used.
  *
- * $Id: example_api_displayparsedtemplate.php 171 2004-04-21 18:16:06Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

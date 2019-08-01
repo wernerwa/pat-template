@@ -2,8 +2,6 @@
 /**
  * Example that shows the use of the rowoffset attribute
  *
- * $Id: example_attributes_rowoffset.php 328 2004-11-23 19:44:41Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

@@ -2,8 +2,6 @@
 /**
  * patTemplate Reader that reads from a string
  *
- * $Id: String.php 181 2004-04-23 22:01:02Z schst $
- *
  * @package     patTemplate
  * @subpackage  Readers
  * @author      Stephan Schmidt <schst@php.net>

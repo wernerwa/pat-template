@@ -2,8 +2,6 @@
 /**
  * Base class for patTemplate output filter
  *
- * $Id: OutputFilter.php 219 2004-05-25 20:38:38Z schst $
- *
  * An output filter is used to modify the output
  * after it has been processed by patTemplate, but before
  * it is sent to the browser.
@@ -15,8 +13,6 @@
 
 /**
  * Base class for patTemplate output filter
- *
- * $Id: OutputFilter.php 219 2004-05-25 20:38:38Z schst $
  *
  * An output filter is used to modify the output
  * after it has been processed by patTemplate, but before

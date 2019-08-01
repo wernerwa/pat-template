@@ -2,8 +2,6 @@
 /**
  * patTemplate example that shows how to use simple conditions
  *
- * $Id: example_type_simplecondition.php 341 2004-12-30 16:29:05Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

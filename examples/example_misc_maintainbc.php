@@ -14,8 +14,6 @@
  * In future versions, backwards compatibility will be disabled
  * by default.
  *
- * $Id: example_misc_maintainbc.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

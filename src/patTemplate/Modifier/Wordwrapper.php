@@ -2,8 +2,6 @@
 /**
  * patTemplate modfifier Wordwrapper
  *
- * $Id: Wordwrapper.php 104 2004-04-09 17:59:36Z schst $
- *
  * @package     patTemplate
  * @subpackage  Modifiers
  * @author      Stephan Schmidt <schst@php.net>

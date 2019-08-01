@@ -7,8 +7,6 @@
  * Furthermore, you may create custom modifiers, see
  * extending-pattemplate.txt for more information.
  *
- * $Id: example_var_modifier_placeholder.php 446 2006-10-24 14:28:25Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

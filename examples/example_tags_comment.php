@@ -6,8 +6,6 @@
  * of your templates or HTML files that will not be displayed
  * to the end user in the browser.
  *
- * $Id: example_tags_comment.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

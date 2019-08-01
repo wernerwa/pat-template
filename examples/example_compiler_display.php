@@ -10,8 +10,6 @@
  * name, but as globals are replaced after locals, you
  * will see the value of the local var.
  *
- * $Id: example_compiler_display.php 201 2004-05-10 19:54:57Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

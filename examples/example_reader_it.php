@@ -6,8 +6,6 @@
  * The IT reader allows you to read templates that have been
  * created to be used with HTML_Template_IT
  *
- * $Id: example_reader_it.php 181 2004-04-23 22:01:02Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

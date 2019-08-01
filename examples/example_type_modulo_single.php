@@ -8,8 +8,6 @@
  * This example uses the special '__single' condition, which can be
  * used in modulo and condition templates.
  *
- * $Id: example_type_modulo_single.php 305 2004-10-27 10:28:39Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

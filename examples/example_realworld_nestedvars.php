@@ -2,8 +2,6 @@
 /**
  * patTemplate example that uses nested variables
  *
- * $Id: example_realworld_nestedvars.php 276 2004-09-04 14:08:18Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

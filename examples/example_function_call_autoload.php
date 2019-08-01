@@ -6,8 +6,6 @@
  * which will allow you to dynamically load the components whenever
  * they are needed.
  *
- * $Id: example_function_call_autoload.php 320 2004-10-28 15:07:07Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

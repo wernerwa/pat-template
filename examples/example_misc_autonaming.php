@@ -8,8 +8,6 @@
  *
  * patTemplate will assign them a unique name.
  *
- * $Id: example_misc_autonaming.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

@@ -6,8 +6,6 @@
  * automatically create a package that can be
  * installed via the PEAR installer.
  *
- * $Id: autopackage2.php 452 2007-05-11 09:18:06Z argh $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Tools

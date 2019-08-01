@@ -2,8 +2,6 @@
 /**
  * Example that shows the use of the unusedvars attribute
  *
- * $Id: example_attributes_loop.php 439 2006-08-08 20:56:01Z gerd $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

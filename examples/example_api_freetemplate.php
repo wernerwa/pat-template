@@ -2,8 +2,6 @@
 /**
  * patTemplate example that shows how free the resources used by a template
  *
- * $Id: example_api_freetemplate.php 366 2005-03-07 18:09:42Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

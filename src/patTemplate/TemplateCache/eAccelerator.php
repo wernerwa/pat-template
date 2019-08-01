@@ -2,8 +2,6 @@
 /**
  * patTemplate Template cache that stores data in the eAccelerator Cache
  *
- * $Id: eAccelerator.php 364 2005-02-19 09:39:45Z schst $
- *
  * @package        patTemplate
  * @subpackage    Caches
  * @author        Mike Valstar <mikevalstar@thrashcorp.com>
@@ -14,8 +12,6 @@
  *
  * If the lifetime is set to auto, the cache files will be kept until
  * you delete them manually.
- *
- * $Id: eAccelerator.php 364 2005-02-19 09:39:45Z schst $
  *
  * @package       patTemplate
  * @subpackage    Caches

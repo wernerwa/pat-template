@@ -2,8 +2,6 @@
 /**
  * patTemplate output filter that creates PDF files from latex
  *
- * $Id: PdfLatex.php 426 2006-02-26 12:42:16Z schst $
- *
  * @package     patTemplate
  * @subpackage  Filters
  * @author      Stephan Schmidt <schst@php.net>
@@ -11,8 +9,6 @@
 
 /**
  * patTemplate output filter that creates PDF files from latex
- *
- * $Id: PdfLatex.php 426 2006-02-26 12:42:16Z schst $
  *
  * @package     patTemplate
  * @subpackage  Filters

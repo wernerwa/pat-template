@@ -6,8 +6,6 @@
  * image tags and automatically includes the width and height of the
  * specified image.
  *
- * $Id: example_realworld_img.php 161 2004-04-20 21:17:47Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

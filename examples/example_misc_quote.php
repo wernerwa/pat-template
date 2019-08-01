@@ -5,8 +5,6 @@
  * To quote a varible, you'll have to use this syntax: \{FOO\}. patTemplate
  * will then insert {FOO} into the result.
  *
- * $Id: example_misc_quote.php 313 2004-10-28 08:54:44Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

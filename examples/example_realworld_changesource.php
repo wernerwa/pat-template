@@ -4,8 +4,6 @@
  * a var, apply a modifier without showing it
  * and still use it in a condition.
  *
- * $Id: example_realworld_changesource.php 186 2004-04-27 18:54:15Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

@@ -3,8 +3,6 @@
  * patTemplate example that shows how to
  * use the 'varscope' attribute with a list of templates.
  *
- * $Id: example_attributes_varscope_multiple.php 338 2004-12-08 16:46:35Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

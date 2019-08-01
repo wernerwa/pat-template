@@ -5,8 +5,6 @@
  * A modulo template allows you to define any number of sub-templates
  * for alternating lists. It is similar to odd-even templates.
  *
- * $Id: example_type_modulo.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

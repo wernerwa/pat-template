@@ -3,8 +3,6 @@
  * simple benchmark to compare
  * concat (.) with sprintf.
  *
- * $Id: benchmark_sprintf.php 2 2004-02-25 16:40:02Z schst $
- *
  * @package     patTemplate
  * @subpackage  Tests
  * @author      Stephan Schmidt <schst@php-tools.net>

@@ -6,8 +6,6 @@
  * of your templates or HTML files that will not be displayed
  * to the end user in the browser.
  *
- * $Id: example_api_loadtemplate.php 244 2004-07-06 18:04:12Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

@@ -3,8 +3,6 @@
  * patTemplate example that uses the reserved word '__parent'
  * as a varscope
  *
- * $Id: example_realworld_varscopeparent.php 213 2004-05-17 19:01:27Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

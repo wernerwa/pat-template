@@ -4,8 +4,6 @@
  * to display debug information about
  * the loaded templates and their variables
  *
- * $Id: _dumpTemplate.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

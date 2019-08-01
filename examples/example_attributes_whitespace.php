@@ -2,8 +2,6 @@
 /**
  * Example that shows the use of the unusedvars attribute
  *
- * $Id: example_attributes_whitespace.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

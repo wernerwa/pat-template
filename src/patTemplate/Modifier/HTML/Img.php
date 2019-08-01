@@ -4,8 +4,6 @@
  *
  * It automatically retrieves the width and height of the image.
  *
- * $Id: Img.php 109 2004-04-11 08:47:45Z schst $
- *
  * @package     patTemplate
  * @subpackage  Modifiers
  * @author      Stephan Schmidt <schst@php.net>
@@ -15,8 +13,6 @@
  * Modifier that creates an HTML image tag from a variable
  *
  * It automatically retrieves the width and height of the image.
- *
- * $Id: Img.php 109 2004-04-11 08:47:45Z schst $
  *
  * @package     patTemplate
  * @subpackage  Modifiers

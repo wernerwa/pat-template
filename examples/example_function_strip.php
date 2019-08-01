@@ -6,8 +6,6 @@
  * by PHP while the file is being read. See extending-pattemplate.txt
  * for more information on patTemplate functions.
  *
- * $Id: example_function_strip.php 205 2004-05-13 21:27:27Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

@@ -2,8 +2,6 @@
 /**
  * patTemplate modfifier Numberformat
  *
- * $Id$
- *
  * @package     patTemplate
  * @subpackage  Modifiers
  * @author      Stephan Schmidt <schst@php.net>

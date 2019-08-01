@@ -3,8 +3,6 @@
  * Basic patTemplate example that shows how to
  * use condition templates.
  *
- * $Id: example_type_condition.php 268 2004-08-19 08:22:51Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

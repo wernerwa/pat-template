@@ -6,8 +6,6 @@
  * by PHP while the file is being read. See extending-pattemplate.txt
  * for more information on patTemplate functions.
  *
- * $Id: example_function_highlight.php 391 2005-04-12 18:09:45Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples

@@ -3,8 +3,6 @@
  * helper script that displays the examples including
  * the template and PHP source.
  *
- * $Id: _viewExample.php 437 2006-08-08 20:44:48Z gerd $
- *
  * You may pass the following GET parameters to the
  * script:
  *

@@ -10,8 +10,6 @@
  * into separate files and include them in your
  * main templates.
  *
- * $Id: example_attributes_src.php 155 2004-04-20 20:16:43Z schst $
- *
  * @author      Stephan Schmidt <schst@php-tools.net>
  * @package     patTemplate
  * @subpackage  Examples
