@@ -108,7 +108,7 @@ class patTemplate_InputFilter_ShortModifiers extends patTemplate_InputFilter
         if (is_array($this->_ns)) {
             $this->_ns = array_shift($this->_ns);
         }
-        $regex = chr(1) . "([^\\\])" . $startTag . "([^a-z]+)\|(.+[^\\\])(\|(.+):(.+[^\\\]))*" . $endTag . chr(1) . "U";
+        $regex = chr(1) . "([^\\])" . $startTag . "([^a-z${endTag}]+)\|(.+[^\\])(\|(.+):(.+[^\\]))*" . $endTag . chr(1) . "U";
         $data = preg_replace_callback($regex, array( $this, '_generateReplace' ), $data);
         return $data;
     }
