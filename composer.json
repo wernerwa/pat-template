@@ -2,7 +2,7 @@
 	"name": "wernerwa/pat-template",
 	"description": "patTemplate is a powerful, non-compiling templating engine, that uses XML tags to divide a document into different parts.",
 	"type": "library",
-	"license": "LGPL",
+	"license": "LGPL-3.0-or-later",
 	"authors": [
 		{
 			"name": "Stephan Schmidt",
