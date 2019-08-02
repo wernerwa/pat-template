@@ -6,9 +6,11 @@ Using patTemplate, you will no more embedd PHP code directly in your HTML code. 
 
 The wiki is archived at <https://web.archive.org/web/20150505033634/http://trac.php-tools.net/patTemplate/wiki/Docs>
 
+patTemplate works with PHP 5.2-7.3
+
 ## patTemplate for the designer
 
-patTemplate offers you XML-based markup tags to access different parts of your layout files so you can hide, exchange or even repeat parts. This means, that your HTML-designers will need to learn some new tags and their usage. However they do **not** need to learn a new programming language. In contrast to other template engines, patTemplate takes a declarative approach for the template tags, you will not find any ```if/else``` statements or ```for```-loops in the templates.
+patTemplate offers you XML-based markup tags to access different parts of your layout files so you can hide, exchange or even repeat parts. This means, that your HTML-designers will need to learn some new tags and their usage. However they do **not** need to learn a new programming language. In contrast to other template engines, patTemplate takes a declarative approach for the template tags, you will not find any `if/else` statements or `for`-loops in the templates.
 
 ## patTemplate for the developer
 
@@ -16,7 +18,7 @@ If your designer is familiar with the patTemplate syntax, you will have to learn
 
 # Getting Started
 
-patTemplate allows you to split a page into several blocks, called *templates*. It requires you to at least specify one block that contains the complete page, the *root* template. Inside this template, you may nest as many templates, as you like. Each of these templates should have its unique name, so it can be addressed from your PHP application. To mark a template in your page, you need to enclose the HTML code in a ```<patTemplate:tmpl/>``` tag:
+patTemplate allows you to split a page into several blocks, called *templates*. It requires you to at least specify one block that contains the complete page, the *root* template. Inside this template, you may nest as many templates, as you like. Each of these templates should have its unique name, so it can be addressed from your PHP application. To mark a template in your page, you need to enclose the HTML code in a `<patTemplate:tmpl/>` tag:
 
 ```xhtml
 <patTemplate:tmpl name="page">
@@ -30,14 +32,14 @@ patTemplate allows you to split a page into several blocks, called *templates*. 
 </patTemplate:tmpl>
 ```
 
-Loading this template from a file is easy. You only need to create a new instance of ```patTemplate``` and pass the filename to the ```readTemplatesFromInput``` method:
+Loading this template from a file is easy. You only need to create a new instance of `patTemplate` and pass the filename to the `readTemplatesFromInput` method:
 
 ```php
 $tmpl = new patTemplate();
 $tmpl->readTemplatesFromInput('my-templates.tmpl');
 ```
 
-patTemplate will now open the file *my-templates.tmpl* and scan it for ```<patTeamplate:tmpl/>``` tags. It will create a structure like this:
+patTemplate will now open the file *my-templates.tmpl* and scan it for `<patTeamplate:tmpl/>` tags. It will create a structure like this:
 
 ```
 + page
@@ -45,7 +47,7 @@ patTemplate will now open the file *my-templates.tmpl* and scan it for ```<patTe
   + bar 
 ```
 
-If you want to send the HTML content to the browser, you need to call the ```displayParsedTemplate()``` method and pass the name of the template to display:
+If you want to send the HTML content to the browser, you need to call the `displayParsedTemplate()` method and pass the name of the template to display:
 
 ```php
 $tmpl->displayParsedTemplate('page');
@@ -59,11 +61,11 @@ When parsing and displaying a template, all nested templates will be displayed a
     And one more.
 ```
 
-If you do not want to echo the HTML code, but store it in a PHP variable, you may call ```getParsedTemplate()``` instead. If you do not pass the name of a template to ```displayParsedTemplate()``` or ```getParsedTemplate()```, patTemplate will display the root template (i.e. the first template it read after creating the patTemplate object).
+If you do not want to echo the HTML code, but store it in a PHP variable, you may call `getParsedTemplate()` instead. If you do not pass the name of a template to `displayParsedTemplate()` or `getParsedTemplate()`, patTemplate will display the root template (i.e. the first template it read after creating the patTemplate object).
 
 ## Chosing a directory for your templates
 
-You will certainly not put your template files into the root directory of your webspace, but rather in a folder called *templates* or something similar. If you do not want to specify the full path to the files for every call to ```readTemplatesFromInput()``` you may use the ```setRoot()``` method:
+You will certainly not put your template files into the root directory of your webspace, but rather in a folder called *templates* or something similar. If you do not want to specify the full path to the files for every call to `readTemplatesFromInput()` you may use the `setRoot()` method:
 
 ```php
 $tmpl = new patTemplate();
@@ -1482,11 +1484,11 @@ $tmpl->readTemplatesFromFile( "myTemplate.tmpl" );
 $defaultId =  19;
 
 $query     =  "SELECT id, superhero FROM heroes ORDER BY superhero";
-$result    =  mysql_query( $query );
+$result    =  mysqli_query($link, $query);
 
 $entries   =  array();
-while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-  // determine, wether entry should be selected by default
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+  // determine, whether entry should be selected by default
   if( $row["id"] ** $defaultId )
     $row["selected"]  =  "yes";
   else
@@ -1552,7 +1554,7 @@ You may adress the header and footer templates as if the were written directly i
 
 Of course you may also organzize templates in subfolders. If you'd like to put the shared templates in a subfolder of your template folder, just use `<patTemplate:tmpl src="shared/header.tmpl" parse="off">`. patTemplate will then load the template from `./templates/shared/header.tmpl` if your basedir is set to `templates`.
 
-* Extending patTemplate #
+# Extending patTemplate #
 
 Starting with version 3.0, patTemplate has a more abstracted architecture, which allows you to add new or exchange components without modifying the core. To extend patTemplate you'll have to understand its internal structure and class trees.
 
@@ -1618,7 +1620,7 @@ The Dump helps you debugging you templates as it presents a human readable inter
 
  * [wiki:Docs/Developer/TemplateDumpers read more...]
 
-* Variable Modifiers #
+# Variable Modifiers #
 
 Variable modifiers give power to the template designer. Assume you pass a very long text to a variable but in the layout the designer only has space for a short teaser text. Using modifers, the designer may apply a Truncate modifier that shortens the text you pass in your PHP script. And this is only one application for variable modifiers.
 
@@ -1665,11 +1667,11 @@ class patTemplate_Modifier_Truncate extends patTemplate_Modifier
    /**
     * truncate the string
     *
-    * @access    public
-    * @param    string        value
+    * @param     string       value
+    * @param     array        value
     * @return    string       modified value
     */
-    function modify( $value, $params = array() )
+    public function modify( $value, $params = array() )
     {
         /**
          * no length specified
@@ -1700,7 +1702,7 @@ If you copy this file to the Modifier folder, you may instantly use it in your t
 
 If you now pass a value that is longer than 50 chars, the modifier will automatically truncate it, before inserting it into the template. 
 
-* Template Readers #
+# Template Readers #
 
 Template readers are used to create the internal template structures from any string that contains `<patTemplate:.../>` tags. patTemplate ships with two readers, one that is able to read from files and one that reads directly from strings.
 
@@ -1723,20 +1725,19 @@ class patTemplate_Reader_File extends patTemplate_Reader
 {
    /**
     * reader name
-    * @access    private
     * @var        string
     */
-    var $_name ='File';
+    protected $_name ='File';
 
    /**
     * read templates from any input 
     *
     * @final
-    * @access    public
     * @param    string    file to parse
+    * @param    array     options, not implemented in current versions, but future versions will allow passing of options
     * @return    array    templates
     */
-    function readTemplates( $input )
+    public function readTemplates($input, $options = array())
     {
         $this->_currentInput = $input;
         $fullPath  = $this->_resolveFullPath( $input );
@@ -1750,11 +1751,10 @@ class patTemplate_Reader_File extends patTemplate_Reader
    /**
     * resolve path for a template
     *
-    * @access    private
     * @param    string        filename
-    * @return    string        full path
+    * @return   string        full path
     */    
-    function _resolveFullPath( $filename )
+    private function _resolveFullPath( $filename )
     {
         $baseDir  = $this->_options['root'];
         $fullPath = $baseDir . '/' . $filename;
@@ -1773,20 +1773,20 @@ If you want to support the `parse="off"` functionality for external templates, y
 
 ## Other template engines ##
 
-Readers may also be used to read templates that have been created for other template enginges than patTemplate. We already delivered a reader, that is able to read templates that have been created for HTML_Template_IT and treat them like patTemplate templates.
-If you want to implement a reader for other engines, you'll have to make yourself fimiliar with the internal structure of patTemplate. We'll post more information on this subject at a latter point.
+Readers may also be used to read templates that have been created for other template engines than patTemplate. We already delivered a reader, that is able to read templates that have been created for HTML_Template_IT and treat them like patTemplate templates.
+If you want to implement a reader for other engines, you'll have to make yourself familiar with the internal structure of patTemplate. We'll post more information on this subject at a latter point.
 
 ## Caching ##
 
 patTemplate supports caching of the returned templates structures. As the caching is still in beta state and the internal plugin API may change, documentation on this topic will follow, once the API is stable enough.
 
-* Output Filters #
+# Output Filters #
 
 Output Filters allow you to modify the output, after all variables have been added and the template has been parsed. You could use it, to remove unecessesary whitespace, compress the output or obfuscate all email addresses.
 
 ## Creating you own output filter ##
 
-An output filter has to be a class that extends from `patTemplate_OutputFilter`. You have to place the file that conatains your filter in the folder `patTemplate/OutputFilter`.
+An output filter has to be a class that extends from `patTemplate_OutputFilter`. You have to place the file that contains your filter in the folder `patTemplate/OutputFilter`.
 In this class you only need to implement one method called `apply()`. This method will be called by patTemplate when `patTemplate::displayParsedTemplate()` is called by the script. Before the resulting HTML code is sent to the browser, your filter will have the oportunity to modify or filter the resulting HTML.
 The apply method has to accept one string parameter, in which it will receive the HTML code. After modifying it, you just have to return to modified HTML.
 
@@ -1810,20 +1810,18 @@ class patTemplate_OutputFilter_StripWhitespace extends patTemplate_OutputFilter
    /**
     * filter name
     *
-    * @access    protected
     * @abstract
     * @var    string
     */
-    var    $_name    =    'StripWhitespace';
+    protected    $_name    =    'StripWhitespace';
 
    /**
     * remove all whitespace from the output
     *
-    * @access    public
     * @param    string        data
-    * @return    string        data without whitespace
+    * @return   string        data without whitespace
     */
-    function apply( $data )
+    public function apply( $data )
     {
         $data = str_replace( "\n", ' ', $data );
         $data = preg_replace( '/\s\s+/', ' ', $data );
@@ -1840,9 +1838,6 @@ If you applied more than one filter, the will be called in the same order as you
 
 ```php
 <?php
-require_once 'pat/patErrorManager.php';
-require_once 'pat/patTemplate.php';
-
 $tmpl = new patTemplate();
 $tmpl->setRoot( 'templates' );
 $tmpl->applyOutputFilter( 'StripWhitespace' );
@@ -1860,7 +1855,7 @@ $tmpl->displayParsedTemplate();
 You may also create an output filter that can be parameterised by the script that applies the filter. If the filter class needs to access the parameters set by the script, you may use the method `patTemplate_OutputFilter::getParam()`.
 When applying a filter, all parameters have to be passed as an array in the second parameter of `patTemplate::applyOutputFilter()`.
 
-* Input Filters #
+# Input Filters #
 
 Input Filters are similar to Output Filters but are used in a totally different context. The let you filter the templates after they are read from the filesystem, database or any other location, but before the template is being parsed and analyzed.
 
@@ -1897,19 +1892,17 @@ class patTemplate_InputFilter_StripComments extends patTemplate_InputFilter
    /**
     * filter name
     *
-    * @access private
     * @var    string
     */
-    var $_name = 'StripComments';
+    protected $_name = 'StripComments';
 
    /**
     * compress the data
     *
-    * @access    public
     * @param     string        data
     * @return    string        data without whitespace
     */
-    function apply($data) {
+    public function apply($data) {
         $data = preg_replace('°<!--.*-->°msU', '', $data);
         return $data;
     }
@@ -1923,9 +1916,6 @@ If you applied more than one filter, the will be called in the same order as you
 
 ```php
 <?php
-require_once 'pat/patErrorManager.php';
-require_once 'pat/patTemplate.php';
-
 $tmpl = new patTemplate();
 $tmpl->setRoot('templates');
 $tmpl->applyInputFilter('StripComments');
@@ -1943,7 +1933,7 @@ $tmpl->displayParsedTemplate();
 You may also create an input filter that can be parameterised by the script that applies the filter. If the filter class needs to access the parameters set by the script, you may use the method `patTemplate_InputFilter::getParam()`.
 When applying a filter, all parameters have to be passed as an array in the second parameter of `patTemplate::applyInputFilter()`.
 
-* Custom Tags #
+# Custom Tags #
 
 Custom functions allow you to create new tags, and define how they should be handled. This way, you may hand over tools to the template designers, that they may use to insert any dynamic content. Think of a site, where your users may register as users and login with their usernames. You could create a new tag that retrieves the name from the database and displays it in the template. Other examples include a gettext implementation.
 
@@ -2005,20 +1995,18 @@ class patTemplate_Function_Time extends patTemplate_Function
 {
    /**
     * name of the function
-    * @access    private
     * @var       string
     */
-    var $_name = 'Time';
+    protected $_name = 'Time';
 
    /**
     * call the function
-    #
-    * @access    public
+    *
     * @param     array    parameters of the function (= attributes of the tag)
     * @param     string   content of the tag
     * @return    string   content to insert into the template
     */ 
-    function call( $params, $content )
+    public function call( $params, $content )
     {
         if( !empty( $content ) )
         {
@@ -2039,7 +2027,7 @@ class patTemplate_Function_Time extends patTemplate_Function
 }
 ```
 
-* Template Caches #
+# Template Caches #
 
 The template cache has been developed to speed up patTemplate based applications. It will save you the overhead of analysing the template files, for every request. Instead, it will serailize the result of the reader and store it anywhere you like; on the next request to the same template, it will check, whether the file is still valid and load it from cache.
 
@@ -2058,9 +2046,6 @@ Like all patTemplate modules, using a template cache is easy. Basically, you jus
 
 ```php
 <?php
-require_once 'pat/patErrorManager.php';
-require_once 'pat/patTemplate.php';
-
 $tmpl = new patTemplate();
 $tmpl->setRoot( 'templates' );
 
@@ -2117,10 +2102,9 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
    /**
     * parameters of the cache
     *
-    * @access    private
     * @var        array
     */
-    var $_params = array(
+    protected $_params = array(
                          'cacheFolder' => './cache',
                          'lifetime'       => 'auto'
                         );
@@ -2128,12 +2112,11 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
    /**
     * load template from cache
     *
-    * @access   public
     * @param    string           cache key
     * @param    integer          modification time of original template
     * @return   array|boolean    either an array containing the templates or false cache could not be loaded
     */
-    function load( $key, $modTime = -1 )
+    public function load( $key, $modTime = -1 )
     {
         $filename = $this->_getCachefileName( $key );
         if( !file_exists( $filename ) || !is_readable( $filename ) )
@@ -2162,12 +2145,11 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
    /**
     * write template to cache
     *
-    * @access    public
     * @param     string        cache key
-    * @param     array        templates to store
-    * @return    boolean        true on success
+    * @param     array         templates to store
+    * @return    boolean       true on success
     */
-    function write( $key, $templates )
+    public function write( $key, $templates )
     {
         $fp = @fopen( $this->_getCachefileName( $key ), 'w' );
         if( !$fp )
@@ -2181,11 +2163,10 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
    /**
     * get the cache filename
     *
-    * @access   private
     * @param    string        cache key
     * @return   string        cache file name
     */
-    function _getCachefileName( $key )
+    private function _getCachefileName( $key )
     {
         return $this->getParam( 'cacheFolder' ) . '/' . $key . '.cache';
     }
@@ -2194,7 +2175,7 @@ class patTemplate_TemplateCache_File extends patTemplate_TemplateCache
 	
 As you can see, implementing a template cache is really simple and should not pose a problem to the experienced PHP developer
 
-* Template Dumpers #
+# Template Dumpers #
 
 Dumpers help you with debugging your application, as they display information about the loaded templates and assigned variables. patTemplate has been developed to help solve the webproblem and the output is most of the time displayed in the webbrowser. That's why we provide a dump that displays a nice (and interactive) HTML rendition of patTemplate's properties.
 
