@@ -51,7 +51,7 @@ class patTemplate_Compiler extends patTemplate
     public function __construct($type = 'html')
     {
         $GLOBALS['patTemplate_Compiler']    =   &$this;
-        patTemplate::__construct($type);
+        parent::__construct($type);
     }
 
     /**
