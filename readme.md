@@ -2,11 +2,11 @@
 
 patTemplate helps you separating the business logic from the layout and the content of your websites.
 
-Using patTemplate, you will no more embedd PHP code directly in your HTML code. Instead you will insert placeholders in your HTML documents, which will be replaced by the actual computed values by your PHP application.
+Using patTemplate, you will no more embed PHP code directly in your HTML code. Instead you will insert placeholders in your HTML documents, which will be replaced by the actual computed values by your PHP application.
 
 The wiki is archived at <https://web.archive.org/web/20150505033634/http://trac.php-tools.net/patTemplate/wiki/Docs>
 
-patTemplate works with PHP 5.2-7.3
+patTemplate works with PHP 5.1-7.3
 
 ## patTemplate for the designer
 
