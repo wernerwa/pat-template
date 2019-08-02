@@ -26,12 +26,6 @@
 			"patTemplate": "src/"
 		}
 	},
-	"repositories": [
-		{
-			"type": "git",
-			"url": "https://github.com/wernerwa/pat-error.git"
-		}
-	],
 	"require": {
 		"php": ">=5.1",
 		"pear/pear-core-minimal": "^1.0",
