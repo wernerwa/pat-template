@@ -79,7 +79,6 @@
  *     </li>
  * </ul>
  *
- * $ID$
  * @package     patTemplate
  * @subpackage  Functions
  * @author      Stephan Schmidt <schst@php.net>
