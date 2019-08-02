@@ -1656,8 +1656,6 @@ The truncate modifier could look like this:
 /**
  * patTemplate modfifier Truncate
  *
- * $Id: modifiers.xml 34 2004-05-11 19:46:09Z schst $
- *
  * @package        patTemplate
  * @subpackage     Modifiers
  * @author        Stephan Schmidt <schst@php.net>
