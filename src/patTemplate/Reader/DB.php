@@ -127,7 +127,7 @@ class patTemplate_Reader_DB extends patTemplate_Reader
         $tmp = explode(',', $matches[2]);
         foreach ($tmp as $clause) {
             list($field, $value) = explode('=', trim($clause));
-            if ($field{0} !== '@') {
+            if ($field[0] !== '@') {
                 return patErrorManager::raiseError(PATTEMPLATE_READER_DB_ERROR_UNKNOWN_INPUT, 'Could not parse input string.');
             }
             $field = substr($field, 1);

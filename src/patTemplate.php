@@ -835,7 +835,7 @@ class patTemplate
             return $vars;
         }
         foreach ($vars as $var => $value) {
-            if ($var{0} == '_') {
+            if ($var[0] == '_') {
                 unset($vars[$var]);
             }
         }
