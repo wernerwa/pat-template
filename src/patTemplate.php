@@ -1384,7 +1384,7 @@ class patTemplate
         }
 
         $moduleClass = 'patTemplate_' . $moduleType . '_' .$moduleName;
-        if (!class_exists($moduleClass, false)) {
+        if (!class_exists($moduleClass)) {
             if (isset($this->_moduleDirs[$moduleType])) {
                 $dirs = $this->_moduleDirs[$moduleType];
             } else {
