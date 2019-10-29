@@ -839,7 +839,7 @@ class patTemplate
             return $vars;
         }
         foreach ($vars as $var => $value) {
-            if ($var{0} == '_') {
+            if ($var[0] == '_') {
                 unset($vars[$var]);
             }
         }
@@ -1388,7 +1388,7 @@ class patTemplate
         }
 
         $moduleClass = 'patTemplate_' . $moduleType . '_' .$moduleName;
-        if (!class_exists($moduleClass, false)) {
+        if (!class_exists($moduleClass)) {
             if (isset($this->_moduleDirs[$moduleType])) {
                 $dirs = $this->_moduleDirs[$moduleType];
             } else {
