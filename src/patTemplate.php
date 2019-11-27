@@ -758,6 +758,35 @@ class patTemplate
         return true;
     }
 
+    /**
+     * Adds a row of variables to a template
+     *
+     * Each Template can have an unlimited amount of its own variables
+     * Can be used to add a database row as variables to a template
+     *
+     * @param    string  $template   name of the template
+     * @param    array   $rows   array containing assotiative arrays with variable/value pairs
+     * @param    string  $prefix prefix for all variable names
+     * @access   public
+     * @see      addVar(), addVars(), addGlobalVar(), addGlobalVars()
+     */
+    public function addRow($template, $row, $prefix = '')
+    {
+        $template   =   strtolower($template);
+        $prefix     =   strtoupper($prefix);
+
+        $row        =   array_change_key_case($row, CASE_UPPER);
+
+        if (strlen($prefix)) {
+            $prefixedRow =   array();
+            foreach ($row as $varname => $value) {
+                $prefixedRow[$prefix.$varname]   =   $value;
+            }
+            $this->_vars[$template]['rows'][] = $prefixedRow;
+        } else {
+            $this->_vars[$template]['rows'][] = $row;
+        }
+    }
 
     /**
      * Adds several rows of variables to a template
