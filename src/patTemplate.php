@@ -2013,7 +2013,7 @@ class patTemplate
                 } else {
                     $this->_templates[$template]['work']                = $this->_templates[$template]['subtemplates'][$value]['data'];
                     $this->_templates[$template]['currentDependencies'] = $this->_templates[$template]['subtemplates'][$value]['dependencies'];
-                    $this->_templates[$template]['currentFunctions']    = $this->_templates[$template]['subtemplates'][$value]['functions'];
+                    $this->_templates[$template]['currentFunctions']    = $this->_templates[$template]['subtemplates'][$value]['functions'] ?: array();
                 }
                 break;
 
@@ -2054,7 +2054,7 @@ class patTemplate
                 }
                 $this->_templates[$template]['work']                = $this->_templates[$template]['content'];
                 $this->_templates[$template]['currentDependencies'] = $this->_templates[$template]['dependencies'];
-                $this->_templates[$template]['currentFunctions']    = $this->_templates[$template]['functions'];
+                $this->_templates[$template]['currentFunctions']    = $this->_templates[$template]['functions'] ?: array();
                 break;
 
             /**
@@ -2087,7 +2087,7 @@ class patTemplate
             default:
                 $this->_templates[$template]['work']                =   $this->_templates[$template]['content'];
                 $this->_templates[$template]['currentDependencies'] =   $this->_templates[$template]['dependencies'];
-                $this->_templates[$template]['currentFunctions']    =   $this->_templates[$template]['functions'];
+                $this->_templates[$template]['currentFunctions']    =   $this->_templates[$template]['functions'] ?: array();
                 break;
         }
         return true;
