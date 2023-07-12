@@ -1772,7 +1772,7 @@ class patTemplate
             }
 
             $var  = $this->_startTag.$key.$this->_endTag;
-            $this->_templates[$template]['work'] = str_replace($var, $value, $this->_templates[$template]['work']);
+            $this->_templates[$template]['work'] = str_replace($var, isset($value) ? $value : '', $this->_templates[$template]['work']);
         }
         return true;
     }
