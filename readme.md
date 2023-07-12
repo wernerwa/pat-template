@@ -6,7 +6,7 @@ Using patTemplate, you will no more embed PHP code directly in your HTML code. I
 
 The wiki is archived at <https://web.archive.org/web/20150505033634/http://trac.php-tools.net/patTemplate/wiki/Docs>
 
-patTemplate works with PHP 5.1-7.3
+patTemplate works with PHP 5.1-8.3
 
 ## patTemplate for the designer
 
