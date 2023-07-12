@@ -1844,7 +1844,7 @@ class patTemplate
             }
 
             $var  = $this->_startTag.$key.$this->_endTag;
-            $this->_templates[$template]['work'] = str_replace($var, $value, $this->_templates[$template]['work']);
+            $this->_templates[$template]['work'] = str_replace($var, isset($value) ? $value : '', $this->_templates[$template]['work']);
         }
         return true;
     }
@@ -2162,7 +2162,7 @@ class patTemplate
         }
 
         // only one iteration (but not empty), use the __single condition
-        if ($value !== '__empty' && $this->_templates[$_template]['loop'] === 1) {
+        if ($value !== '__empty' && isset($this->_templates[$_template]['loop']) && $this->_templates[$_template]['loop'] === 1) {
             if (isset($this->_templates[$template]['subtemplates']['__single'])) {
                 return '__single';
             }
