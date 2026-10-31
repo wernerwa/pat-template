@@ -1861,15 +1861,61 @@ class patTemplate
         $globalVars = $this->_globals;
         $this->_applyModifers($template, $globalVars);
 
+        // In append mode the result contains all previous rows, so one str_replace() per global
+        // variable is very slow. Skip the variables, whose placeholder is not contained.
+        $contained = $this->_getContainedGlobals($template, $globalVars);
+
         foreach ($globalVars as $key => $value) {
             if (is_array($value)) {
                 continue;
             }
 
             $var  = $this->_startTag.$key.$this->_endTag;
-            $this->_templates[$template]['result'] = str_replace($var, $value, $this->_templates[$template]['result']);
+            if ($contained !== null && !isset($contained[$var])) {
+                // str_replace() would not change anything
+                continue;
+            }
+
+            $this->_templates[$template]['result'] = str_replace($var, $value, $this->_templates[$template]['result'], $count);
+
+            if ($contained !== null && $count > 0) {
+                // the inserted value may contain or form placeholders of the following variables
+                $contained = $this->_getContainedGlobals($template, $globalVars);
+            }
         }
         return true;
+    }
+
+    /**
+     * get the placeholders of global variables contained in the result of a template
+     *
+     * Returns null, if this can not be determined exactly. Then every global
+     * variable has to be replaced as before.
+     *
+     * @access   private
+     * @param    string      name of the template
+     * @param    array       global variables
+     * @return   array|null  placeholders as keys
+     */
+    public function _getContainedGlobals($template, $globalVars)
+    {
+        if ($this->_startTag !== '{' || $this->_endTag !== '}' || !is_string($this->_templates[$template]['result'])) {
+            return null;
+        }
+
+        foreach ($globalVars as $key => $value) {
+            if (is_array($value)) {
+                continue;
+            }
+            // other values may raise errors in str_replace(), even if nothing is replaced,
+            // and only these names are found by the regular expression below
+            if (!is_scalar($value) || !preg_match('/^[A-Z0-9_.:-]+$/', (string)$key)) {
+                return null;
+            }
+        }
+
+        preg_match_all('/\{[A-Z0-9_.:-]+\}/', $this->_templates[$template]['result'], $matches);
+        return array_flip($matches[0]);
     }
 
     /**
