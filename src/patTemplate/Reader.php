@@ -1149,7 +1149,7 @@ class patTemplate_Reader extends patTemplate_Module
         array_push($this->_tmplStack, $parent);
         if ($parent['attributes']['type'] == 'modulo') {
             if (preg_match('/^\d$/', $attributes['condition'])) {
-                if ((integer)$attributes['condition'] >= $parent['attributes']['modulo']) {
+                if ((int)$attributes['condition'] >= $parent['attributes']['modulo']) {
                     return patErrorManager::raiseError(
                         PATTEMPLATE_READER_ERROR_INVALID_CONDITION,
                         $this->_createErrorMessage('Condition may only be between 0 and '.($parent['attributes']['modulo']-1))
@@ -1574,8 +1574,8 @@ class patTemplate_Reader extends patTemplate_Module
         if (!isset($this->_options['root'])) {
             return null;
         }
-        if (isset($this->_options['root'][$this->_name])) {
-            return $this->_options['root'][$this->_name];
+        if (isset($this->_options['root'][(string)$this->_name])) {
+            return $this->_options['root'][(string)$this->_name];
         }
         if (isset($this->_options['root']['__default'])) {
             return $this->_options['root']['__default'];

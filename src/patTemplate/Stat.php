@@ -71,8 +71,8 @@ class patTemplate_Stat extends patTemplate_Module
         if (!isset($this->_options['root'])) {
             return null;
         }
-        if (isset($this->_options['root'][$this->_name])) {
-            return $this->_options['root'][$this->_name];
+        if (isset($this->_options['root'][(string)$this->_name])) {
+            return $this->_options['root'][(string)$this->_name];
         }
         if (isset($this->_options['root']['__default'])) {
             return $this->_options['root']['__default'];
