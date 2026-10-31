@@ -132,6 +132,22 @@ class patTemplate
     public $_endTag = '}';
 
     /**
+     * placeholders found in the work of the templates, see _parseVariables()
+     *
+     * @access   private
+     * @var      array
+     */
+    public $_placeholderCache = array();
+
+    /**
+     * whether a name is found by _findPlaceholders(), see _isPlaceholderName()
+     *
+     * @access   private
+     * @var      array
+     */
+    public $_placeholderNames = array();
+
+    /**
      * loaded modules
      *
      * Modules are:
@@ -1822,7 +1838,33 @@ class patTemplate
          */
         $this->_applyModifers($template, $this->_templates[$template]['vars']);
 
+        // The variables contain all global variables, so most placeholders are not contained
+        // in the template. Skip these instead of calling str_replace() for every variable.
+        $contained  = null;
+        $composable = false;
+        if ($this->_startTag === '{' && $this->_endTag === '}' && is_string($this->_templates[$template]['work'])) {
+            // the work is the same string for every row of a template
+            if (!isset($this->_placeholderCache[$template]) || $this->_placeholderCache[$template][0] !== $this->_templates[$template]['work']) {
+                list($contained, $composable) = $this->_findPlaceholders($this->_templates[$template]['work']);
+                $this->_placeholderCache[$template] = array($this->_templates[$template]['work'], $contained, $composable);
+            } else {
+                list(, $contained, $composable) = $this->_placeholderCache[$template];
+            }
+        }
+
+        $names = $this->_placeholderNames;
         foreach ($this->_templates[$template]['vars'] as $key => $value) {
+            // Skip, if str_replace() would not change anything: the placeholder is not contained
+            // (only names found by _findPlaceholders()) and other values may raise errors.
+            if ($contained !== null && !isset($contained[$key]) && ($value === null || is_scalar($value))) {
+                if (!isset($names[$key])) {
+                    $names[$key] = $this->_isPlaceholderName($key);
+                }
+                if ($names[$key]) {
+                    continue;
+                }
+            }
+
             if (is_array($value) || is_object($value)) {
                 if (count($this->_templates[$template]['currentDependencies']) == 1) {
                     $child = $this->_templates[$template]['currentDependencies'][0];
@@ -1844,9 +1886,44 @@ class patTemplate
             }
 
             $var  = $this->_startTag.$key.$this->_endTag;
-            $this->_templates[$template]['work'] = str_replace($var, isset($value) ? $value : '', $this->_templates[$template]['work']);
+            $this->_templates[$template]['work'] = str_replace($var, isset($value) ? $value : '', $this->_templates[$template]['work'], $count);
+
+            // the inserted value may contain or form placeholders of the following variables
+            if ($contained !== null && $count > 0 && ($composable || strpbrk((string)$value, '{}') !== false)) {
+                list($contained, $composable) = $this->_findPlaceholders($this->_templates[$template]['work']);
+            }
         }
         return true;
+    }
+
+    /**
+     * find the placeholders contained in a string
+     *
+     * Only placeholders with names matching _isPlaceholderName() are found.
+     * Also checks, whether replacing a variable may form a new placeholder,
+     * this needs a start tag followed by another start tag without other
+     * characters than those of names in between, e.g. {LABEL_{LANG}}.
+     *
+     * @access   private
+     * @param    string      content with the default tags
+     * @return   array       names of the placeholders as keys, and whether a new one may be formed
+     */
+    public function _findPlaceholders($content)
+    {
+        preg_match_all('/\{([A-Z0-9_.:-]+)\}/', $content, $matches);
+        return array(array_flip($matches[1]), preg_match('/\{[A-Z0-9_.:-]*\{/', $content) === 1);
+    }
+
+    /**
+     * check, whether a placeholder with this name is found by _findPlaceholders()
+     *
+     * @access   private
+     * @param    string      name of the variable
+     * @return   boolean
+     */
+    public function _isPlaceholderName($name)
+    {
+        return $this->_placeholderNames[$name] = (preg_match('/^[A-Z0-9_.:-]+$/', (string)$name) === 1);
     }
 
     /**
@@ -1863,59 +1940,32 @@ class patTemplate
 
         // In append mode the result contains all previous rows, so one str_replace() per global
         // variable is very slow. Skip the variables, whose placeholder is not contained.
-        $contained = $this->_getContainedGlobals($template, $globalVars);
+        $contained = null;
+        if ($this->_startTag === '{' && $this->_endTag === '}' && is_string($this->_templates[$template]['result'])) {
+            list($contained) = $this->_findPlaceholders($this->_templates[$template]['result']);
+        }
 
         foreach ($globalVars as $key => $value) {
             if (is_array($value)) {
+                continue;
+            }
+
+            // Skip, if str_replace() would not change anything: the placeholder is not contained
+            // (only names found by _findPlaceholders()) and other values may raise errors.
+            if ($contained !== null && !isset($contained[$key]) && is_scalar($value)
+                && (isset($this->_placeholderNames[$key]) ? $this->_placeholderNames[$key] : $this->_isPlaceholderName($key))) {
                 continue;
             }
 
             $var  = $this->_startTag.$key.$this->_endTag;
-            if ($contained !== null && !isset($contained[$var])) {
-                // str_replace() would not change anything
-                continue;
-            }
-
             $this->_templates[$template]['result'] = str_replace($var, $value, $this->_templates[$template]['result'], $count);
 
             if ($contained !== null && $count > 0) {
                 // the inserted value may contain or form placeholders of the following variables
-                $contained = $this->_getContainedGlobals($template, $globalVars);
+                list($contained) = $this->_findPlaceholders($this->_templates[$template]['result']);
             }
         }
         return true;
-    }
-
-    /**
-     * get the placeholders of global variables contained in the result of a template
-     *
-     * Returns null, if this can not be determined exactly. Then every global
-     * variable has to be replaced as before.
-     *
-     * @access   private
-     * @param    string      name of the template
-     * @param    array       global variables
-     * @return   array|null  placeholders as keys
-     */
-    public function _getContainedGlobals($template, $globalVars)
-    {
-        if ($this->_startTag !== '{' || $this->_endTag !== '}' || !is_string($this->_templates[$template]['result'])) {
-            return null;
-        }
-
-        foreach ($globalVars as $key => $value) {
-            if (is_array($value)) {
-                continue;
-            }
-            // other values may raise errors in str_replace(), even if nothing is replaced,
-            // and only these names are found by the regular expression below
-            if (!is_scalar($value) || !preg_match('/^[A-Z0-9_.:-]+$/', (string)$key)) {
-                return null;
-            }
-        }
-
-        preg_match_all('/\{[A-Z0-9_.:-]+\}/', $this->_templates[$template]['result'], $matches);
-        return array_flip($matches[0]);
     }
 
     /**
